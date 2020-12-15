@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,8 +19,9 @@ public class Photo{
 	private int id;
 	@Column
 	private String	link;
-	@Column
-	private int productId;
+	@OneToMany
+	@JoinColumn(name = "productId",nullable = false)
+	private Product productPhoto;
 	
 	public Photo() {}
 
@@ -38,12 +41,14 @@ public class Photo{
 		this.link = link;
 	}
 
-	public int getProductId() {
-		return productId;
+	public Product getProductPhoto() {
+		return productPhoto;
 	}
 
-	public void setProductId(int productId) {
-		this.productId = productId;
+	public void setProductPhoto(Product productPhoto) {
+		this.productPhoto = productPhoto;
 	}
+
+
 	
 }

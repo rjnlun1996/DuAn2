@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,8 +24,6 @@ public class OrderDetail extends BaseEntity implements Serializable{
 	@Column
 	private int id;
 	@Column
-	private int orderId;
-	@Column
 	private int productId;
 	@Column
 	private int quantity;
@@ -31,8 +31,22 @@ public class OrderDetail extends BaseEntity implements Serializable{
 	private double amount;
 	@Column
 	private double discount;
+	@ManyToOne
+	@JoinColumn(name="orderId",nullable = false)
+	private Order order;
+	@ManyToOne
+	@JoinColumn(name = "productId",nullable = false)
+	private Product product;
 	
 	public OrderDetail() {}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 
 	public int getId() {
 		return id;
@@ -42,12 +56,12 @@ public class OrderDetail extends BaseEntity implements Serializable{
 		this.id = id;
 	}
 
-	public int getOrderId() {
-		return orderId;
+	public Order getOrder() {
+		return order;
 	}
 
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
 	public int getProductId() {

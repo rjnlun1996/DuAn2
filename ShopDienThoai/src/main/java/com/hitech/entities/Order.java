@@ -2,12 +2,16 @@ package com.hitech.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,8 +27,6 @@ public class Order extends BaseEntity implements Serializable{
 	@Column
 	private int id;
 	@Column
-	private String	username;
-	@Column
 	private Date requireDate;
 	@Column
 	private String	receiver;
@@ -38,8 +40,22 @@ public class Order extends BaseEntity implements Serializable{
 	private String	phone ;
 	@Column
 	private double total;
+	@ManyToOne
+	@JoinColumn(name="username",nullable = false)
+	private Account account;
+	@OneToMany(mappedBy = "order")
+	private Set<OrderDetail> orderDetails;
+	
 	public double getTotal() {
 		return total;
+	}
+
+	public Set<OrderDetail> getOrderDetails() {
+		return orderDetails;
+	}
+
+	public void setOrderDetails(Set<OrderDetail> orderDetails) {
+		this.orderDetails = orderDetails;
 	}
 
 	public void setTotal(double total) {
@@ -56,12 +72,13 @@ public class Order extends BaseEntity implements Serializable{
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+
+	public Account getAccount() {
+		return account;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 	public Date getRequireDate() {

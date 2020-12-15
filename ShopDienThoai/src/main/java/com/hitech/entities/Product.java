@@ -2,13 +2,19 @@ package com.hitech.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 @Entity
 @Table(name = "Products")
 public class Product extends BaseEntity implements Serializable{
@@ -26,17 +32,16 @@ public class Product extends BaseEntity implements Serializable{
 	@Column
 	private String	photo ;
 	@Column
-	private String categoryId;
-	@Column
-	private int producerId;
-	@Column
 	private int quantity ;
 	@Column
+	@Temporal(TemporalType.DATE)
 	private Date date;
 	@Column
 	private String unitBrief ;
 	@Column
-	private double unitPrice;
+	private double importPrice;
+	@Column
+	private double salePrice;
 	@Column
 	private double discount;
 	@Column
@@ -49,6 +54,16 @@ public class Product extends BaseEntity implements Serializable{
 	private boolean	special;
 	@Column
 	private boolean	latest;
+	@OneToMany(mappedBy = "product")
+	private Set<OrderDetail> orderDetails;
+	@ManyToOne
+	@JoinColumn(name = "producerId")
+	private Producer producer;
+	@ManyToOne
+	@JoinColumn(name = "categoryId")
+	private Category category;
+	@OneToMany(mappedBy = "productPhoto")
+	private Set<Photo> photos;
 	
 	public Product() {
 		
@@ -78,20 +93,29 @@ public class Product extends BaseEntity implements Serializable{
 		this.photo = photo;
 	}
 
-	public String getCategoryId() {
-		return categoryId;
+
+	public Set<OrderDetail> getOrderDetails() {
+		return orderDetails;
 	}
 
-	public void setCategoryId(String categoryId) {
-		this.categoryId = categoryId;
+	public void setOrderDetails(Set<OrderDetail> orderDetails) {
+		this.orderDetails = orderDetails;
 	}
 
-	public int getProducerId() {
-		return producerId;
+	public Producer getProducer() {
+		return producer;
 	}
 
-	public void setProducerId(int producerId) {
-		this.producerId = producerId;
+	public void setProducer(Producer producer) {
+		this.producer = producer;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public int getQuantity() {
@@ -118,12 +142,20 @@ public class Product extends BaseEntity implements Serializable{
 		this.unitBrief = unitBrief;
 	}
 
-	public double getUnitPrice() {
-		return unitPrice;
+	public double getImportPrice() {
+		return importPrice;
 	}
 
-	public void setUnitPrice(double unitPrice) {
-		this.unitPrice = unitPrice;
+	public void setImportPrice(double importPrice) {
+		this.importPrice = importPrice;
+	}
+
+	public double getSalePrice() {
+		return salePrice;
+	}
+
+	public void setSalePrice(double salePrice) {
+		this.salePrice = salePrice;
 	}
 
 	public double getDiscount() {
@@ -177,6 +209,7 @@ public class Product extends BaseEntity implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
 	
 	
 }

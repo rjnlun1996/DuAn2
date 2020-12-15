@@ -4,12 +4,14 @@
 package com.hitech.entities;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -38,9 +40,26 @@ public class Producer extends BaseEntity implements Serializable{
 	private String email ;
 	@Column
 	private String	phone ;
-	
+	@OneToMany(mappedBy = "producer")
+	private Set<Product> productsProducer;
 	
 	public Producer() {}
+
+
+
+
+	public Set<Product> getProductsProducer() {
+		return productsProducer;
+	}
+
+
+
+
+	public void setProductsProducer(Set<Product> productsProducer) {
+		this.productsProducer = productsProducer;
+	}
+
+
 
 
 	public int getId() {

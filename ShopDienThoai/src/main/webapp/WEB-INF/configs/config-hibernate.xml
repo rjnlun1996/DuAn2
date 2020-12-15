@@ -16,7 +16,7 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		p:driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-		p:url="jdbc:sqlserver://localhost; Database=HieuBoyShop"
+		p:url="jdbc:sqlserver://localhost; Database=doantotnghiep"
 		p:username="sa" p:password="123456">
 	</bean>
 
@@ -30,7 +30,7 @@
 				<prop key="hibernate.show_sql">false</prop>
 			</props>
 		</property>
-		<property name="packagesToScan" value="hieuboy.model" />
+		<property name="packagesToScan" value="com.hitech.entities" />
 	</bean>
 
 	<!-- Transaction Manager - Quản lý phiên giao dịch -->
