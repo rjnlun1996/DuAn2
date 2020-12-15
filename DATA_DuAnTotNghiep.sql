@@ -23,7 +23,12 @@ create table Admin
 	username nvarchar(50) primary key NOT NULL,
 	password nvarchar(50) NOT NULL,
 	fullname nvarchar(50) NOT NULL,
-	access int NOT NULL
+	access int NOT NULL,
+	isEnabled bit default 1,
+	createdAt date default GETDATE(),
+	updatedAt date default GETDATE(),
+	createdBy nvarchar(50) default NULL,
+	updatedBy nvarchar(50) default NULL,
 )
 go
 
@@ -34,7 +39,12 @@ drop table Departments
 create table Departments
 (
 	id varchar(12) primary key NOT NULL,
-	name nvarchar(50) NOT NULL
+	name nvarchar(50) NOT NULL,
+	isEnabled bit default 1,
+	createdAt date default GETDATE(),
+	updatedAt date default GETDATE(),
+	createdBy nvarchar(50) default NULL,
+	updatedBy nvarchar(50) default NULL,
 )
 go
 
@@ -45,7 +55,12 @@ drop table Employeetypes
 create table Employeetypes 
 (
 	id varchar(12) primary key NOT NULL,
-	name nvarchar(50) NOT NULL
+	name nvarchar(50) NOT NULL,
+	isEnabled bit default 1,
+	createdAt date default GETDATE(),
+	updatedAt date default GETDATE(),
+	createdBy nvarchar(50) default NULL,
+	updatedBy nvarchar(50) default NULL,
 )
 go
 
@@ -68,6 +83,11 @@ create table Employees
 	birthday date NOT NULL,
 	access int NOT NULL,
 	activated bit NOT NULL,
+	isEnabled bit default 1,
+	createdAt date default GETDATE(),
+	updatedAt date default GETDATE(),
+	createdBy nvarchar(50) default NULL,
+	updatedBy nvarchar(50) default NULL,
 
 	constraint FK_Employees_Departments foreign key (departId) references Departments(id),
 	constraint FK_Employees_Employeetypes foreign key (employeetypeId) references Employeetypes(id)
@@ -85,6 +105,11 @@ create table Bonus(
 	amount float NOT NULL,
 	reason nvarchar(50) NOT NULL,
 	date datetime NOT NULL,
+	isEnabled bit default 1,
+	createdAt date default GETDATE(),
+	updatedAt date default GETDATE(),
+	createdBy nvarchar(50) default NULL,
+	updatedBy nvarchar(50) default NULL,
 
 	constraint FK_Bonus_Employees foreign key(employeeId) references Employees(id)
 )
@@ -103,6 +128,11 @@ create table Contracts(
 	insurrance float NOT NULL,
 	salary float NOT NULL,
 	status int NOT NULL,
+	isEnabled bit default 1,
+	createdAt date default GETDATE(),
+	updatedAt date default GETDATE(),
+	createdBy nvarchar(50) default NULL,
+	updatedBy nvarchar(50) default NULL,
 
 	constraint FK_Contracts_Employees foreign key(id) references Employees(id)
 )
@@ -116,7 +146,11 @@ create table Categories
 (
 	id int identity(1,1) primary key NOT NULL,
 	name nvarchar(50) NOT NULL,
-	nameEN nvarchar(50) NOT NULL
+	isEnabled bit default 1,
+	createdAt date default GETDATE(),
+	updatedAt date default GETDATE(),
+	createdBy nvarchar(50) default NULL,
+	updatedBy nvarchar(50) default NULL,
 )
 go
 
@@ -131,7 +165,12 @@ create table Producers
 	logo nvarchar(MAX) NULL,
 	address nvarchar(50) NOT NULL,
 	email nvarchar(50) NOT NULL,
-	phone nvarchar(10) NOT NULL
+	phone nvarchar(10) NOT NULL,
+	isEnabled bit default 1,
+	createdAt date default GETDATE(),
+	updatedAt date default GETDATE(),
+	createdBy nvarchar(50) default NULL,
+	updatedBy nvarchar(50) default NULL,
 )
 go
 
@@ -157,6 +196,11 @@ create table Products
 	status bit NOT NULL,
 	categoryId int NOT NULL,
 	producerId int NOT NULL,
+	isEnabled bit default 1,
+	createdAt date default GETDATE(),
+	updatedAt date default GETDATE(),
+	createdBy nvarchar(50) default NULL,
+	updatedBy nvarchar(50) default NULL,
 
 	constraint FK_Products_Categories foreign key(categoryId) references Categories(id),
 	constraint FK_Products_Producers foreign key(producerId) references Producers(id)
@@ -178,7 +222,12 @@ create table Customers
 	phone nvarchar(10) NOT NULL,
 	birthday datetime NOT NULL,
 	gender int NOT NULL,
-	activated bit NOT NULL
+	activated bit NOT NULL,
+	isEnabled bit default 1,
+	createdAt date default GETDATE(),
+	updatedAt date default GETDATE(),
+	createdBy nvarchar(50) default NULL,
+	updatedBy nvarchar(50) default NULL,
 )
 go
 
@@ -198,6 +247,11 @@ create table Orders
 	status int NOT NULL,
 	phone varchar(10) NOT NULL,
 	customerId varchar(20)NULL,
+	isEnabled bit default 1,
+	createdAt date default GETDATE(),
+	updatedAt date default GETDATE(),
+	createdBy nvarchar(50) default NULL,
+	updatedBy nvarchar(50) default NULL,
 	
 	constraint FK_Orders_Customers foreign key(customerId) references Customers(id)
 )
@@ -215,6 +269,11 @@ create table OrderDetails
 	quantity int NOT NULL,
 	amount float NOT NULL,
 	discount float NOT NULL,
+	isEnabled bit default 1,
+	createdAt date default GETDATE(),
+	updatedAt date default GETDATE(),
+	createdBy nvarchar(50) default NULL,
+	updatedBy nvarchar(50) default NULL,
 	
 	constraint FK_OrderDetails_Products foreign key(productId) references Products(id),
 	constraint FK_OrderDetails_Orders foreign key(orderId) references Orders(id)
