@@ -59,10 +59,12 @@ public class Product extends BaseEntity implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "producerId")
 	private Producer producer;
+	
 	@ManyToOne
-	@JoinColumn(name = "categoryId")
+	@JoinColumn(name = "categoryId")	
 	private Category category;
-	@OneToMany(mappedBy = "productPhoto")
+	
+	@OneToMany(targetEntity = Photo.class)
 	private Set<Photo> photos;
 	
 	public Product() {

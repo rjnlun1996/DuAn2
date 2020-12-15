@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,7 +19,8 @@ public class Photo{
 	private int id;
 	@Column
 	private String	link;
-	@OneToMany
+	
+	@ManyToOne()
 	@JoinColumn(name = "productId",nullable = false)
 	private Product productPhoto;
 	

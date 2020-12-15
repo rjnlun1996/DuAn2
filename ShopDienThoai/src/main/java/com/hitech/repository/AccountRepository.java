@@ -3,9 +3,9 @@ package com.hitech.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.hitech.entities.Product;
+import com.hitech.entities.Account;
 
 @Repository
-public interface testRepository extends JpaRepository<Product, Integer>{
+public interface AccountRepository extends JpaRepository<Account, String> {
 
 }

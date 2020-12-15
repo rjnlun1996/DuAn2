@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Danh sách khách hàng</title>
- rel="stylesheet">
 <%@ page isELIgnored="false"%>
 </head>
 <body>
@@ -31,11 +30,8 @@
       <!-- loop over and print our customers -->
       <c:forEach var="pd" items="${product}">
 
-       <!-- construct an "update" link with customer id -->
-       <c:url var="updateLink" value="/customer/updateForm">
         <c:param name="productId" value="${pd.id}" />
         <c:param name="productName" value="${pd.name}" />
-       </c:url>
 
       </c:forEach>
 

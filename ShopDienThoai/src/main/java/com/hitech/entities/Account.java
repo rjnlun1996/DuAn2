@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table ( name = "Accounts")
+@Table(name = "Accounts")
 public class Account extends BaseEntity implements Serializable{
 
 	/**
@@ -21,7 +21,7 @@ public class Account extends BaseEntity implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column
-	private int username;
+	private String username;
 	@Column
 	private String email;
 	@Column
@@ -45,11 +45,11 @@ public class Account extends BaseEntity implements Serializable{
 	
 	public Account() {}
 
-	public int getUsername() {
+	public String getUsername() {
 		return username;
 	}
 
-	public void setUsername(int username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 
