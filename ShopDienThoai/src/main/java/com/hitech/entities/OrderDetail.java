@@ -4,12 +4,15 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "OrderDetails")
@@ -31,11 +34,15 @@ public class OrderDetail extends BaseEntity implements Serializable{
 	private double amount;
 	@Column
 	private double discount;
-	@ManyToOne
+	
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="orderId",nullable = false)
+	@JsonBackReference
 	private Order order;
+	
 	@ManyToOne
-	@JoinColumn(name = "productId",nullable = false)
+	@JoinColumn(name = "productId",nullable = false, insertable = false, updatable = false)
+	@JsonBackReference
 	private Product product;
 	
 	public OrderDetail() {}

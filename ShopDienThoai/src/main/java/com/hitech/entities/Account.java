@@ -6,10 +6,12 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "Accounts")
@@ -40,7 +42,9 @@ public class Account extends BaseEntity implements Serializable{
 	private Date birthday;
 	@Column
 	private boolean isAdmin;
+	
 	@OneToMany(mappedBy = "account")
+	@JsonManagedReference
 	private Set<Order> orders;
 	
 	public Account() {}

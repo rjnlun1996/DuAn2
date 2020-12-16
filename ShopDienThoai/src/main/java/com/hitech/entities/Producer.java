@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  * @author ADMIN
  *
@@ -33,33 +35,26 @@ public class Producer extends BaseEntity implements Serializable{
 	@Column
 	private String name;
 	@Column
-	private String logo;
-	@Column
 	private String address;
 	@Column
 	private String email ;
 	@Column
 	private String	phone ;
+	
 	@OneToMany(mappedBy = "producer")
+	@JsonManagedReference
 	private Set<Product> productsProducer;
 	
 	public Producer() {}
-
-
-
 
 	public Set<Product> getProductsProducer() {
 		return productsProducer;
 	}
 
 
-
-
 	public void setProductsProducer(Set<Product> productsProducer) {
 		this.productsProducer = productsProducer;
 	}
-
-
 
 
 	public int getId() {
@@ -80,17 +75,6 @@ public class Producer extends BaseEntity implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
-	public String getLogo() {
-		return logo;
-	}
-
-
-	public void setLogo(String logo) {
-		this.logo = logo;
-	}
-
 
 	public String getAddress() {
 		return address;

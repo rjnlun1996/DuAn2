@@ -14,6 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "Orders")
 public class Order extends BaseEntity implements Serializable{
@@ -40,10 +43,14 @@ public class Order extends BaseEntity implements Serializable{
 	private String	phone ;
 	@Column
 	private double total;
+	
 	@ManyToOne
 	@JoinColumn(name="username",nullable = false)
+	@JsonBackReference
 	private Account account;
+	
 	@OneToMany(mappedBy = "order")
+	@JsonManagedReference
 	private Set<OrderDetail> orderDetails;
 	
 	public double getTotal() {

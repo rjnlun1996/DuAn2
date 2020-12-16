@@ -11,8 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
-@Table (name="Categories")
+@Table(name="Categories")
 public class Category extends BaseEntity implements Serializable{
 	
 	/**
@@ -26,18 +29,23 @@ public class Category extends BaseEntity implements Serializable{
 	
 	@Column
 	private String name;
+		 
 	@OneToMany(mappedBy = "category")
-	private Set<Product> productsCategory;
+	@JsonManagedReference
+	private Set<Product> products;
 	
 	public Category() {}
 	
-	public Set<Product> getProductsCategory() {
-		return productsCategory;
+
+	public Set<Product> getProducts() {
+		return products;
 	}
 
-	public void setProductsCategory(Set<Product> productsCategory) {
-		this.productsCategory = productsCategory;
+
+	public void setProducts(Set<Product> products) {
+		this.products = products;
 	}
+
 
 	public int getId() {
 		return id;

@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +16,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 @Table(name = "Products")
 public class Product extends BaseEntity implements Serializable{
@@ -54,17 +59,23 @@ public class Product extends BaseEntity implements Serializable{
 	private boolean	special;
 	@Column
 	private boolean	latest;
+	
 	@OneToMany(mappedBy = "product")
+	@JsonManagedReference
 	private Set<OrderDetail> orderDetails;
+	
 	@ManyToOne
 	@JoinColumn(name = "producerId")
+	@JsonBackReference
 	private Producer producer;
 	
 	@ManyToOne
-	@JoinColumn(name = "categoryId")	
+	@JoinColumn(name = "categoryId", referencedColumnName = "id")
+	@JsonBackReference
 	private Category category;
 	
-	@OneToMany(targetEntity = Photo.class)
+	@OneToMany(mappedBy = "product")
+	@JsonManagedReference
 	private Set<Photo> photos;
 	
 	public Product() {

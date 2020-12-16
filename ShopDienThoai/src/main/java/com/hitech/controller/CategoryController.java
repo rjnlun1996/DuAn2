@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hitech.entities.Category;
-import com.hitech.repository.AccountRepository;
 import com.hitech.repository.CategoryRepository;
 
 @Controller
@@ -17,10 +16,7 @@ public class CategoryController {
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
-	
-	@Autowired
-	private AccountRepository accountRepository;
-	
+		
 	@RequestMapping()
 	@ResponseBody
 	public List<Category> index() {	

@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "Photos")
 public class Photo{
@@ -22,7 +24,8 @@ public class Photo{
 	
 	@ManyToOne()
 	@JoinColumn(name = "productId",nullable = false)
-	private Product productPhoto;
+	@JsonBackReference
+	private Product product;
 	
 	public Photo() {}
 
@@ -42,14 +45,14 @@ public class Photo{
 		this.link = link;
 	}
 
-	public Product getProductPhoto() {
-		return productPhoto;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProductPhoto(Product productPhoto) {
-		this.productPhoto = productPhoto;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
-
+	
 	
 }
