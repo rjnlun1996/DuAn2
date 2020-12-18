@@ -6,11 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("admin")
-public class AHomeController {
-		
-	@RequestMapping()
+public class AManagerController {
+			
+	@RequestMapping("manager")
 	public String home(Model model) {
-		model.addAttribute("sidebar", "home");
-		return "admin/index";
+		model.addAttribute("sidebar", "manager");
+		return "admin/manager";
 	}
+	
 }

@@ -75,7 +75,7 @@
               </li>
               <li> 
                 <div class="dropdown">
-                  <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"><span class="media user-header"><img class="mr-2 rounded-circle img-35" src="../assets/images/dashboard/user.png" alt=""><span class="media-body"><span class="f-12 f-w-600">Elana Saint</span><span class="d-block">Admin</span></span></span></button>
+                  <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"><span class="media user-header"><img class="mr-2 rounded-circle img-35" src="../assets/images/dashboard/user.png" alt=""><span class="media-body"><span class="f-12 f-w-600">Elana Saint 123</span><span class="d-block">Admin</span></span></span></button>
                   <div class="dropdown-menu p-0">
                     <ul class="profile-dropdown">
                       <li class="gradient-primary-1">

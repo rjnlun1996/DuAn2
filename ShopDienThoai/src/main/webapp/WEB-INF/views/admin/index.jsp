@@ -10,8 +10,8 @@
 <meta name="keywords"
 	content="admin template, Creative admin template, dashboard template, flat admin template, responsive admin template, web app">
 <meta name="author" content="pixelstrap">
-<link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
-<link rel="shortcut icon" href="../assets/images/favicon.png"
+<link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="/assets/images/favicon.png"
 	type="image/x-icon">
 <title>Creative - Premium Admin Template</title>
 <!-- Google font-->
@@ -26,34 +26,34 @@
 	rel="stylesheet">
 <!-- Font Awesome-->
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/fontawesome.css">
+	href="/assets/css/fontawesome.css">
 <!-- ico-font-->
-<link rel="stylesheet" type="text/css" href="../assets/css/icofont.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/icofont.css">
 <!-- Themify icon-->
-<link rel="stylesheet" type="text/css" href="../assets/css/themify.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/themify.css">
 <!-- Flag icon-->
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/flag-icon.css">
+	href="/assets/css/flag-icon.css">
 <!-- Feather icon-->
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/feather-icon.css">
+	href="/assets/css/feather-icon.css">
 <!-- Plugins css start-->
-<link rel="stylesheet" type="text/css" href="../assets/css/animate.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/chartist.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/prism.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/chartist.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/vector-map.css">
+	href="/assets/css/vector-map.css">
 <!-- Plugins css Ends-->
 <!-- Bootstrap css-->
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/bootstrap.css">
+	href="/assets/css/bootstrap.css">
 <!-- App css-->
-<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-<link id="color" rel="stylesheet" href="../assets/css/light-1.css"
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+<link id="color" rel="stylesheet" href="/assets/css/light-1.css"
 	media="screen">
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/responsive.css">
+	href="/assets/css/responsive.css">
 </head>
 <body>
 	<!-- Loader starts-->
@@ -343,7 +343,7 @@
 											<tbody>
 												<tr>
 													<td><img class="img-fluid"
-														src="../assets/images/dashboard/sale-product-1.png" alt=""></td>
+														src="/assets/images/dashboard/sale-product-1.png" alt=""></td>
 													<td><span>Latest </span><span class="d-block">Niky
 															Black shoes</span></td>
 													<td><span
@@ -352,21 +352,21 @@
 												</tr>
 												<tr>
 													<td><img class="img-fluid"
-														src="../assets/images/dashboard/sale-product-2.png" alt=""></td>
+														src="/assets/images/dashboard/sale-product-2.png" alt=""></td>
 													<td><span>Latest Men </span><span class="d-block">Shirt</span></td>
 													<td><span>15,102</span></td>
 													<td><span>18.00%</span></td>
 												</tr>
 												<tr>
 													<td><img class="img-fluid"
-														src="../assets/images/dashboard/sale-product-3.png" alt=""></td>
+														src="/assets/images/dashboard/sale-product-3.png" alt=""></td>
 													<td><span>Latest Women </span><span class="d-block">Purse</span></td>
 													<td><span>9562</span></td>
 													<td><span>08.54%</span></td>
 												</tr>
 												<tr>
 													<td><img class="img-fluid"
-														src="../assets/images/dashboard/sale-product-4.png" alt=""></td>
+														src="/assets/images/dashboard/sale-product-4.png" alt=""></td>
 													<td><span>Latest </span><span class="d-block">Women
 															Sandals</span></td>
 													<td><span>1002</span></td>
@@ -386,25 +386,25 @@
 &lt;table class="table table-bordernone"&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;img class="img-fluid" src="../assets/images/dashboard/sale-product-1.png" alt=""&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img class="img-fluid" src="/assets/images/dashboard/sale-product-1.png" alt=""&gt;&lt;/td&gt;
 &lt;td&gt;&lt;span&gt;Latest &lt;/span&gt;&lt;span class="d-block"&gt;Niky Black shoes&lt;/span&gt;&lt;/td&gt;
 &lt;td&gt;&lt;span class="badge badge-pill badge-secondary"&gt;21,562&lt;/span&gt;&lt;/td&gt;
 &lt;td&gt;&lt;span&gt;28.21%&lt;/span&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;img class="img-fluid" src="../assets/images/dashboard/sale-product-2.png" alt=""&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img class="img-fluid" src="/assets/images/dashboard/sale-product-2.png" alt=""&gt;&lt;/td&gt;
 &lt;td&gt;&lt;span&gt;Latest Men &lt;/span&gt;&lt;span class="d-block"&gt;Shirt&lt;/span&gt;&lt;/td&gt;
 &lt;td&gt;&lt;span&gt;15,102&lt;/span&gt;&lt;/td&gt;
 &lt;td&gt;&lt;span&gt;18.00%&lt;/span&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;img class="img-fluid" src="../assets/images/dashboard/sale-product-3.png" alt=""&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img class="img-fluid" src="/assets/images/dashboard/sale-product-3.png" alt=""&gt;&lt;/td&gt;
 &lt;td&gt;&lt;span&gt;Latest Women &lt;/span&gt;&lt;span class="d-block"&gt;Purse&lt;/span&gt;&lt;/td&gt;
 &lt;td&gt;&lt;span&gt;9562&lt;/span&gt;&lt;/td&gt;
 &lt;td&gt;&lt;span&gt;08.54%&lt;/span&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;img class="img-fluid" src="../assets/images/dashboard/sale-product-4.png" alt=""&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img class="img-fluid" src="/assets/images/dashboard/sale-product-4.png" alt=""&gt;&lt;/td&gt;
 &lt;td&gt;&lt;span&gt;Latest &lt;/span&gt;&lt;span class="d-block"&gt;Women Sandals&lt;/span&gt;&lt;/td&gt;
 &lt;td&gt;&lt;span&gt;1002&lt;/span&gt;&lt;/td&gt;
 &lt;td&gt;&lt;span&gt;01.33%&lt;/span&gt;&lt;/td&gt;
@@ -546,7 +546,7 @@
 														<div class="d-inline-block align-middle">
 															<img
 																class="img-radius img-30 align-top m-r-15 rounded-circle"
-																src="../assets/images/user/2.png" alt="">
+																src="/assets/images/user/2.png" alt="">
 															<div class="d-inline-block">
 																<h6 class="f-w-600">Nick Stone</h6>
 															</div>
@@ -564,7 +564,7 @@
 														<div class="d-inline-block align-middle">
 															<img
 																class="img-radius img-30 align-top m-r-15 rounded-circle"
-																src="../assets/images/user/5.jpg" alt="">
+																src="/assets/images/user/5.jpg" alt="">
 															<div class="d-inline-block">
 																<h6 class="f-w-600">Milano Esco</h6>
 															</div>
@@ -581,7 +581,7 @@
 														<div class="d-inline-block align-middle">
 															<img
 																class="img-radius img-30 align-top m-r-15 rounded-circle"
-																src="../assets/images/user/3.jpg" alt="">
+																src="/assets/images/user/3.jpg" alt="">
 															<div class="d-inline-block">
 																<h6 class="f-w-600">Wiltor Noice</h6>
 															</div>
@@ -598,7 +598,7 @@
 														<div class="d-inline-block align-middle">
 															<img
 																class="img-radius img-30 align-top m-r-15 rounded-circle"
-																src="../assets/images/user/4.jpg" alt="">
+																src="/assets/images/user/4.jpg" alt="">
 															<div class="d-inline-block">
 																<h6 class="f-w-600">Anna Strong</h6>
 															</div>
@@ -635,7 +635,7 @@
 &lt;tr&gt;
 &lt;td&gt;01&lt;/td&gt;
 &lt;td&gt;
-&lt;div class="d-inline-block align-middle"&gt;&lt;img class="img-radius img-30 align-top m-r-15 rounded-circle" src="../assets/images/user/2.png" alt=""&gt;
+&lt;div class="d-inline-block align-middle"&gt;&lt;img class="img-radius img-30 align-top m-r-15 rounded-circle" src="/assets/images/user/2.png" alt=""&gt;
 &lt;div class="d-inline-block"&gt;
 &lt;h6 class="f-w-600"&gt;Nick Stone&lt;/h6&gt;
 &lt;/div&gt;
@@ -649,7 +649,7 @@
 &lt;tr&gt;
 &lt;td&gt;02&lt;/td&gt;
 &lt;td&gt;
-&lt;div class="d-inline-block align-middle"&gt;&lt;img class="img-radius img-30 align-top m-r-15 rounded-circle" src="../assets/images/user/5.jpg" alt=""&gt;
+&lt;div class="d-inline-block align-middle"&gt;&lt;img class="img-radius img-30 align-top m-r-15 rounded-circle" src="/assets/images/user/5.jpg" alt=""&gt;
 &lt;div class="d-inline-block"&gt;
 &lt;h6 class="f-w-600"&gt;Milano Esco&lt;/h6&gt;
 &lt;/div&gt;
@@ -663,7 +663,7 @@
 &lt;tr&gt;
 &lt;td&gt;03&lt;/td&gt;
 &lt;td&gt;
-&lt;div class="d-inline-block align-middle"&gt;&lt;img class="img-radius img-30 align-top m-r-15 rounded-circle" src="../assets/images/user/3.jpg" alt=""&gt;
+&lt;div class="d-inline-block align-middle"&gt;&lt;img class="img-radius img-30 align-top m-r-15 rounded-circle" src="/assets/images/user/3.jpg" alt=""&gt;
 &lt;div class="d-inline-block"&gt;
 &lt;h6 class="f-w-600"&gt;Wiltor Noice&lt;/h6&gt;
 &lt;/div&gt;
@@ -676,7 +676,7 @@
 &lt;tr&gt;
 &lt;td&gt;04&lt;/td&gt;
 &lt;td&gt;
-&lt;div class="d-inline-block align-middle"&gt;&lt;img class="img-radius img-30 align-top m-r-15 rounded-circle" src="../assets/images/user/4.jpg" alt=""&gt;
+&lt;div class="d-inline-block align-middle"&gt;&lt;img class="img-radius img-30 align-top m-r-15 rounded-circle" src="/assets/images/user/4.jpg" alt=""&gt;
 &lt;div class="d-inline-block"&gt;
 &lt;h6 class="f-w-600"&gt;Anna Strong&lt;/h6&gt;
 &lt;/div&gt;
@@ -706,9 +706,9 @@
 										</div>
 										<div class="call-images">
 											<img class="img-fluid"
-												src="../assets/images/dashboard/call-chat-1.png" alt=""><img
+												src="/assets/images/dashboard/call-chat-1.png" alt=""><img
 												class="img-fluid"
-												src="../assets/images/dashboard/call-chat-2.png" alt="">
+												src="/assets/images/dashboard/call-chat-2.png" alt="">
 										</div>
 										<h5 class="f-w-600">11:36</h5>
 										<div class="call-chart-height">
@@ -750,7 +750,7 @@
 								<div class="card-body">
 									<div class="work-plan text-center">
 										<img class="img-fluid"
-											src="../assets/images/dashboard/work-plan.png" alt="">
+											src="/assets/images/dashboard/work-plan.png" alt="">
 										<h6>10:00 AM</h6>
 										<h5 class="f-w-600">5 Year Celebration</h5>
 										<p>Discussion About our new project and etc....</p>
@@ -763,7 +763,7 @@
 										<pre>
 											<code class="language-html" id="example-head5">&lt;!-- Cod Box Copy begin --&gt;
 &lt;div class="work-plan text-center"&gt;
-&lt;img class="img-fluid" src="../assets/images/dashboard/work-plan.png" alt=""&gt;
+&lt;img class="img-fluid" src="/assets/images/dashboard/work-plan.png" alt=""&gt;
 &lt;h6&gt;10:00 AM&lt;/h6&gt;
 &lt;h5 class="f-w-600"&gt;5 Year Celebration&lt;/h5&gt;
 &lt;p&gt;Discussion About our new project and etc....&lt;/p&gt;
@@ -920,56 +920,56 @@
 		</div>
 	</div>
 	<!-- latest jquery-->
-	<script src="../assets/js/jquery-3.2.1.min.js"></script>
+	<script src="/assets/js/jquery-3.2.1.min.js"></script>
 	<!-- Bootstrap js-->
-	<script src="../assets/js/bootstrap/popper.min.js"></script>
-	<script src="../assets/js/bootstrap/bootstrap.js"></script>
+	<script src="/assets/js/bootstrap/popper.min.js"></script>
+	<script src="/assets/js/bootstrap/bootstrap.js"></script>
 	<!-- feather icon js-->
-	<script src="../assets/js/icons/feather-icon/feather.min.js"></script>
-	<script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
+	<script src="/assets/js/icons/feather-icon/feather.min.js"></script>
+	<script src="/assets/js/icons/feather-icon/feather-icon.js"></script>
 	<!-- Sidebar jquery-->
-	<script src="../assets/js/sidebar-menu.js"></script>
-	<script src="../assets/js/config.js"></script>
+	<script src="/assets/js/sidebar-menu.js"></script>
+	<script src="/assets/js/config.js"></script>
 	<!-- Plugins JS start-->
-	<script src="../assets/js/chart/chartjs/chart.min.js"></script>
-	<script src="../assets/js/chart/chartist/chartist.js"></script>
-	<script src="../assets/js/chart/chartist/chartist-plugin-tooltip.js"></script>
-	<script src="../assets/js/chart/knob/knob.min.js"></script>
-	<script src="../assets/js/chart/knob/knob-chart.js"></script>
-	<script src="../assets/js/prism/prism.min.js"></script>
-	<script src="../assets/js/clipboard/clipboard.min.js"></script>
-	<script src="../assets/js/counter/jquery.waypoints.min.js"></script>
-	<script src="../assets/js/counter/jquery.counterup.min.js"></script>
-	<script src="../assets/js/counter/counter-custom.js"></script>
-	<script src="../assets/js/custom-card/custom-card.js"></script>
-	<script src="../assets/js/notify/bootstrap-notify.min.js"></script>
-	<script src="../assets/js/vector-map/jquery-jvectormap-2.0.2.min.js"></script>
+	<script src="/assets/js/chart/chartjs/chart.min.js"></script>
+	<script src="/assets/js/chart/chartist/chartist.js"></script>
+	<script src="/assets/js/chart/chartist/chartist-plugin-tooltip.js"></script>
+	<script src="/assets/js/chart/knob/knob.min.js"></script>
+	<script src="/assets/js/chart/knob/knob-chart.js"></script>
+	<script src="/assets/js/prism/prism.min.js"></script>
+	<script src="/assets/js/clipboard/clipboard.min.js"></script>
+	<script src="/assets/js/counter/jquery.waypoints.min.js"></script>
+	<script src="/assets/js/counter/jquery.counterup.min.js"></script>
+	<script src="/assets/js/counter/counter-custom.js"></script>
+	<script src="/assets/js/custom-card/custom-card.js"></script>
+	<script src="/assets/js/notify/bootstrap-notify.min.js"></script>
+	<script src="/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js"></script>
 	<script
-		src="../assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
+		src="/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
 	<script
-		src="../assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
+		src="/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
 	<script
-		src="../assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
-	<script src="../assets/js/vector-map/map/jquery-jvectormap-au-mill.js"></script>
+		src="/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-au-mill.js"></script>
 	<script
-		src="../assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
-	<script src="../assets/js/vector-map/map/jquery-jvectormap-in-mill.js"></script>
+		src="/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-in-mill.js"></script>
 	<script
-		src="../assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
-	<script src="../assets/js/dashboard/default.js"></script>
-	<script src="../assets/js/notify/index.js"></script>
-	<script src="../assets/js/chat-menu.js"></script>
-	<script src="../assets/js/tooltip-init.js"></script>
-	<script src="../assets/js/animation/wow/wow.min.js"></script>
+		src="/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
+	<script src="/assets/js/dashboard/default.js"></script>
+	<script src="/assets/js/notify/index.js"></script>
+	<script src="/assets/js/chat-menu.js"></script>
+	<script src="/assets/js/tooltip-init.js"></script>
+	<script src="/assets/js/animation/wow/wow.min.js"></script>
 	<!-- Plugins JS Ends-->
 	<!-- Theme js-->
-	<script src="../assets/js/script.js"></script>
-	<script src="../assets/js/theme-customizer/customizer.js"></script>
+	<script src="/assets/js/script.js"></script>
+	<script src="/assets/js/theme-customizer/customizer.js"></script>
 	<!-- login js-->
 	<!-- Plugin used-->
 </body>
 </html>
-<div class="welcome-popup modal fade" id="loadModal" tabindex="-1"
+<!-- <div class="welcome-popup modal fade" id="loadModal" tabindex="-1"
 	role="dialog" aria-labelledby="exampleModalCenterTitle"
 	aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
@@ -991,4 +991,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
