@@ -4725,7 +4725,7 @@ table tbody .border-bottom-warning td {
         .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu > li > a i:before {
           -webkit-transition: 0.3s;
           transition: 0.3s;
-          content: ""; }
+          }
         .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu > li > a i ~ i {
           margin-right: 0; }
     .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu > li .label {
@@ -4755,7 +4755,7 @@ table tbody .border-bottom-warning td {
       -webkit-transition: 0.5s;
       transition: 0.5s; }
     .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu li.active > a > .fa-angle-right:before {
-      content: "";
+      content: "\f107";
       font-family: FontAwesome;
       -webkit-transition: 0.5s;
       transition: 0.5s; }
