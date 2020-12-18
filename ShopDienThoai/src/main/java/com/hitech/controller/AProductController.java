@@ -5,20 +5,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("admin/category")
-public class ACategoryController {
+@RequestMapping("admin/product")
+public class AProductController {
 	
 		
 	@RequestMapping()
 	public String table(Model model) {	
-		model.addAttribute("sidebar", "category/index");
-		return "admin/table-category";
+		model.addAttribute("sidebar", "product/index");
+		return "admin/table-product";
 	}
 	
 	@RequestMapping("insert")
 	public String insert(Model model) {	
-		model.addAttribute("sidebar", "category/insert");
-		return "admin/insert-category";
+		model.addAttribute("sidebar", "product/insert");
+		return "admin/insert-product";
 	}
 
 }
