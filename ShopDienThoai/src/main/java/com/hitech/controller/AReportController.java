@@ -7,12 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.hitech.constraints.ViewConstraint;
 
 @Controller
-public class AHomeController {
+public class AReportController {
 
-	@RequestMapping(ViewConstraint.URL_ADMIN_HOME)
+	@RequestMapping(ViewConstraint.URL_ADMIN_REPORT)
 	public String table(Model model) {
-		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_HOME);
-		return ViewConstraint.VIEW_ADMIN_HOME;
+		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_REPORT);
+		return ViewConstraint.VIEW_ADMIN_REPORT;
 	}
-	//hashcode
 }

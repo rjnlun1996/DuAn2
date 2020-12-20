@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
 <link rel="shortcut icon" href="/assets/images/favicon.png"
 	type="image/x-icon">
-<title>HOPE - TABLE PRODUCT</title>
+<title>HOPE - INSERT CUSTOMER</title>
 <!-- Google font-->
 <link
 	href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900"
@@ -136,26 +136,3 @@
 	<!-- Plugin used-->
 </body>
 </html>
-<!-- <div class="welcome-popup modal fade" id="loadModal" tabindex="-1"
-	role="dialog" aria-labelledby="exampleModalCenterTitle"
-	aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<button class="close" type="button" data-dismiss="modal"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			<div class="modal-body">
-				<div class="modal-header"></div>
-				<div class="contain p-50">
-					<div class="text-center">
-						<h3>Welcome to creative admin</h3>
-						<p>start your project with developer friendly admin</p>
-						<button class="btn btn-primary btn-lg txt-white" type="button"
-							data-dismiss="modal" aria-label="Close">Get Started</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div> -->
