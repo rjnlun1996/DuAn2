@@ -1,4 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%-- <%@ page import="static com.hitech.utils.ViewUtils.*" %> --%>
+
+<%@ page import="static com.hitech.utils.ViewUtils.*" %>
+
+<% String sb = String.valueOf(request.getAttribute(MENU)); %>
 
 <!-- Page Sidebar Start-->
 
@@ -12,35 +18,29 @@
 	</div>
 	<div class="sidebar custom-scrollbar">
 		<ul class="sidebar-menu">
-			<li class="${sidebar.equals("home") ? 'active' : ''}">
-				<a class="sidebar-header" href="/admin/">
+		
+			<li class="<%= renderMenuClass(sb, URL_ADMIN_HOME) %>" >
+				<a class="sidebar-header" href="<%= URL_ADMIN_HOME %>">
 					<i data-feather="home"></i>
 					<span>Dashboard</span>
 				</a>
 			</li>
 
-			<li class="${sidebar.equals("manager") ? 'active' : ''}">
-				<a class="sidebar-header" href="/admin/manager">
-					<i data-feather="bookmark"></i>
-					<span>Manager</span>
-				</a>
-			</li>
-
-			<li>
+			<li class="<%= renderMenuClass(sb, URL_ADMIN_ADMIN) %>" >
 				<a class="sidebar-header" href="#">
 					<i data-feather="airplay"></i>
 					<span> Admin Manager </span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
-					<li>
-						<a href=".html">
+					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_ADMIN) %>">
+						<a href="<%= URL_ADMIN_ADMIN %>">
 							<i class="fa fa-circle"></i>
 							Table Admin
 						</a>
 					</li>
-					<li>
-						<a href=".html">
+					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_ADMIN_INSERT) %>">
+						<a href="<%= URL_ADMIN_ADMIN_INSERT %>">
 							<i class="fa fa-circle"></i>
 							Insert Admin
 						</a>
@@ -48,65 +48,87 @@
 				</ul>
 			</li>
 
-			<li>
+			<li class="<%= renderMenuClass(sb, URL_ADMIN_CUSTOMER) %>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="sidebar"></i>
 					<span>Customers Manager</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
-					<li>
-						<a href="compact.html">
+					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_CUSTOMER) %>">
+						<a href="<%= URL_ADMIN_CUSTOMER %>">
 							<i class="fa fa-circle"></i>
 							Table Customer
 						</a>
 					</li>
-					<li>
-						<a href="sidebar-fixed.html">
+					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_CUSTOMER_INSERT) %>">
+						<a href="<%= URL_ADMIN_CUSTOMER_INSERT %>">
 							<i class="fa fa-circle"></i>
 							Insert Customer
 						</a>
 					</li>
 				</ul>
 			</li>
-
-			<li class="${sidebar.startsWith("category") ? 'active' : ''}">
+			
+			<%-- <li class="<%= sb.startsWith(URL_ADMIN_CATEGORY) ? "active" : "" %>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="layout"></i>
 					<span>Categories Manager</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
-					<li class="${sidebar.equals("category/index")? 'active' : ''}">
-						<a href="/admin/category">
+					<li class="<%= sb.equals(URL_ADMIN_CATEGORY) ? "active" : "" %>">
+						<a href="<%= URL_ADMIN_CATEGORY %>">
 							<i class="fa fa-circle"></i>
-							Table Categories
+							Table Category
 						</a>
 					</li>
-					<li class="${sidebar.equals("category/insert") ? 'active' : ''}">
-						<a href="/admin/category/insert">
+					<li class="<%= sb.equals(URL_ADMIN_CATEGORY_INSERT) ? "active" : "" %>">
+						<a href="<%= URL_ADMIN_CATEGORY_INSERT %>">
 							<i class="fa fa-circle"></i>
-							Insert Categories
+							Insert Category
+						</a>
+					</li>
+				</ul>
+			</li> --%>
+
+			<li class="<%= renderMenuClass(sb, URL_ADMIN_CATEGORY) %>">
+				<a class="sidebar-header" href="#">
+					<i data-feather="layout"></i>
+					<span>Categories Manager</span>
+					<i class="fa fa-angle-right pull-right"></i>
+				</a>
+				<ul class="sidebar-submenu">
+					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_CATEGORY) %>">
+						<a href="<%= URL_ADMIN_CATEGORY %>">
+							<i class="fa fa-circle"></i>
+							Table Category
+						</a>
+					</li>
+					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_CATEGORY_INSERT) %>">
+						<a href="<%= URL_ADMIN_CATEGORY_INSERT %>">
+							<i class="fa fa-circle"></i>
+							Insert Category
 						</a>
 					</li>
 				</ul>
 			</li>
 
-			<li>
+			<li class="<%= renderMenuClass(sb, URL_ADMIN_PRODUCER) %>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="align-justify"></i>
 					<span>Producers Manager</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
-					<li>
-						<a href="hide-on-scroll.html">
+					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_PRODUCER) %>">
+						<a href="<%= URL_ADMIN_PRODUCER %>">
 							<i class="fa fa-circle"></i>
 							Table Producers
 						</a>
 					</li>
-					<li>
-						<a href="vertical.html">
+					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_PRODUCER_INSERT) %>">
+						<a href="<%= URL_ADMIN_PRODUCER_INSERT %>">
 							<i class="fa fa-circle"></i>
 							Insert Producers
 						</a>
@@ -114,21 +136,21 @@
 				</ul>
 			</li>
 
-			<li class="${sidebar.startsWith("product") ? 'active' : ''}">
+			<li class="<%= renderMenuClass(sb, URL_ADMIN_PRODUCT) %>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="cloud-lightning"></i>
 					<span>Products Manager</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
-					<li class="${sidebar.equals("product/index") ? 'active' : ''}">
-						<a href="/admin/product">
+					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_PRODUCT) %>">
+						<a href="<%= URL_ADMIN_PRODUCT %>">
 							<i class="fa fa-circle"></i>
 							Table Products
 						</a>
 					</li>
-					<li class="${sidebar.equals("product/insert") ? 'active' : ''}">
-						<a href="/admin/product/insert">
+					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_PRODUCT_INSERT) %>">
+						<a href="<%= URL_ADMIN_PRODUCT_INSERT %>">
 							<i class="fa fa-circle"></i>
 							Insert Products
 						</a>
@@ -136,21 +158,21 @@
 				</ul>
 			</li>
 
-			<li>
+			<li class="<%= renderMenuClass(sb, URL_ADMIN_IMAGE) %>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="cloud-lightning"></i>
 					<span>Images Manager</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
-					<li>
-						<a href="footer-light.html">
+					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_IMAGE) %>">
+						<a href="<%= URL_ADMIN_IMAGE %>">
 							<i class="fa fa-circle"></i>
 							View Images
 						</a>
 					</li>
-					<li>
-						<a href="footer-dark.html">
+					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_IMAGE_INSERT) %>">
+						<a href="<%= URL_ADMIN_IMAGE_INSERT %>">
 							<i class="fa fa-circle"></i>
 							Insert Images
 						</a>
@@ -158,107 +180,56 @@
 				</ul>
 			</li>
 
-			<li>
+			<li class="<%= renderMenuClass(sb, URL_ADMIN_ORDER) %>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="cloud-lightning"></i>
 					<span>Order Manager</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
-					<li>
-						<a href="footer-light.html">
-							<i class="fa fa-circle"></i>
-							Order History
-						</a>
-					</li>
-					<li>
-						<a href="footer-dark.html">
+					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_ORDER) %>">
+						<a href="<%= URL_ADMIN_ORDER %>">
 							<i class="fa fa-circle"></i>
 							Table Order
 						</a>
 					</li>
-					<li>
-						<a href="footer-dark.html">
+					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_ORDER_INSERT) %>">
+						<a href="<%= URL_ADMIN_ORDER_INSERT %>">
 							<i class="fa fa-circle"></i>
 							Insert Order
 						</a>
 					</li>
-				</ul>
-			</li>
-
-			<li>
-				<a class="sidebar-header" href="#">
-					<i data-feather="cloud-lightning"></i>
-					<span>Order Detail Manager</span>
-					<i class="fa fa-angle-right pull-right"></i>
-				</a>
-				<ul class="sidebar-submenu">
-					<li>
-						<a href="footer-light.html">
-							<i class="fa fa-circle"></i>
-							Order Detail History
-						</a>
-					</li>
 					<li>
 						<a href="footer-dark.html">
 							<i class="fa fa-circle"></i>
-							Table Order Detail
-						</a>
-					</li>
-					<li>
-						<a href="footer-dark.html">
-							<i class="fa fa-circle"></i>
-							Insert Order Detail
+							History Order
 						</a>
 					</li>
 				</ul>
 			</li>
 
-			<li>
-				<a class="sidebar-header" href="button-builder.html">
+			<li class="<%= renderMenuClass(sb, URL_ADMIN_REPORT) %>">
+				<a class="sidebar-header" href="<%= URL_ADMIN_REPORT %>">
 					<i data-feather="bookmark"></i>
 					<span>Report</span>
 				</a>
 			</li>
 
 			<li>
-				<a class="sidebar-header" href="#">
+				<a class="sidebar-header" href="/ho-admin/report">
 					<i data-feather="mail"></i>
 					<span>Email</span>
-					<i class="fa fa-angle-right pull-right"></i>
 				</a>
-				<ul class="sidebar-submenu">
-					<li>
-						<a href="email-application.html">
-							<i class="fa fa-circle"></i>
-							Email App
-						</a>
-					</li>
-					<li>
-						<a href="email-compose.html">
-							<i class="fa fa-circle"></i>
-							Email Compose
-						</a>
-					</li>
-				</ul>
 			</li>
 
 			<li>
-				<a class="sidebar-header" href="#">
+				<a class="sidebar-header" href="/ho-admin/report">
 					<i data-feather="message-square"></i>
 					<span>Chat</span>
-					<i class="fa fa-angle-right pull-right"></i>
 				</a>
-				<ul class="sidebar-submenu">
-					<li>
-						<a href="chat.html">
-							<i class="fa fa-circle"></i>
-							Chat App
-						</a>
-					</li>
-				</ul>
 			</li>
 
+			
 		</ul>
 	</div>
 </div>

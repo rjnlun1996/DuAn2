@@ -4,14 +4,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.hitech.constraints.ViewConstraint;
+
 @Controller
-@RequestMapping("admin")
-public class AManagerController {
-			
-	@RequestMapping("manager")
-	public String home(Model model) {
-		model.addAttribute("sidebar", "manager");
-		return "admin/manager";
+@RequestMapping("/ho-admin/login")
+public class ALoginController {
+
+	@RequestMapping("")
+	public String table(Model model) {
+		return "admin/login";
 	}
-	
 }
