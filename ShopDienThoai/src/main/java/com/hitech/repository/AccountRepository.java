@@ -7,5 +7,6 @@ import com.hitech.entities.Account;
 
 @Repository
 public interface AccountRepository extends JpaRepository<Account, String> {
-
+		
+	Account findByUsernameOrEmail(String username, String email);
 }
