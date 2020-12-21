@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,16 +63,19 @@
 						<div class="card-body">
 							<div class="cont text-center">
 								<div>
-									<form class="theme-form">
+									<form class="theme-form" method="post">
 										<h4>LOGIN</h4>
 										<h6>Enter your Username and Password</h6>
+										<c:if test="${!isValidLogin}">
+											<h6 style="color: red">Tai khoan or mat khau khong dung</h6>
+										</c:if>
 										<div class="form-group">
 											<label class="col-form-label pt-0">USERNAME</label>
-											<input class="form-control" type="text" required="">
+											<input class="form-control" type="text" name="username" required="">
 										</div>
 										<div class="form-group">
 											<label class="col-form-label">PASSWORD</label>
-											<input class="form-control" type="password" required="">
+											<input class="form-control" name="password" type="password" required="">
 										</div>
 										<div class="checkbox p-0">
 											<input id="checkbox1" type="checkbox">

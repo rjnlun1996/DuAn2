@@ -22,7 +22,7 @@ public class Account extends BaseEntity implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@Column
+	@Column()
 	private String username;
 	@Column
 	private String email;
