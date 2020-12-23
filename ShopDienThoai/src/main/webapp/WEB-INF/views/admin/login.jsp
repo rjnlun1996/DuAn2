@@ -67,15 +67,15 @@
 										<h4>LOGIN</h4>
 										<h6>Enter your Username and Password</h6>
 										<c:if test="${!isValidLogin}">
-											<h6 style="color: red">Tai khoan or mat khau khong dung</h6>
+											<h6 style="color: red">Tài khoản hoặc mật khẩu không đúng?</h6>
 										</c:if>
 										<div class="form-group">
-											<label class="col-form-label pt-0">USERNAME</label>
-											<input class="form-control" type="text" name="username" required="">
+											<label for="username" class="col-form-label pt-0">USERNAME</label>
+											<input id="username" class="form-control" type="text" name="username" required="">
 										</div>
 										<div class="form-group">
-											<label class="col-form-label">PASSWORD</label>
-											<input class="form-control" name="password" type="password" required="">
+											<label for="password" class="col-form-label">PASSWORD</label>
+											<input id="password" class="form-control" name="password" type="password" required="">
 										</div>
 										<div class="checkbox p-0">
 											<input id="checkbox1" type="checkbox">
