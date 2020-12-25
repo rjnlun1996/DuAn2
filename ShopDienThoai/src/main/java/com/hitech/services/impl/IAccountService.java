@@ -1,6 +1,8 @@
 package com.hitech.services.impl;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,11 @@ public class IAccountService implements AccountService{
 			return true;
 		}
 		return false;		
+	}
+
+	@Override
+	public List<Account> findAllAdminByEnabledTrue() {
+		return accountRepository.findByAdminTrueAndEnabledTrue();
 	}
 
 }

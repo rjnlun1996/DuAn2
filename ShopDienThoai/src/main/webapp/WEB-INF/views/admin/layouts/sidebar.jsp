@@ -19,7 +19,7 @@
 	<div class="sidebar custom-scrollbar">
 		<ul class="sidebar-menu">
 		
-			<li class="<%= renderMenuClass(sb, URL_ADMIN_HOME) %>" >
+			<li class="<%= renderSubmenuClass(sb, URL_ADMIN_HOME) %>" >
 				<a class="sidebar-header" href="<%= URL_ADMIN_HOME %>">
 					<i data-feather="home"></i>
 					<span>Dashboard</span>

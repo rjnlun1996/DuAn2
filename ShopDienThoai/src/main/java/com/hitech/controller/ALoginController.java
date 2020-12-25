@@ -26,6 +26,7 @@ public class ALoginController {
 		boolean isValidLogin = accountService.loginAdmin(username, password);
 		if(!isValidLogin) {
 			model.addAttribute("isValidLogin", isValidLogin);
+			model.addAttribute("message", "Tài khoản hoặc mật khẩu không đúng");
 			return ViewConstraint.VIEW_ADMIN_LOGIN;
 		}		
 		return "redirect:/ho-admin/";

@@ -65,16 +65,17 @@
 								<div>
 									<form class="theme-form" method="post">
 										<h4>LOGIN</h4>
-										<h6>Enter your Username and Password</h6>
-										<c:if test="${!isValidLogin}">
-											<h6 style="color: red">Tài khoản hoặc mật khẩu không đúng?</h6>
+										<br>
+										<c:if test="${not empty message}">
+											<div class="alert alert-${status}" style="color: red">${message}</div>
 										</c:if>
+										<br />
 										<div class="form-group">
-											<label for="username" class="col-form-label pt-0">USERNAME</label>
+											<label for="username" class="col-form-label pt-0">Username or Email</label>
 											<input id="username" class="form-control" type="text" name="username" required="">
 										</div>
 										<div class="form-group">
-											<label for="password" class="col-form-label">PASSWORD</label>
+											<label for="password" class="col-form-label">Password</label>
 											<input id="password" class="form-control" name="password" type="password" required="">
 										</div>
 										<div class="checkbox p-0">

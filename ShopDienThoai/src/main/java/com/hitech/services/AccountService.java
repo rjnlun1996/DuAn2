@@ -1,7 +1,8 @@
 package com.hitech.services;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+import java.util.List;
+
+import com.hitech.entities.Account;
 
 public interface AccountService {
 	
@@ -12,5 +13,10 @@ public interface AccountService {
 	 * @return Return true if match usernameOrEmail and password. Default false
 	 */
 	boolean loginAdmin(String usernameOrEmail, String password);
-
+	
+	/**
+	 * Fetch all Accounts with enabled field what is true value
+	 * @return account list
+	 */
+	List<Account> findAllAdminByEnabledTrue();
 }
