@@ -19,4 +19,11 @@ public interface AccountService {
 	 * @return account list
 	 */
 	List<Account> findAllAdminByEnabledTrue();
+	
+	/**
+	 * Method to create an account
+	 * @param account
+	 * @return The account after successfully created.
+	 */
+	Account save(Account account);
 }

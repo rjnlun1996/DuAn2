@@ -141,6 +141,11 @@ public class Account extends BaseEntity implements Serializable{
 		return serialVersionUID;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Account [username=" + username + ", email=" + email + ", password=" + password + ", name=" + name
+				+ ", gender=" + gender + ", photo=" + photo + ", address=" + address + ", phone=" + phone
+				+ ", birthday=" + birthday + ", admin=" + admin + ", orders=" + orders + "]";
+	}	
 	
 }

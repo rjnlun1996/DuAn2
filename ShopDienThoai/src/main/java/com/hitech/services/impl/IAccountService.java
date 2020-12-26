@@ -6,8 +6,9 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hitech.entities.Account;
 import com.hitech.repository.AccountRepository;
@@ -35,6 +36,13 @@ public class IAccountService implements AccountService{
 	@Override
 	public List<Account> findAllAdminByEnabledTrue() {
 		return accountRepository.findByAdminTrueAndEnabledTrue();
+	}
+
+	@Transactional(readOnly = true, propagation = Propagation.NOT_SUPPORTED)
+	@Override
+	public Account save(Account account) {		
+		System.out.println(account);
+		return accountRepository.saveAndFlush(account);
 	}
 
 }

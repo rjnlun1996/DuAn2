@@ -260,7 +260,7 @@
 				<div class="people-list friend-list custom-scrollbar">
 					<ul class="list">
 						<li class="clearfix">
-							<img class="rounded-small user-image" src="./../assets/images/user/2.jpg" alt="">
+							<img class="rounded-small user-image" src="/assets/images/user/2.jpg" alt="">
 							<div class="status-circle online"></div>
 							<div class="about">
 								<div class="name">Vincent Porter</div>
@@ -268,7 +268,7 @@
 							</div>
 						</li>
 						<li class="clearfix">
-							<img class="rounded-small user-image" src="./../assets/images/user/3.jpg" alt="">
+							<img class="rounded-small user-image" src="/assets/images/user/3.jpg" alt="">
 							<div class="status-circle away"></div>
 							<div class="about">
 								<div class="name">Ain Chavez</div>
@@ -276,7 +276,7 @@
 							</div>
 						</li>
 						<li class="clearfix">
-							<img class="rounded-small user-image" src="./../assets/images/user/10.jpg" alt="">
+							<img class="rounded-small user-image" src="/assets/images/user/10.jpg" alt="">
 							<div class="status-circle online"></div>
 							<div class="about">
 								<div class="name">Kori Thomas</div>
@@ -284,7 +284,7 @@
 							</div>
 						</li>
 						<li class="clearfix">
-							<img class="rounded-small user-image" src="./../assets/images/user/11.jpg" alt="">
+							<img class="rounded-small user-image" src="/assets/images/user/11.jpg" alt="">
 							<div class="status-circle online"></div>
 							<div class="about">
 								<div class="name">Erica Hughes</div>
@@ -292,7 +292,7 @@
 							</div>
 						</li>
 						<li class="clearfix">
-							<img class="rounded-small user-image" src="./../assets/images/user/11.png" alt="">
+							<img class="rounded-small user-image" src="/assets/images/user/11.png" alt="">
 							<div class="status-circle offline"></div>
 							<div class="about">
 								<div class="name">Ginger Johnston</div>
@@ -300,7 +300,7 @@
 							</div>
 						</li>
 						<li class="clearfix">
-							<img class="rounded-small user-image" src="./../assets/images/user/6.jpg" alt="">
+							<img class="rounded-small user-image" src="/assets/images/user/6.jpg" alt="">
 							<div class="status-circle away"></div>
 							<div class="about">
 								<div class="name">Prasanth Anand</div>
@@ -308,7 +308,7 @@
 							</div>
 						</li>
 						<li class="clearfix">
-							<img class="rounded-small user-image" src="./../assets/images/user/7.jpg" alt="">
+							<img class="rounded-small user-image" src="/assets/images/user/7.jpg" alt="">
 							<div class="status-circle online"></div>
 							<div class="about">
 								<div class="name">Hileri Jecno</div>

@@ -4,7 +4,7 @@
 <div class="page-main-header">
         <div class="main-header-right row">
           <div class="main-header-left d-lg-none">
-            <div class="logo-wrapper"><a href="index.html"><img src="../assets/images/creative-logo1.png" alt=""></a></div>
+            <div class="logo-wrapper"><a href="index.html"><img src="/assets/images/creative-logo1.png" alt=""></a></div>
           </div>
           <div class="mobile-sidebar d-block">
             <div class="media-body text-right switch-sm">
@@ -75,7 +75,7 @@
               </li>
               <li> 
                 <div class="dropdown">
-                  <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"><span class="media user-header"><img class="mr-2 rounded-circle img-35" src="../assets/images/dashboard/user.png" alt=""><span class="media-body"><span class="f-12 f-w-600">Elana Saint 123</span><span class="d-block">Admin</span></span></span></button>
+                  <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"><span class="media user-header"><img class="mr-2 rounded-circle img-35" src="/assets/images/dashboard/user.png" alt=""><span class="media-body"><span class="f-12 f-w-600">Elana Saint 123</span><span class="d-block">Admin</span></span></span></button>
                   <div class="dropdown-menu p-0">
                     <ul class="profile-dropdown">
                       <li class="gradient-primary-1">

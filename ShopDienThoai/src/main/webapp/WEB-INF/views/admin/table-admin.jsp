@@ -118,7 +118,7 @@
 														<td>${no}</td>
 														<td>
 															<div class="d-inline-block align-middle">
-																<img class="img-radius img-30 align-top m-r-15 rounded-circle" src="/assets/images/user/2.png" alt="">
+																<img class="img-radius img-30 align-top m-r-15 rounded-circle" src="/assets/images/avata/${acc.photo}" alt="">
 																<div class="d-inline-block">
 																	<h6 class="f-w-600">${acc.name}</h6>
 																</div>
@@ -152,85 +152,6 @@
 											</tbody>
 										</table>
 									</div>
-									<!-- <div class="code-box-copy">
-										<button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head4" title="Copy">
-											<i class="icofont icofont-copy-alt"></i>
-										</button>
-										<pre>
-											<code class="language-html" id="example-head4">&lt;!-- Cod Box Copy begin --&gt;
-&lt;div class="sales-product-table table-responsive"&gt;
-&lt;table class="table table-bordernone"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th scope="col"&gt;Number&lt;/th&gt;
-&lt;th scope="col"&gt;Name&lt;/th&gt;
-&lt;th scope="col"&gt;Account&lt;/th&gt;
-&lt;th scope="col"&gt;Sealing&lt;/th&gt;
-&lt;th scope="col"&gt;Percentage&lt;/th&gt;
-&lt;th scope="col"&gt;Custmoize&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;01&lt;/td&gt;
-&lt;td&gt;
-&lt;div class="d-inline-block align-middle"&gt;&lt;img class="img-radius img-30 align-top m-r-15 rounded-circle" src="/assets/images/user/2.png" alt=""&gt;
-&lt;div class="d-inline-block"&gt;
-&lt;h6 class="f-w-600"&gt;Nick Stone&lt;/h6&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;td&gt;&lt;span&gt;NikyBlack87@gmail.com&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span&gt;21,562&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span&gt;28.21%&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span class="badge badge-pill pill-badge-secondary"&gt;Edit&lt;/span&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;02&lt;/td&gt;
-&lt;td&gt;
-&lt;div class="d-inline-block align-middle"&gt;&lt;img class="img-radius img-30 align-top m-r-15 rounded-circle" src="/assets/images/user/5.jpg" alt=""&gt;
-&lt;div class="d-inline-block"&gt;
-&lt;h6 class="f-w-600"&gt;Milano Esco&lt;/h6&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;td&gt;&lt;span&gt;Milanoesco56@gmal.com&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span&gt;15,102&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span&gt;18.00%&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span class="badge badge-pill pill-badge-success"&gt;Edit&lt;/span&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;03&lt;/td&gt;
-&lt;td&gt;
-&lt;div class="d-inline-block align-middle"&gt;&lt;img class="img-radius img-30 align-top m-r-15 rounded-circle" src="/assets/images/user/3.jpg" alt=""&gt;
-&lt;div class="d-inline-block"&gt;
-&lt;h6 class="f-w-600"&gt;Wiltor Noice&lt;/h6&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;td&gt;&lt;span&gt;Wiltornoice34@gmail.com&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span&gt;9562&lt;/span&gt;&lt;/td&gt;| &lt;td&gt;&lt;span&gt;08.54%&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span class="badge badge-pill pill-badge-warning"&gt;Edit&lt;/span&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;04&lt;/td&gt;
-&lt;td&gt;
-&lt;div class="d-inline-block align-middle"&gt;&lt;img class="img-radius img-30 align-top m-r-15 rounded-circle" src="/assets/images/user/4.jpg" alt=""&gt;
-&lt;div class="d-inline-block"&gt;
-&lt;h6 class="f-w-600"&gt;Anna Strong&lt;/h6&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;td&gt;&lt;span&gt;Annastrong67@gmail.com&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span&gt;1002&lt;/span&gt;&lt;/td&gt;| &lt;td&gt;&lt;span&gt;01.33%&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span class="badge badge-pill pill-badge-primary"&gt;Edit&lt;/span&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;!-- Cod Box Copy end --&gt;</code>
-										</pre>
-									</div> -->
 								</div>
 							</div>
 						</div>
