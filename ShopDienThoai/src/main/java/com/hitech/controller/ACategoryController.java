@@ -8,10 +8,11 @@ import com.hitech.constraints.ViewConstraint;
 
 @Controller
 public class ACategoryController {
-	
+		
 	@RequestMapping(ViewConstraint.URL_ADMIN_CATEGORY)
 	public String table(Model model) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CATEGORY);
+		//model.addAttribute("menu", "/ho-admin/category/");
 		return ViewConstraint.VIEW_ADMIN_CATEGORY;
 	}
 	
@@ -21,12 +22,24 @@ public class ACategoryController {
 		return ViewConstraint.VIEW_ADMIN_CATEGORY_INSERT;
 	}
 	
+	// category
+		//"/ho-admin/category/table"
+		//"/ho-admin/category/insert"
+	// product
+		//"/ho-admin/product/table"
+		//"/ho-admin/product/insert"
+	
+	// * class="${sidebar.startsWith("/ho-admin/*") ? "active" : ""}" "/ho-admin/*"
+		//"/ho-admin/*/table"  class="${sidebar.equals("/ho-admin/*/table") ? "active" : ""}"  - controller
+		//"/ho-admin/*/insert"  class="${sidebar.equals("/ho-admin/*/table") ? "active" : ""}" - controller
+	
+	
 //	@RequestMapping("/ho-admin/category/")
 //	public String table(Model model) {
-//		model.addAttribute("sidebar", "/ho-admin/category/table");
+//		model.addAttribute("sidebar", "/ho-admin/category");
 //		return ViewConstraint.VIEW_ADMIN_CATEGORY;
 //	}
-//	
+//
 //	@RequestMapping("/ho-admin/category/insert")
 //	public String insert(Model model) {	
 //		model.addAttribute("sidebar", "/ho-admin/category/insert");

@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%-- <%@ page import="static com.hitech.utils.ViewUtils.*" %> --%>
-
 <%@ page import="static com.hitech.utils.ViewUtils.*" %>
-
+<%@ page import="static com.hitech.constraints.ViewConstraint.*" %>
 <% String sb = String.valueOf(request.getAttribute(MENU)); %>
 
 <!-- Page Sidebar Start-->
@@ -19,7 +17,7 @@
 	<div class="sidebar custom-scrollbar">
 		<ul class="sidebar-menu">
 		
-			<li class="<%= renderMenuClass(sb, URL_ADMIN_HOME) %>" >
+			<li class="<%= renderSubmenuClass(sb, URL_ADMIN_HOME) %>" >
 				<a class="sidebar-header" href="<%= URL_ADMIN_HOME %>">
 					<i data-feather="home"></i>
 					<span>Dashboard</span>
@@ -85,6 +83,49 @@
 					</li>
 					<li class="<%= sb.equals(URL_ADMIN_CATEGORY_INSERT) ? "active" : "" %>">
 						<a href="<%= URL_ADMIN_CATEGORY_INSERT %>">
+							<i class="fa fa-circle"></i>
+							Insert Category
+						</a>
+					</li>
+				</ul>
+			</li> --%>
+			<%-- <li class="<%= renderMenuClass(sb, URL_ADMIN_CATEGORY) %>">
+				<a class="sidebar-header" href="#">
+					<i data-feather="layout"></i>
+					<span>Categories Manager</span>
+					<i class="fa fa-angle-right pull-right"></i>
+				</a>
+				<ul class="sidebar-submenu">
+					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_CATEGORY) %>">
+						<a href="<%= URL_ADMIN_CATEGORY %>">
+							<i class="fa fa-circle"></i>
+							Table Category
+						</a>
+					</li>
+					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_CUSTOMER_INSERT) %>">
+						<a href="<%= URL_ADMIN_CUSTOMER_INSERT %>">
+							<i class="fa fa-circle"></i>
+							Insert Category
+						</a>
+					</li>
+				</ul>
+			</li>
+			
+			<li class="<%= sidebar.startsWith(URL_ADMIN_CATEGORY) ? "active" : "" %>">
+				<a class="sidebar-header" href="#">
+					<i data-feather="layout"></i>
+					<span>Categories Manager</span>
+					<i class="fa fa-angle-right pull-right"></i>
+				</a>
+				<ul class="sidebar-submenu">
+					<li class="<%= sidebar.equals(URL_ADMIN_CATEGORY) ? "active" : "" %>">
+						<a href="<%= URL_ADMIN_CATEGORY %>">
+							<i class="fa fa-circle"></i>
+							Table Category
+						</a>
+					</li>
+					<li class="<%= sidebar.equals(URL_ADMIN_CUSTOMER_INSERT) ? "active" : "" %>">
+						<a href="<%= URL_ADMIN_CUSTOMER_INSERT %>">
 							<i class="fa fa-circle"></i>
 							Insert Category
 						</a>
