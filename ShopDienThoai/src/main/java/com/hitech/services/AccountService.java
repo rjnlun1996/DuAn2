@@ -1,8 +1,5 @@
 package com.hitech.services;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
-
 public interface AccountService {
 	
 	/**

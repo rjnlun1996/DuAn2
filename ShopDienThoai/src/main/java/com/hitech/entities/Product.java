@@ -44,9 +44,9 @@ public class Product extends BaseEntity implements Serializable{
 	@Column
 	private String unitBrief ;
 	@Column
-	private double importPrice;
+	private long importPrice;
 	@Column
-	private double salePrice;
+	private long salePrice;
 	@Column
 	private double discount;
 	@Column
@@ -106,31 +106,6 @@ public class Product extends BaseEntity implements Serializable{
 		this.photo = photo;
 	}
 
-
-	public Set<OrderDetail> getOrderDetails() {
-		return orderDetails;
-	}
-
-	public void setOrderDetails(Set<OrderDetail> orderDetails) {
-		this.orderDetails = orderDetails;
-	}
-
-	public Producer getProducer() {
-		return producer;
-	}
-
-	public void setProducer(Producer producer) {
-		this.producer = producer;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
 	public int getQuantity() {
 		return quantity;
 	}
@@ -155,19 +130,19 @@ public class Product extends BaseEntity implements Serializable{
 		this.unitBrief = unitBrief;
 	}
 
-	public double getImportPrice() {
+	public long getImportPrice() {
 		return importPrice;
 	}
 
-	public void setImportPrice(double importPrice) {
+	public void setImportPrice(long importPrice) {
 		this.importPrice = importPrice;
 	}
 
-	public double getSalePrice() {
+	public long getSalePrice() {
 		return salePrice;
 	}
 
-	public void setSalePrice(double salePrice) {
+	public void setSalePrice(long salePrice) {
 		this.salePrice = salePrice;
 	}
 
@@ -217,6 +192,38 @@ public class Product extends BaseEntity implements Serializable{
 
 	public void setLatest(boolean latest) {
 		this.latest = latest;
+	}
+
+	public Set<OrderDetail> getOrderDetails() {
+		return orderDetails;
+	}
+
+	public void setOrderDetails(Set<OrderDetail> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
+
+	public Producer getProducer() {
+		return producer;
+	}
+
+	public void setProducer(Producer producer) {
+		this.producer = producer;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Set<Photo> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(Set<Photo> photos) {
+		this.photos = photos;
 	}
 
 	public static long getSerialversionuid() {

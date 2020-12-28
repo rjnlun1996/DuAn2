@@ -3,10 +3,11 @@ package com.hitech.entities;
 import java.util.Date;
 
 import javax.persistence.Column;
-
+import javax.persistence.MappedSuperclass;
+@MappedSuperclass
 public class BaseEntity {
-	@Column
-	protected boolean isEnabled;
+	@Column(name="isEnabled")
+	protected boolean enabled;
 	@Column
 	protected Date createdAt;
 	@Column
@@ -17,10 +18,10 @@ public class BaseEntity {
 	protected String updatedBy;
 	
 	public boolean isEnabled() {
-		return isEnabled;
+		return enabled;
 	}
-	public void setEnabled(boolean isEnabled) {
-		this.isEnabled = isEnabled;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	public Date getCreatedAt() {
 		return createdAt;

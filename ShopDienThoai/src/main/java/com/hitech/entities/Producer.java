@@ -35,6 +35,8 @@ public class Producer extends BaseEntity implements Serializable{
 	@Column
 	private String name;
 	@Column
+	private String logo;
+	@Column
 	private String address;
 	@Column
 	private String email ;
@@ -74,6 +76,15 @@ public class Producer extends BaseEntity implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
 	}
 
 	public String getAddress() {
