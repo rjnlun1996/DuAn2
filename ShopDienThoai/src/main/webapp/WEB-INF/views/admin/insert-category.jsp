@@ -1,4 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,8 +37,7 @@
 <!-- Themify icon-->
 <link rel="stylesheet" type="text/css" href="/assets/css/themify.css">
 <!-- Flag icon-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/flag-icon.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/flag-icon.css">
 <!-- Feather icon-->
 <link rel="stylesheet" type="text/css"
 	href="/assets/css/feather-icon.css">
@@ -41,19 +45,16 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/chartist.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/vector-map.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/vector-map.css">
 <!-- Plugins css Ends-->
 <!-- Bootstrap css-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
 <!-- App css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 <link id="color" rel="stylesheet" href="/assets/css/light-1.css"
 	media="screen">
 <!-- Responsive css-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/responsive.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
 </head>
 <body>
 	<!-- Loader starts-->
@@ -79,11 +80,35 @@
 			<!-- Left and Right Sidebar Start-->
 			<jsp:include page="layouts/sidebar.jsp"></jsp:include>
 			<!-- Left and Right Sidebar Ends-->
-			<div class="page-body">123</div>
+			<div class="page-body">
+				<table class="table table-bordernone">
+					
+					<tbody>
+						<form>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Id</label> <input
+									type="" class="form-control" id="exampleInputEmail1"
+									aria-describedby="" placeholder="Nhập Id">
+								<small id="" class="form-text text-muted"></small>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">Tên danh mục</label> <input
+									type="text" class="form-control" id="exampleInputPassword1"
+									placeholder="Nhập tên danh mục">
+							</div>
+							
+							<button type="submit" class="btn btn-primary">Thêm</button>
+						</form>
+					</tbody>
+				</table>
+
+
+
+			</div>
 			<!-- footer start-->
 			<jsp:include page="layouts/footer.jsp"></jsp:include>
 			<!-- footer end-->
-			
+
 		</div>
 	</div>
 	<!-- latest jquery-->
@@ -113,16 +138,13 @@
 	<script src="/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js"></script>
 	<script
 		src="/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
 	<script src="/assets/js/vector-map/map/jquery-jvectormap-au-mill.js"></script>
 	<script
 		src="/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
 	<script src="/assets/js/vector-map/map/jquery-jvectormap-in-mill.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
 	<script src="/assets/js/dashboard/default.js"></script>
 	<script src="/assets/js/notify/index.js"></script>
 	<script src="/assets/js/chat-menu.js"></script>
