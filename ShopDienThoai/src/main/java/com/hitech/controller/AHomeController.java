@@ -14,5 +14,4 @@ public class AHomeController {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_HOME);
 		return ViewConstraint.VIEW_ADMIN_HOME;
 	}
-	//hashcode
 }

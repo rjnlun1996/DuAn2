@@ -1,5 +1,11 @@
+<%@page import="com.hitech.entities.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="static com.hitech.constraints.ViewConstraint.*" %>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -75,11 +81,56 @@
 
 		<!-- Page Body Start-->
 		<div class="page-body-wrapper">
-
 			<!-- Left and Right Sidebar Start-->
 			<jsp:include page="layouts/sidebar.jsp"></jsp:include>
 			<!-- Left and Right Sidebar Ends-->
-			<div class="page-body">123</div>
+			<div class="page-body">
+				<div class="table-responsive">
+					<table class="table table-bordernone">
+						<thead>
+							<tr  class="text-center">
+								<th scope="col">STT</th>
+								<th scope="col">Tên sản phẩm</th>
+								<th scope="col">Hình ảnh</th>
+								<th scope="col">Nhà sản xuất</th>
+								<th scope="col">Số lượng</th>
+								<th scope="col">Giá nhập</th>
+								<th scope="col">Giá bán</th>
+								<th scope="col">Khuyến mãi</th>
+								<th scope="col">View</th>
+								<th scope="col">Ghi chú</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${listProduct}" var="product">
+								<tr>
+									<c:set var="count" value="${count+1 }" />
+									<c:set var="producer" value="${product.producer}" />
+									<td>${count}</td>
+									<td>${product.name}</td>
+									<td><img class="img-radius img-80 align-top m-r-15"
+											src="/assets/images/photo/hinhProduct/${product.photo}" alt="loading"></td>
+									<td><img
+										class="img-radius img-80 align-top m-r-15 rounded-circle"
+										src="/assets/images/photo/hinhProducer/${product.producer.logo}"
+										alt="loading"></td>
+									<td class="text-center">${product.quantity}</td>
+									<td>${product.importPrice}</td>
+									<td>${product.salePrice}</td>
+									<td>${product.discount*100}</td>
+									<td>${product.views}</td>
+									<td>${product.description}</td>
+									<td>
+										<span class="badge badge-pill pill-badge-primary">Edit</span><br>
+										<a href="<%=URL_ADMIN_PRODUCT_DELETE%>${product.id}"><span class="badge badge-pill pill-badge-secondary">Delete</span></a>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
 			<!-- footer start-->
 			<jsp:include page="layouts/footer.jsp"></jsp:include>
 			<!-- footer end-->
@@ -134,6 +185,9 @@
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
 	<!-- login js-->
 	<!-- Plugin used-->
+	
+	
+	
 </body>
 </html>
 <!-- <div class="welcome-popup modal fade" id="loadModal" tabindex="-1"
