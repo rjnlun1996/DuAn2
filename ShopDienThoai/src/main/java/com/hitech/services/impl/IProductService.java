@@ -11,6 +11,7 @@ import com.hitech.services.ProductService;
 
 @Service
 public class IProductService implements ProductService{
+	
 	@Autowired
 	private ProductRepository productRepository;
 	
@@ -19,8 +20,25 @@ public class IProductService implements ProductService{
 		List<Product> list= productRepository.findByEnabledTrue();
 		return list;
 	}
+
 	@Override
-	public void delete(int id) {
-		 productRepository.setEnabledFalse(id);
+	public Product findById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Product save(Product entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Product update(Product entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public boolean deleteById(Integer id) {
+		productRepository.setEnabledFalse(id);
+		return true;
 	}
 }

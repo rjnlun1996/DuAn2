@@ -1,6 +1,10 @@
 package com.hitech.services;
 
-public interface AccountService {
+import java.util.List;
+
+import com.hitech.entities.Account;
+
+public interface AccountService extends IBaseService<Account, String>{
 	
 	/**
 	 * The method to login for ADMIN roles
@@ -9,5 +13,13 @@ public interface AccountService {
 	 * @return Return true if match usernameOrEmail and password. Default false
 	 */
 	boolean loginAdmin(String usernameOrEmail, String password);
+
+
+	/**
+	 * Fetch all Accounts with enabled field what is true value
+	 * 
+	 * @return account list
+	 */
+	List<Account> findAllAdminByEnabledTrue();
 
 }

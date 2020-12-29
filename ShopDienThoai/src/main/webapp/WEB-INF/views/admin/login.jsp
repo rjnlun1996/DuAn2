@@ -1,195 +1,99 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
-
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Creative admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-<meta name="keywords" content="admin template, Creative admin template, dashboard template, flat admin template, responsive admin template, web app">
-<meta name="author" content="pixelstrap">
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+<title>Trang đăng nhập</title>
+<!-- General CSS Files -->
+<link rel="stylesheet" href="/assetsLogin/css/app.min.css">
+<link rel="stylesheet" href="/assetsLogin/bundles/bootstrap-social/bootstrap-social.css">
+<!-- Template CSS -->
+<link rel="stylesheet" href="/assetsLogin/css/style.css">
+<link rel="stylesheet" href="/assetsLogin/css/components.css">
+<!-- Custom style CSS -->
+<link rel="stylesheet" href="/assetsLogin/css/custom.css">
 <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
 <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
-<title>HOPE - LOGIN ADMIN</title>
-
-<!-- Google font-->
-<link href="/css.css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-<link href="/css-1.css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-<link href="/css-2.css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-<!-- Font Awesome-->
-<link rel="stylesheet" type="text/css" href="/assets/css/fontawesome.css">
-<!-- ico-font-->
-<link rel="stylesheet" type="text/css" href="/assets/css/icofont.css">
-<!-- Themify icon-->
-<link rel="stylesheet" type="text/css" href="/assets/css/themify.css">
-<!-- Flag icon-->
-<link rel="stylesheet" type="text/css" href="/assets/css/flag-icon.css">
-<!-- Feather icon-->
-<link rel="stylesheet" type="text/css" href="/assets/css/feather-icon.css">
-<!-- Plugins css start-->
-<!-- Plugins css Ends-->
-<!-- Bootstrap css-->
-<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
-<!-- App css-->
-<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-<link id="color" rel="stylesheet" href="/assets/css/light-1.css" media="screen">
-<!-- Responsive css-->
-<link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
 </head>
 
 <body>
-	<!-- Loader starts-->
-	<div class="loader-wrapper">
-		<div class="loader loader-7">
-			<div class="line line1"></div>
-			<div class="line line2"></div>
-			<div class="line line3"></div>
-		</div>
-	</div>
-	<!-- Loader ends-->
-	<!-- page-wrapper Start-->
-	<div class="page-wrapper">
-		<div class="container-fluid p-0">
-			<!-- login page with video background start-->
-			<div class="auth-bg-video">
-				<video id="bgvid" poster="/assets/images/other-images/coming-soon-bg.jpg" playsinline="" autoplay="" muted="" loop="">
-					<source src="/assets/video/auth-bg.mp4" type="video/mp4">
-				</video>
-				<div class="authentication-box">
-					<div class="mt-4">
-						<div class="card-body">
-							<div class="cont text-center">
-								<div>
-									<form class="theme-form" method="post">
-										<h4>LOGIN</h4>
-										<h6>Enter your Username and Password</h6>
-										<c:if test="${!isValidLogin}">
-											<h6 style="color: red">Tai khoan or mat khau khong dung</h6>
-										</c:if>
-										<div class="form-group">
-											<label class="col-form-label pt-0">USERNAME</label>
-											<input class="form-control" type="text" name="username" required="">
-										</div>
-										<div class="form-group">
-											<label class="col-form-label">PASSWORD</label>
-											<input class="form-control" name="password" type="password" required="">
-										</div>
-										<div class="checkbox p-0">
-											<input id="checkbox1" type="checkbox">
-											<label for="checkbox1">Remember me</label>
-										</div>
-										<div class="form-group form-row mt-3 mb-0">
-											<button class="btn btn-primary btn-block" type="submit">LOGIN</button>
-										</div>
-										<div class="login-divider"></div>
-										<div class="social mt-3">
-											<div class="form-row btn-showcase">
-												<div class="col-md-4 col-sm-6">
-													<button class="btn social-btn btn-fb">Facebook</button>
-												</div>
-												<div class="col-md-4 col-sm-6">
-													<button class="btn social-btn btn-twitter">Twitter</button>
-												</div>
-												<div class="col-md-4 col-sm-6">
-													<button class="btn social-btn btn-google">Google +</button>
-												</div>
+	<div class="loader"></div>
+	<div id="app">
+		<section class="section">
+			<div class="container mt-5">
+				<div class="row">
+					<div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+						<div class="card card-primary">
+							<div class="card-header">
+								<h4>Login</h4>
+							</div>
+							<div class="card-body">
+								<c:if test="${not empty message}">
+									<div class="alert alert-danger">${message}</div>
+								</c:if>
+								<form method="POST" class="needs-validation">
+									<div class="form-group">
+										<label for="username">Username or Email</label>
+										<input id="username" type="text" class="form-control" name="username" tabindex="1" >
+										<div class="invalid-feedback">Please fill in your username</div>
+									</div>
+									<div class="form-group">
+										<div class="d-block">
+											<label for="password" class="control-label">Password</label>
+											<div class="float-right">
+												<a href="auth-forgot-password.html" class="text-small"> Forgot Password? </a>
 											</div>
 										</div>
-									</form>
-								</div>
-								<div class="sub-cont">
-									<div class="img">
-										<div class="img__text m--up">
-											<h2>New User?</h2>
-											<p>Sign up and discover great amount of new opportunities!</p>
-										</div>
-										<div class="img__text m--in">
-											<h2>One of us?</h2>
-											<p>If you already has an account, just sign in. We've missed you!</p>
-										</div>
-										<div class="img__btn">
-											<span class="m--up">Sign up</span>
-											<span class="m--in">Sign in</span>
+										<input id="password" type="password" class="form-control" name="password" tabindex="2" required="">
+										<div class="invalid-feedback">please fill in your password</div>
+									</div>
+									<div class="form-group">
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
+											<label class="custom-control-label" for="remember-me">Remember Me</label>
 										</div>
 									</div>
-									<div>
-										<form class="theme-form">
-											<h4 class="text-center">NEW USER</h4>
-											<h6 class="text-center">Enter your Username and Password For Signup</h6>
-											<div class="form-row">
-												<div class="col-md-12">
-													<div class="form-group">
-														<input class="form-control" type="text" placeholder="First Name">
-													</div>
-												</div>
-												<div class="col-md-12">
-													<div class="form-group">
-														<input class="form-control" type="text" placeholder="Last Name">
-													</div>
-												</div>
-											</div>
-											<div class="form-group">
-												<input class="form-control" type="text" placeholder="Username">
-											</div>
-											<div class="form-group">
-												<input class="form-control" type="password" placeholder="Password">
-											</div>
-											<div class="form-row">
-												<div class="col-sm-4">
-													<button class="btn btn-primary" type="submit">Sign Up</button>
-												</div>
-												<div class="col-sm-8">
-													<div class="text-left mt-2 m-l-20">
-														Are you already user?  
-														<a class="btn-link text-capitalize" href="login.html">Login</a>
-													</div>
-												</div>
-											</div>
-											<div class="form-divider"></div>
-											<div class="social mt-3">
-												<div class="form-row btn-showcase">
-													<div class="col-sm-4">
-														<button class="btn social-btn btn-fb">Facebook</button>
-													</div>
-													<div class="col-sm-4">
-														<button class="btn social-btn btn-twitter">Twitter</button>
-													</div>
-													<div class="col-sm-4">
-														<button class="btn social-btn btn-google">Google +</button>
-													</div>
-												</div>
-											</div>
-										</form>
+									<div class="form-group">
+										<button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">Login</button>
+									</div>
+								</form>
+								<div class="text-center mt-4 mb-3">
+									<div class="text-job text-muted">Login With Social</div>
+								</div>
+								<div class="row sm-gutters">
+									<div class="col-6">
+										<a class="btn btn-block btn-social btn-facebook">
+											<span class="fab fa-facebook"></span>
+											Facebook
+										</a>
+									</div>
+									<div class="col-6">
+										<a class="btn btn-block btn-social btn-twitter">
+											<span class="fab fa-twitter"></span>
+											Twitter
+										</a>
 									</div>
 								</div>
 							</div>
 						</div>
+						<div class="mt-5 text-muted text-center">
+							Don't have an account?
+							<a href="auth-register.html">Create One</a>
+						</div>
 					</div>
 				</div>
 			</div>
-			<!-- login page with video background end-->
-		</div>
+		</section>
 	</div>
-	<!-- latest jquery-->
-	<script src="/assets/js/jquery-3.2.1.min.js"></script>
-	<!-- Bootstrap js-->
-	<script src="/assets/js/bootstrap/popper.min.js"></script>
-	<script src="/assets/js/bootstrap/bootstrap.js"></script>
-	<!-- feather icon js-->
-	<script src="/assets/js/icons/feather-icon/feather.min.js"></script>
-	<script src="/assets/js/icons/feather-icon/feather-icon.js"></script>
-	<!-- Sidebar jquery-->
-	<script src="/assets/js/sidebar-menu.js"></script>
-	<script src="/assets/js/config.js"></script>
-	<!-- Plugins JS start-->
-	<script src="/assets/js/login.js"></script>
-	<!-- Plugins JS Ends-->
-	<!-- Theme js-->
-	<script src="/assets/js/script.js"></script>
-	<!-- login js-->
-	<!-- Plugin used-->
+	<!-- General JS Scripts -->
+	<script src="/assetsLogin/js/app.min.js"></script>
+	<!-- JS Libraies -->
+	<!-- Page Specific JS File -->
+	<!-- Template JS File -->
+	<script src="/assetsLogin/js/scripts.js"></script>
+	<!-- Custom JS File -->
+	<script src="/assetsLogin/js/custom.js"></script>
 </body>
+
 </html>

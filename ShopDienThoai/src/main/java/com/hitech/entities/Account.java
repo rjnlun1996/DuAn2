@@ -6,7 +6,6 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -40,8 +39,8 @@ public class Account extends BaseEntity implements Serializable{
 	private String phone ;
 	@Column
 	private Date birthday;
-	@Column
-	private boolean isAdmin;
+	@Column(name = "isAdmin")
+	private boolean admin;
 	
 	@OneToMany(mappedBy = "account")
 	@JsonManagedReference
@@ -122,11 +121,11 @@ public class Account extends BaseEntity implements Serializable{
 	}
 
 	public boolean isAdmin() {
-		return isAdmin;
+		return admin;
 	}
 
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 
 	public Set<Order> getOrders() {

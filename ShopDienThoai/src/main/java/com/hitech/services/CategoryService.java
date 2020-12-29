@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.hitech.entities.Category;
 
-public interface CategoryService {
+public interface CategoryService extends IBaseService<Category, Integer> {
 
 	Category findById(Integer id);
 
