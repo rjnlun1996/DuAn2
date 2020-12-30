@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import com.hitech.entities.Account;
 
-public interface AccountService {
-
+public interface AccountService extends IBaseService<Account, String>{
+	
 	/**
 	 * The method to login for ADMIN roles
 	 * 
@@ -22,28 +22,5 @@ public interface AccountService {
 	 * @return account list
 	 */
 	List<Account> findAllAdminByEnabledTrue();
-
-	/**
-	 * Method to create an account
-	 * 
-	 * @param account
-	 * @return The account after successfully created.
-	 */
-	Account save(Account account);
-
-	/**
-	 * Method to find username 
-	 * @param username
-	 * @return The account what id is username
-	 */
-	Optional<Account> findById(String username);
-
-	/**
-	 * Method to delete account by username
-	 * 
-	 * @param Username
-	 * @return The account after successfully detele
-	 */
-	void delete(String username);
 
 }

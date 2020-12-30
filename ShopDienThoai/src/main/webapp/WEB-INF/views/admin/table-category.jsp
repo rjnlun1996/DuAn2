@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +83,101 @@
 			<!-- Left and Right Sidebar Start-->
 			<jsp:include page="layouts/sidebar.jsp"></jsp:include>
 			<!-- Left and Right Sidebar Ends-->
-			<div class="page-body">123</div>
+			<div class="page-body">
+			
+			
+			
+			
+			<div class="table-responsive">
+					<table class="table table-bordernone">
+						<thead>
+							<tr>
+								<th scope="col">Id</th>
+								<th scope="col">Tên</th>
+								<th scope="col"></th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+						<c:forEach var="c" items="${categorys}">
+						<tr>
+								<td>{c.id}</td>
+								<td>
+									<div class="d-inline-block align-middle">
+										<img class="img-radius img-30 align-top m-r-15 rounded-circle"
+											src="" alt="">
+										<div class="d-inline-block">
+											<h6 class="f-w-600">{c.name}</h6>
+										</div>
+									</div>
+								</td>
+								
+								<td><span class="badge badge-pill pill-badge-secondary" href="admin/update-category/${c.category}.htm">Sửa</span></td>
+								<td><span class="badge badge-pill pill-badge-warning" href="admin/delete-category/${c.category}.htm">Xóa</span></td>
+							</tr>
+						</c:forEach>
+						<!--  
+							 <tr>
+								<td>01</td>
+								<td>
+									<div class="d-inline-block align-middle">
+										<img class="img-radius img-30 align-top m-r-15 rounded-circle"
+											src="" alt="">
+										<div class="d-inline-block">
+											<h6 class="f-w-600">Điện thoại</h6>
+										</div>
+									</div>
+								</td>
+								<td><span class="badge badge-pill pill-badge-secondary">Edit</span></td>
+							</tr>
+							<tr>
+								<td>02</td>
+								<td>
+									<div class="d-inline-block align-middle">
+										<img class="img-radius img-30 align-top m-r-15 rounded-circle"
+											src="" alt="">
+										<div class="d-inline-block">
+											<h6 class="f-w-600">Tablet</h6>
+										</div>
+									</div>
+								</td>
+								
+								<td><span class="badge badge-pill pill-badge-success">Edit</span></td>
+							</tr>
+							<tr>
+								<td>03</td>
+								<td>
+									<div class="d-inline-block align-middle">
+										<img class="img-radius img-30 align-top m-r-15 rounded-circle"
+											src="" alt="">
+										<div class="d-inline-block">
+											<h6 class="f-w-600">Phụ kiện</h6>
+										</div>
+									</div>
+								</td>
+								
+								<td><span class="badge badge-pill pill-badge-warning">Edit</span></td>
+							</tr>
+							<tr>
+								<td>04</td>
+								<td>
+									<div class="d-inline-block align-middle">
+										<img class="img-radius img-30 align-top m-r-15 rounded-circle"
+											src="" alt="">
+										<div class="d-inline-block">
+											<h6 class="f-w-600">Laptop</h6>
+										</div>
+									</div>
+								</td>
+							
+								<td><span class="badge badge-pill pill-badge-primary">Edit</span></td>
+							</tr> -->
+						</tbody>
+					</table>
+				</div>
+			
+			
+			</div>
 			<!-- footer start-->
 			<jsp:include page="layouts/footer.jsp"></jsp:include>
 			<!-- footer end-->

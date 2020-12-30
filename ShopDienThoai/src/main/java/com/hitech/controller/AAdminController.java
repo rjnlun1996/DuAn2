@@ -1,14 +1,12 @@
 package com.hitech.controller;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hitech.constraints.ViewConstraint;
 import com.hitech.entities.Account;
@@ -41,12 +39,11 @@ public class AAdminController {
 		return ViewConstraint.VIEW_ADMIN_ADMIN_INSERT;
 	}
 	
-//	@GetMapping(ViewConstraint.URL_ADMIN_ADMIN)
-//	public String delete(Model model) {
-//		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ADMIN);
-//		model.addAttribute("account", accountService.delete(username));
-//		return ViewConstraint.VIEW_ADMIN_ADMIN;
-//	}
+	@PostMapping(ViewConstraint.URL_ADMIN_ADMIN_DELETE)
+	public String delete(Model model, @RequestParam String username) {
+		accountService.deleteById(username);
+		return "redirect:/ho-admin/admin/";
+	}
 	
 	// @ModelAttribute <input path=""/> 
 	// 1. /ho-admin/admin/insert method get (controller => new Account())

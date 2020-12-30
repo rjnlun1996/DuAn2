@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page import="static com.hitech.utils.ViewUtils.*" %>
+<% String sb = String.valueOf(request.getAttribute(MENU)); %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,9 +32,6 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/feather-icon.css">
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/chartist.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/vector-map.css">
 <!-- Plugins css Ends-->
 <!-- Bootstrap css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
@@ -73,10 +73,7 @@
 								<h3>FORM INSERT ACCOUNT</h3>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item">
-										<a href="index-1.html">Home</a>
-									<li class="breadcrumb-item">Forms</li>
-									<li class="breadcrumb-item">Form Widgets</li>
-									<li class="breadcrumb-item active">Default Forms</li>
+										<a href="<%=URL_ADMIN_HOME %>">Home</a>
 									</li>
 
 								</ol>
@@ -127,14 +124,14 @@
 					<div class="row">
 						<div class="col-sm-12 col-xl-12">
 							<div class="row">
-
 								<div class="col-sm-12">
 									<div class="card">
 										<div class="card-header">
 											<h5>INSERT ADMIN</h5>
 										</div>
 										<form:form class="theme-form" modelAttribute="account" method="post">
-											<div class="card-body">
+											<div class="card-body datetime-picker">
+
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="">Name</label>
 													<div class="col-sm-9">
@@ -163,29 +160,33 @@
 														<%-- <form:errors path="password" /> --%>
 													</div>
 												</div>
-												<fieldset class="form-group">
-													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">Gender</label>
-														<div class="col-sm-9">
-															<div class="radio radio-primary">
-																<form:radiobutton path="gender" value="0" class="form-check-input" />
-																<label for="gender1">Male</label>
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Birthday</label>
+													<div class="col-sm-5">
+														<div class="input-group date" id="dt-date" data-target-input="nearest">
+															<form:input path="birthday" class="form-control datetimepicker-input digits" data-target="#dt-date"/>
+															<div class="input-group-append" data-target="#dt-date" data-toggle="datetimepicker">
+																<div class="input-group-text">
+																	<i class="fa fa-calendar"></i>
+																</div>
 															</div>
-															<div class="radio radio-primary">
-																<form:radiobutton path="gender" value="1" class="form-check-input" />
-																<label for="gender2">Female</label>
-															</div>
-															<%-- <form:errors path="gender" /> --%>
 														</div>
 													</div>
-												</fieldset>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Birthday</label>
-													<div class="col-sm-9">
-														<form:input path="birthday" class="form-control" />
-														<%-- <form:errors path="birthday" /> --%>
-													</div>
 												</div>
+												<fieldset class="form-group row">
+													<label class="col-form-label col-sm-3">Gender</label>
+													<div class="col-sm-9">
+														<div class="radio radio-primary ml-2">
+															<form:radiobutton path="gender" value="0" class="form-check-input" />
+															<label for="gender1">Female</label>
+														</div>
+														<div class="radio radio-primary ml-2">
+															<form:radiobutton path="gender" value="1" class="form-check-input" />
+															<label for="gender2">Male</label>
+														</div>
+														<%-- <form:errors path="gender" /> --%>
+													</div>
+												</fieldset>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="">Address</label>
 													<div class="col-sm-9">
@@ -205,12 +206,12 @@
 														<label class="col-form-label col-sm-3 pt-0">IsAdmin</label>
 														<div class="col-sm-9">
 															<div class="radio radio-primary">
-																<form:radiobutton path="isAdmin" value="0" class="form-check-input" />
-																<label for="isAdmin1">Customer</label>
+																<form:radiobutton path="admin" value="0" class="form-check-input" />
+																<label for="admin1">Customer</label>
 															</div>
 															<div class="radio radio-primary">
-																<form:radiobutton path="isAdmin" value="1" class="form-check-input" />
-																<label for="isAdmin2">Admin</label>
+																<form:radiobutton path="admin" value="1" class="form-check-input" />
+																<label for="admin2">Admin</label>
 															</div>
 															<%-- <form:errors path="isAdmin" /> --%>
 														</div>
@@ -324,7 +325,17 @@
 	<!-- Sidebar jquery-->
 	<script src="/assets/js/sidebar-menu.js"></script>
 	<script src="/assets/js/config.js"></script>
-	<!-- Plugins JS start-->
+
+	<script src="/assets/js/datepicker/date-time-picker/moment.min.js"></script>
+	<script src="/assets/js/datepicker/date-time-picker/tempusdominus-bootstrap-4.min.js"></script>
+	<script src="/assets/js/datepicker/date-time-picker/datetimepicker.custom.js"></script>
+	
+	
+    <script src="/assets/js/datepicker/date-picker/datepicker.js"></script>
+    <script src="/assets/js/datepicker/date-picker/datepicker.en.js"></script>
+    <script src="/assets/js/datepicker/date-picker/datepicker.custom.js"></script>
+	
+	<!-- Plugins JS Start-->
 	<script src="/assets/js/chat-menu.js"></script>
 	<script src="/assets/js/tooltip-init.js"></script>
 	<!-- Plugins JS Ends-->

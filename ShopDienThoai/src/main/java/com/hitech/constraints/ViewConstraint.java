@@ -8,10 +8,13 @@ public interface ViewConstraint {
 	
 	public static final String URL_ADMIN_ADMIN = "/ho-admin/admin/";
 	public static final String URL_ADMIN_ADMIN_INSERT = URL_ADMIN_ADMIN + "insert";
+	public static final String URL_ADMIN_ADMIN_DELETE = URL_ADMIN_ADMIN + "delete";
+	public static final String URL_ADMIN_ADMIN_UPDATE = URL_ADMIN_ADMIN + "update";
 	public static final String VIEW_ADMIN_ADMIN = "admin/table-admin";
 	public static final String VIEW_ADMIN_ADMIN_INSERT = "admin/insert-admin";	
+	public static final String VIEW_ADMIN_ADMIN_UPDATE = "admin/update-admin";	
 	
-	public static final String URL_ADMIN_CATEGORY = "/ho-admin/category/";
+	public static final String URL_ADMIN_CATEGORY = "/ho-admin/categories/";
 	public static final String URL_ADMIN_CATEGORY_INSERT = URL_ADMIN_CATEGORY + "insert";
 	public static final String VIEW_ADMIN_CATEGORY = "admin/table-category";
 	public static final String VIEW_ADMIN_CATEGORY_INSERT = "admin/insert-category";	
@@ -33,6 +36,7 @@ public interface ViewConstraint {
 	
 	public static final String URL_ADMIN_PRODUCT = "/ho-admin/product/";
 	public static final String URL_ADMIN_PRODUCT_INSERT = URL_ADMIN_PRODUCT + "insert";
+	public static final String URL_ADMIN_PRODUCT_DELETE = URL_ADMIN_PRODUCT + "delete/";
 	public static final String VIEW_ADMIN_PRODUCT = "admin/table-product";
 	public static final String VIEW_ADMIN_PRODUCT_INSERT = "admin/insert-product";	
 	
