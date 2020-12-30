@@ -144,14 +144,10 @@
 														<td>
 															<button class="btn btn-pill btn-outline-primary btn-sm" type="button">View</button>
 															<button class="btn btn-pill btn-outline-success btn-sm" type="button">Edit</button>
-<<<<<<< HEAD
-															<button class="btn btn-pill btn-outline-danger btn-sm" type="button">Delete</button>
-=======
 															<form action="/ho-admin/admin/delete" method="POST">
 																<input type="hidden" name="username" value="${acc.username}">
 																<button class="btn btn-pill btn-outline-danger btn-sm" type="submit">Delete</button>
 															</form>
->>>>>>> branch 'master' of https://github.com/rjnlun1996/DuAn2.git
 														</td>
 													</tr>
 													<c:set var="no" value="${no + 1}"></c:set>

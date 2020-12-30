@@ -1,8 +1,12 @@
 package com.hitech.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.hitech.constraints.ViewConstraint;
 import com.hitech.entities.Account;
 import com.hitech.services.AccountService;
+import com.hitech.utils.ViewUtils;
+
 
 @Controller
 public class AAdminController {
@@ -33,16 +39,20 @@ public class AAdminController {
 	}
 	
 	@PostMapping(ViewConstraint.URL_ADMIN_ADMIN_INSERT)
-	public String insertPost(Model model, @ModelAttribute Account account) {	
+	public String insertPost(@Validated @ModelAttribute("account") Account account, BindingResult errors, Model model) {	
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ADMIN_INSERT);
+		System.out.println(errors.hasErrors());
+		if(errors.hasErrors()) {
+			return ViewConstraint.VIEW_ADMIN_ADMIN_INSERT;
+		}
 		accountService.save(account);
-		return ViewConstraint.VIEW_ADMIN_ADMIN_INSERT;
+		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ADMIN);
 	}
 	
 	@PostMapping(ViewConstraint.URL_ADMIN_ADMIN_DELETE)
 	public String delete(Model model, @RequestParam String username) {
 		accountService.deleteById(username);
-		return "redirect:/ho-admin/admin/";
+		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ADMIN);
 	}
 	
 	// @ModelAttribute <input path=""/> 

@@ -136,41 +136,42 @@
 													<label class="col-sm-3 col-form-label" for="">Name</label>
 													<div class="col-sm-9">
 														<form:input path="name" class="form-control" />
-														<%-- <form:errors path="name" /> --%>
+														<form:errors path="name" /> 
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="">Username</label>
 													<div class="col-sm-9">
 														<form:input path="username" class="form-control" />
-														<%-- <form:errors path="username" /> --%>
+														<form:errors path="username" /> 
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="">Email</label>
 													<div class="col-sm-9">
 														<form:input path="email" class="form-control" />
-														<%-- <form:errors path="email" /> --%>
+														<form:errors path="email" /> 
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="">Password</label>
 													<div class="col-sm-9">
 														<form:input path="password" class="form-control" />
-														<%-- <form:errors path="password" /> --%>
+														<form:errors path="password" /> 
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Birthday</label>
 													<div class="col-sm-5">
 														<div class="input-group date" id="dt-date" data-target-input="nearest">
-															<form:input path="birthday" class="form-control datetimepicker-input digits" data-target="#dt-date"/>
+															<form:input path="birthday" class="form-control datetimepicker-input digits" disabled="disabled" data-target="#dt-date"/>
 															<div class="input-group-append" data-target="#dt-date" data-toggle="datetimepicker">
 																<div class="input-group-text">
 																	<i class="fa fa-calendar"></i>
 																</div>
 															</div>
 														</div>
+														<form:errors path="birthday" /> 
 													</div>
 												</div>
 												<fieldset class="form-group row">
@@ -184,21 +185,21 @@
 															<form:radiobutton path="gender" value="1" class="form-check-input" />
 															<label for="gender2">Male</label>
 														</div>
-														<%-- <form:errors path="gender" /> --%>
+														<form:errors path="gender" /> 
 													</div>
 												</fieldset>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="">Address</label>
 													<div class="col-sm-9">
 														<form:input path="address" class="form-control" />
-														<%-- <form:errors path="address" /> --%>
+														<form:errors path="address" /> 
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="">Phone</label>
 													<div class="col-sm-9">
 														<form:input path="phone" class="form-control" />
-														<%-- <form:errors path="phone" /> --%>
+														<form:errors path="phone" /> 
 													</div>
 												</div>
 												<fieldset class="form-group">
@@ -213,7 +214,7 @@
 																<form:radiobutton path="admin" value="1" class="form-check-input" />
 																<label for="admin2">Admin</label>
 															</div>
-															<%-- <form:errors path="isAdmin" /> --%>
+															<form:errors path="admin" /> 
 														</div>
 													</div>
 												</fieldset>

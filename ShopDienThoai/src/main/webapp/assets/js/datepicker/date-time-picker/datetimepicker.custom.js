@@ -21,7 +21,7 @@
 //Date only
     $(function () {
         $('#dt-date').datetimepicker({
-            format: 'L'
+        format: 'DD/MM/YYYY'
         });
     });
 //No Icon
