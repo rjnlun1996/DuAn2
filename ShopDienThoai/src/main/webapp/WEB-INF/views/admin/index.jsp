@@ -544,77 +544,99 @@
 													<td>01</td>
 													<td>
 														<div class="d-inline-block align-middle">
-															<img
-																class="img-radius img-30 align-top m-r-15 rounded-circle"
-																src="/assets/images/user/2.png" alt="">
+															<img class="img-radius img-30 align-top m-r-15 rounded-circle" src="/assets/images/user/2.png" alt="">
 															<div class="d-inline-block">
 																<h6 class="f-w-600">Nick Stone</h6>
 															</div>
 														</div>
 													</td>
-													<td><span>NikyBlack87@gmail.com</span></td>
-													<td><span>21,562</span></td>
-													<td><span>28.21%</span></td>
-													<td><span
-														class="badge badge-pill pill-badge-secondary">Edit</span></td>
+													<td>
+														<span>NikyBlack87@gmail.com</span>
+													</td>
+													<td>
+														<span>21,562</span>
+													</td>
+													<td>
+														<span>28.21%</span>
+													</td>
+													<td>
+														<span class="badge badge-pill pill-badge-secondary">Edit</span>
+													</td>
 												</tr>
 												<tr>
 													<td>02</td>
 													<td>
 														<div class="d-inline-block align-middle">
-															<img
-																class="img-radius img-30 align-top m-r-15 rounded-circle"
-																src="/assets/images/user/5.jpg" alt="">
+															<img class="img-radius img-30 align-top m-r-15 rounded-circle" src="/assets/images/user/5.jpg" alt="">
 															<div class="d-inline-block">
 																<h6 class="f-w-600">Milano Esco</h6>
 															</div>
 														</div>
 													</td>
-													<td><span>Milanoesco56@gmal.com</span></td>
-													<td><span>15,102</span></td>
-													<td><span>18.00%</span></td>
-													<td><span class="badge badge-pill pill-badge-success">Edit</span></td>
+													<td>
+														<span>Milanoesco56@gmal.com</span>
+													</td>
+													<td>
+														<span>15,102</span>
+													</td>
+													<td>
+														<span>18.00%</span>
+													</td>
+													<td>
+														<span class="badge badge-pill pill-badge-success">Edit</span>
+													</td>
 												</tr>
 												<tr>
 													<td>03</td>
 													<td>
 														<div class="d-inline-block align-middle">
-															<img
-																class="img-radius img-30 align-top m-r-15 rounded-circle"
-																src="/assets/images/user/3.jpg" alt="">
+															<img class="img-radius img-30 align-top m-r-15 rounded-circle" src="/assets/images/user/3.jpg" alt="">
 															<div class="d-inline-block">
 																<h6 class="f-w-600">Wiltor Noice</h6>
 															</div>
 														</div>
 													</td>
-													<td><span>Wiltornoice34@gmail.com</span></td>
-													<td><span>9562</span></td>
-													<td><span>08.54%</span></td>
-													<td><span class="badge badge-pill pill-badge-warning">Edit</span></td>
+													<td>
+														<span>Wiltornoice34@gmail.com</span>
+													</td>
+													<td>
+														<span>9562</span>
+													</td>
+													<td>
+														<span>08.54%</span>
+													</td>
+													<td>
+														<span class="badge badge-pill pill-badge-warning">Edit</span>
+													</td>
 												</tr>
 												<tr>
 													<td>04</td>
 													<td>
 														<div class="d-inline-block align-middle">
-															<img
-																class="img-radius img-30 align-top m-r-15 rounded-circle"
-																src="/assets/images/user/4.jpg" alt="">
+															<img class="img-radius img-30 align-top m-r-15 rounded-circle" src="/assets/images/user/4.jpg" alt="">
 															<div class="d-inline-block">
 																<h6 class="f-w-600">Anna Strong</h6>
 															</div>
 														</div>
 													</td>
-													<td><span>Annastrong67@gmail.com</span></td>
-													<td><span>1002</span></td>
-													<td><span>01.33%</span></td>
-													<td><span class="badge badge-pill pill-badge-primary">Edit</span></td>
+													<td>
+														<span>Annastrong67@gmail.com</span>
+													</td>
+													<td>
+														<span>1002</span>
+													</td>
+													<td>
+														<span>01.33%</span>
+													</td>
+													<td>
+														<span class="badge badge-pill pill-badge-primary">Edit</span>
+													</td>
 												</tr>
 											</tbody>
 										</table>
 									</div>
 									<div class="code-box-copy">
-										<button class="code-box-copy__btn btn-clipboard"
-											data-clipboard-target="#example-head4" title="Copy">
+										<button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head4" title="Copy">
 											<i class="icofont icofont-copy-alt"></i>
 										</button>
 										<pre>

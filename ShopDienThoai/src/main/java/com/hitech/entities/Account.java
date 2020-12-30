@@ -9,6 +9,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -21,23 +28,44 @@ public class Account extends BaseEntity implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@Column()
+	@Column
+	@NotBlank(message="Vui lòng nhập Username !!! ")
+	@Size(min = 5, max = 20, message = "Username phải từ {min} đến {max}")
 	private String username;
+	
 	@Column
+	@NotBlank(message="Vui lòng nhập Email !!! ")
+	@Pattern(regexp = "/^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$/", message = "Vui lòng nhập email đúng định dạng")
 	private String email;
+	
 	@Column
+	@NotBlank(message="Vui lòng nhập Password !!! ")
+	@Size(min = 5, max = 20, message = "Password phải từ {min} đến {max}")
 	private String password;
+	
 	@Column
+	@NotBlank(message="Vui lòng nhập Họ và Tên !!! ")
 	private String name;
+	
 	@Column
 	private boolean gender;
+	
 	@Column
 	private String photo;
+	
 	@Column
+	@NotBlank(message="Vui lòng nhập Địa chỉ !!! ")
 	private String address;
+	
 	@Column
+	@NotBlank(message="Vui lòng nhập Số điện thoại !!! ")
+	@Pattern(regexp = "/(84|0[3|5|7|8|9])+([0-9]{8})\\b/g", message = "Vui lòng nhập Số điện thoại đúng định dạng")
 	private String phone ;
+	
 	@Column
+	//@NotBlank(message="Vui lòng chọn ngày sinh !!! ")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date birthday;
 	@Column(name = "isAdmin")
 	private boolean admin;
@@ -140,6 +168,11 @@ public class Account extends BaseEntity implements Serializable{
 		return serialVersionUID;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Account [username=" + username + ", email=" + email + ", password=" + password + ", name=" + name
+				+ ", gender=" + gender + ", photo=" + photo + ", address=" + address + ", phone=" + phone
+				+ ", birthday=" + birthday + ", admin=" + admin + ", orders=" + orders + "]";
+	}	
 	
 }
