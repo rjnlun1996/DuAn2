@@ -247,11 +247,11 @@
 														<label class="col-form-label col-sm-3 pt-0">Gender</label>
 														<div class="col-sm-9">
 															<div class="radio radio-primary">
-																<input id="radio11" type="radio" name="gender" value="Gender">
+																<input id="radio11" type="radio" name="radio1" value="option1">
 																<label for="radio11">Male</label>
 															</div>
 															<div class="radio radio-primary">
-																<input id="radio22" type="radio" name="gender" value="Gender">
+																<input id="radio22" type="radio" name="radio1" value="option1">
 																<label for="radio22">Female</label>
 															</div>
 															
@@ -276,28 +276,12 @@
 														<input class="form-control" id="phone" type="text" placeholder="Phone">
 													</div>
 												</div>
-												<fieldset class="form-group">
-													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">IsAdmin</label>
-														<div class="col-sm-9">
-															<div class="radio radio-primary">
-																<input id="radio11" type="radio" name="isAdmin" value="isAdmin">
-																<label for="radio11">Customer</label>
-															</div>
-															<div class="radio radio-primary">
-																<input id="radio22" type="radio" name="isAdmin" value="isAdmin">
-																<label for="radio22">Admin</label>
-															</div>
-															
-														</div>
-													</div>
-												</fieldset>
 												
 											</form> -->
 											</div>
 											<div class="card-footer">
 												<button class="btn btn-primary" type="submit">Create</button>
-												<button class="btn btn-secondary" type="reset">Cancel</button>
+												<button class="btn btn-secondary">Cancel</button>
 											</div>
 										</form:form>
 									</div>

@@ -136,31 +136,24 @@
 										<form:form class="theme-form" modelAttribute="account" method="post">
 											<div class="card-body">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Name</label>
+													<label class="col-sm-3 col-form-label" for="name">Name</label>
 													<div class="col-sm-9">
 														<form:input path="name" class="form-control" />
 														<%-- <form:errors path="name" /> --%>
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Username</label>
+													<label class="col-sm-3 col-form-label" for="username">Username</label>
 													<div class="col-sm-9">
 														<form:input path="username" class="form-control" />
 														<%-- <form:errors path="username" /> --%>
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Email</label>
+													<label class="col-sm-3 col-form-label" for="email">Email</label>
 													<div class="col-sm-9">
 														<form:input path="email" class="form-control" />
 														<%-- <form:errors path="email" /> --%>
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Password</label>
-													<div class="col-sm-9">
-														<form:input path="password" class="form-control" />
-														<%-- <form:errors path="password" /> --%>
 													</div>
 												</div>
 												<fieldset class="form-group">
@@ -200,21 +193,19 @@
 														<%-- <form:errors path="phone" /> --%>
 													</div>
 												</div>
-												<fieldset class="form-group">
-													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">IsAdmin</label>
-														<div class="col-sm-9">
-															<div class="radio radio-primary">
-																<form:radiobutton path="isAdmin" value="0" class="form-check-input" />
-																<label for="isAdmin1">Customer</label>
-															</div>
-															<div class="radio radio-primary">
-																<form:radiobutton path="isAdmin" value="1" class="form-check-input" />
-																<label for="isAdmin2">Admin</label>
-															</div>
-															<%-- <form:errors path="isAdmin" /> --%>
-														</div>
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="">UpdateBy</label>
+													<div class="col-sm-9">
+														<form:select path="account.username" itemValue="id" itemLabel="name" />
+														<%-- items="${}" --%>
 													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="">UpdateAt</label>
+													<div class="col-sm-9">
+														<form:input path="updateAt" class="form-control" />
+													</div>
+												</div>
 												</fieldset>
 
 												<!-- <form class="theme-form">
@@ -236,25 +227,18 @@
 														<input class="form-control" id="email" type="email" placeholder="Email">
 													</div>
 												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="password">Password</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="password" type="password" placeholder="Password">
-													</div>
-												</div>
 												<fieldset class="form-group">
 													<div class="row">
 														<label class="col-form-label col-sm-3 pt-0">Gender</label>
 														<div class="col-sm-9">
 															<div class="radio radio-primary">
-																<input id="radio11" type="radio" name="gender" value="Gender">
+																<input id="radio11" type="radio" name="radio1" value="option1">
 																<label for="radio11">Male</label>
 															</div>
 															<div class="radio radio-primary">
-																<input id="radio22" type="radio" name="gender" value="Gender">
+																<input id="radio22" type="radio" name="radio1" value="option1">
 																<label for="radio22">Female</label>
 															</div>
-															
 														</div>
 													</div>
 												</fieldset>
@@ -276,28 +260,29 @@
 														<input class="form-control" id="phone" type="text" placeholder="Phone">
 													</div>
 												</div>
-												<fieldset class="form-group">
-													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">IsAdmin</label>
-														<div class="col-sm-9">
-															<div class="radio radio-primary">
-																<input id="radio11" type="radio" name="isAdmin" value="isAdmin">
-																<label for="radio11">Customer</label>
-															</div>
-															<div class="radio radio-primary">
-																<input id="radio22" type="radio" name="isAdmin" value="isAdmin">
-																<label for="radio22">Admin</label>
-															</div>
-															
-														</div>
-													</div>
-												</fieldset>
-												
+												<div class="mb-2">
+							                        <div class="col-form-label">UpdateAt</div>
+							                        <select class="js-example-basic-single col-sm-12">
+							                            <option value="AL">Alabama</option>
+							                            <option value="WY">Wyoming</option>
+							                        </select>
+							                     </div>
+							                     <div class="form-group form-row">
+							                          <label class="col-sm-3 col-form-label text-right">UpdateAt</label>
+							                          <div class="col-xl-5 col-sm-7 col-lg-8">
+							                            <div class="input-group date" id="dt-date" data-target-input="nearest">
+							                              <input class="form-control datetimepicker-input digits" type="text" data-target="#dt-date">
+							                              <div class="input-group-append" data-target="#dt-date" data-toggle="datetimepicker">
+							                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+							                              </div>
+							                            </div>
+							                         </div>
+							                    </div>
 											</form> -->
 											</div>
 											<div class="card-footer">
 												<button class="btn btn-primary" type="submit">Create</button>
-												<button class="btn btn-secondary" type="reset">Cancel</button>
+												<button class="btn btn-secondary">Cancel</button>
 											</div>
 										</form:form>
 									</div>

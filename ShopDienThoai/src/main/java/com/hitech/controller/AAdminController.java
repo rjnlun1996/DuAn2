@@ -37,12 +37,16 @@ public class AAdminController {
 	@PostMapping(ViewConstraint.URL_ADMIN_ADMIN_INSERT)
 	public String insertPost(Model model, @ModelAttribute Account account) {	
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ADMIN_INSERT);
-		account.setBirthday(new Date());
 		accountService.save(account);
 		return ViewConstraint.VIEW_ADMIN_ADMIN_INSERT;
 	}
 	
-	
+//	@GetMapping(ViewConstraint.URL_ADMIN_ADMIN)
+//	public String delete(Model model) {
+//		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ADMIN);
+//		model.addAttribute("account", accountService.delete(username));
+//		return ViewConstraint.VIEW_ADMIN_ADMIN;
+//	}
 	
 	// @ModelAttribute <input path=""/> 
 	// 1. /ho-admin/admin/insert method get (controller => new Account())

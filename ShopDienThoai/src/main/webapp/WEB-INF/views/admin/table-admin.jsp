@@ -73,7 +73,7 @@
 						<div class="col-xl-12">
 							<div class="card">
 								<div class="card-header">
-									<h5>Our Best Seller</h5>
+									<h5>List Admin</h5>
 									<div class="card-header-right">
 										<ul class="list-unstyled card-option">
 											<li>

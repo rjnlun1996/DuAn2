@@ -1,6 +1,7 @@
 package com.hitech.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -14,4 +15,9 @@ public interface AccountRepository extends JpaRepository<Account, String> {
 	
 	List<Account> findByAdminTrueAndEnabledTrue();
 	
+	void deleteInBatch(Iterable<Account> username);
+	
+	void deleteById(String username);
+	
+	Optional<Account> findById(String username);
 }
