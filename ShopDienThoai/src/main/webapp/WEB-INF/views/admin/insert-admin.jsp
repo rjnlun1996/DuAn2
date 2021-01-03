@@ -40,6 +40,9 @@
 <link id="color" rel="stylesheet" href="/assets/css/light-1.css" media="screen">
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+<style>
+	.invalid-feedback{ display: block;}
+</style>
 </head>
 <body>
 	<!-- Loader starts-->
@@ -129,49 +132,58 @@
 										<div class="card-header">
 											<h5>INSERT ADMIN</h5>
 										</div>
-										<form:form class="theme-form" modelAttribute="account" method="post">
-											<div class="card-body datetime-picker">
-
+										<form:form class="theme-form ${error ? 'was-validated' : ''}"  novalidate="novalidate" modelAttribute="account" method="post">
+											<div class="card-body datetime-picker">							
+												<c:if test="${message != null}">
+														<div class="alert alert-success dark" role="alert">
+									                      <p>${message}</p>
+									                    </div>
+												</c:if>	
+												<c:if test="${error}">
+													<div class="alert alert-secondary dark" role="alert">
+								                      <p>Vui lòng kiểm tra lại thông tin nhập sai!</p>
+								                    </div>
+												</c:if>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="">Name</label>
 													<div class="col-sm-9">
-														<form:input path="name" class="form-control" />
-														<form:errors path="name" /> 
+														<form:input path="name" class="form-control" required="required"/>
+														<form:errors path="name" class="invalid-feedback"/> 
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Username</label>
+													<label class="col-sm-3 col-form-label" for="username">Username</label>
 													<div class="col-sm-9">
-														<form:input path="username" class="form-control" />
-														<form:errors path="username" /> 
+														<form:input path="username" class="form-control" required="required" minlength="5" maxlength="20"/>
+														<form:errors path="username" class="invalid-feedback"/> 
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Email</label>
+													<label class="col-sm-3 col-form-label" for="email">Email</label>
 													<div class="col-sm-9">
-														<form:input path="email" class="form-control" />
-														<form:errors path="email" /> 
+														<form:input type="email" path="email" class="form-control" required="required"/>
+														<form:errors path="email" class="invalid-feedback"/> 
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Password</label>
+													<label class="col-sm-3 col-form-label" for="password">Password</label>
 													<div class="col-sm-9">
-														<form:input path="password" class="form-control" />
-														<form:errors path="password" /> 
+														<form:input path="password" class="form-control" required="required" minlength="5" maxlength="20"/>
+														<form:errors path="password" class="invalid-feedback"/> 
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Birthday</label>
 													<div class="col-sm-5">
 														<div class="input-group date" id="dt-date" data-target-input="nearest">
-															<form:input path="birthday" class="form-control datetimepicker-input digits" disabled="disabled" data-target="#dt-date"/>
+															<form:input path="birthday" required="required" class="form-control datetimepicker-input digits" disabled="disabled" data-target="#dt-date"/>
 															<div class="input-group-append" data-target="#dt-date" data-toggle="datetimepicker">
 																<div class="input-group-text">
 																	<i class="fa fa-calendar"></i>
 																</div>
 															</div>
 														</div>
-														<form:errors path="birthday" /> 
+														<form:errors path="birthday" class="invalid-feedback" /> 
 													</div>
 												</div>
 												<fieldset class="form-group row">
@@ -189,113 +201,19 @@
 													</div>
 												</fieldset>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Address</label>
-													<div class="col-sm-9">
-														<form:input path="address" class="form-control" />
-														<form:errors path="address" /> 
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Phone</label>
-													<div class="col-sm-9">
-														<form:input path="phone" class="form-control" />
-														<form:errors path="phone" /> 
-													</div>
-												</div>
-												<fieldset class="form-group">
-													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">IsAdmin</label>
-														<div class="col-sm-9">
-															<div class="radio radio-primary">
-																<form:radiobutton path="admin" value="0" class="form-check-input" />
-																<label for="admin1">Customer</label>
-															</div>
-															<div class="radio radio-primary">
-																<form:radiobutton path="admin" value="1" class="form-check-input" />
-																<label for="admin2">Admin</label>
-															</div>
-															<form:errors path="admin" /> 
-														</div>
-													</div>
-												</fieldset>
-
-												<!-- <form class="theme-form">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="name">Name</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="name" type="text" placeholder="Name">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="username">Username</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="username" type="text" placeholder="Username">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="email">Email</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="email" type="email" placeholder="Email">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="password">Password</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="password" type="password" placeholder="Password">
-													</div>
-												</div>
-												<fieldset class="form-group">
-													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">Gender</label>
-														<div class="col-sm-9">
-															<div class="radio radio-primary">
-																<input id="radio11" type="radio" name="gender" value="Gender">
-																<label for="radio11">Male</label>
-															</div>
-															<div class="radio radio-primary">
-																<input id="radio22" type="radio" name="gender" value="Gender">
-																<label for="radio22">Female</label>
-															</div>
-															
-														</div>
-													</div>
-												</fieldset>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="birthday">Birthday</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="birthday" type="text" placeholder="Birthday">
-													</div>
-												</div>
-												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="address">Address</label>
 													<div class="col-sm-9">
-														<input class="form-control" id="address" type="text" placeholder="Address">
+														<form:input path="address" class="form-control" required="required"/>
+														<form:errors path="address" class="invalid-feedback"/> 
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="phone">Phone</label>
 													<div class="col-sm-9">
-														<input class="form-control" id="phone" type="text" placeholder="Phone">
+														<form:input path="phone" class="form-control" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required="required"/>
+														<form:errors path="phone" class="invalid-feedback"/> 
 													</div>
 												</div>
-												<fieldset class="form-group">
-													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">IsAdmin</label>
-														<div class="col-sm-9">
-															<div class="radio radio-primary">
-																<input id="radio11" type="radio" name="isAdmin" value="isAdmin">
-																<label for="radio11">Customer</label>
-															</div>
-															<div class="radio radio-primary">
-																<input id="radio22" type="radio" name="isAdmin" value="isAdmin">
-																<label for="radio22">Admin</label>
-															</div>
-															
-														</div>
-													</div>
-												</fieldset>
-												
-											</form> -->
 											</div>
 											<div class="card-footer">
 												<button class="btn btn-primary" type="submit">Create</button>
