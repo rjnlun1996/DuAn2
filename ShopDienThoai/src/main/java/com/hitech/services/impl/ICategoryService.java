@@ -1,22 +1,28 @@
 package com.hitech.services.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.hitech.entities.Category;
 import com.hitech.repository.CategoryRepository;
 import com.hitech.services.CategoryService;
+import com.hitech.utils.SessionUtils;
 
-@Transactional
+@Service
 public class ICategoryService implements CategoryService {
 	
 	// hibernate ==> SQL old java5
 	// JPARepository == DAO ==> hibernate ==> SQL
 //	@Autowired
 //	SessionFactory factory;
+	
+	@Autowired
+	private SessionUtils sessionUtils;
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
@@ -40,7 +46,9 @@ public class ICategoryService implements CategoryService {
 	}
 
 	@Override
-	public Category save(Category category) {
+	public Category save(Category category) {		
+		category.setCreatedAt(new Date());
+		category.setCreatedBy(sessionUtils.getCreatedOrUpdatedBy());
 		return categoryRepository.save(category);
 //		Session session = factory.getCurrentSession();
 //		session.save(category);

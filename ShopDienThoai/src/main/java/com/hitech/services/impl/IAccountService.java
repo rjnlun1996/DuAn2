@@ -60,14 +60,28 @@ public class IAccountService implements AccountService{
 
 	@Override
 	public Account findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return accountRepository.getOne(id);
 	}
 
 	@Override
 	public Account update(Account entity) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean deleteByEnabled(String username) {
+		try {
+			Account acc = accountRepository.getOne(username);
+			if(acc == null) {
+				return false;
+			}
+			acc.setEnabled(false);
+			accountRepository.saveAndFlush(acc);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 

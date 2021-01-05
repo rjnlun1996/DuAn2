@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hitech.constraints.ViewConstraint;
@@ -34,7 +35,7 @@ public class AAdminController {
 	public String insertGet(Model model) {	
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ADMIN_INSERT);
 		model.addAttribute("account", new Account());
-		return ViewConstraint.VIEW_ADMIN_ADMIN_INSERT;
+		return ViewConstraint.VIEW_ADMIN_ADMIN_INSERT; // render view => prefix + ViewConstraint.VIEW_ADMIN_ADMIN_INSERT + subfix => path jsp => render html -> client
 	}
 	
 	@PostMapping(ViewConstraint.URL_ADMIN_ADMIN_INSERT)
@@ -42,9 +43,16 @@ public class AAdminController {
 			BindingResult errors,
 			RedirectAttributes reAttributes,
 			Model model) {	
-		if(errors.hasErrors()) {
+		boolean isExistedUsername = accountService.findById(account.getUsername()) != null;
+		boolean isErrors = errors.hasErrors();
+		if(isErrors || isExistedUsername) {
+			String error = "Vui lòng kiểm tra lại thông tin nhập sai!";
+			if(!isErrors && isExistedUsername) {
+				error = "Tài khoản này đã tồn tại";
+				model.addAttribute("isExist", true);
+			}
+			model.addAttribute("error", error);
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ADMIN_INSERT);
-			model.addAttribute("error", true);
 			return ViewConstraint.VIEW_ADMIN_ADMIN_INSERT;
 		}
 		account.setAdmin(true);
@@ -54,9 +62,9 @@ public class AAdminController {
 	}
 	
 	@PostMapping(ViewConstraint.URL_ADMIN_ADMIN_DELETE)
-	public String delete(Model model, @RequestParam String username) {
-		accountService.deleteById(username);
-		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ADMIN);
+	@ResponseBody
+	public boolean delete1(Model model, @RequestParam String username) {
+		return accountService.deleteByEnabled(username);
 	}
 	
 	// @ModelAttribute <input path=""/> 
