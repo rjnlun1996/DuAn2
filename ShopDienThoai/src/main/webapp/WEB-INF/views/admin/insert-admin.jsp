@@ -139,13 +139,13 @@
 									                      <p>${message}</p>
 									                    </div>
 												</c:if>	
-												<c:if test="${error}">
+												<c:if test="${error != null}">
 													<div class="alert alert-secondary dark" role="alert">
-								                      <p>Vui lòng kiểm tra lại thông tin nhập sai!</p>
+								                      <p>${error}</p>
 								                    </div>
 												</c:if>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Name</label>
+													<label class="col-sm-3 col-form-label" for="name">Name</label>
 													<div class="col-sm-9">
 														<form:input path="name" class="form-control" required="required"/>
 														<form:errors path="name" class="invalid-feedback"/> 
@@ -156,13 +156,16 @@
 													<div class="col-sm-9">
 														<form:input path="username" class="form-control" required="required" minlength="5" maxlength="20"/>
 														<form:errors path="username" class="invalid-feedback"/> 
+														<c:if test="${isExist}">
+															<div class="invalid-feedback">${error}</div>
+														</c:if>
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="email">Email</label>
 													<div class="col-sm-9">
 														<form:input type="email" path="email" class="form-control" required="required"/>
-														<form:errors path="email" class="invalid-feedback"/> 
+														<form:errors path="email" class="invalid-feedback"/> 																												
 													</div>
 												</div>
 												<div class="form-group row">
@@ -256,6 +259,7 @@
 	
 	<!-- Plugins JS Start-->
 	<script src="/assets/js/chat-menu.js"></script>
+	<script src="/assets/js/form-validation-custom.js"></script>
 	<script src="/assets/js/tooltip-init.js"></script>
 	<!-- Plugins JS Ends-->
 	<!-- Theme js-->

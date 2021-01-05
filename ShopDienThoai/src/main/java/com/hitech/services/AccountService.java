@@ -22,5 +22,11 @@ public interface AccountService extends IBaseService<Account, String>{
 	 * @return account list
 	 */
 	List<Account> findAllAdminByEnabledTrue();
+	
+	/**
+	 * Set Enabled properties to false
+	 * @return
+	 */
+	boolean deleteByEnabled(String username);
 
 }

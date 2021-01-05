@@ -40,10 +40,9 @@
 	href="/assets/css/feather-icon.css">
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/chartist.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/vector-map.css">
 <!-- Plugins css Ends-->
+<link rel="stylesheet" type="text/css" href="/assets/css/sweetalert2.css">
 <!-- Bootstrap css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
 <!-- App css-->
@@ -139,8 +138,11 @@
 																type="button">View</button>
 															<button class="btn btn-pill btn-outline-success btn-sm"
 																type="button">Edit</button>
-															<button class="btn btn-pill btn-outline-danger btn-sm delete-item"
-																data-id="${acc.username}">Delete</button>
+															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${acc.username}">Delete</button>
+															<%-- <form method="post" action="/ho-admin/admin/delete">
+																<input type="hidden" name="username" value="${acc.username}"/>
+																<button class="btn btn-pill btn-outline-danger btn-sm" type="submit">Delete</button>
+															</form> --%>
 														</td>
 													</tr>
 												</c:forEach>
@@ -173,43 +175,50 @@
 	<script src="/assets/js/sidebar-menu.js"></script>
 	<script src="/assets/js/config.js"></script>
 	<!-- Plugins JS start-->
-	<script src="/assets/js/chart/chartjs/chart.min.js"></script>
-	<script src="/assets/js/chart/chartist/chartist.js"></script>
-	<script src="/assets/js/chart/chartist/chartist-plugin-tooltip.js"></script>
-	<script src="/assets/js/chart/knob/knob.min.js"></script>
-	<script src="/assets/js/chart/knob/knob-chart.js"></script>
-	<script src="/assets/js/prism/prism.min.js"></script>
-	<script src="/assets/js/clipboard/clipboard.min.js"></script>
-	<script src="/assets/js/counter/jquery.waypoints.min.js"></script>
-	<script src="/assets/js/counter/jquery.counterup.min.js"></script>
-	<script src="/assets/js/counter/counter-custom.js"></script>
-	<script src="/assets/js/custom-card/custom-card.js"></script>
-	<script src="/assets/js/notify/bootstrap-notify.min.js"></script>
-	<script src="/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-au-mill.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-in-mill.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
 	<script src="/assets/js/dashboard/default.js"></script>
 	<script src="/assets/js/notify/index.js"></script>
 	<script src="/assets/js/chat-menu.js"></script>
 	<script src="/assets/js/tooltip-init.js"></script>
 	<script src="/assets/js/animation/wow/wow.min.js"></script>
 	<!-- Plugins JS Ends-->
+	<script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
 	<!-- Theme js-->
 	<script src="/assets/js/script.js"></script>
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
 	<script>
-		$(document).ready(function(){
-			$('.delete-item').click(function(){
-				alert($(this).data("id"));
+	
+	//jquery	
+	$(document).ready(function(){
+		$('.delete-item').click(function(){
+			var username = $(this).data('id');
+			swal({
+			  title: "Thông báo?",
+			  text: "Bạn có chắc chắn xóa tài khoản " + username + " không?",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
 			})
-		});
+			.then((willDelete) => {
+			  if(willDelete == true){
+				  $.ajax({
+					  url: "/ho-admin/admin/delete",
+					  method: "POST",
+					  data: {
+						  username: username
+					  },
+					  success: function(data){
+						 if(data == true) location.reload();
+					  },
+ 					  error: function(data){
+						  
+					  },
+				  });
+			  }
+			});
+			//promise
+		})
+	});
+	
 	</script>
 	<!-- login js-->
 	<!-- Plugin used-->
