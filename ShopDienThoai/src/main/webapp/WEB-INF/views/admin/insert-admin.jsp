@@ -40,6 +40,11 @@
 <link id="color" rel="stylesheet" href="/assets/css/light-1.css" media="screen">
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+<style>
+	.invalid-feedback{
+		display: block;
+	}
+</style>
 </head>
 <body>
 	<!-- Loader starts-->
@@ -129,20 +134,19 @@
 										<div class="card-header">
 											<h5>INSERT ADMIN</h5>
 										</div>
-										<form:form class="theme-form" modelAttribute="account" method="post">
+										<form:form class="needs-validation" method="post" novalidate modelAttribute="account" >
 											<div class="card-body datetime-picker">
-
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Name</label>
+													<label class="col-sm-3 col-form-label" for="name">Name</label>
 													<div class="col-sm-9">
-														<form:input path="name" class="form-control" />
-														<form:errors path="name" /> 
+														<form:input path="name" class="form-control" required="" />
+														<form:errors path="name" class="invalid-feedback"/> 
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Username</label>
+													<label class="col-sm-3 col-form-label" for="username">Username</label>
 													<div class="col-sm-9">
-														<form:input path="username" class="form-control" />
+														<form:input path="username" class="form-control"  required="" />
 														<form:errors path="username" /> 
 													</div>
 												</div>
@@ -338,6 +342,7 @@
 	
 	<!-- Plugins JS Start-->
 	<script src="/assets/js/chat-menu.js"></script>
+	<script src="/assets/js/form-validation-custom.js"></script>
 	<script src="/assets/js/tooltip-init.js"></script>
 	<!-- Plugins JS Ends-->
 	<!-- Theme js-->
