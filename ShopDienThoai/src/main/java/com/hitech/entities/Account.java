@@ -11,7 +11,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -34,8 +37,7 @@ public class Account extends BaseEntity implements Serializable{
 	private String username;
 	
 	@Column
-	@NotBlank(message="Vui lòng nhập Email !!! ")
-	@Pattern(regexp = "/^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$/", message = "Vui lòng nhập email đúng định dạng")
+	@Email(message="Vui lòng nhập email đúng định dạng ! ")
 	private String email;
 	
 	@Column
@@ -59,11 +61,11 @@ public class Account extends BaseEntity implements Serializable{
 	
 	@Column
 	@NotBlank(message="Vui lòng nhập Số điện thoại !!! ")
-	@Pattern(regexp = "/(84|0[3|5|7|8|9])+([0-9]{8})\\b/g", message = "Vui lòng nhập Số điện thoại đúng định dạng")
+	@Pattern(regexp = "(84|0[3|5|7|8|9])+([0-9]{8})", message = "Vui lòng nhập Số điện thoại đúng định dạng")
 	private String phone ;
-	
+
 	@Column
-	//@NotBlank(message="Vui lòng chọn ngày sinh !!! ")
+	@NotNull(message="Vui lòng chọn ngày sinh !!! ")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date birthday;

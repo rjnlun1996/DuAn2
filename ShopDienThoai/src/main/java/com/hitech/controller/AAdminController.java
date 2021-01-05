@@ -1,7 +1,5 @@
 package com.hitech.controller;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hitech.constraints.ViewConstraint;
 import com.hitech.entities.Account;
@@ -39,14 +38,19 @@ public class AAdminController {
 	}
 	
 	@PostMapping(ViewConstraint.URL_ADMIN_ADMIN_INSERT)
-	public String insertPost(@Validated @ModelAttribute("account") Account account, BindingResult errors, Model model) {	
-		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ADMIN_INSERT);
-		System.out.println(errors.hasErrors());
+	public String insertPost(@Validated @ModelAttribute("account") Account account, 
+			BindingResult errors,
+			RedirectAttributes reAttributes,
+			Model model) {	
 		if(errors.hasErrors()) {
+			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ADMIN_INSERT);
+			model.addAttribute("error", true);
 			return ViewConstraint.VIEW_ADMIN_ADMIN_INSERT;
 		}
+		account.setAdmin(true);
 		accountService.save(account);
-		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ADMIN);
+		reAttributes.addFlashAttribute("message", "Tạo tài khoản " + account.getUsername() + " thành công!");
+		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ADMIN_INSERT);
 	}
 	
 	@PostMapping(ViewConstraint.URL_ADMIN_ADMIN_DELETE)
