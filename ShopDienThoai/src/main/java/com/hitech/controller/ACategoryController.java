@@ -26,16 +26,9 @@ public class ACategoryController {
 
 	@RequestMapping(ViewConstraint.URL_ADMIN_CATEGORY)
 	public String table(Model model) {
-		/*List<Category> listCategory=service.listAll();
-		model.addAttribute("listCategory",listCategory);
-		Session session = factory.getCurrentSession();
-		String hql = "FROM Category";
-		Query query = session.createQuery(hql);
-		List<Category> list = query.list();
-		model.addAttribute("categorys", list);*/
-		
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CATEGORY);
 		//model.addAttribute("menu", "/ho-admin/category/");
+		model.addAttribute("listCategory",categoryService.findAll());
 		return ViewConstraint.VIEW_ADMIN_CATEGORY;
 	}
 	
