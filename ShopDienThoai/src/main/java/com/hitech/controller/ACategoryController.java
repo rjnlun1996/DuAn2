@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hitech.constraints.ViewConstraint;
@@ -53,5 +55,12 @@ public class ACategoryController {
 		ra.addFlashAttribute("message", "Tạo danh mục " + category.getName() + " thành công!");
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_CATEGORY_INSERT);
 	}
+	
+	@PostMapping(ViewConstraint.URL_ADMIN_CATEGORY_DELETE)
+	@ResponseBody
+	public boolean delete(Model model, @RequestParam Integer id) {
+		return categoryService.deleteByEnabled(id);
+	}
+	
 
 }

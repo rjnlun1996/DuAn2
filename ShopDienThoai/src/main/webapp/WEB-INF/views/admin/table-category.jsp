@@ -194,6 +194,43 @@
 		<!-- Theme js-->
 		<script src="/assets/js/script.js"></script>
 		<script src="/assets/js/theme-customizer/customizer.js"></script>
+		
+		
+		<script>
+		//jquery	
+		$(document).ready(function(){
+			$('.delete-item').click(function(){
+				var id = $(this).data('id');
+				swal({
+				  title: "Thông báo?",
+				  text: "Bạn có chắc chắn xóa danh mục này không?",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((willDelete) => {
+				  if(willDelete == true){
+					  $.ajax({
+						  url: "/ho-admin/categories/delete",
+						  method: "POST",
+						  data: {
+							  id : id
+						  },
+						  success: function(data){
+							 if(data == true) location.reload();
+						  },
+	 					  error: function(data){
+							  
+						  },
+					  });
+				  }
+				});
+				//promise
+			})
+		});
+		
+		
+		</script>
 		<!-- login js-->
 		<!-- Plugin used-->
 </body>

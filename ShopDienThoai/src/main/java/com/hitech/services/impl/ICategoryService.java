@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hitech.entities.Account;
 import com.hitech.entities.Category;
 import com.hitech.repository.CategoryRepository;
 import com.hitech.services.CategoryService;
@@ -75,6 +76,23 @@ public class ICategoryService implements CategoryService {
 //		Category category = session.find(Category.class, id);
 //		session.delete(category);
 //		return category;
+		
 	}
+	
+	@Override
+	public boolean deleteByEnabled(Integer id) {
+		try {
+			Category cate = categoryRepository.getOne(id);
+			if(cate == null) {
+				return false;
+			}
+			cate.setEnabled(false);
+			categoryRepository.saveAndFlush(cate);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 
 }
