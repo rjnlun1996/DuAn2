@@ -3,12 +3,12 @@ package com.hitech.services.impl;
 import java.util.Date;
 import java.util.List;
 
-import javax.transaction.Transactional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hitech.entities.Account;
+
 import com.hitech.entities.Category;
 import com.hitech.repository.CategoryRepository;
 import com.hitech.services.CategoryService;
@@ -38,7 +38,7 @@ public class ICategoryService implements CategoryService {
 
 	@Override
 	public List<Category> findAll() {
-		return categoryRepository.findAll();
+		return  categoryRepository.findAll();
 //		String hql = "FROM Category";
 //		Session session = factory.getCurrentSession();
 //		TypedQuery<Category> query = session.createQuery(hql, Category.class);
@@ -63,6 +63,9 @@ public class ICategoryService implements CategoryService {
 //		session.update(category);
 //		return categoryRepository.save(category);
 	}
+	
+	
+	
 
 	@Override
 	public boolean deleteById(Integer id) {
@@ -94,5 +97,11 @@ public class ICategoryService implements CategoryService {
 		}
 	}
 
+	/*@Override
+	public List<Category> findAllCategoryByEnabledTrue() {
+		
+		return categoryRepository.findByCategoryTrueAndEnaledTrue();
+	}*/
+   
 
 }

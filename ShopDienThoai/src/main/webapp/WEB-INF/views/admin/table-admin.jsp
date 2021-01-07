@@ -188,6 +188,7 @@
 	<script>
 	
 	//jquery	
+	
 	$(document).ready(function(){
 		$('.delete-item').click(function(){
 			var username = $(this).data('id');

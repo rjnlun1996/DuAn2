@@ -58,7 +58,7 @@ public class ACategoryController {
 	
 	@PostMapping(ViewConstraint.URL_ADMIN_CATEGORY_DELETE)
 	@ResponseBody
-	public boolean delete(Model model, @RequestParam Integer id) {
+	public boolean delete(Model model, @RequestParam int id) {
 		return categoryService.deleteByEnabled(id);
 	}
 	

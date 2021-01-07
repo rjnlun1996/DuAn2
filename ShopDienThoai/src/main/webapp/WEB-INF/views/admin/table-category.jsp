@@ -125,7 +125,7 @@
 																	type="button">Edit</button>
 																<button
 																	class="btn btn-pill btn-outline-danger btn-sm delete-item"
-																	data-id="${cate.id}">Delete</button>
+																	data-id="${cate.id}"  data-name="${cate.name}">Delete</button>
 
 															</td>
 														</tr>
@@ -194,16 +194,17 @@
 		<!-- Theme js-->
 		<script src="/assets/js/script.js"></script>
 		<script src="/assets/js/theme-customizer/customizer.js"></script>
-		
+		<script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
 		
 		<script>
 		//jquery	
-		$(document).ready(function(){
+		  $(document).ready(function(){
 			$('.delete-item').click(function(){
 				var id = $(this).data('id');
+				var name = $(this).data('name');
 				swal({
 				  title: "Thông báo?",
-				  text: "Bạn có chắc chắn xóa danh mục này không?",
+				  text: "Bạn có chắc chắn xóa danh mục " + name  + " không?",
 				  icon: "warning",
 				  buttons: true,
 				  dangerMode: true,
@@ -214,7 +215,7 @@
 						  url: "/ho-admin/categories/delete",
 						  method: "POST",
 						  data: {
-							  id : id
+							  id: id
 						  },
 						  success: function(data){
 							 if(data == true) location.reload();
@@ -227,7 +228,9 @@
 				});
 				//promise
 			})
-		});
+		}); 
+		
+		
 		
 		
 		</script>
