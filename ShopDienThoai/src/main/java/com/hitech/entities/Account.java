@@ -54,7 +54,7 @@ public class Account extends BaseEntity implements Serializable{
 	private boolean gender;
 	
 	@Column
-	private String photo;
+	private String photo = "default.png";
 	
 	@Column
 	@NotBlank(message="Vui lòng nhập Địa chỉ !!! ")

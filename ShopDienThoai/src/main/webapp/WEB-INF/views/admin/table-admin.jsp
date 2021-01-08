@@ -119,7 +119,7 @@
 															<div class="d-inline-block align-middle">
 																<img
 																	class="img-radius img-30 align-top m-r-15 rounded-circle"
-																	src="/assets/images/avata/${acc.photo}" alt="">
+																	src="/assets/images/user/${acc.photo}" alt="">
 																<div class="d-inline-block">
 																	<h6 class="f-w-600">${acc.name}</h6>
 																</div>

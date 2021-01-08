@@ -60,7 +60,7 @@ public class IAccountService implements AccountService{
 
 	@Override
 	public Account findById(String id) {
-		return accountRepository.getOne(id);
+		return accountRepository.findById(id).orElse(null);
 	}
 
 	@Override

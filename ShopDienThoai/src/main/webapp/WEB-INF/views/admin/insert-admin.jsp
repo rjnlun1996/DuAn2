@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page import="static com.hitech.utils.ViewUtils.*" %>
-<% String sb = String.valueOf(request.getAttribute(MENU)); %>
+<%@ page import="static com.hitech.utils.ViewUtils.*"%>
+<%
+	String sb = String.valueOf(request.getAttribute(MENU));
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +43,9 @@
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
 <style>
-	.invalid-feedback{ display: block;}
+.invalid-feedback {
+	display: block;
+}
 </style>
 </head>
 <body>
@@ -76,7 +80,7 @@
 								<h3>FORM INSERT ACCOUNT</h3>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item">
-										<a href="<%=URL_ADMIN_HOME %>">Home</a>
+										<a href="<%=URL_ADMIN_HOME%>">Home</a>
 									</li>
 
 								</ol>
@@ -132,30 +136,30 @@
 										<div class="card-header">
 											<h5>INSERT ADMIN</h5>
 										</div>
-										<form:form class="theme-form ${error ? 'was-validated' : ''}"  novalidate="novalidate" modelAttribute="account" method="post">
-											<div class="card-body datetime-picker">							
+										<form:form class="theme-form ${error ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="account" method="post" enctype="multipart/form-data">
+											<div class="card-body datetime-picker">
 												<c:if test="${message != null}">
-														<div class="alert alert-success dark" role="alert">
-									                      <p>${message}</p>
-									                    </div>
-												</c:if>	
+													<div class="alert alert-success dark" role="alert">
+														<p>${message}</p>
+													</div>
+												</c:if>
 												<c:if test="${error != null}">
 													<div class="alert alert-secondary dark" role="alert">
-								                      <p>${error}</p>
-								                    </div>
+														<p>${error}</p>
+													</div>
 												</c:if>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="name">Name</label>
 													<div class="col-sm-9">
-														<form:input path="name" class="form-control" required="required"/>
-														<form:errors path="name" class="invalid-feedback"/> 
+														<form:input path="name" class="form-control" required="required" />
+														<form:errors path="name" class="invalid-feedback" />
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="username">Username</label>
 													<div class="col-sm-9">
-														<form:input path="username" class="form-control" required="required" minlength="5" maxlength="20"/>
-														<form:errors path="username" class="invalid-feedback"/> 
+														<form:input path="username" class="form-control" required="required" minlength="5" maxlength="20" />
+														<form:errors path="username" class="invalid-feedback" />
 														<c:if test="${isExist}">
 															<div class="invalid-feedback">${error}</div>
 														</c:if>
@@ -164,29 +168,29 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="email">Email</label>
 													<div class="col-sm-9">
-														<form:input type="email" path="email" class="form-control" required="required"/>
-														<form:errors path="email" class="invalid-feedback"/> 																												
+														<form:input type="email" path="email" class="form-control" required="required" />
+														<form:errors path="email" class="invalid-feedback" />
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="password">Password</label>
 													<div class="col-sm-9">
-														<form:input path="password" class="form-control" required="required" minlength="5" maxlength="20"/>
-														<form:errors path="password" class="invalid-feedback"/> 
+														<form:input path="password" class="form-control" required="required" minlength="5" maxlength="20" />
+														<form:errors path="password" class="invalid-feedback" />
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Birthday</label>
 													<div class="col-sm-5">
 														<div class="input-group date" id="dt-date" data-target-input="nearest">
-															<form:input path="birthday" required="required" class="form-control datetimepicker-input digits" disabled="disabled" data-target="#dt-date"/>
+															<form:input path="birthday" required="required" class="form-control datetimepicker-input digits" disabled="disabled" data-target="#dt-date" />
 															<div class="input-group-append" data-target="#dt-date" data-toggle="datetimepicker">
 																<div class="input-group-text">
 																	<i class="fa fa-calendar"></i>
 																</div>
 															</div>
 														</div>
-														<form:errors path="birthday" class="invalid-feedback" /> 
+														<form:errors path="birthday" class="invalid-feedback" />
 													</div>
 												</div>
 												<fieldset class="form-group row">
@@ -200,21 +204,30 @@
 															<form:radiobutton path="gender" value="1" class="form-check-input" />
 															<label for="gender2">Male</label>
 														</div>
-														<form:errors path="gender" /> 
+														<form:errors path="gender" />
 													</div>
 												</fieldset>
 												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Upload File</label>
+													<div class="col-sm-9">
+														<div class="avatar p-2">
+															<img class="img-100 rounded-circle" id="avatar" src="/assets/images/user/default.png" alt="#">
+														</div>
+														<input name="image" class="form-control" type="file" id="imgInp" accept="image/*">
+													</div>
+												</div>
+												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="address">Address</label>
 													<div class="col-sm-9">
-														<form:input path="address" class="form-control" required="required"/>
-														<form:errors path="address" class="invalid-feedback"/> 
+														<form:input path="address" class="form-control" required="required" />
+														<form:errors path="address" class="invalid-feedback" />
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="phone">Phone</label>
 													<div class="col-sm-9">
-														<form:input path="phone" class="form-control" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required="required"/>
-														<form:errors path="phone" class="invalid-feedback"/> 
+														<form:input path="phone" class="form-control" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required="required" />
+														<form:errors path="phone" class="invalid-feedback" />
 													</div>
 												</div>
 											</div>
@@ -251,12 +264,12 @@
 	<script src="/assets/js/datepicker/date-time-picker/moment.min.js"></script>
 	<script src="/assets/js/datepicker/date-time-picker/tempusdominus-bootstrap-4.min.js"></script>
 	<script src="/assets/js/datepicker/date-time-picker/datetimepicker.custom.js"></script>
-	
-	
-    <script src="/assets/js/datepicker/date-picker/datepicker.js"></script>
-    <script src="/assets/js/datepicker/date-picker/datepicker.en.js"></script>
-    <script src="/assets/js/datepicker/date-picker/datepicker.custom.js"></script>
-	
+
+
+	<script src="/assets/js/datepicker/date-picker/datepicker.js"></script>
+	<script src="/assets/js/datepicker/date-picker/datepicker.en.js"></script>
+	<script src="/assets/js/datepicker/date-picker/datepicker.custom.js"></script>
+
 	<!-- Plugins JS Start-->
 	<script src="/assets/js/chat-menu.js"></script>
 	<script src="/assets/js/form-validation-custom.js"></script>
@@ -267,5 +280,23 @@
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
 	<!-- login js-->
 	<!-- Plugin used-->
+	<script type="text/javascript">
+		function readURL(input) {
+			if (input.files && input.files[0]) {				
+				var reader = new FileReader();
+
+				reader.readAsDataURL(input.files[0]);
+
+				reader.onload = function(e) {
+					$('#avatar').attr('src', e.target.result);
+				}
+
+			}
+		}
+
+		$("#imgInp").change(function() {
+			readURL(this);
+		});
+	</script>
 </body>
 </html>

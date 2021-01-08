@@ -1,5 +1,11 @@
 package com.hitech.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,11 +16,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hitech.constraints.ViewConstraint;
 import com.hitech.entities.Account;
 import com.hitech.services.AccountService;
+import com.hitech.services.FileStorageService;
 import com.hitech.utils.ViewUtils;
 
 
@@ -23,6 +31,9 @@ public class AAdminController {
 	
 	@Autowired
 	private AccountService accountService; // access modify [public, protected, default, private]
+	
+	@Autowired
+    private FileStorageService fileStorageService;
 	
 	@GetMapping(ViewConstraint.URL_ADMIN_ADMIN)
 	public String table(Model model) {
@@ -42,7 +53,8 @@ public class AAdminController {
 	public String insertPost(@Validated @ModelAttribute("account") Account account, 
 			BindingResult errors,
 			RedirectAttributes reAttributes,
-			Model model) {	
+			Model model,
+			@RequestParam("image") MultipartFile file) throws IOException {		
 		boolean isExistedUsername = accountService.findById(account.getUsername()) != null;
 		boolean isErrors = errors.hasErrors();
 		if(isErrors || isExistedUsername) {
@@ -54,6 +66,11 @@ public class AAdminController {
 			model.addAttribute("error", error);
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ADMIN_INSERT);
 			return ViewConstraint.VIEW_ADMIN_ADMIN_INSERT;
+		}		
+		
+		String avatar = fileStorageService.saveImage(file);
+		if(avatar != null) {
+			account.setPhoto(avatar);
 		}
 		account.setAdmin(true);
 		accountService.save(account);
