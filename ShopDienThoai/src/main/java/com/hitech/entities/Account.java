@@ -35,9 +35,10 @@ public class Account extends BaseEntity implements Serializable{
 	@NotBlank(message="Vui lòng nhập Username !!! ")
 	@Size(min = 5, max = 20, message = "Username phải từ {min} đến {max}")
 	private String username;
-	
+		
 	@Column
-	@Email(message="Vui lòng nhập email đúng định dạng ! ")
+	@NotBlank(message="Vui lòng nhập email !!! ")
+	@Email(message="Vui lòng nhập email đúng định dạng !")
 	private String email;
 	
 	@Column
@@ -53,7 +54,7 @@ public class Account extends BaseEntity implements Serializable{
 	private boolean gender;
 	
 	@Column
-	private String photo;
+	private String photo = "default.png";
 	
 	@Column
 	@NotBlank(message="Vui lòng nhập Địa chỉ !!! ")

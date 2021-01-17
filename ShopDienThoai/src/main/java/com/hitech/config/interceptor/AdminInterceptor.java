@@ -23,13 +23,11 @@ public class AdminInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		String path = request.getRequestURI();		
+		String path = request.getRequestURI();	
 		List<String> listAuthenAdminPages = Arrays.asList(new String[] {ViewConstraint.URL_ADMIN_LOGIN});
 		boolean isAccessAdminPage = path.startsWith(ViewConstraint.URL_ADMIN_HOME);
 		boolean isAuthenAdminPage = listAuthenAdminPages.contains(path);
 		boolean isNextAdminPage = isAccessAdminPage && !isAuthenAdminPage && !sessionUtils.isAdminLogin();
-		
-		// Required Admin role to access /ho-admin/*
 		if(isNextAdminPage){
 			response.sendRedirect(ViewConstraint.URL_ADMIN_LOGIN);
 			return false;

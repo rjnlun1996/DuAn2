@@ -59,7 +59,7 @@ public class IAccountService implements AccountService{
 
 	@Override
 	public Account findById(String id) {
-		return accountRepository.getOne(id);
+		return accountRepository.findById(id).orElse(null);
 	}
 
 	@Override
@@ -74,6 +74,21 @@ public class IAccountService implements AccountService{
 		try {
 			Account acc = accountRepository.getOne(id);
 			if(acc == null) return false;
+			acc.setEnabled(false);
+			accountRepository.saveAndFlush(acc);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deleteByEnabled(String username) {
+		try {
+			Account acc = accountRepository.getOne(username);
+			if(acc == null) {
+				return false;
+			}
 			acc.setEnabled(false);
 			accountRepository.saveAndFlush(acc);
 			return true;
