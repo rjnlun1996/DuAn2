@@ -54,20 +54,32 @@ public class IAccountService implements AccountService{
 
 	@Override
 	public List<Account> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return accountRepository.findAll();
 	}
 
 	@Override
 	public Account findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return accountRepository.getOne(id);
 	}
 
 	@Override
 	public Account update(Account entity) {
-		// TODO Auto-generated method stub
-		return null;
+		Account acc = accountRepository.getOne(entity.getUsername());
+		if(acc == null) return null;
+		return accountRepository.saveAndFlush(acc);
+	}
+
+	@Override
+	public boolean disabledById(String id) {
+		try {
+			Account acc = accountRepository.getOne(id);
+			if(acc == null) return false;
+			acc.setEnabled(false);
+			accountRepository.saveAndFlush(acc);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 
