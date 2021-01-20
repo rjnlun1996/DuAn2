@@ -51,6 +51,8 @@ public interface ViewConstraint {
 	public static final String URL_ADMIN_LOGIN = "/ho-admin/login";
 	public static final String VIEW_ADMIN_LOGIN = "admin/login";
 	
+	public static final String URL_ADMIN_LOGOUT = "/ho-admin/logout";
+	
 	
 	
 }

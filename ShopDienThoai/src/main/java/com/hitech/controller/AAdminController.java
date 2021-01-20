@@ -71,7 +71,7 @@ public class AAdminController {
 		if(avatar != null) {
 			account.setPhoto(avatar);
 		}
-		account.setAdmin(true);
+		account.setLevel(0);
 		accountService.save(account);
 		reAttributes.addFlashAttribute("message", "Tạo tài khoản " + account.getUsername() + " thành công!");
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ADMIN_INSERT);

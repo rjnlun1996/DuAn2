@@ -32,7 +32,7 @@ public class IAccountService implements AccountService{
 
 	@Override
 	public List<Account> findAllAdminByEnabledTrue() {
-		return accountRepository.findByAdminTrueAndEnabledTrue();
+		return accountRepository.findByLevelAndEnabledTrue(0);
 	}
 
 	@Override

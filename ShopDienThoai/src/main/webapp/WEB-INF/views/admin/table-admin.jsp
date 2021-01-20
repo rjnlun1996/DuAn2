@@ -115,14 +115,17 @@
 												<c:forEach var="acc" items="${list}">
 													<tr>
 														<td>
-															<div class="d-inline-block align-middle">
+															<div class="d-flex">
 																<img
-																	class="img-radius img-30 align-top m-r-15 rounded-circle"
-																	src="/assets/images/user/${acc.photo}" alt="">
-																<div class="d-inline-block">
+																	class="img-radius img-60 align-top m-r-15 rounded-circle"
+																	src="/images/avatars/${acc.photo}" alt="">
+																<div class="d-flex flex-column justify-content-center">
 																	<h6 class="f-w-600">${acc.name}</h6>
 																</div>
 															</div>
+														</td>
+														<td>
+															<span>${acc.username}</span>
 														</td>
 														<td>
 															<c:if test="${acc.gender}">

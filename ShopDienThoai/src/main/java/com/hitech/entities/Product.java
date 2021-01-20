@@ -1,12 +1,10 @@
 package com.hitech.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,11 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 @Table(name = "Products")
@@ -30,33 +25,33 @@ public class Product extends BaseEntity implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(name = "productId")
 	private int id;
+	
 	@Column
 	private String name;
+	
 	@Column
 	private String	photo ;
-	@Column
-	private int quantity ;
-	@Column
-	@Temporal(TemporalType.DATE)
-	private Date date;
-	@Column
-	private String unitBrief ;
+	
 	@Column
 	private long importPrice;
+	
 	@Column
 	private long salePrice;
-	@Column
-	private double discount;
+	
 	@Column
 	private String description;
+	
 	@Column
 	private int views;
+	
 	@Column
 	private boolean	available;
+	
 	@Column
 	private boolean	special;
+	
 	@Column
 	private boolean	latest;
 	
@@ -70,13 +65,17 @@ public class Product extends BaseEntity implements Serializable{
 	private Producer producer;
 	
 	@ManyToOne
-	@JoinColumn(name = "categoryId", referencedColumnName = "id")
+	@JoinColumn(name = "categoryId")
 	@JsonBackReference
 	private Category category;
 	
 	@OneToMany(mappedBy = "product")
 	@JsonManagedReference
 	private Set<Photo> photos;
+	
+	@OneToMany(mappedBy = "product")
+	@JsonManagedReference
+	private Set<Discount> discounts;
 	
 	public Product() {
 		
@@ -106,30 +105,6 @@ public class Product extends BaseEntity implements Serializable{
 		this.photo = photo;
 	}
 
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public String getUnitBrief() {
-		return unitBrief;
-	}
-
-	public void setUnitBrief(String unitBrief) {
-		this.unitBrief = unitBrief;
-	}
-
 	public long getImportPrice() {
 		return importPrice;
 	}
@@ -144,14 +119,6 @@ public class Product extends BaseEntity implements Serializable{
 
 	public void setSalePrice(long salePrice) {
 		this.salePrice = salePrice;
-	}
-
-	public double getDiscount() {
-		return discount;
-	}
-
-	public void setDiscount(double discount) {
-		this.discount = discount;
 	}
 
 	public String getDescription() {
@@ -230,6 +197,12 @@ public class Product extends BaseEntity implements Serializable{
 		return serialVersionUID;
 	}
 
-	
+	public Set<Discount> getDiscounts() {
+		return discounts;
+	}
+
+	public void setDiscounts(Set<Discount> discounts) {
+		this.discounts = discounts;
+	}	
 	
 }
