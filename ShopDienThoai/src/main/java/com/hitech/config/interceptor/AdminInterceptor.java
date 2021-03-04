@@ -27,7 +27,7 @@ public class AdminInterceptor implements HandlerInterceptor {
 		List<String> listAuthenAdminPages = Arrays.asList(new String[] {ViewConstraint.URL_ADMIN_LOGIN});
 		boolean isAccessAdminPage = path.startsWith(ViewConstraint.URL_ADMIN_HOME);
 		boolean isAuthenAdminPage = listAuthenAdminPages.contains(path);
-		boolean isNextAdminPage = isAccessAdminPage && !isAuthenAdminPage && !sessionUtils.isAdminLogin();
+		boolean isNextAdminPage = isAccessAdminPage && !isAuthenAdminPage && !sessionUtils.isDashboardLogin();
 		if(isNextAdminPage){
 			response.sendRedirect(ViewConstraint.URL_ADMIN_LOGIN);
 			return false;

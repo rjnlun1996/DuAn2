@@ -30,7 +30,7 @@ public class ACategoryController {
 	public String table(Model model) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CATEGORY);
 		//model.addAttribute("menu", "/ho-admin/category/");
-		model.addAttribute("listCategory",categoryService.findAll());
+		model.addAttribute("listCategory",categoryService.findAllCategoryByEnabledTrue());
 		return ViewConstraint.VIEW_ADMIN_CATEGORY;
 	}
 	
@@ -58,7 +58,7 @@ public class ACategoryController {
 	
 	@PostMapping(ViewConstraint.URL_ADMIN_CATEGORY_DELETE)
 	@ResponseBody
-	public boolean delete(Model model, @RequestParam int id) {
+	public boolean delete(Model model, @RequestParam Integer id) {
 		return categoryService.deleteByEnabled(id);
 	}
 	

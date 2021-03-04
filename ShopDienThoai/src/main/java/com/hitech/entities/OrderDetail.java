@@ -1,6 +1,7 @@
 package com.hitech.entities;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,9 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "OrderDetails")
@@ -24,16 +27,17 @@ public class OrderDetail extends BaseEntity implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(name = "orderDetailId")
 	private int id;
+	
 	@Column
 	private int productId;
+	
 	@Column
 	private int quantity;
+	
 	@Column
 	private double amount;
-	@Column
-	private double discount;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="orderId",nullable = false)
@@ -44,6 +48,10 @@ public class OrderDetail extends BaseEntity implements Serializable{
 	@JoinColumn(name = "productId",nullable = false, insertable = false, updatable = false)
 	@JsonBackReference
 	private Product product;
+	
+	@OneToMany(mappedBy = "orderDetail")
+	@JsonManagedReference
+	private Set<Discount> discounts;
 	
 	public OrderDetail() {}
 
@@ -94,18 +102,17 @@ public class OrderDetail extends BaseEntity implements Serializable{
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-
-	public double getDiscount() {
-		return discount;
-	}
-
-	public void setDiscount(double discount) {
-		this.discount = discount;
-	}
-
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
+
+	public Set<Discount> getDiscounts() {
+		return discounts;
+	}
+
+	public void setDiscounts(Set<Discount> discounts) {
+		this.discounts = discounts;
+	}
+		
 }

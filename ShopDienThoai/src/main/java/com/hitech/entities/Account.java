@@ -70,8 +70,9 @@ public class Account extends BaseEntity implements Serializable{
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date birthday;
-	@Column(name = "isAdmin")
-	private boolean admin;
+	
+	@Column
+	private int level;
 	
 	@OneToMany(mappedBy = "account")
 	@JsonManagedReference
@@ -151,12 +152,13 @@ public class Account extends BaseEntity implements Serializable{
 		this.birthday = birthday;
 	}
 
-	public boolean isAdmin() {
-		return admin;
+
+	public int getLevel() {
+		return level;
 	}
 
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 	public Set<Order> getOrders() {
@@ -175,7 +177,7 @@ public class Account extends BaseEntity implements Serializable{
 	public String toString() {
 		return "Account [username=" + username + ", email=" + email + ", password=" + password + ", name=" + name
 				+ ", gender=" + gender + ", photo=" + photo + ", address=" + address + ", phone=" + phone
-				+ ", birthday=" + birthday + ", admin=" + admin + ", orders=" + orders + "]";
+				+ ", birthday=" + birthday + ", level=" + level + ", orders=" + orders + "]";
 	}	
 	
 }

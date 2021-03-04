@@ -97,11 +97,11 @@ public class ICategoryService implements CategoryService {
 		}
 	}
 
-	/*@Override
+	@Override
 	public List<Category> findAllCategoryByEnabledTrue() {
 		
-		return categoryRepository.findByCategoryTrueAndEnaledTrue();
-	}*/
+		return categoryRepository.findByEnabledTrue();
+	}
    
 
 }

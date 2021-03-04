@@ -12,6 +12,12 @@ import com.hitech.entities.Category;
 @Repository // DAO
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
 	
-	//List<Category> findByCategoryTrueAndEnaledTrue();
+	/**
+	 * phương thức đẻ lấy tất cả category có thuộc tính Enabled = true
+	 * @return
+	 */
+	List<Category> findByEnabledTrue();
+	
+	
 	
 }
