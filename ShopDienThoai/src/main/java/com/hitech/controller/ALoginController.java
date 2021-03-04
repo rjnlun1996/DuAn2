@@ -35,7 +35,7 @@ public class ALoginController {
 			model.addAttribute("message", "Tài khoản hoặc mật khẩu không đúng");
 			return ViewConstraint.VIEW_ADMIN_LOGIN;
 		}		
-		return "redirect:/ho-admin/";
+		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_HOME);
 		
 	}
 	

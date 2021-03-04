@@ -14,7 +14,7 @@ import com.hitech.services.FileStorageService;
 @Service
 public class IFileStorageService implements FileStorageService {
 	
-	public static final String AVATAR = "src\\main\\webapp\\assets\\images\\user";
+	public static final String AVATAR = "src\\main\\webapp\\images\\avatars\\";
 
 	@Override
 	public String saveImage(MultipartFile file) throws IOException {
