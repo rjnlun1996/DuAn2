@@ -148,7 +148,8 @@
 
 															<button class="btn btn-pill btn-outline-primary btn-sm"
 																type="button">View</button>
-															<a class="btn btn-pill btn-outline-success btn-sm" href="/ho-manager/admin/update?id=${acc.username}"">Edit</a>
+															<button class="btn btn-pill btn-outline-success btn-sm"
+																type="button">Edit</button>
 															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${acc.username}">Delete</button>
 															<%-- <form method="post" action="/ho-manager/admin/delete">
 																<input type="hidden" name="username" value="${acc.username}"/>

@@ -76,6 +76,13 @@ public class AAdminController {
 		reAttributes.addFlashAttribute("message", "Tạo tài khoản " + account.getUsername() + " thành công!");
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ADMIN_INSERT);
 	}
+	
+	@GetMapping(ViewConstraint.URL_ADMIN_ADMIN_UPDATE)
+	public String updateGet(Model model, @RequestParam String id) {
+		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ADMIN_UPDATE);
+		model.addAttribute("account", accountService.findById(id));
+		return ViewConstraint.VIEW_ADMIN_ADMIN_UPDATE; // render view => prefix + ViewConstraint.VIEW_ADMIN_ADMIN_INSERT + subfix => path jsp => render html -> client
+	}
 
 //	@PostMapping(ViewConstraint.URL_ADMIN_ADMIN_DELETE)
 //	public String delete(Model model, @RequestParam String username) {

@@ -25,8 +25,9 @@
 				<div class="row">
 					<div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
 						<div class="card card-primary">
-							<div class="card-header">
-								<h4>Login</h4>
+							<div class="card-header justify-content-between">
+								<h1>Login</h1>
+								<img width="150px" src="/assets/images/logo/logo.jpg" style="border-radius: 10px;box-shadow: 0 2px 6px #acb5f6;">
 							</div>
 							<div class="card-body">
 								<c:if test="${not empty message}">
@@ -35,7 +36,7 @@
 								<form method="POST" class="needs-validation">
 									<div class="form-group">
 										<label for="username">Username or Email</label>
-										<input id="username" type="text" class="form-control" name="username" tabindex="1" >
+										<input id="username" type="text" class="form-control" name="username" tabindex="1">
 										<div class="invalid-feedback">Please fill in your username</div>
 									</div>
 									<div class="form-group">
@@ -54,32 +55,15 @@
 											<label class="custom-control-label" for="remember-me">Remember Me</label>
 										</div>
 									</div>
+									<div style="margin: 10px 0; text-align: center">
+										
+									</div>
 									<div class="form-group">
 										<button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">Login</button>
 									</div>
 								</form>
-								<div class="text-center mt-4 mb-3">
-									<div class="text-job text-muted">Login With Social</div>
-								</div>
-								<div class="row sm-gutters">
-									<div class="col-6">
-										<a class="btn btn-block btn-social btn-facebook">
-											<span class="fab fa-facebook"></span>
-											Facebook
-										</a>
-									</div>
-									<div class="col-6">
-										<a class="btn btn-block btn-social btn-twitter">
-											<span class="fab fa-twitter"></span>
-											Twitter
-										</a>
-									</div>
-								</div>
+
 							</div>
-						</div>
-						<div class="mt-5 text-muted text-center">
-							Don't have an account?
-							<a href="auth-register.html">Create One</a>
 						</div>
 					</div>
 				</div>

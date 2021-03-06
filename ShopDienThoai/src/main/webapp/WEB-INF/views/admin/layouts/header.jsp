@@ -148,7 +148,7 @@ Account user = (Account) session.getAttribute(SessionConstraint.USER);
 									Settings
 								</li>
 								<li>
-									<a href="/ho-admin/logout"><i data-feather="file-text"> </i>
+									<a href="/ho-manager/logout"><i data-feather="file-text"> </i>
 									Logout</a>
 								</li>
 							</ul>

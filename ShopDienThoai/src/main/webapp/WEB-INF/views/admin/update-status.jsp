@@ -35,6 +35,9 @@ String sb = String.valueOf(request.getAttribute(MENU));
 <link rel="stylesheet" type="text/css" href="/assets/css/feather-icon.css">
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/chartist.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/vector-map.css">
 <!-- Plugins css Ends-->
 <!-- Bootstrap css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
@@ -43,11 +46,6 @@ String sb = String.valueOf(request.getAttribute(MENU));
 <link id="color" rel="stylesheet" href="/assets/css/light-1.css" media="screen">
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
-<style>
-.invalid-feedback {
-	display: block;
-}
-</style>
 </head>
 <body>
 	<!-- Loader starts-->
@@ -78,7 +76,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 					<div class="page-header">
 						<div class="row">
 							<div class="col-lg-6">
-								<h3>FORM UPDATE INFORMATION</h3>
+								<h3>FORM INSERT ACCOUNT</h3>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item">
 										<a href="<%=URL_ADMIN_HOME%>">Home</a>
@@ -139,7 +137,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 											<h5>UPDATE ADMIN</h5>
 										</div>
 										<form:form class="theme-form" modelAttribute="account" method="post">
-											<div class="card-body datetime-picker">
+											<div class="card-body">
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="username">Username</label>
 													<div class="col-sm-9">
@@ -167,11 +165,11 @@ String sb = String.valueOf(request.getAttribute(MENU));
 														<div class="col-sm-9">
 															<div class="radio radio-primary">
 																<form:radiobutton path="gender" value="0" class="form-check-input" />
-																<label for="gender1">Female</label>
+																<label for="gender1">Male</label>
 															</div>
 															<div class="radio radio-primary">
 																<form:radiobutton path="gender" value="1" class="form-check-input" />
-																<label for="gender2">Male</label>
+																<label for="gender2">Female</label>
 															</div>
 															<%-- <form:errors path="gender" /> --%>
 														</div>
@@ -191,15 +189,6 @@ String sb = String.valueOf(request.getAttribute(MENU));
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Upload File</label>
-													<div class="col-sm-9">
-														<div class="avatar p-2">
-															<img class="img-100 rounded-circle" id="avatar" src="/images/avatars/${account.photo}" alt="#">
-														</div>
-														<input name="image" class="form-control" type="file" id="imgInp" accept="image/*">
-													</div>
-												</div>
-												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="">Address</label>
 													<div class="col-sm-9">
 														<form:input path="address" class="form-control" />
@@ -213,21 +202,22 @@ String sb = String.valueOf(request.getAttribute(MENU));
 														<%-- <form:errors path="phone" /> --%>
 													</div>
 												</div>
-												<%--<fieldset class="form-group">
+												<fieldset class="form-group">
 													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">Level</label>
+														<label class="col-form-label col-sm-3 pt-0">IsAdmin</label>
 														<div class="col-sm-9">
 															<div class="radio radio-primary">
-																<form:radiobutton path="level" value="0" class="form-check-input" />
-																<label for="admin1">Admin</label>
+																<form:radiobutton path="admin" value="0" class="form-check-input" />
+																<label for="admin1">Customer</label>
 															</div>
 															<div class="radio radio-primary">
-																<form:radiobutton path="level" value="1" class="form-check-input" />
-																<label for="admin2">Manager</label>
+																<form:radiobutton path="admin" value="1" class="form-check-input" />
+																<label for="admin2">Admin</label>
 															</div>
+															<%-- <form:errors path="isAdmin" /> --%>
 														</div>
 													</div>
-												</fieldset>--%>
+												</fieldset>
 												<!-- <form class="theme-form">
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="name">Name</label>
@@ -329,19 +319,8 @@ String sb = String.valueOf(request.getAttribute(MENU));
 	<!-- Sidebar jquery-->
 	<script src="/assets/js/sidebar-menu.js"></script>
 	<script src="/assets/js/config.js"></script>
-
-	<script src="/assets/js/datepicker/date-time-picker/moment.min.js"></script>
-	<script src="/assets/js/datepicker/date-time-picker/tempusdominus-bootstrap-4.min.js"></script>
-	<script src="/assets/js/datepicker/date-time-picker/datetimepicker.custom.js"></script>
-
-
-	<script src="/assets/js/datepicker/date-picker/datepicker.js"></script>
-	<script src="/assets/js/datepicker/date-picker/datepicker.en.js"></script>
-	<script src="/assets/js/datepicker/date-picker/datepicker.custom.js"></script>
-
-	<!-- Plugins JS Start-->
+	<!-- Plugins JS start-->
 	<script src="/assets/js/chat-menu.js"></script>
-	<script src="/assets/js/form-validation-custom.js"></script>
 	<script src="/assets/js/tooltip-init.js"></script>
 	<!-- Plugins JS Ends-->
 	<!-- Theme js-->
