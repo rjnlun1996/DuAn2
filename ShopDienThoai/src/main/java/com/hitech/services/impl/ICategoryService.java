@@ -3,10 +3,11 @@ package com.hitech.services.impl;
 import java.util.Date;
 import java.util.List;
 
-import javax.transaction.Transactional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import com.hitech.entities.Category;
 import com.hitech.repository.CategoryRepository;
@@ -37,7 +38,7 @@ public class ICategoryService implements CategoryService {
 
 	@Override
 	public List<Category> findAll() {
-		return categoryRepository.findAll();
+		return  categoryRepository.findAll();
 //		String hql = "FROM Category";
 //		Session session = factory.getCurrentSession();
 //		TypedQuery<Category> query = session.createQuery(hql, Category.class);
@@ -62,6 +63,9 @@ public class ICategoryService implements CategoryService {
 //		session.update(category);
 //		return categoryRepository.save(category);
 	}
+	
+	
+	
 
 	@Override
 	public boolean deleteById(Integer id) {
@@ -75,6 +79,29 @@ public class ICategoryService implements CategoryService {
 //		Category category = session.find(Category.class, id);
 //		session.delete(category);
 //		return category;
+		
 	}
+	
+	@Override
+	public boolean deleteByEnabled(Integer id) {
+		try {
+			Category cate = categoryRepository.getOne(id);
+			if(cate == null) {
+				return false;
+			}
+			cate.setEnabled(false);
+			categoryRepository.saveAndFlush(cate);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public List<Category> findAllCategoryByEnabledTrue() {
+		
+		return categoryRepository.findByEnabledTrue();
+	}
+   
 
 }

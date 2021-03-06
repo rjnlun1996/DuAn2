@@ -27,20 +27,24 @@ public class Order extends BaseEntity implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(name = "orderId")
 	private int id;
+	
 	@Column
 	private Date requireDate;
+	
 	@Column
 	private String	receiver;
+	
 	@Column
 	private String	address;
+	
 	@Column
 	private String	description;
-	@Column
-	private String	status;
+	
 	@Column
 	private String	phone ;
+	
 	@Column
 	private double total;
 	
@@ -52,6 +56,10 @@ public class Order extends BaseEntity implements Serializable{
 	@OneToMany(mappedBy = "order")
 	@JsonManagedReference
 	private Set<OrderDetail> orderDetails;
+	
+	@OneToMany(mappedBy = "order")
+	@JsonManagedReference
+	private Set<StatusOrder> statusOrders;
 	
 	public double getTotal() {
 		return total;
@@ -120,14 +128,6 @@ public class Order extends BaseEntity implements Serializable{
 		this.description = description;
 	}
 
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
 	public String getPhone() {
 		return phone;
 	}
@@ -139,6 +139,13 @@ public class Order extends BaseEntity implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
+
+	public Set<StatusOrder> getStatusOrders() {
+		return statusOrders;
+	}
+
+	public void setStatusOrders(Set<StatusOrder> statusOrders) {
+		this.statusOrders = statusOrders;
+	}
+		
 }

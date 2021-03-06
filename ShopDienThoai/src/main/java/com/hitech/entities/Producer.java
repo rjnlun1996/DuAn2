@@ -30,7 +30,7 @@ public class Producer extends BaseEntity implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(name = "producerId")
 	private int id ;
 	@Column
 	private String name;

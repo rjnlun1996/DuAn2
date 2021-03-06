@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 public class Photo{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(name = "photoId")
 	private int id;
 	@Column
 	private String	link;

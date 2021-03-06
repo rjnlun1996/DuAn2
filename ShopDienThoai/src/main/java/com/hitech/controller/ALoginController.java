@@ -9,12 +9,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hitech.constraints.ViewConstraint;
 import com.hitech.services.AccountService;
+import com.hitech.utils.SessionUtils;
+import com.hitech.utils.ViewUtils;
 
 @Controller
 public class ALoginController {	
 	
 	@Autowired
 	private AccountService accountService;
+	
+	@Autowired
+	private SessionUtils sessionUtils;
 
 	@GetMapping(ViewConstraint.URL_ADMIN_LOGIN)
 	public String table(Model model) {
@@ -30,7 +35,13 @@ public class ALoginController {
 			model.addAttribute("message", "Tài khoản hoặc mật khẩu không đúng");
 			return ViewConstraint.VIEW_ADMIN_LOGIN;
 		}		
-		return "redirect:/ho-admin/";
+		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_HOME);
 		
+	}
+	
+	@GetMapping(ViewConstraint.URL_ADMIN_LOGOUT)
+	public String logout() {
+		sessionUtils.destroyAll();
+		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_LOGIN);
 	}
 }

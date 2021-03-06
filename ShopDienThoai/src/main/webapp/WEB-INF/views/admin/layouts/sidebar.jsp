@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="static com.hitech.utils.ViewUtils.*" %>
-<%@ page import="static com.hitech.constraints.ViewConstraint.*" %>
-<% String sb = String.valueOf(request.getAttribute(MENU)); %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="static com.hitech.utils.ViewUtils.*"%>
+<%@ page import="static com.hitech.constraints.ViewConstraint.*"%>
+<%
+String sb = String.valueOf(request.getAttribute(MENU));
+%>
 
 <!-- Page Sidebar Start-->
 
@@ -16,58 +18,59 @@
 	</div>
 	<div class="sidebar custom-scrollbar">
 		<ul class="sidebar-menu">
-		
-			<li class="<%= renderSubmenuClass(sb, URL_ADMIN_HOME) %>" >
-				<a class="sidebar-header" href="<%= URL_ADMIN_HOME %>">
+
+			<li class="<%=renderSubmenuClass(sb, URL_ADMIN_HOME)%>">
+				<a class="sidebar-header" href="<%=URL_ADMIN_HOME%>">
 					<i data-feather="home"></i>
 					<span>Dashboard</span>
 				</a>
 			</li>
+			<c:if test="${user.level == 0}">
+				<li class="<%=renderMenuClass(sb, URL_ADMIN_ADMIN)%>">
+					<a class="sidebar-header" href="#">
+						<i data-feather="airplay"></i>
+						<span> Manager </span>
+						<i class="fa fa-angle-right pull-right"></i>
+					</a>
+					<ul class="sidebar-submenu">
+						<li class="<%=renderSubmenuClass(sb, URL_ADMIN_ADMIN)%>">
+							<a href="<%=URL_ADMIN_ADMIN%>">
+								<i class="fa fa-circle"></i>
+								Table Admin
+							</a>
+						</li>
+						<li class="<%=renderSubmenuClass(sb, URL_ADMIN_ADMIN_INSERT)%>">
+							<a href="<%=URL_ADMIN_ADMIN_INSERT%>">
+								<i class="fa fa-circle"></i>
+								Insert Admin
+							</a>
+						</li>
+					</ul>
+				</li>
+			</c:if>
 
-			<li class="<%= renderMenuClass(sb, URL_ADMIN_ADMIN) %>" >
-				<a class="sidebar-header" href="#">
-					<i data-feather="airplay"></i>
-					<span> Admin Manager </span>
-					<i class="fa fa-angle-right pull-right"></i>
-				</a>
-				<ul class="sidebar-submenu">
-					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_ADMIN) %>">
-						<a href="<%= URL_ADMIN_ADMIN %>">
-							<i class="fa fa-circle"></i>
-							Table Admin
-						</a>
-					</li>
-					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_ADMIN_INSERT) %>">
-						<a href="<%= URL_ADMIN_ADMIN_INSERT %>">
-							<i class="fa fa-circle"></i>
-							Insert Admin
-						</a>
-					</li>
-				</ul>
-			</li>
-
-			<li class="<%= renderMenuClass(sb, URL_ADMIN_CUSTOMER) %>">
+			<li class="<%=renderMenuClass(sb, URL_ADMIN_CUSTOMER)%>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="sidebar"></i>
 					<span>Customers Manager</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
-					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_CUSTOMER) %>">
-						<a href="<%= URL_ADMIN_CUSTOMER %>">
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_CUSTOMER)%>">
+						<a href="<%=URL_ADMIN_CUSTOMER%>">
 							<i class="fa fa-circle"></i>
 							Table Customer
 						</a>
 					</li>
-					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_CUSTOMER_INSERT) %>">
-						<a href="<%= URL_ADMIN_CUSTOMER_INSERT %>">
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_CUSTOMER_INSERT)%>">
+						<a href="<%=URL_ADMIN_CUSTOMER_INSERT%>">
 							<i class="fa fa-circle"></i>
 							Insert Customer
 						</a>
 					</li>
 				</ul>
 			</li>
-			
+
 			<%-- <li class="<%= sb.startsWith(URL_ADMIN_CATEGORY) ? "active" : "" %>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="layout"></i>
@@ -133,21 +136,21 @@
 				</ul>
 			</li> --%>
 
-			<li class="<%= renderMenuClass(sb, URL_ADMIN_CATEGORY) %>">
+			<li class="<%=renderMenuClass(sb, URL_ADMIN_CATEGORY)%>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="layout"></i>
 					<span>Categories Manager</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
-					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_CATEGORY) %>">
-						<a href="<%= URL_ADMIN_CATEGORY %>">
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_CATEGORY)%>">
+						<a href="<%=URL_ADMIN_CATEGORY%>">
 							<i class="fa fa-circle"></i>
 							Table Category
 						</a>
 					</li>
-					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_CATEGORY_INSERT) %>">
-						<a href="<%= URL_ADMIN_CATEGORY_INSERT %>">
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_CATEGORY_INSERT)%>">
+						<a href="<%=URL_ADMIN_CATEGORY_INSERT%>">
 							<i class="fa fa-circle"></i>
 							Insert Category
 						</a>
@@ -155,21 +158,21 @@
 				</ul>
 			</li>
 
-			<li class="<%= renderMenuClass(sb, URL_ADMIN_PRODUCER) %>">
+			<li class="<%=renderMenuClass(sb, URL_ADMIN_PRODUCER)%>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="align-justify"></i>
 					<span>Producers Manager</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
-					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_PRODUCER) %>">
-						<a href="<%= URL_ADMIN_PRODUCER %>">
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_PRODUCER)%>">
+						<a href="<%=URL_ADMIN_PRODUCER%>">
 							<i class="fa fa-circle"></i>
 							Table Producers
 						</a>
 					</li>
-					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_PRODUCER_INSERT) %>">
-						<a href="<%= URL_ADMIN_PRODUCER_INSERT %>">
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_PRODUCER_INSERT)%>">
+						<a href="<%=URL_ADMIN_PRODUCER_INSERT%>">
 							<i class="fa fa-circle"></i>
 							Insert Producers
 						</a>
@@ -177,21 +180,21 @@
 				</ul>
 			</li>
 
-			<li class="<%= renderMenuClass(sb, URL_ADMIN_PRODUCT) %>">
+			<li class="<%=renderMenuClass(sb, URL_ADMIN_PRODUCT)%>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="cloud-lightning"></i>
 					<span>Products Manager</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
-					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_PRODUCT) %>">
-						<a href="<%= URL_ADMIN_PRODUCT %>">
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_PRODUCT)%>">
+						<a href="<%=URL_ADMIN_PRODUCT%>">
 							<i class="fa fa-circle"></i>
 							Table Products
 						</a>
 					</li>
-					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_PRODUCT_INSERT) %>">
-						<a href="<%= URL_ADMIN_PRODUCT_INSERT %>">
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_PRODUCT_INSERT)%>">
+						<a href="<%=URL_ADMIN_PRODUCT_INSERT%>">
 							<i class="fa fa-circle"></i>
 							Insert Products
 						</a>
@@ -199,21 +202,21 @@
 				</ul>
 			</li>
 
-			<li class="<%= renderMenuClass(sb, URL_ADMIN_IMAGE) %>">
+			<li class="<%=renderMenuClass(sb, URL_ADMIN_IMAGE)%>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="cloud-lightning"></i>
 					<span>Images Manager</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
-					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_IMAGE) %>">
-						<a href="<%= URL_ADMIN_IMAGE %>">
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_IMAGE)%>">
+						<a href="<%=URL_ADMIN_IMAGE%>">
 							<i class="fa fa-circle"></i>
 							View Images
 						</a>
 					</li>
-					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_IMAGE_INSERT) %>">
-						<a href="<%= URL_ADMIN_IMAGE_INSERT %>">
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_IMAGE_INSERT)%>">
+						<a href="<%=URL_ADMIN_IMAGE_INSERT%>">
 							<i class="fa fa-circle"></i>
 							Insert Images
 						</a>
@@ -221,21 +224,43 @@
 				</ul>
 			</li>
 
-			<li class="<%= renderMenuClass(sb, URL_ADMIN_ORDER) %>">
+			<li class="<%=renderMenuClass(sb, URL_ADMIN_STATUS)%>">
+				<a class="sidebar-header" href="#">
+					<i data-feather="cloud-lightning"></i>
+					<span>Status Manager</span>
+					<i class="fa fa-angle-right pull-right"></i>
+				</a>
+				<ul class="sidebar-submenu">
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_STATUS)%>">
+						<a href="<%=URL_ADMIN_STATUS%>">
+							<i class="fa fa-circle"></i>
+							View Status
+						</a>
+					</li>
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_STATUS_INSERT)%>">
+						<a href="<%=URL_ADMIN_STATUS_INSERT%>">
+							<i class="fa fa-circle"></i>
+							Insert Status
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="<%=renderMenuClass(sb, URL_ADMIN_ORDER)%>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="cloud-lightning"></i>
 					<span>Order Manager</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
-					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_ORDER) %>">
-						<a href="<%= URL_ADMIN_ORDER %>">
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_ORDER)%>">
+						<a href="<%=URL_ADMIN_ORDER%>">
 							<i class="fa fa-circle"></i>
 							Table Order
 						</a>
 					</li>
-					<li class="<%= renderSubmenuClass(sb, URL_ADMIN_ORDER_INSERT) %>">
-						<a href="<%= URL_ADMIN_ORDER_INSERT %>">
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_ORDER_INSERT)%>">
+						<a href="<%=URL_ADMIN_ORDER_INSERT%>">
 							<i class="fa fa-circle"></i>
 							Insert Order
 						</a>
@@ -249,12 +274,58 @@
 				</ul>
 			</li>
 
-			<li class="<%= renderMenuClass(sb, URL_ADMIN_REPORT) %>">
-				<a class="sidebar-header" href="<%= URL_ADMIN_REPORT %>">
-					<i data-feather="bookmark"></i>
-					<span>Report</span>
+			<li class="<%=renderMenuClass(sb, URL_ADMIN_STATUS_ORDER)%>">
+				<a class="sidebar-header" href="#">
+					<i data-feather="cloud-lightning"></i>
+					<span>Status Order Manager</span>
+					<i class="fa fa-angle-right pull-right"></i>
 				</a>
+				<ul class="sidebar-submenu">
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_STATUS_ORDER)%>">
+						<a href="<%=URL_ADMIN_STATUS_ORDER%>">
+							<i class="fa fa-circle"></i>
+							View Status Order
+						</a>
+					</li>
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_STATUS_ORDER_INSERT)%>">
+						<a href="<%=URL_ADMIN_STATUS_ORDER_INSERT%>">
+							<i class="fa fa-circle"></i>
+							Insert Status Order
+						</a>
+					</li>
+				</ul>
 			</li>
+
+			<li class="<%=renderMenuClass(sb, URL_ADMIN_DISCOUNT)%>">
+				<a class="sidebar-header" href="#">
+					<i data-feather="cloud-lightning"></i>
+					<span>Discount Manager</span>
+					<i class="fa fa-angle-right pull-right"></i>
+				</a>
+				<ul class="sidebar-submenu">
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_DISCOUNT)%>">
+						<a href="<%=URL_ADMIN_DISCOUNT%>">
+							<i class="fa fa-circle"></i>
+							View Discount
+						</a>
+					</li>
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_DISCOUNT_INSERT)%>">
+						<a href="<%=URL_ADMIN_DISCOUNT_INSERT%>">
+							<i class="fa fa-circle"></i>
+							Insert Discount
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<c:if test="${user.level == 0}">
+				<li class="<%=renderMenuClass(sb, URL_ADMIN_REPORT)%>">
+					<a class="sidebar-header" href="<%=URL_ADMIN_REPORT%>">
+						<i data-feather="bookmark"></i>
+						<span>Report</span>
+					</a>
+				</li>
+			</c:if>
 
 			<li>
 				<a class="sidebar-header" href="/ho-admin/report">
@@ -269,8 +340,6 @@
 					<span>Chat</span>
 				</a>
 			</li>
-
-			
 		</ul>
 	</div>
 </div>

@@ -13,13 +13,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -70,10 +70,12 @@ public class Account extends BaseEntity implements Serializable{
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date birthday;
-	@Column(name = "isAdmin")
-	private boolean admin;
+	
+	@Column
+	private int level;
 	
 	@OneToMany(mappedBy = "account")
+	@JsonIgnore
 	@JsonManagedReference
 	private Set<Order> orders;
 	
@@ -151,12 +153,13 @@ public class Account extends BaseEntity implements Serializable{
 		this.birthday = birthday;
 	}
 
-	public boolean isAdmin() {
-		return admin;
+
+	public int getLevel() {
+		return level;
 	}
 
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 	public Set<Order> getOrders() {
@@ -175,7 +178,7 @@ public class Account extends BaseEntity implements Serializable{
 	public String toString() {
 		return "Account [username=" + username + ", email=" + email + ", password=" + password + ", name=" + name
 				+ ", gender=" + gender + ", photo=" + photo + ", address=" + address + ", phone=" + phone
-				+ ", birthday=" + birthday + ", admin=" + admin + ", orders=" + orders + "]";
+				+ ", birthday=" + birthday + ", level=" + level;
 	}	
 	
 }

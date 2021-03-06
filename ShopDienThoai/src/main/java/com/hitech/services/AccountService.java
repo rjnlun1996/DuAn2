@@ -1,7 +1,6 @@
 package com.hitech.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.hitech.entities.Account;
 
@@ -22,11 +21,10 @@ public interface AccountService extends IBaseService<Account, String>{
 	 * @return account list
 	 */
 	List<Account> findAllAdminByEnabledTrue();
-	
+	boolean disabledById(String id);
 	/**
 	 * Set Enabled properties to false
 	 * @return
 	 */
 	boolean deleteByEnabled(String username);
-
 }

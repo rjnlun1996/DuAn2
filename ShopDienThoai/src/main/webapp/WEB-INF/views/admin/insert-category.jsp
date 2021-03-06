@@ -83,7 +83,7 @@
 					<div class="page-header">
 						<div class="row">
 							<div class="col-lg-6">
-								<h3>FORM INSERT ACCOUNT</h3>
+								<h3>FORM INSERT CATEGORIES</h3>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="<%=URL_ADMIN_HOME%>">Home</a>
 									</li>
@@ -134,7 +134,7 @@
 								<div class="col-sm-12">
 									<div class="card">
 										<div class="card-header">
-											<h5>INSERT ADMIN</h5>
+											<h5>INSERT CATEGORIES</h5>
 										</div>
 										<form:form
 											class="theme-form ${error == true ? 'was-validated' : '' }"

@@ -3,6 +3,7 @@ package com.hitech.utils;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.hitech.entities.Account;
@@ -19,7 +20,7 @@ public class SessionUtils {
 	 */
 	public boolean isCustomerLogin() {
 		Account a = getUser();
-		return a != null && !a.isAdmin();
+		return a != null && a.getLevel() == 2;
 	}
 	
 	/**
@@ -27,7 +28,23 @@ public class SessionUtils {
 	 */
 	public boolean isAdminLogin() {
 		Account a = getUser();
-		return a != null && a.isAdmin();
+		return a != null && a.getLevel() == 0;
+	}
+	
+	/**
+	 * Check the admin login. True if user logan and had admin role
+	 */
+	public boolean isDashboardLogin() {
+		Account a = getUser();
+		return a != null && a.getLevel() != 2;
+	}
+	
+	/**
+	 * Check the Employ login. True if user logan and had admin role
+	 */
+	public boolean isEmployLogin() {
+		Account a = getUser();
+		return a != null && a.getLevel() == 1;
 	}
 	
 	/**
