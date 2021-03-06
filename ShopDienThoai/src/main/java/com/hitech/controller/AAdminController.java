@@ -30,14 +30,14 @@ public class AAdminController {
 
 	@Autowired
 	private AccountService accountService; // access modify [public, protected, default, private]
-	
+
 	@Autowired
-    private FileStorageService fileStorageService;
-	
+	private FileStorageService fileStorageService;
+
 	@GetMapping(ViewConstraint.URL_ADMIN_ADMIN)
 	public String table(Model model) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ADMIN);
-		model.addAttribute("list", accountService.findAllAdminByEnabledTrue());
+		model.addAttribute("list", accountService.findAllManagerByEnabledTrue());
 		return ViewConstraint.VIEW_ADMIN_ADMIN;
 	}
 
@@ -45,30 +45,35 @@ public class AAdminController {
 	public String insertGet(Model model) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ADMIN_INSERT);
 		model.addAttribute("account", new Account());
-		return ViewConstraint.VIEW_ADMIN_ADMIN_INSERT; // render view => prefix + ViewConstraint.VIEW_ADMIN_ADMIN_INSERT + subfix => path jsp => render html -> client
+		return ViewConstraint.VIEW_ADMIN_ADMIN_INSERT; // render view => prefix + ViewConstraint.VIEW_ADMIN_ADMIN_INSERT
+														// + subfix => path jsp => render html -> client
 	}
 
 	@PostMapping(ViewConstraint.URL_ADMIN_ADMIN_INSERT)
-	public String insertPost(@Validated @ModelAttribute("account") Account account, 
-			BindingResult errors,
-			RedirectAttributes reAttributes,
-			Model model,
-			@RequestParam("image") MultipartFile file) throws IOException {		
+	public String insertPost(@Validated @ModelAttribute("account") Account account, BindingResult errors,
+			RedirectAttributes reAttributes, Model model, @RequestParam("image") MultipartFile file)
+			throws IOException {
 		boolean isExistedUsername = accountService.findById(account.getUsername()) != null;
+		boolean isExistedEmail = accountService.findByEmail(account.getEmail()) != null;
 		boolean isErrors = errors.hasErrors();
-		if(isErrors || isExistedUsername) {
-			String error = "Vui lòng kiểm tra lại thông tin nhập sai!";
-			if(!isErrors && isExistedUsername) {
-				error = "Tài khoản này đã tồn tại";
-				model.addAttribute("isExist", true);
+		if (isErrors || isExistedUsername || isExistedEmail) {
+			if (isErrors) {
+				model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
 			}
-			model.addAttribute("error", error);
+			if (isExistedUsername) {
+				model.addAttribute("errorUsername", "Username này đã tồn tại");
+				model.addAttribute("isExistUsername", true);
+			}
+			if (isExistedEmail) {
+				model.addAttribute("errorEmail", "Email này đã tồn tại");
+				model.addAttribute("isExistEmail", true);
+			}
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ADMIN_INSERT);
 			return ViewConstraint.VIEW_ADMIN_ADMIN_INSERT;
-		}		
-		
+		}
+
 		String avatar = fileStorageService.saveImage(file);
-		if(avatar != null) {
+		if (avatar != null) {
 			account.setPhoto(avatar);
 		}
 		account.setLevel(0);
@@ -76,12 +81,51 @@ public class AAdminController {
 		reAttributes.addFlashAttribute("message", "Tạo tài khoản " + account.getUsername() + " thành công!");
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ADMIN_INSERT);
 	}
-	
+
 	@GetMapping(ViewConstraint.URL_ADMIN_ADMIN_UPDATE)
 	public String updateGet(Model model, @RequestParam String id) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ADMIN_UPDATE);
 		model.addAttribute("account", accountService.findById(id));
-		return ViewConstraint.VIEW_ADMIN_ADMIN_UPDATE; // render view => prefix + ViewConstraint.VIEW_ADMIN_ADMIN_INSERT + subfix => path jsp => render html -> client
+		return ViewConstraint.VIEW_ADMIN_ADMIN_UPDATE; // render view => prefix + ViewConstraint.VIEW_ADMIN_ADMIN_INSERT
+														// + subfix => path jsp => render html -> client
+	}
+
+	@PostMapping(ViewConstraint.URL_ADMIN_ADMIN_UPDATE)
+	public String updatePost(@Validated @ModelAttribute("account") Account account, BindingResult errors,
+			RedirectAttributes reAttributes, Model model, @RequestParam("image") MultipartFile file)
+			throws IOException {
+		boolean isErrors = errors.hasErrors();
+		Account accountOnDb = accountService.findById(account.getUsername());
+		Account accountWithEmail = accountService.findByEmail(account.getEmail());
+		String dbEmail = accountOnDb.getEmail();
+		String tempEmail = account.getEmail();
+		boolean isExistedEmail = accountWithEmail != null && !dbEmail.equals(tempEmail);
+		if (isErrors || isExistedEmail) {
+			if (isErrors) {
+				model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
+			}
+			if (isExistedEmail) {
+				model.addAttribute("errorEmail", "Email này đã tồn tại");
+				model.addAttribute("isExistEmail", true);
+			}
+			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ADMIN_UPDATE);
+			return ViewConstraint.VIEW_ADMIN_ADMIN_UPDATE;
+		}
+
+		String avatar = fileStorageService.saveImage(file);
+		if (avatar != null) {
+			accountOnDb.setPhoto(avatar);
+		}
+		accountOnDb.setEmail(account.getEmail());
+		accountOnDb.setName(account.getName());
+		accountOnDb.setGender(account.isGender());
+		accountOnDb.setBirthday(account.getBirthday());
+		accountOnDb.setPhone(account.getPhone());
+		accountOnDb.setAddress(account.getAddress());
+
+		accountService.save(accountOnDb);
+		reAttributes.addFlashAttribute("message", "Cập nhật tài khoản" + account.getUsername() + " thành công!");
+		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ADMIN);
 	}
 
 //	@PostMapping(ViewConstraint.URL_ADMIN_ADMIN_DELETE)

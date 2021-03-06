@@ -17,7 +17,7 @@
 <meta name="author" content="pixelstrap">
 <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
 <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
-<title>HOPE - INSERT ADMIN</title>
+<title>HOPE - INSERT MANAGER</title>
 <!-- Google font-->
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -77,7 +77,7 @@
 					<div class="page-header">
 						<div class="row">
 							<div class="col-lg-6">
-								<h3>FORM INSERT ACCOUNT</h3>
+								<h3>FORM INSERT MANAGER</h3>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item">
 										<a href="<%=URL_ADMIN_HOME%>">Home</a>
@@ -134,9 +134,9 @@
 								<div class="col-sm-12">
 									<div class="card">
 										<div class="card-header">
-											<h5>INSERT ADMIN</h5>
+											<h5>INSERT MANAGER</h5>
 										</div>
-										<form:form class="theme-form ${error ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="account" method="post" enctype="multipart/form-data">
+										<form:form class="theme-form ${(error || isExistUsername || isExistEmail) ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="account" method="post" enctype="multipart/form-data">
 											<div class="card-body datetime-picker">
 												<c:if test="${message != null}">
 													<div class="alert alert-success dark" role="alert">
@@ -160,8 +160,8 @@
 													<div class="col-sm-9">
 														<form:input path="username" class="form-control" required="required" minlength="5" maxlength="20" />
 														<form:errors path="username" class="invalid-feedback" />
-														<c:if test="${isExist}">
-															<div class="invalid-feedback">${error}</div>
+														<c:if test="${isExistUsername}">
+															<div class="invalid-feedback">${errorUsername}</div>
 														</c:if>
 													</div>
 												</div>
@@ -170,6 +170,9 @@
 													<div class="col-sm-9">
 														<form:input type="email" path="email" class="form-control" required="required" />
 														<form:errors path="email" class="invalid-feedback" />
+														<c:if test="${isExistEmail}">
+															<div class="invalid-feedback">${errorEmail}</div>
+														</c:if>
 													</div>
 												</div>
 												<div class="form-group row">
