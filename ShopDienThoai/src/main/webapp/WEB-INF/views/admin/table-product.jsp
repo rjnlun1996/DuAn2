@@ -152,7 +152,7 @@
 																<button class="btn btn-pill btn-outline-primary btn-sm"
 																	type="button">View</button> <a
 																class="btn btn-pill btn-outline-success btn-sm"
-																href="/ho-manager/product/update?id=${product.id}"">Edit</a>
+																href="<%=URL_ADMIN_PRODUCT_UPDATE%>?id=${product.id}"">Edit</a>
 																<button
 																	class="btn btn-pill btn-outline-danger btn-sm delete-item"
 																	data-id="${product.id}" data-name="${product.name}">Delete</button>

@@ -71,4 +71,9 @@ public class IProductService implements ProductService{
 		// TODO Auto-generated method stub
 		return productRepository.findByEnabledTrue();
 	}
+
+	@Override
+	public Product findAllByName(String name) {
+		return productRepository.findByName(name);
+	}
 }
