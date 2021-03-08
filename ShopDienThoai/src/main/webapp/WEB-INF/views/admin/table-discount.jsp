@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="static com.hitech.constraints.ViewConstraint.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,8 +27,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/flag-icon.css">
 <!-- Feather icon-->
 <link rel="stylesheet" type="text/css" href="/assets/css/feather-icon.css">
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/feather-icon.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/feather-icon.css">
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
@@ -74,7 +74,7 @@
 						<div class="col-xl-12">
 							<div class="card">
 								<div class="card-header">
-									<h5>List Admin</h5>
+									<h5>LIST DISCOUNT</h5>
 									<div class="card-header-right">
 										<ul class="list-unstyled card-option">
 											<li>
@@ -103,58 +103,43 @@
 										<table class="table table-bordernone">
 											<thead>
 												<tr>
-													<th scope="col">Name</th>
-													<th scope="col">Username</th>
-													<th scope="col">Gender</th>
-													<th scope="col">Email</th>
-													<th scope="col">Phone</th>
+													<th scope="col">Id</th>
+													<th scope="col">Product</th>
+													<th scope="col">Percent</th>
+													<th scope="col">Current</th>
 													<th scope="col"></th>
 												</tr>
 											</thead>
 											<tbody>
-												<c:forEach var="acc" items="${list}">
+												<c:forEach var="dis" items="${list}">
 													<tr>
 														<td>
+															<span>${dis.id}</span>
+														</td>
+														<td>
 															<div class="d-flex">
-																<img
-																	class="img-radius img-60 align-top m-r-15 rounded-circle"
-																	src="/images/avatars/${acc.photo}" alt="">
+																<img class="img-radius img-100 align-top m-r-15" src="/images/Iphone/${dis.product.photo}" alt="">
 																<div class="d-flex flex-column justify-content-center">
-																	<h6 class="f-w-600">${acc.name}</h6>
+																	<h6 class="f-w-600">${dis.product.name}</h6>
 																</div>
 															</div>
 														</td>
 														<td>
-															<span>${acc.username}</span>
+															<span>${dis.percents}</span>
 														</td>
 														<td>
-															<c:if test="${acc.gender}">
-																<span class="badge badge-pill pill-badge-primary">Male</span>
+															<c:if test="${dis.current}">
+																<span class="badge badge-success  f-12">NOW</span>
 															</c:if>
-															<c:if test="${!acc.gender}">
-																<span class="badge badge-pill pill-badge-success">Female</span>
+															<c:if test="${!dis.current}">
+																<span class="badge badge-danger f-12">${dis.createdAt}</span>
 															</c:if>
 														</td>
 														<td>
-															<span>${acc.email}</span>
-														</td>
-														<td>
-															<span>${acc.phone}</span>
-														</td>
-														<td>
-															<%-- <button class="btn btn-pill btn-outline-primary btn-sm" type="button">View</button>
-															<button class="btn btn-pill btn-outline-success btn-sm" type="button">Edit</button>
-															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${acc.username}">Delete</button> --%>
 
-															<button class="btn btn-pill btn-outline-primary btn-sm"
-																type="button">View</button>
-															<button class="btn btn-pill btn-outline-success btn-sm"
-																type="button">Edit</button>
-															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${acc.username}">Delete</button>
-															<%-- <form method="post" action="/ho-manager/admin/delete">
-																<input type="hidden" name="username" value="${acc.username}"/>
-																<button class="btn btn-pill btn-outline-danger btn-sm" type="submit">Delete</button>
-															</form> --%>
+															<button class="btn btn-pill btn-outline-primary btn-sm" type="button">View</button>
+															<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_DISCOUNT_UPDATE%>?id=${dis.id}"">Edit</a>
+															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${dis.id}">Delete</button>
 
 														</td>
 													</tr>
@@ -188,7 +173,7 @@
 	<script src="/assets/js/sidebar-menu.js"></script>
 	<script src="/assets/js/config.js"></script>
 	<!-- Plugins JS start-->
-	
+
 	<script src="/assets/js/dashboard/default.js"></script>
 	<script src="/assets/js/notify/index.js"></script>
 	<script src="/assets/js/chat-menu.js"></script>
@@ -205,7 +190,7 @@
 			$('.delete-item').click(function() {
 				swal({
 					  title: "Thông báo!",
-					  text: "Bạn có chắc chắn muôn xóa người dùng này không",
+					  text: "Bạn có chắc chắn muôn xóa khuyến mãi này không",
 					  icon: "warning",
 					  buttons: true,
 					  dangerMode: true,
@@ -213,16 +198,16 @@
 					.then((willDelete) => {
 							if(willDelete == true){
 								$.ajax({
-									url : "/ho-manager/admin/delete",
+									url : "<%=URL_ADMIN_DISCOUNT_DELETE%>",
 									method : "POST",
 									data : {
-										username : $(this).data('id')
+										id : $(this).data('id')
 									},
 									success : function(data) {
 										if(data == true){
 											swal("Thông báo!", "Bạn đã xóa thành công!", "success").then(() => location.reload());
 										}else{
-											swal("Thông báo!", "Không thể xóa người dùng này!", "danger");
+											swal("Thông báo!", "Không thể xóa khuyến mãi này!", "danger");
 										}
 									},
 									error : function() {

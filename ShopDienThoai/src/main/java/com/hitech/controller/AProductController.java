@@ -1,6 +1,10 @@
 package com.hitech.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,6 +61,7 @@ public class AProductController {
 		model.addAttribute("listProduct", productService.findAllByEnabledTrue());
 		return ViewConstraint.VIEW_ADMIN_PRODUCT;
 	}
+
 	@PostMapping(ViewConstraint.URL_ADMIN_PRODUCT_INSERT)
 	public Object insert(Model model, 
 			@Validated @ModelAttribute("product") Product product,
@@ -106,5 +111,18 @@ public class AProductController {
 	@ResponseBody
 	public boolean delete1(Model model, @RequestParam int id) {
 		return productService.deleteByEnable(id);
+	}
+	
+	@GetMapping(ViewConstraint.URL_ADMIN_PRODUCT + "search")
+	@ResponseBody
+	public Object table(Model model, @RequestParam(defaultValue = "") String id) {
+		List<Map<String, Object>> search = new ArrayList<>();
+		for(Product pt : productService.findAll()) {
+			Map<String, Object> map = new HashMap<>();
+			map.put("id", pt.getId());
+			map.put("text", pt.getName());
+			search.add(map);
+		}
+		return search;
 	}
 }

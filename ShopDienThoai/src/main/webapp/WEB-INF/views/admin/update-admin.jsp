@@ -174,6 +174,13 @@ String sb = String.valueOf(request.getAttribute(MENU));
 														<form:errors path="name" class="invalid-feedback" />
 													</div>
 												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="password">Passowrd</label>
+													<div class="col-sm-9">
+														<form:input path="password" class="form-control" />
+														<form:errors path="password" class="invalid-feedback" />
+													</div>
+												</div>
 												<fieldset class="form-group">
 													<div class="row">
 														<label class="col-form-label col-sm-3 pt-0">Gender</label>
