@@ -7,6 +7,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="static com.hitech.constraints.ViewConstraint.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -109,7 +110,17 @@
 									</div>
 									<div class="card-body p-0">
 										<div class="sales-product-table table-responsive">
-										<table class="table table-bordernone">
+											<table class="table table-bordernone">
+												<c:if test="${message != null}">
+													<div class="alert alert-success dark" role="alert">
+														<p>${message}</p>
+													</div>
+												</c:if>
+												<c:if test="${error != null}">
+													<div class="alert alert-secondary dark" role="alert">
+														<p>${error}</p>
+													</div>
+												</c:if>
 												<thead>
 													<tr class="text-center">
 														<th scope="col">STT</th>
@@ -129,11 +140,9 @@
 															<c:set var="producer" value="${product.producer}" />
 															<td>${count}</td>
 															<td><img class="img-radius img-80 align-top m-r-15"
-																src="/images/${product.photo}"
-																alt="loading"></td>
+																src="/images/products/${product.photo}" alt="loading"></td>
 															<td>${product.name}</td>
-															<td><img
-																class="img-radius img-80 align-top m-r-15"
+															<td><img class="img-radius img-80 align-top m-r-15"
 																src="/images/Producer/${product.producer.logo}"
 																alt="loading" style="box-shadow: unset !important"></td>
 															<td>${product.salePrice}</td>
@@ -141,12 +150,12 @@
 															<td>${product.description}</td>
 															<td>
 																<button class="btn btn-pill btn-outline-primary btn-sm"
-																	type="button">View</button>
-																<button class="btn btn-pill btn-outline-success btn-sm"
-																	type="button">Edit</button>
+																	type="button">View</button> <a
+																class="btn btn-pill btn-outline-success btn-sm"
+																href="/ho-manager/product/update?id=${product.id}"">Edit</a>
 																<button
 																	class="btn btn-pill btn-outline-danger btn-sm delete-item"
-																	data-id="${product.id}"  data-name="${product.name}">Delete</button>
+																	data-id="${product.id}" data-name="${product.name}">Delete</button>
 
 															</td>
 														</tr>
@@ -169,50 +178,49 @@
 		</div>
 	</div>
 	<!-- latest jquery-->
-		<script src="/assets/js/jquery-3.2.1.min.js"></script>
-		<!-- Bootstrap js-->
-		<script src="/assets/js/bootstrap/popper.min.js"></script>
-		<script src="/assets/js/bootstrap/bootstrap.js"></script>
-		<!-- feather icon js-->
-		<script src="/assets/js/icons/feather-icon/feather.min.js"></script>
-		<script src="/assets/js/icons/feather-icon/feather-icon.js"></script>
-		<!-- Sidebar jquery-->
-		<script src="/assets/js/sidebar-menu.js"></script>
-		<script src="/assets/js/config.js"></script>
-		<!-- Plugins JS start-->
-		<script src="/assets/js/chart/chartjs/chart.min.js"></script>
-		<script src="/assets/js/chart/chartist/chartist.js"></script>
-		<script src="/assets/js/chart/chartist/chartist-plugin-tooltip.js"></script>
-		<script src="/assets/js/chart/knob/knob.min.js"></script>
-		<script src="/assets/js/chart/knob/knob-chart.js"></script>
-		<script src="/assets/js/prism/prism.min.js"></script>
-		<script src="/assets/js/clipboard/clipboard.min.js"></script>
-		<script src="/assets/js/counter/jquery.waypoints.min.js"></script>
-		<script src="/assets/js/counter/jquery.counterup.min.js"></script>
-		<script src="/assets/js/counter/counter-custom.js"></script>
-		<script src="/assets/js/custom-card/custom-card.js"></script>
-		<script src="/assets/js/notify/bootstrap-notify.min.js"></script>
-		<script src="/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js"></script>
-		<script
-			src="/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
-		<script src="/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
-		<script
-			src="/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
-		<script src="/assets/js/vector-map/map/jquery-jvectormap-au-mill.js"></script>
-		<script
-			src="/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
-		<script src="/assets/js/vector-map/map/jquery-jvectormap-in-mill.js"></script>
-		<script src="/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
-		<script src="/assets/js/dashboard/default.js"></script>
-		<script src="/assets/js/notify/index.js"></script>
-		<script src="/assets/js/chat-menu.js"></script>
-		<script src="/assets/js/tooltip-init.js"></script>
-		<script src="/assets/js/animation/wow/wow.min.js"></script>
-		<!-- Plugins JS Ends-->
-		<!-- Theme js-->
-		<script src="/assets/js/script.js"></script>
-		<script src="/assets/js/theme-customizer/customizer.js"></script>
-		<script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
+	<script src="/assets/js/jquery-3.2.1.min.js"></script>
+	<!-- Bootstrap js-->
+	<script src="/assets/js/bootstrap/popper.min.js"></script>
+	<script src="/assets/js/bootstrap/bootstrap.js"></script>
+	<!-- feather icon js-->
+	<script src="/assets/js/icons/feather-icon/feather.min.js"></script>
+	<script src="/assets/js/icons/feather-icon/feather-icon.js"></script>
+	<!-- Sidebar jquery-->
+	<script src="/assets/js/sidebar-menu.js"></script>
+	<script src="/assets/js/config.js"></script>
+	<!-- Plugins JS start-->
+	<script src="/assets/js/chart/chartjs/chart.min.js"></script>
+	<script src="/assets/js/chart/chartist/chartist.js"></script>
+	<script src="/assets/js/chart/chartist/chartist-plugin-tooltip.js"></script>
+	<script src="/assets/js/chart/knob/knob.min.js"></script>
+	<script src="/assets/js/chart/knob/knob-chart.js"></script>
+	<script src="/assets/js/prism/prism.min.js"></script>
+	<script src="/assets/js/clipboard/clipboard.min.js"></script>
+	<script src="/assets/js/counter/jquery.waypoints.min.js"></script>
+	<script src="/assets/js/counter/jquery.counterup.min.js"></script>
+	<script src="/assets/js/counter/counter-custom.js"></script>
+	<script src="/assets/js/custom-card/custom-card.js"></script>
+	<script src="/assets/js/notify/bootstrap-notify.min.js"></script>
+	<script src="/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js"></script>
+	<script
+		src="/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-au-mill.js"></script>
+	<script
+		src="/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-in-mill.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
+	<script src="/assets/js/dashboard/default.js"></script>
+	<script src="/assets/js/notify/index.js"></script>
+	<script src="/assets/js/chat-menu.js"></script>
+	<script src="/assets/js/tooltip-init.js"></script>
+	<script src="/assets/js/animation/wow/wow.min.js"></script>
+	<!-- Plugins JS Ends-->
+	<!-- Theme js-->
+	<script src="/assets/js/script.js"></script>
+	<script src="/assets/js/theme-customizer/customizer.js"></script>
+	<script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
 	<script>
 	 $(document).ready(function(){
 			$('.delete-item').click(function(){
@@ -228,13 +236,17 @@
 				.then((willDelete) => {
 				  if(willDelete == true){
 					  $.ajax({
-						  url: "<%=URL_ADMIN_PRODUCT_DELETE %>",
+						  url: "<%=URL_ADMIN_PRODUCT_DELETE%>",
 						  method: "POST",
 						  data: {
 							  id: id
 						  },
 						  success: function(data){
-							 if(data == true) location.reload();
+							  if(data == true){
+									swal("Thông báo!", "Bạn đã xóa thành công!", "success").then(() => location.reload());
+								}else{
+									swal("Thông báo!", "Không thể xóa người dùng này!", "danger");
+								}
 						  },
 	 					  error: function(data){
 							  

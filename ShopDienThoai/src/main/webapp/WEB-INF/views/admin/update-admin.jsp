@@ -301,7 +301,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 											</form> -->
 											</div>
 											<div class="card-footer">
-												<button class="btn btn-primary" type="submit">Create</button>
+												<button class="btn btn-primary" type="submit">Update</button>
 												<button class="btn btn-secondary">Cancel</button>
 											</div>
 										</form:form>

@@ -36,7 +36,7 @@ public class IFileStorageService implements FileStorageService {
 	public String saveProductImage(MultipartFile file) throws IOException {
 		String finalFile = null;
 		if(!file.isEmpty()) {
-			Path root = Paths.get(AVATAR);
+			Path root = Paths.get(PRODUCT);
 			
 			String filename = file.getOriginalFilename();
 			String extention = filename.substring(filename.lastIndexOf("."));

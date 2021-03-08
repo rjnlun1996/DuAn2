@@ -17,7 +17,7 @@
 <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
 <link rel="shortcut icon" href="/assets/images/favicon.png"
 	type="image/x-icon">
-<title>HOPE - INSERT CATEGORY</title>
+<title>HOPE - INSERT PRODUCT</title>
 <!-- Google font-->
 <link
 	href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900"
@@ -83,7 +83,7 @@
 					<div class="page-header">
 						<div class="row">
 							<div class="col-lg-6">
-								<h3>FORM INSERT CATEGORIES</h3>
+								<h3>FORM INSERT PRODUCT</h3>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="<%=URL_ADMIN_HOME%>">Home</a>
 									</li>
@@ -138,7 +138,7 @@
 										</div>
 										<form:form
 											class="theme-form ${error == true ? 'was-validated' : '' }"
-											modelAttribute="product" novalidate="novalidate">
+											modelAttribute="product" novalidate="novalidate" method="post" enctype="multipart/form-data">
 											<div class="card-body">
 
 												<c:if test="${message != null}">
@@ -162,10 +162,8 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="category">Category</label>
 													<div class="col-sm-9">
-														<form:select path="category" class="form-control">
-															<c:forEach items="${listCategory}" var="cate">
-																<form:option value="${cate}">${cate.name }</form:option>
-															</c:forEach>
+														<form:select path="category"  class="form-control">
+															<form:options items="${listCategory}" itemLabel="name"></form:options>
 														</form:select>
 														<form:errors path="category" class="invalid-feedback" />
 													</div>
@@ -180,12 +178,10 @@
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="producer">Producer</label>
+													<label class="col-sm-3 col-form-label" for="producer" >Producer</label>
 													<div class="col-sm-9">
 														<form:select path="producer" class="form-control">
-															<c:forEach items="${listProducer}" var="pcer">
-																<form:option value="${pcer}">${pcer.name }</form:option>
-															</c:forEach>
+															<form:options items="${listProducer}" itemLabel="name"></form:options>
 														</form:select>
 														<form:errors path="producer" class="invalid-feedback" />
 													</div>
