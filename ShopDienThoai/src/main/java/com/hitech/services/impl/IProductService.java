@@ -17,8 +17,7 @@ public class IProductService implements ProductService{
 	
 	@Override
 	public List<Product> findAll(){
-		List<Product> list= productRepository.findByEnabledTrue();
-		return list;
+		return productRepository.findAll();
 	}
 
 	@Override
@@ -40,5 +39,11 @@ public class IProductService implements ProductService{
 	public boolean deleteById(Integer id) {
 		productRepository.setEnabledFalse(id);
 		return true;
+	}
+
+	@Override
+	public List<Product> findAllByEnabledTrue() {
+		// TODO Auto-generated method stub
+		return productRepository.findByEnabledTrue();
 	}
 }

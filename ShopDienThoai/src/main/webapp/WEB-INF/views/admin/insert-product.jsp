@@ -1,4 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="static com.hitech.utils.ViewUtils.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +17,7 @@
 <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
 <link rel="shortcut icon" href="/assets/images/favicon.png"
 	type="image/x-icon">
-<title>HOPE - INSERT PRODUCT</title>
+<title>HOPE - INSERT CATEGORY</title>
 <!-- Google font-->
 <link
 	href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900"
@@ -32,28 +36,23 @@
 <!-- Themify icon-->
 <link rel="stylesheet" type="text/css" href="/assets/css/themify.css">
 <!-- Flag icon-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/flag-icon.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/flag-icon.css">
 <!-- Feather icon-->
 <link rel="stylesheet" type="text/css"
 	href="/assets/css/feather-icon.css">
-<!-- Plugins css start-->
-<link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/chartist.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/vector-map.css">
-<!-- Plugins css Ends-->
 <!-- Bootstrap css-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
 <!-- App css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 <link id="color" rel="stylesheet" href="/assets/css/light-1.css"
 	media="screen">
 <!-- Responsive css-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/responsive.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+<style>
+.invalid-feedback {
+	display: block
+}
+</style>
 </head>
 <body>
 	<!-- Loader starts-->
@@ -79,11 +78,177 @@
 			<!-- Left and Right Sidebar Start-->
 			<jsp:include page="layouts/sidebar.jsp"></jsp:include>
 			<!-- Left and Right Sidebar Ends-->
-			<div class="page-body">123</div>
+			<div class="page-body">
+				<div class="container-fluid">
+					<div class="page-header">
+						<div class="row">
+							<div class="col-lg-6">
+								<h3>FORM INSERT CATEGORIES</h3>
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="<%=URL_ADMIN_HOME%>">Home</a>
+									</li>
+
+								</ol>
+							</div>
+							<div class="col-lg-6">
+								<!-- Bookmark Start-->
+								<div class="bookmark pull-right">
+									<ul>
+										<li><a href="#" data-container="body"
+											data-toggle="popover" data-placement="top" title=""
+											data-original-title="Tables"> <i data-feather="inbox"></i>
+										</a></li>
+										<li><a href="#" data-container="body"
+											data-toggle="popover" data-placement="top" title=""
+											data-original-title="Chat"> <i
+												data-feather="message-square"></i>
+										</a></li>
+										<li><a href="#" data-container="body"
+											data-toggle="popover" data-placement="top" title=""
+											data-original-title="Icons"> <i data-feather="command"></i>
+										</a></li>
+										<li><a href="#" data-container="body"
+											data-toggle="popover" data-placement="top" title=""
+											data-original-title="Learning"> <i data-feather="layers"></i>
+										</a></li>
+										<li><a href="#"> <i class="bookmark-search"
+												data-feather="star"></i>
+										</a>
+											<form class="form-inline search-form">
+												<div class="form-group form-control-search">
+													<input type="text" placeholder="Search..">
+												</div>
+											</form></li>
+									</ul>
+								</div>
+								<!-- Bookmark Ends-->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Container-fluid starts-->
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-12 col-xl-12">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="card">
+										<div class="card-header">
+											<h5>INSERT PRODUCT</h5>
+										</div>
+										<form:form
+											class="theme-form ${error == true ? 'was-validated' : '' }"
+											modelAttribute="product" novalidate="novalidate">
+											<div class="card-body">
+
+												<c:if test="${message != null}">
+													<div class="alert alert-success dark" role="alert">
+														<p>${message}</p>
+													</div>
+												</c:if>
+												<c:if test="${error != null}">
+													<div class="alert alert-secondary dark" role="alert">
+														<p>${error}</p>
+													</div>
+												</c:if>
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="name">Name</label>
+													<div class="col-sm-9">
+														<form:input path="name" class="form-control"
+															required="required" minlength="2" maxlength="50" />
+														<form:errors path="name" class="invalid-feedback" />
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="category">Category</label>
+													<div class="col-sm-9">
+														<form:select path="category" class="form-control">
+															<c:forEach items="${listCategory}" var="cate">
+																<form:option value="${cate}">${cate.name }</form:option>
+															</c:forEach>
+														</form:select>
+														<form:errors path="category" class="invalid-feedback" />
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Image</label>
+													<div class="col-sm-9">
+														<div class="img-radius img-80 align-top m-r-15">
+															<img class="img-100" id="photo" src="/assets/images/user/default.png" alt="#">
+														</div>
+														<input name="image" class="form-control" type="file" id="imgInp" accept="image/*">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="producer">Producer</label>
+													<div class="col-sm-9">
+														<form:select path="producer" class="form-control">
+															<c:forEach items="${listProducer}" var="pcer">
+																<form:option value="${pcer}">${pcer.name }</form:option>
+															</c:forEach>
+														</form:select>
+														<form:errors path="producer" class="invalid-feedback" />
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="importPrice">Import
+														Price</label>
+													<div class="col-sm-9">
+														<form:input path="importPrice" class="form-control"
+															required="required" min="1000" max="999999999" />
+														<form:errors path="importPrice" class="invalid-feedback" />
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="salePrice">Sale
+														Price</label>
+													<div class="col-sm-9">
+														<form:input path="salePrice" class="form-control"
+															required="required" min="1000" max="999999999" />
+														<form:errors path="salePrice" class="invalid-feedback" />
+													</div>
+												</div>
+												<fieldset class="form-group row">
+													<label class="col-form-label col-sm-3">Is Special</label>
+													<div class="col-sm-9">
+														<form:checkbox path="special"/>  
+														<form:errors path="special" />
+													</div>
+												</fieldset>
+												<fieldset class="form-group row">
+													<label class="col-form-label col-sm-3">Is Latest</label>
+													<div class="col-sm-9">
+														<form:checkbox path="latest"/>  
+														<form:errors path="latest" />
+													</div>
+												</fieldset>
+												
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="description">Description</label>
+													<div class="col-sm-9">
+														<form:input path="description" class="form-control"
+															required="required" minlength="0" maxlength="99999" />
+														<form:errors path="description" class="invalid-feedback" />
+													</div>
+												</div>
+											</div>
+											<div class="card-footer">
+												<button class="btn btn-primary" type="submit">Create</button>
+												<button class="btn btn-secondary" type="reset">Cancel</button>
+											</div>
+										</form:form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- footer start-->
 			<!-- footer start-->
 			<jsp:include page="layouts/footer.jsp"></jsp:include>
 			<!-- footer end-->
-			
+
 		</div>
 	</div>
 	<!-- latest jquery-->
@@ -113,16 +278,13 @@
 	<script src="/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js"></script>
 	<script
 		src="/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
 	<script src="/assets/js/vector-map/map/jquery-jvectormap-au-mill.js"></script>
 	<script
 		src="/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
 	<script src="/assets/js/vector-map/map/jquery-jvectormap-in-mill.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
 	<script src="/assets/js/dashboard/default.js"></script>
 	<script src="/assets/js/notify/index.js"></script>
 	<script src="/assets/js/chat-menu.js"></script>
@@ -134,6 +296,24 @@
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
 	<!-- login js-->
 	<!-- Plugin used-->
+	<script type="text/javascript">
+		function readURL(input) {
+			if (input.files && input.files[0]) {				
+				var reader = new FileReader();
+
+				reader.readAsDataURL(input.files[0]);
+
+				reader.onload = function(e) {
+					$('#photo').attr('src', e.target.result);
+				}
+
+			}
+		}
+
+		$("#imgInp").change(function() {
+			readURL(this);
+		});
+	</script>
 </body>
 </html>
 <!-- <div class="welcome-popup modal fade" id="loadModal" tabindex="-1"

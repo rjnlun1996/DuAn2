@@ -43,5 +43,11 @@ public class IProducerService implements ProducerService {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public List<Producer> findAllByEnabledTrue() {
+		// TODO Auto-generated method stub
+		return producerRepository.findByEnabledTrue();
+	}
 	
 }

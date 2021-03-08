@@ -12,6 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -29,15 +33,21 @@ public class Product extends BaseEntity implements Serializable{
 	private int id;
 	
 	@Column
+	@NotBlank(message = "Vui lòng nhập Tên Sản Phẩm!")
+	@Size(min = 2, max = 50, message = "Tên Danh Mục phải từ {min} đến {max} kí tự")
 	private String name;
 	
 	@Column
 	private String	photo ;
 	
 	@Column
+	@Min(value=1000,message = "Giá tiền phải lớn hơn {value}")
+	@Max(value=999999999,message = "Giá tiền phải lớn hơn {value}")
 	private long importPrice;
 	
 	@Column
+	@Min(value=1000,message = "Giá tiền phải lớn hơn {value}")
+	@Max(value=999999999,message = "Giá tiền phải lớn hơn {value}")
 	private long salePrice;
 	
 	@Column

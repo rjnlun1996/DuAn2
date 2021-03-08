@@ -15,7 +15,7 @@ import com.hitech.services.FileStorageService;
 public class IFileStorageService implements FileStorageService {
 	
 	public static final String AVATAR = "src\\main\\webapp\\images\\avatars\\";
-
+	public static final String PRODUCT = "src\\main\\webapp\\images\\products\\";
 	@Override
 	public String saveImage(MultipartFile file) throws IOException {
 		String finalFile = null;
@@ -32,5 +32,20 @@ public class IFileStorageService implements FileStorageService {
 		}
 		return finalFile;
 	}
-
+	@Override
+	public String saveProductImage(MultipartFile file) throws IOException {
+		String finalFile = null;
+		if(!file.isEmpty()) {
+			Path root = Paths.get(AVATAR);
+			
+			String filename = file.getOriginalFilename();
+			String extention = filename.substring(filename.lastIndexOf("."));
+			finalFile = UUID.randomUUID() + extention;
+			
+			if (!Files.exists(root)) Files.createDirectory(root);
+			
+			Files.copy(file.getInputStream(), root.resolve(finalFile));
+		}
+		return finalFile;
+	}
 }

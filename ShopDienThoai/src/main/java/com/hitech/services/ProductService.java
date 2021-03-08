@@ -1,7 +1,10 @@
 package com.hitech.services;
 
+import java.util.List;
+
 import com.hitech.entities.Product;
 
-public interface ProductService extends IBaseService<Product, Integer> {
 
+public interface ProductService extends IBaseService<Product, Integer> {
+	List<Product> findAllByEnabledTrue();
 }
