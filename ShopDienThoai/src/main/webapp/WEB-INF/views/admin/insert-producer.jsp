@@ -187,7 +187,7 @@
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="salePrice">Email</label>
+													<label class="col-sm-3 col-form-label" for="salePrice">Phone</label>
 													<div class="col-sm-9">
 														<form:input path="phone" class="form-control" 
 															required="required" minlength="10" maxlength="15" />

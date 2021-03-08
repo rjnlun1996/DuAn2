@@ -94,7 +94,7 @@
 							<div class="col-xl-12">
 								<div class="card">
 									<div class="card-header">
-										<h5>List Categories</h5>
+										<h5>List Product</h5>
 										<div class="card-header-right">
 											<ul class="list-unstyled card-option">
 												<li><i class="icofont icofont-double-left"></i></li>
@@ -137,13 +137,12 @@
 													<c:forEach items="${listProduct}" var="product">
 														<tr>
 															<c:set var="count" value="${count+1 }" />
-															<c:set var="producer" value="${product.producer}" />
 															<td>${count}</td>
 															<td><img class="img-radius img-80 align-top m-r-15"
 																src="/images/products/${product.photo}" alt="loading"></td>
 															<td>${product.name}</td>
 															<td><img class="img-radius img-80 align-top m-r-15"
-																src="/images/Producer/${product.producer.logo}"
+																src="/images/producer/${product.producer.logo}"
 																alt="loading" style="box-shadow: unset !important"></td>
 															<td>${product.salePrice}</td>
 															<td>${product.views}</td>
@@ -228,7 +227,7 @@
 				var name = $(this).data('name');
 				swal({
 				  title: "Thông báo?",
-				  text: "Bạn có chắc chắn xóa danh mục " + name  + " không?",
+				  text: "Bạn có chắc chắn xóa " + name  + " không?",
 				  icon: "warning",
 				  buttons: true,
 				  dangerMode: true,
