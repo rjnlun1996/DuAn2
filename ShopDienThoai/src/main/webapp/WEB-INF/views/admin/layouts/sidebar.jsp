@@ -36,7 +36,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 						<li class="<%=renderSubmenuClass(sb, URL_ADMIN_ADMIN)%>">
 							<a href="<%=URL_ADMIN_ADMIN%>">
 								<i class="fa fa-circle"></i>
-								Table Admin
+								Views Manager
 							</a>
 						</li>
 						<li class="<%=renderSubmenuClass(sb, URL_ADMIN_ADMIN_INSERT)%>">
@@ -52,14 +52,14 @@ String sb = String.valueOf(request.getAttribute(MENU));
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_CUSTOMER)%>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="sidebar"></i>
-					<span>Customers Manager</span>
+					<span>Customers</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
 					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_CUSTOMER)%>">
 						<a href="<%=URL_ADMIN_CUSTOMER%>">
 							<i class="fa fa-circle"></i>
-							Table Customer
+							Views Customer
 						</a>
 					</li>
 					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_CUSTOMER_INSERT)%>">
@@ -139,14 +139,14 @@ String sb = String.valueOf(request.getAttribute(MENU));
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_CATEGORY)%>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="layout"></i>
-					<span>Categories Manager</span>
+					<span>Categories</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
 					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_CATEGORY)%>">
 						<a href="<%=URL_ADMIN_CATEGORY%>">
 							<i class="fa fa-circle"></i>
-							Table Category
+							Views Category
 						</a>
 					</li>
 					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_CATEGORY_INSERT)%>">
@@ -161,14 +161,14 @@ String sb = String.valueOf(request.getAttribute(MENU));
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_PRODUCER)%>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="align-justify"></i>
-					<span>Producers Manager</span>
+					<span>Producers</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
 					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_PRODUCER)%>">
 						<a href="<%=URL_ADMIN_PRODUCER%>">
 							<i class="fa fa-circle"></i>
-							Table Producers
+							Views Producers
 						</a>
 					</li>
 					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_PRODUCER_INSERT)%>">
@@ -183,14 +183,14 @@ String sb = String.valueOf(request.getAttribute(MENU));
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_PRODUCT)%>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="cloud-lightning"></i>
-					<span>Products Manager</span>
+					<span>Products</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
 					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_PRODUCT)%>">
 						<a href="<%=URL_ADMIN_PRODUCT%>">
 							<i class="fa fa-circle"></i>
-							Table Products
+							Views Products
 						</a>
 					</li>
 					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_PRODUCT_INSERT)%>">
@@ -205,7 +205,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_IMAGE)%>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="cloud-lightning"></i>
-					<span>Images Manager</span>
+					<span>Images</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
@@ -227,7 +227,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_STATUS)%>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="cloud-lightning"></i>
-					<span>Status Manager</span>
+					<span>Status</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
@@ -249,14 +249,14 @@ String sb = String.valueOf(request.getAttribute(MENU));
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_ORDER)%>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="cloud-lightning"></i>
-					<span>Order Manager</span>
+					<span>Order</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
 					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_ORDER)%>">
 						<a href="<%=URL_ADMIN_ORDER%>">
 							<i class="fa fa-circle"></i>
-							Table Order
+							Views Order
 						</a>
 					</li>
 					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_ORDER_INSERT)%>">
@@ -277,7 +277,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_STATUS_ORDER)%>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="cloud-lightning"></i>
-					<span>Status Order Manager</span>
+					<span>Status Order</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">
@@ -299,7 +299,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_DISCOUNT)%>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="cloud-lightning"></i>
-					<span>Discount Manager</span>
+					<span>Discount</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
 				<ul class="sidebar-submenu">

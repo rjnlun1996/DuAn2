@@ -97,5 +97,16 @@ public class IAccountService implements AccountService{
 		}
 	}
 
+	@Override
+	public Account findByEmail(String email) {
+		return accountRepository.findByEmail(email);
+		
+	}
+
+	@Override
+	public List<Account> findAllManagerByEnabledTrue() {
+		return accountRepository.findByLevelAndEnabledTrue(1);
+	}
+
 
 }
