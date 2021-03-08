@@ -62,5 +62,27 @@ public class ACategoryController {
 		return categoryService.deleteByEnabled(id);
 	}
 	
+	@GetMapping(ViewConstraint.URL_ADMIN_CATEGORY_UPDATE)
+	public String updateGet(Model model, @RequestParam Integer id) {
+		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CATEGORY_UPDATE);
+		model.addAttribute("category", categoryService.findById(id));
+		return ViewConstraint.VIEW_ADMIN_CATEGORY_UPDATE; 
+	}
+	
+	@PostMapping(ViewConstraint.URL_ADMIN_CATEGORY_UPDATE)
+	public Object update(Model model, 
+			@Validated @ModelAttribute("category") Category category,
+			BindingResult errors,
+			RedirectAttributes ra) {	
+		if(errors.hasErrors()) {
+			model.addAttribute("error", "Vui lòng nhập tên danh mục!");
+			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CATEGORY_UPDATE);
+			return ViewConstraint.VIEW_ADMIN_CATEGORY_UPDATE;
+		}
+		categoryService.update(category);
+		ra.addFlashAttribute("message", "Cập nhật danh mục " + category.getName() + " thành công!");
+		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_CATEGORY_UPDATE + "?id=" + category.getId());
+	}
+	
 
 }

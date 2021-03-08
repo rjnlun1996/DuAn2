@@ -17,8 +17,10 @@ public interface ViewConstraint {
 	public static final String URL_ADMIN_CATEGORY = "/ho-manager/categories/";
 	public static final String URL_ADMIN_CATEGORY_INSERT = URL_ADMIN_CATEGORY + "insert";
 	public static final String URL_ADMIN_CATEGORY_DELETE = URL_ADMIN_CATEGORY + "delete";
+	public static final String URL_ADMIN_CATEGORY_UPDATE = URL_ADMIN_CATEGORY + "update";
 	public static final String VIEW_ADMIN_CATEGORY = "admin/table-category";
-	public static final String VIEW_ADMIN_CATEGORY_INSERT = "admin/insert-category";	
+	public static final String VIEW_ADMIN_CATEGORY_INSERT = "admin/insert-category";
+	public static final String VIEW_ADMIN_CATEGORY_UPDATE = "admin/update-category";
 	
 	public static final String URL_ADMIN_CUSTOMER = "/ho-manager/customer/";
 	public static final String URL_ADMIN_CUSTOMER_INSERT = URL_ADMIN_CUSTOMER + "insert";
@@ -47,9 +49,9 @@ public interface ViewConstraint {
 	public static final String VIEW_ADMIN_PRODUCER_INSERT = "admin/insert-producer";
 	
 	public static final String URL_ADMIN_STATUS = "/ho-manager/status/";
-	public static final String URL_ADMIN_STATUS_INSERT = URL_ADMIN_ADMIN + "insert";
-	public static final String URL_ADMIN_STATUS_DELETE = URL_ADMIN_ADMIN + "delete";
-	public static final String URL_ADMIN_STATUS_UPDATE = URL_ADMIN_ADMIN + "update";
+	public static final String URL_ADMIN_STATUS_INSERT = URL_ADMIN_STATUS + "insert";
+	public static final String URL_ADMIN_STATUS_DELETE = URL_ADMIN_STATUS + "delete";
+	public static final String URL_ADMIN_STATUS_UPDATE = URL_ADMIN_STATUS + "update";
 	public static final String VIEW_ADMIN_STATUS = "admin/table-status";
 	public static final String VIEW_ADMIN_STATUS_INSERT = "admin/insert-status";	
 	public static final String VIEW_ADMIN_STATUS_UPDATE = "admin/update-status";

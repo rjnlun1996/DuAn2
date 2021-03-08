@@ -13,7 +13,7 @@ import com.hitech.entities.Category;
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
 	
 	/**
-	 * phương thức đẻ lấy tất cả category có thuộc tính Enabled = true
+	 * phương thức để lấy tất cả category có thuộc tính Enabled = true
 	 * @return
 	 */
 	List<Category> findByEnabledTrue();

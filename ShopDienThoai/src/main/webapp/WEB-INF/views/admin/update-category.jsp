@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page import="static com.hitech.utils.ViewUtils.*"%>
+<%
+String sb = String.valueOf(request.getAttribute(MENU));
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,13 +74,10 @@
 					<div class="page-header">
 						<div class="row">
 							<div class="col-lg-6">
-								<h3>FORM INSERT ACCOUNT</h3>
+								<h3>FORM UPDATE CATEGORIES</h3>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item">
-										<a href="index-1.html">Home</a>
-									<li class="breadcrumb-item">Forms</li>
-									<li class="breadcrumb-item">Form Widgets</li>
-									<li class="breadcrumb-item active">Default Forms</li>
+										<a href="<%=URL_ADMIN_HOME%>">Home</a>
 									</li>
 
 								</ol>
@@ -131,9 +132,23 @@
 								<div class="col-sm-12">
 									<div class="card">
 										<div class="card-header">
-											<h5>INSERT ADMIN</h5>
+											<h5>UPDATE CATEGORIES</h5>
 										</div>
-										<form:form class="theme-form" modelAttribute="account" method="post">
+										<form:form
+											class="theme-form ${error == true ? 'was-validated' : '' }"
+											modelAttribute="category" method="post" novalidate="novalidate">
+											<div class="card-body">
+
+												<c:if test="${message != null}">
+													<div class="alert alert-success dark" role="alert">
+														<p>${message}</p>
+													</div>
+												</c:if>
+												<c:if test="${error != null}">
+													<div class="alert alert-secondary dark" role="alert">
+														<p>${error}</p>
+													</div>
+												</c:if>
 											<div class="card-body">
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="">Name</label>
@@ -142,145 +157,11 @@
 														<%-- <form:errors path="name" /> --%>
 													</div>
 												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Username</label>
-													<div class="col-sm-9">
-														<form:input path="username" class="form-control" />
-														<%-- <form:errors path="username" /> --%>
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Email</label>
-													<div class="col-sm-9">
-														<form:input path="email" class="form-control" />
-														<%-- <form:errors path="email" /> --%>
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Password</label>
-													<div class="col-sm-9">
-														<form:input path="password" class="form-control" />
-														<%-- <form:errors path="password" /> --%>
-													</div>
-												</div>
-												<fieldset class="form-group">
-													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">Gender</label>
-														<div class="col-sm-9">
-															<div class="radio radio-primary">
-																<form:radiobutton path="gender" value="0" class="form-check-input" />
-																<label for="gender1">Male</label>
-															</div>
-															<div class="radio radio-primary">
-																<form:radiobutton path="gender" value="1" class="form-check-input" />
-																<label for="gender2">Female</label>
-															</div>
-															<%-- <form:errors path="gender" /> --%>
-														</div>
-													</div>
-												</fieldset>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Birthday</label>
-													<div class="col-sm-9">
-														<form:input path="birthday" class="form-control" />
-														<%-- <form:errors path="birthday" /> --%>
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Address</label>
-													<div class="col-sm-9">
-														<form:input path="address" class="form-control" />
-														<%-- <form:errors path="address" /> --%>
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Phone</label>
-													<div class="col-sm-9">
-														<form:input path="phone" class="form-control" />
-														<%-- <form:errors path="phone" /> --%>
-													</div>
-												</div>
-												<fieldset class="form-group">
-													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">IsAdmin</label>
-														<div class="col-sm-9">
-															<div class="radio radio-primary">
-																<form:radiobutton path="isAdmin" value="0" class="form-check-input" />
-																<label for="isAdmin1">Customer</label>
-															</div>
-															<div class="radio radio-primary">
-																<form:radiobutton path="isAdmin" value="1" class="form-check-input" />
-																<label for="isAdmin2">Admin</label>
-															</div>
-															<%-- <form:errors path="isAdmin" /> --%>
-														</div>
-													</div>
-												</fieldset>
-
-												<!-- <form class="theme-form">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="name">Name</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="name" type="text" placeholder="Name">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="username">Username</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="username" type="text" placeholder="Username">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="email">Email</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="email" type="email" placeholder="Email">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="password">Password</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="password" type="password" placeholder="Password">
-													</div>
-												</div>
-												<fieldset class="form-group">
-													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">Gender</label>
-														<div class="col-sm-9">
-															<div class="radio radio-primary">
-																<input id="radio11" type="radio" name="radio1" value="option1">
-																<label for="radio11">Male</label>
-															</div>
-															<div class="radio radio-primary">
-																<input id="radio22" type="radio" name="radio1" value="option1">
-																<label for="radio22">Female</label>
-															</div>
-															
-														</div>
-													</div>
-												</fieldset>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="birthday">Birthday</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="birthday" type="text" placeholder="Birthday">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="address">Address</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="address" type="text" placeholder="Address">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="phone">Phone</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="phone" type="text" placeholder="Phone">
-													</div>
-												</div>
 												
-											</form> -->
-											</div>
+													</div>
+											
 											<div class="card-footer">
-												<button class="btn btn-primary" type="submit">Create</button>
+												<button class="btn btn-primary" type="submit">Update</button>
 												<button class="btn btn-secondary">Cancel</button>
 											</div>
 										</form:form>
