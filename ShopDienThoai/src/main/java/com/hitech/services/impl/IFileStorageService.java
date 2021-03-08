@@ -16,6 +16,7 @@ public class IFileStorageService implements FileStorageService {
 	
 	public static final String AVATAR = "src\\main\\webapp\\images\\avatars\\";
 	public static final String PRODUCT = "src\\main\\webapp\\images\\products\\";
+	public static final String PRODUCER = "src\\main\\webapp\\images\\producer\\";
 	@Override
 	public String saveImage(MultipartFile file) throws IOException {
 		String finalFile = null;
@@ -37,6 +38,22 @@ public class IFileStorageService implements FileStorageService {
 		String finalFile = null;
 		if(!file.isEmpty()) {
 			Path root = Paths.get(PRODUCT);
+			
+			String filename = file.getOriginalFilename();
+			String extention = filename.substring(filename.lastIndexOf("."));
+			finalFile = UUID.randomUUID() + extention;
+			
+			if (!Files.exists(root)) Files.createDirectory(root);
+			
+			Files.copy(file.getInputStream(), root.resolve(finalFile));
+		}
+		return finalFile;
+	}
+	@Override
+	public String saveProducerImage(MultipartFile file) throws IOException {
+		String finalFile = null;
+		if(!file.isEmpty()) {
+			Path root = Paths.get(PRODUCER);
 			
 			String filename = file.getOriginalFilename();
 			String extention = filename.substring(filename.lastIndexOf("."));

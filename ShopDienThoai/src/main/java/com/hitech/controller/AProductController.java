@@ -21,8 +21,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hitech.constraints.ViewConstraint;
-import com.hitech.entities.Account;
-import com.hitech.entities.Producer;
 import com.hitech.entities.Product;
 import com.hitech.services.CategoryService;
 import com.hitech.services.FileStorageService;
@@ -94,9 +92,7 @@ public class AProductController {
 		model.addAttribute("listProducer", producerService.findAllByEnabledTrue());
 		Product pd = productService.findById(id);
 		model.addAttribute("product", pd);
-		return ViewConstraint.VIEW_ADMIN_PRODUCT_UPDATE; // render view => prefix +
-															// ViewConstraint.VIEW_ADMIN_ADMIN_INSERT + subfix => path
-															// jsp => render html -> client
+		return ViewConstraint.VIEW_ADMIN_PRODUCT_UPDATE;
 	}
 
 	@PostMapping(ViewConstraint.URL_ADMIN_PRODUCT_UPDATE)
