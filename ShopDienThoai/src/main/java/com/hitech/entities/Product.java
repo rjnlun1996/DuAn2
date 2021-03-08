@@ -80,6 +80,14 @@ public class Product extends BaseEntity implements Serializable{
 	public Product() {
 		
 	}
+	
+
+	public Product(int id) {
+		super();
+		this.id = id;
+	}
+
+
 
 	public int getId() {
 		return id;

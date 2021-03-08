@@ -213,7 +213,7 @@
 					.then((willDelete) => {
 							if(willDelete == true){
 								$.ajax({
-									url : "<%=URL_ADMIN_ADMIN%>",
+									url : "<%=URL_ADMIN_ADMIN_DELETE%>",
 									method : "POST",
 									data : {
 										username : $(this).data('id')

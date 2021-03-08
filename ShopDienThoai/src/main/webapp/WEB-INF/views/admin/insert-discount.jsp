@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page import="static com.hitech.utils.ViewUtils.*"%>
 <%
-	String sb = String.valueOf(request.getAttribute(MENU));
+String sb = String.valueOf(request.getAttribute(MENU));
 %>
 
 <!DOCTYPE html>
@@ -42,6 +42,7 @@
 <link id="color" rel="stylesheet" href="/assets/css/light-1.css" media="screen">
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <style>
 .invalid-feedback {
 	display: block;
@@ -136,7 +137,7 @@
 										<div class="card-header">
 											<h5>INSERT ADMIN</h5>
 										</div>
-										<form:form class="theme-form ${error ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="account" method="post" enctype="multipart/form-data">
+										<form:form class="theme-form ${error ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="discount" method="post" enctype="multipart/form-data">
 											<div class="card-body datetime-picker">
 												<c:if test="${message != null}">
 													<div class="alert alert-success dark" role="alert">
@@ -149,92 +150,22 @@
 													</div>
 												</c:if>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="name">Name</label>
+													<label class="col-sm-3 col-form-label" for="percents">Percent</label>
 													<div class="col-sm-9">
-														<form:input path="name" class="form-control" required="required" />
-														<form:errors path="name" class="invalid-feedback" />
+														<form:input path="percents" class="form-control" type="number" required="required" />
+														<form:errors path="percents" class="invalid-feedback" />
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="username">Username</label>
 													<div class="col-sm-9">
-														<form:input path="username" class="form-control" required="required" minlength="5" maxlength="20" />
-														<form:errors path="username" class="invalid-feedback" />
-														<c:if test="${isExist}">
-															<div class="invalid-feedback">${error}</div>
-														</c:if>
+														<select class="form-control js-data-example-ajax" name="productId"></select>
 													</div>
 												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="email">Email</label>
-													<div class="col-sm-9">
-														<form:input type="email" path="email" class="form-control" required="required" />
-														<form:errors path="email" class="invalid-feedback" />
-													</div>
+												<div class="card-footer">
+													<button class="btn btn-primary" type="submit">Create</button>
+													<button class="btn btn-secondary" type="reset">Cancel</button>
 												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="password">Password</label>
-													<div class="col-sm-9">
-														<form:input path="password" class="form-control" required="required" minlength="5" maxlength="20" />
-														<form:errors path="password" class="invalid-feedback" />
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Birthday</label>
-													<div class="col-sm-5">
-														<div class="input-group date" id="dt-date" data-target-input="nearest">
-															<form:input path="birthday" required="required" class="form-control datetimepicker-input digits" disabled="disabled" data-target="#dt-date" />
-															<div class="input-group-append" data-target="#dt-date" data-toggle="datetimepicker">
-																<div class="input-group-text">
-																	<i class="fa fa-calendar"></i>
-																</div>
-															</div>
-														</div>
-														<form:errors path="birthday" class="invalid-feedback" />
-													</div>
-												</div>
-												<fieldset class="form-group row">
-													<label class="col-form-label col-sm-3">Gender</label>
-													<div class="col-sm-9">
-														<div class="radio radio-primary ml-2">
-															<form:radiobutton path="gender" value="0" class="form-check-input" />
-															<label for="gender1">Female</label>
-														</div>
-														<div class="radio radio-primary ml-2">
-															<form:radiobutton path="gender" value="1" class="form-check-input" />
-															<label for="gender2">Male</label>
-														</div>
-														<form:errors path="gender" />
-													</div>
-												</fieldset>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Upload File</label>
-													<div class="col-sm-9">
-														<div class="avatar p-2">
-															<img class="img-100 rounded-circle" id="avatar" src="/assets/images/user/default.png" alt="#">
-														</div>
-														<input name="image" class="form-control" type="file" id="imgInp" accept="image/*">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="address">Address</label>
-													<div class="col-sm-9">
-														<form:input path="address" class="form-control" required="required" />
-														<form:errors path="address" class="invalid-feedback" />
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="phone">Phone</label>
-													<div class="col-sm-9">
-														<form:input path="phone" class="form-control" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required="required" />
-														<form:errors path="phone" class="invalid-feedback" />
-													</div>
-												</div>
-											</div>
-											<div class="card-footer">
-												<button class="btn btn-primary" type="submit">Create</button>
-												<button class="btn btn-secondary" type="reset">Cancel</button>
-											</div>
 										</form:form>
 									</div>
 								</div>
@@ -278,25 +209,55 @@
 	<!-- Theme js-->
 	<script src="/assets/js/script.js"></script>
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 	<!-- login js-->
 	<!-- Plugin used-->
 	<script type="text/javascript">
-		function readURL(input) {
-			if (input.files && input.files[0]) {				
-				var reader = new FileReader();
-
-				reader.readAsDataURL(input.files[0]);
-
-				reader.onload = function(e) {
-					$('#avatar').attr('src', e.target.result);
+		$(document).ready(function() {
+			var data = [ {
+				id : 0,
+				text : 'enhancement'
+			}, {
+				id : 1,
+				text : 'bug'
+			}, {
+				id : 2,
+				text : 'duplicate'
+			}, {
+				id : 3,
+				text : 'invalid'
+			}, {
+				id : 4,
+				text : 'wontfix'
+			} ];
+			$.ajax({
+				url : 'http://localhost:8080/ho-admin/product/search?id=123',
+				success : function(data) {
+					$('.js-data-example-ajax').select2({
+						data: data
+					});
 				}
+			});
 
+			function readURL(input) {
+				if (input.files && input.files[0]) {
+					var reader = new FileReader();
+
+					reader.readAsDataURL(input.files[0]);
+
+					reader.onload = function(e) {
+						$('#avatar').attr('src', e.target.result);
+					}
+
+				}
 			}
-		}
 
-		$("#imgInp").change(function() {
-			readURL(this);
-		});
+			$("#imgInp").change(function() {
+				readURL(this);
+			});
+		})
 	</script>
 </body>
 </html>

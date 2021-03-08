@@ -30,6 +30,12 @@ public interface AccountService extends IBaseService<Account, String>{
 	
 	/**
 	 * 
+	 * @return
+	 */
+	List<Account> findAllCustomerByEnabledTrue();
+	
+	/**
+	 * 
 	 * @param id
 	 * @return
 	 */
