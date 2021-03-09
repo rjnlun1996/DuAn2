@@ -18,6 +18,8 @@ public interface CategoryRepository extends JpaRepository<Category, Integer> {
 	 */
 	List<Category> findByEnabledTrue();
 	
+	Category findByNameAndEnabledTrue(String name);
+	
 	
 	
 }

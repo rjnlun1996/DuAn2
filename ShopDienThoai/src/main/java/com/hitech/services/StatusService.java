@@ -11,5 +11,7 @@ public interface StatusService extends IBaseService<Status, String> {
 	List<Status> findAllStatusByEnabledTrue();
 	
 	boolean deleteByEnabled(String id);
+	
+	Status findByNameAndEnabledTrue(String name);
 
 }

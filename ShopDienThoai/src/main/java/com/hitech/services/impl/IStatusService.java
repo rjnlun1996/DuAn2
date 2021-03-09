@@ -82,6 +82,11 @@ public class IStatusService implements StatusService {
 		
 		return statusRepository.findByEnabledTrue();
 	}
+
+	@Override
+	public Status findByNameAndEnabledTrue(String name) {
+		return statusRepository.findByNameAndEnabledTrue(name);
+	}
    
 
 }

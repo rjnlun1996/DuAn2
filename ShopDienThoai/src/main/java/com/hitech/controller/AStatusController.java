@@ -1,5 +1,7 @@
 package com.hitech.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,9 +47,16 @@ public class AStatusController {
 	public Object insert(Model model, 
 			@Validated @ModelAttribute("status") Status status,
 			BindingResult errors,
-			RedirectAttributes ra) {	
-		if(errors.hasErrors()) {
-			model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
+			RedirectAttributes ra)throws IOException {	
+		boolean isExistedName= statusService.findByNameAndEnabledTrue(status.getName())!=null;
+		boolean isErrors = errors.hasErrors();
+		if(isErrors || isExistedName ) {
+			if(isErrors){
+			model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");}
+			if (isExistedName) {
+				model.addAttribute("error", "Trạng thái này đã tồn tại!");
+				model.addAttribute("isExistName", true);
+			}
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_STATUS_INSERT);
 			return ViewConstraint.VIEW_ADMIN_STATUS_INSERT;
 		}
@@ -72,9 +81,16 @@ public class AStatusController {
 	public Object update(Model model, 
 			@Validated @ModelAttribute("status") Status status,
 			BindingResult errors,
-			RedirectAttributes ra) {	
-		if(errors.hasErrors()) {
-			model.addAttribute("error", "Vui lòng nhập tên trạng thái!");
+			RedirectAttributes ra)throws IOException {	
+		boolean isExistedName= statusService.findByNameAndEnabledTrue(status.getName())!=null;
+		boolean isErrors = errors.hasErrors();
+		if(isErrors || isExistedName ) {
+			if(isErrors){
+			model.addAttribute("error", "Vui lòng nhập tên trạng thái!");}
+			if (isExistedName) {
+				model.addAttribute("error", "Trạng thái này đã tồn tại!");
+				model.addAttribute("isExistName", true);
+			}
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_STATUS_UPDATE);
 			return ViewConstraint.VIEW_ADMIN_STATUS_UPDATE;
 		}

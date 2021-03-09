@@ -116,7 +116,7 @@
 													<c:forEach var="status" items="${listStatus}">
 														<tr>
 															<td><span>${status.id}</span></td>
-															<td><span class="badge badge-info">${status.name}</span></td>
+															<td><span >${status.name}</span></td>
 															<td>
 																
 																<a class="btn btn-pill btn-outline-success btn-sm"  href="/ho-admin/status/update?id=${status.id}">Edit</a>

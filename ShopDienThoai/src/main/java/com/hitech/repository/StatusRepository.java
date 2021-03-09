@@ -13,4 +13,6 @@ public interface StatusRepository extends JpaRepository<Status, String>{
 
 	
 	List<Status> findByEnabledTrue();
+	
+	Status findByNameAndEnabledTrue(String name);
 }

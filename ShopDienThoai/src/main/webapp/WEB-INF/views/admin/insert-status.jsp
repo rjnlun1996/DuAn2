@@ -137,7 +137,7 @@
 											<h5>INSERT STATUS</h5>
 										</div>
 										<form:form
-											class="theme-form ${error == true ? 'was-validated' : '' }"
+											class="theme-form ${(error || isExistName)? 'was-validated' : '' }"
 											modelAttribute="status" novalidate="novalidate">
 											<div class="card-body">
 
@@ -165,6 +165,9 @@
 														<form:input path="name" class="form-control"
 															required="required" minlength="2" maxlength="50" />
 														<form:errors path="name" class="invalid-feedback" />
+														<c:if test="${isExistName}">
+															<div class="invalid-feedback">${errorName}</div>
+														</c:if>
 													</div>
 												</div>
 											</div>

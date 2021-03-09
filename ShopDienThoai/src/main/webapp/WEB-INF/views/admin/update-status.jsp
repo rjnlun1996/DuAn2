@@ -135,7 +135,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 											<h5>UPDATE STATUS</h5>
 										</div>
 										<form:form
-											class="theme-form ${error == true ? 'was-validated' : '' }"
+											class="theme-form ${(error || isExistName) ? 'was-validated' : '' }"
 											modelAttribute="status" method="post" novalidate="novalidate" action="<%= URL_ADMIN_STATUS_UPDATE %>">
 											
 												<c:if test="${message != null}">
@@ -160,6 +160,9 @@ String sb = String.valueOf(request.getAttribute(MENU));
 													<label class="col-sm-3 col-form-label" for="">Name</label>
 													<div class="col-sm-9">
 														<form:input path="name" class="form-control" />
+														<c:if test="${isExistName}">
+															<div class="invalid-feedback">${errorName}</div>
+														</c:if>
 														<%-- <form:errors path="name" /> --%>
 													</div>
 												</div>
