@@ -82,7 +82,7 @@ public class IDiscountService implements DiscountService {
 	
 	private void transformIsCurrent(Discount disc) {
 		if(disc.isCurrent()) {
-			discountRepository.findByIdAndCurrentTrue(null)
+			//discountRepository.findByIdAndCurrentTrue(null)
 		}
 	}
 
