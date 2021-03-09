@@ -4,6 +4,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%@ page import="static com.hitech.constraints.ViewConstraint.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -210,7 +212,7 @@
 				.then((willDelete) => {
 				  if(willDelete == true){
 					  $.ajax({
-						  url: "/ho-admin/categories/delete",
+						  url: '<%=URL_ADMIN_CATEGORY_DELETE %>',
 						  method: "POST",
 						  data: {
 							  id: id

@@ -24,8 +24,11 @@ public interface ViewConstraint {
 	
 	public static final String URL_ADMIN_CUSTOMER = "/ho-admin/customer/";
 	public static final String URL_ADMIN_CUSTOMER_INSERT = URL_ADMIN_CUSTOMER + "insert";
+	public static final String URL_ADMIN_CUSTOMER_DELETE = URL_ADMIN_CUSTOMER + "delete";
+	public static final String URL_ADMIN_CUSTOMER_UPDATE = URL_ADMIN_CUSTOMER + "update";
 	public static final String VIEW_ADMIN_CUSTOMER = "admin/table-customer";
 	public static final String VIEW_ADMIN_CUSTOMER_INSERT = "admin/insert-customer";	
+	public static final String VIEW_ADMIN_CUSTOMER_UPDATE = "admin/update-customer";	
 	
 	public static final String URL_ADMIN_IMAGE = "/ho-admin/image/";
 	public static final String URL_ADMIN_IMAGE_INSERT = URL_ADMIN_IMAGE + "insert";	
@@ -39,14 +42,19 @@ public interface ViewConstraint {
 	
 	public static final String URL_ADMIN_PRODUCT = "/ho-admin/product/";
 	public static final String URL_ADMIN_PRODUCT_INSERT = URL_ADMIN_PRODUCT + "insert";
-	public static final String URL_ADMIN_PRODUCT_DELETE = URL_ADMIN_PRODUCT + "delete/";
+	public static final String URL_ADMIN_PRODUCT_DELETE = URL_ADMIN_PRODUCT + "delete";
+	public static final String URL_ADMIN_PRODUCT_UPDATE = URL_ADMIN_PRODUCT + "update";
 	public static final String VIEW_ADMIN_PRODUCT = "admin/table-product";
 	public static final String VIEW_ADMIN_PRODUCT_INSERT = "admin/insert-product";	
+	public static final String VIEW_ADMIN_PRODUCT_UPDATE = "admin/update-product";	
 	
 	public static final String URL_ADMIN_PRODUCER = "/ho-admin/producer/";
 	public static final String URL_ADMIN_PRODUCER_INSERT = URL_ADMIN_PRODUCER + "insert";
+	public static final String URL_ADMIN_PRODUCER_UPDATE = URL_ADMIN_PRODUCER + "update";
+	public static final String URL_ADMIN_PRODUCER_DELETE = URL_ADMIN_PRODUCER + "delete";
 	public static final String VIEW_ADMIN_PRODUCER = "admin/table-producer";
 	public static final String VIEW_ADMIN_PRODUCER_INSERT = "admin/insert-producer";
+	public static final String VIEW_ADMIN_PRODUCER_UPDATE = "admin/update-producer";
 	
 	public static final String URL_ADMIN_STATUS = "/ho-admin/status/";
 	public static final String URL_ADMIN_STATUS_INSERT = URL_ADMIN_STATUS + "insert";
@@ -65,9 +73,9 @@ public interface ViewConstraint {
 	public static final String VIEW_ADMIN_STATUS_ORDER_UPDATE = "admin/update-status-order";	
 	
 	public static final String URL_ADMIN_DISCOUNT = "/ho-admin/discount/";
-	public static final String URL_ADMIN_DISCOUNT_INSERT = URL_ADMIN_ADMIN + "insert";
-	public static final String URL_ADMIN_DISCOUNT_DELETE = URL_ADMIN_ADMIN + "delete";
-	public static final String URL_ADMIN_DISCOUNT_UPDATE = URL_ADMIN_ADMIN + "update";
+	public static final String URL_ADMIN_DISCOUNT_INSERT = URL_ADMIN_DISCOUNT + "insert";
+	public static final String URL_ADMIN_DISCOUNT_DELETE = URL_ADMIN_DISCOUNT + "delete";
+	public static final String URL_ADMIN_DISCOUNT_UPDATE = URL_ADMIN_DISCOUNT + "update";
 	public static final String VIEW_ADMIN_DISCOUNT = "admin/table-discount";
 	public static final String VIEW_ADMIN_DISCOUNT_INSERT = "admin/insert-discount";	
 	public static final String VIEW_ADMIN_DISCOUNT_UPDATE = "admin/update-discount";

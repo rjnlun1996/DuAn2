@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "OrderDetails")
-public class OrderDetail extends BaseEntity implements Serializable{
+public class OrderDetail extends BaseEntity implements Serializable {
 
 	/**
 	 * 
@@ -29,31 +29,49 @@ public class OrderDetail extends BaseEntity implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "orderDetailId")
 	private int id;
-	
+
 	@Column
 	private int productId;
-	
+
 	@Column
 	private int quantity;
-	
+
 	@Column
 	private double amount;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="orderId",nullable = false)
+	@JoinColumn(name = "orderId", nullable = false)
 	@JsonBackReference
 	private Order order;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "productId",nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "productId", nullable = false, insertable = false, updatable = false)
 	@JsonBackReference
 	private Product product;
-	
-	@OneToMany(mappedBy = "orderDetail")
-	@JsonManagedReference
-	private Set<Discount> discounts;
-	
-	public OrderDetail() {}
+
+//	@OneToMany(mappedBy = "orderDetail")
+//	@JsonManagedReference
+//	private Set<Discount> discounts;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "discountId", nullable = false)
+	@JsonBackReference
+	private Discount discount;
+
+	public OrderDetail() {
+	}
+
+	public OrderDetail(int id, int productId, int quantity, double amount, Order order, Product product,
+			Discount discount) {
+		super();
+		this.id = id;
+		this.productId = productId;
+		this.quantity = quantity;
+		this.amount = amount;
+		this.order = order;
+		this.product = product;
+		this.discount = discount;
+	}
 
 	public Product getProduct() {
 		return product;
@@ -102,17 +120,17 @@ public class OrderDetail extends BaseEntity implements Serializable{
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-	public Set<Discount> getDiscounts() {
-		return discounts;
+	public Discount getDiscount() {
+		return discount;
 	}
 
-	public void setDiscounts(Set<Discount> discounts) {
-		this.discounts = discounts;
+	public void setDiscount(Discount discount) {
+		this.discount = discount;
 	}
-		
+
 }

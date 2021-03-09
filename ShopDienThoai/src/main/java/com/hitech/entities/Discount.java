@@ -1,6 +1,7 @@
 package com.hitech.entities;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,9 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "Discount")
@@ -41,25 +44,42 @@ public class Discount extends BaseEntity implements Serializable {
 	@JsonBackReference
 	private Product product;
 
-	@ManyToOne
-	@JoinColumn(name = "orderDetailId", nullable = false)
-	@JsonBackReference
-	private OrderDetail orderDetail;
+//	@ManyToOne
+//	@JoinColumn(name = "orderDetailId", nullable = false)
+//	@JsonBackReference
+//	private OrderDetail orderDetail;
+	
+	@OneToMany(mappedBy = "discount")
+	@JsonManagedReference
+	private Set<OrderDetail> orderDetails;
 
 	public Discount() {
 		super();
 	}
 
+
 	public Discount(int id, int percents, String description, boolean current, Product product,
-			OrderDetail orderDetail) {
+			Set<OrderDetail> orderDetails) {
 		super();
 		this.id = id;
 		this.percents = percents;
 		this.description = description;
 		this.current = current;
 		this.product = product;
-		this.orderDetail = orderDetail;
+		this.orderDetails = orderDetails;
 	}
+
+	public Set<OrderDetail> getOrderDetails() {
+		return orderDetails;
+	}
+
+
+
+	public void setOrderDetails(Set<OrderDetail> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -99,14 +119,6 @@ public class Discount extends BaseEntity implements Serializable {
 
 	public void setProduct(Product product) {
 		this.product = product;
-	}
-
-	public OrderDetail getOrderDetail() {
-		return orderDetail;
-	}
-
-	public void setOrderDetail(OrderDetail orderDetail) {
-		this.orderDetail = orderDetail;
 	}
 
 	public static long getSerialversionuid() {

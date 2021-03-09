@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.hitech.constraints.SessionConstraint"%>
 <%@ page import="com.hitech.entities.Account"%>
+<%@ page import="static com.hitech.utils.ViewUtils.*"%>
+<%@ page import="static com.hitech.constraints.ViewConstraint.*"%>
 <%
 Account user = (Account) session.getAttribute(SessionConstraint.USER);
 %>
@@ -118,7 +120,7 @@ Account user = (Account) session.getAttribute(SessionConstraint.USER);
 					<div class="dropdown">
 						<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
 							<span class="media user-header">
-								<img class="mr-2 rounded-circle img-35" src="/assets/images/dashboard/user.png" alt="">
+								<img class="mr-2 rounded-circle img-35" src="/images/avatars/${acc.photo}" alt="">
 								<span class="media-body">
 									<span class="f-12 f-w-600"><%= user.getName() %></span>
 									<span class="d-block">Admin</span>
@@ -148,7 +150,7 @@ Account user = (Account) session.getAttribute(SessionConstraint.USER);
 									Settings
 								</li>
 								<li>
-									<a href="/ho-manager/logout"><i data-feather="file-text"> </i>
+									<a href="/ho-admin/logout"><i data-feather="file-text"> </i>
 									Logout</a>
 								</li>
 							</ul>

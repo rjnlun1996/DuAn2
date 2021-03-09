@@ -34,6 +34,11 @@ public class IAccountService implements AccountService{
 	public List<Account> findAllAdminByEnabledTrue() {
 		return accountRepository.findByLevelAndEnabledTrue(0);
 	}
+	
+	@Override
+	public List<Account> findAllCustomerByEnabledTrue() {
+		return accountRepository.findByLevelAndEnabledTrue(2);
+	}
 
 	@Override
 	public Account save(Account account) {

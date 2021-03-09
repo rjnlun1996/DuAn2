@@ -1,10 +1,6 @@
 package com.hitech.controller;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -76,7 +72,7 @@ public class AAdminController {
 		if (avatar != null) {
 			account.setPhoto(avatar);
 		}
-		account.setLevel(0);
+		account.setLevel(1);
 		accountService.save(account);
 		reAttributes.addFlashAttribute("message", "Tạo tài khoản " + account.getUsername() + " thành công!");
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ADMIN_INSERT);

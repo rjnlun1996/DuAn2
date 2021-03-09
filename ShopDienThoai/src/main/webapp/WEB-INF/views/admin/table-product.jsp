@@ -1,11 +1,13 @@
 <%@page import="com.hitech.entities.Product"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="static com.hitech.constraints.ViewConstraint.*" %>
+<%@ page import="static com.hitech.constraints.ViewConstraint.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -38,8 +40,7 @@
 <!-- Themify icon-->
 <link rel="stylesheet" type="text/css" href="/assets/css/themify.css">
 <!-- Flag icon-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/flag-icon.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/flag-icon.css">
 <!-- Feather icon-->
 <link rel="stylesheet" type="text/css"
 	href="/assets/css/feather-icon.css">
@@ -47,19 +48,16 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/chartist.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/vector-map.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/vector-map.css">
 <!-- Plugins css Ends-->
 <!-- Bootstrap css-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
 <!-- App css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 <link id="color" rel="stylesheet" href="/assets/css/light-1.css"
 	media="screen">
 <!-- Responsive css-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/responsive.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
 </head>
 <body>
 	<!-- Loader starts-->
@@ -81,60 +79,101 @@
 
 		<!-- Page Body Start-->
 		<div class="page-body-wrapper">
+
 			<!-- Left and Right Sidebar Start-->
 			<jsp:include page="layouts/sidebar.jsp"></jsp:include>
 			<!-- Left and Right Sidebar Ends-->
+
+			<!-- Page Body Start-->
 			<div class="page-body">
-				<div class="table-responsive">
-					<table class="table table-bordernone">
-						<thead>
-							<tr  class="text-center">
-								<th scope="col">STT</th>
-								<th scope="col">Tên sản phẩm</th>
-								<th scope="col">Hình ảnh</th>
-								<th scope="col">Nhà sản xuất</th>
-								<th scope="col">Số lượng</th>
-								<th scope="col">Giá nhập</th>
-								<th scope="col">Giá bán</th>
-								<th scope="col">Khuyến mãi</th>
-								<th scope="col">View</th>
-								<th scope="col">Ghi chú</th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="${listProduct}" var="product">
-								<tr>
-									<c:set var="count" value="${count+1 }" />
-									<c:set var="producer" value="${product.producer}" />
-									<td>${count}</td>
-									<td>${product.name}</td>
-									<td><img class="img-radius img-80 align-top m-r-15"
-											src="/assets/images/photo/hinhProduct/${product.photo}" alt="loading"></td>
-									<td><img
-										class="img-radius img-80 align-top m-r-15 rounded-circle"
-										src="/assets/images/photo/hinhProducer/${product.producer.logo}"
-										alt="loading"></td>
-									<td class="text-center">${product.quantity}</td>
-									<td>${product.importPrice}</td>
-									<td>${product.salePrice}</td>
-									<td>${product.discount*100}</td>
-									<td>${product.views}</td>
-									<td>${product.description}</td>
-									<td>
-										<span class="badge badge-pill pill-badge-primary">Edit</span><br>
-										<a href="<%=URL_ADMIN_PRODUCT_DELETE%>${product.id}"><span class="badge badge-pill pill-badge-secondary">Delete</span></a>
-									</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+				<div class="page-body">
+
+					<!-- Container-fluid starts-->
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-xl-12">
+								<div class="card">
+									<div class="card-header">
+										<h5>List Product</h5>
+										<div class="card-header-right">
+											<ul class="list-unstyled card-option">
+												<li><i class="icofont icofont-double-left"></i></li>
+												<li><i class="view-html fa fa-code"></i></li>
+												<li><i class="icofont icofont-maximize full-card"></i></li>
+												<li><i class="icofont icofont-minus minimize-card"></i>
+												</li>
+												<li><i class="icofont icofont-refresh reload-card"></i>
+												</li>
+												<li><i class="icofont icofont-error close-card"></i></li>
+											</ul>
+										</div>
+									</div>
+									<div class="card-body p-0">
+										<div class="sales-product-table table-responsive">
+											<table class="table table-bordernone">
+												<c:if test="${message != null}">
+													<div class="alert alert-success dark" role="alert">
+														<p>${message}</p>
+													</div>
+												</c:if>
+												<c:if test="${error != null}">
+													<div class="alert alert-secondary dark" role="alert">
+														<p>${error}</p>
+													</div>
+												</c:if>
+												<thead>
+													<tr class="text-center">
+														<th scope="col">STT</th>
+														<th scope="col">Hình ảnh</th>
+														<th scope="col">Tên sản phẩm</th>
+														<th scope="col">Nhà sản xuất</th>
+														<th scope="col">Giá bán</th>
+														<th scope="col">View</th>
+														<th scope="col">Ghi chú</th>
+														<th></th>
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach items="${listProduct}" var="product">
+														<tr>
+															<c:set var="count" value="${count+1 }" />
+															<td>${count}</td>
+															<td><img class="img-radius img-80 align-top m-r-15"
+																src="/images/products/${product.photo}" alt="loading"></td>
+															<td>${product.name}</td>
+															<td><img class="img-radius img-80 align-top m-r-15"
+																src="/images/producer/${product.producer.logo}"
+																alt="loading" style="box-shadow: unset !important"></td>
+															<td>${product.salePrice}</td>
+															<td>${product.views}</td>
+															<td>${product.description}</td>
+															<td>
+																<button class="btn btn-pill btn-outline-primary btn-sm"
+																	type="button">View</button> <a
+																class="btn btn-pill btn-outline-success btn-sm"
+																href="<%=URL_ADMIN_PRODUCT_UPDATE%>?id=${product.id}"">Edit</a>
+																<button
+																	class="btn btn-pill btn-outline-danger btn-sm delete-item"
+																	data-id="${product.id}" data-name="${product.name}">Delete</button>
+
+															</td>
+														</tr>
+													</c:forEach>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Container-fluid Ends-->
 				</div>
+				<!-- footer start-->
+				<jsp:include page="layouts/footer.jsp"></jsp:include>
+				<!-- footer end-->
+
 			</div>
-			<!-- footer start-->
-			<jsp:include page="layouts/footer.jsp"></jsp:include>
-			<!-- footer end-->
-			
 		</div>
 	</div>
 	<!-- latest jquery-->
@@ -164,16 +203,13 @@
 	<script src="/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js"></script>
 	<script
 		src="/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
 	<script src="/assets/js/vector-map/map/jquery-jvectormap-au-mill.js"></script>
 	<script
 		src="/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
 	<script src="/assets/js/vector-map/map/jquery-jvectormap-in-mill.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
 	<script src="/assets/js/dashboard/default.js"></script>
 	<script src="/assets/js/notify/index.js"></script>
 	<script src="/assets/js/chat-menu.js"></script>
@@ -183,11 +219,45 @@
 	<!-- Theme js-->
 	<script src="/assets/js/script.js"></script>
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
-	<!-- login js-->
-	<!-- Plugin used-->
-	
-	
-	
+	<script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
+	<script>
+	 $(document).ready(function(){
+			$('.delete-item').click(function(){
+				var id = $(this).data('id');
+				var name = $(this).data('name');
+				swal({
+				  title: "Thông báo?",
+				  text: "Bạn có chắc chắn xóa " + name  + " không?",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((willDelete) => {
+				  if(willDelete == true){
+					  $.ajax({
+						  url: "<%=URL_ADMIN_PRODUCT_DELETE%>",
+						  method: "POST",
+						  data: {
+							  id: id
+						  },
+						  success: function(data){
+							  if(data == true){
+									swal("Thông báo!", "Bạn đã xóa thành công!", "success").then(() => location.reload());
+								}else{
+									swal("Thông báo!", "Không thể xóa người dùng này!", "danger");
+								}
+						  },
+	 					  error: function(data){
+							  
+						  },
+					  });
+				  }
+				});
+				//promise
+			})
+		}); 
+	 </script>
+
 </body>
 </html>
 <!-- <div class="welcome-popup modal fade" id="loadModal" tabindex="-1"
