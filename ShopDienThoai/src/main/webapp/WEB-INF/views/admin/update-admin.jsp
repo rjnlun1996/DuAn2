@@ -160,7 +160,6 @@ String sb = String.valueOf(request.getAttribute(MENU));
 													<label class="col-sm-3 col-form-label" for="email">Email</label>
 													<div class="col-sm-9">
 														<form:input path="email" class="form-control" />
-														<form:input path="password" class="form-control" type="hidden" />
 														<form:errors path="email" class="invalid-feedback" />
 														<c:if test="${isExistEmail}">
 															<div class="invalid-feedback">${errorEmail}</div>
@@ -175,7 +174,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="password">Passowrd</label>
+													<label class="col-sm-3 col-form-label" for="password">Password</label>
 													<div class="col-sm-9">
 														<form:input path="password" class="form-control" />
 														<form:errors path="password" class="invalid-feedback" />

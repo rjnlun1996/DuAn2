@@ -76,7 +76,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 					<div class="page-header">
 						<div class="row">
 							<div class="col-lg-6">
-								<h3>FORM INSERT ACCOUNT</h3>
+								<h3>FORM UPDATE DISCOUNT</h3>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item">
 										<a href="<%=URL_ADMIN_HOME%>">Home</a>
@@ -134,167 +134,67 @@ String sb = String.valueOf(request.getAttribute(MENU));
 								<div class="col-sm-12">
 									<div class="card">
 										<div class="card-header">
-											<h5>UPDATE ADMIN</h5>
+											<h5>UPDATE DISCOUNT</h5>
 										</div>
-										<form:form class="theme-form" modelAttribute="account" method="post">
-											<div class="card-body">
+										<div class="card-body">
+											<form:form class="theme-form ${(error || isExistedId) ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="discount" method="post" enctype="multipart/form-data">
+												<c:if test="${message != null}">
+													<div class="alert alert-success dark" role="alert">
+														<p>${message}</p>
+													</div>
+												</c:if>
+												<c:if test="${error != null}">
+													<div class="alert alert-secondary dark" role="alert">
+														<p>${error}</p>
+													</div>
+												</c:if>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="username">Username</label>
+													<label class="col-sm-3 col-form-label" for="id">Mã khuyễn mãi</label>
 													<div class="col-sm-9">
-														<form:input path="username" class="form-control" />
-														<%-- <form:errors path="username" /> --%>
+														<input class="form-control" type="text" name="id" value="${discount.id }" readonly="readonly"/>
 													</div>
 												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="email">Email</label>
+												<fieldset class="form-group row">
+													<label class="col-form-label col-sm-3">Current</label>
 													<div class="col-sm-9">
-														<form:input path="email" class="form-control" />
-														<%-- <form:errors path="email" /> --%>
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="name">Name</label>
-													<div class="col-sm-9">
-														<form:input path="name" class="form-control" />
-														<%-- <form:errors path="name" /> --%>
-													</div>
-												</div>
-												<fieldset class="form-group">
-													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">Gender</label>
-														<div class="col-sm-9">
-															<div class="radio radio-primary">
-																<form:radiobutton path="gender" value="0" class="form-check-input" />
-																<label for="gender1">Male</label>
-															</div>
-															<div class="radio radio-primary">
-																<form:radiobutton path="gender" value="1" class="form-check-input" />
-																<label for="gender2">Female</label>
-															</div>
-															<%-- <form:errors path="gender" /> --%>
+														<div class="radio radio-primary ml-2">
+															<form:radiobutton path="current" value="0" class="form-check-input" />
+															<label for="current1">No</label>
 														</div>
+														<div class="radio radio-primary ml-2">
+															<form:radiobutton path="current" value="1" class="form-check-input" />
+															<label for="current2">Yes</label>
+														</div>
+														<form:errors path="current" />
 													</div>
 												</fieldset>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Birthday</label>
-													<div class="col-sm-5">
-														<div class="input-group date" id="dt-date" data-target-input="nearest">
-															<form:input path="birthday" class="form-control datetimepicker-input digits" data-target="#dt-date" />
-															<div class="input-group-append" data-target="#dt-date" data-toggle="datetimepicker">
-																<div class="input-group-text">
-																	<i class="fa fa-calendar"></i>
-																</div>
-															</div>
-														</div>
+													<label class="col-sm-3 col-form-label" for="Product">Product</label>
+													<div class="col-sm-9 ">
+														<input class="form-control" value="${discount.product.name}" type="text" required="required" readonly="readonly" />
+														<input type="hidden" name="productId" value="${discount.product.id }"/>
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Address</label>
-													<div class="col-sm-9">
-														<form:input path="address" class="form-control" />
-														<%-- <form:errors path="address" /> --%>
+													<label class="col-sm-3 col-form-label" for="percents">Percent</label>
+													<div class="col-sm-9 ">
+														<form:input path="percents" class="form-control" type="number" required="required" />
+														<form:errors path="percents" class="invalid-feedback" />
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Phone</label>
-													<div class="col-sm-9">
-														<form:input path="phone" class="form-control" />
-														<%-- <form:errors path="phone" /> --%>
+													<label class="col-sm-3 col-form-label" for="description">Description</label>
+													<div class="col-sm-9 ">
+														<form:input path="description" class="form-control" type="text" required="required" />
+														<form:errors path="description" class="invalid-feedback" />
 													</div>
 												</div>
-												<fieldset class="form-group">
-													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">IsAdmin</label>
-														<div class="col-sm-9">
-															<div class="radio radio-primary">
-																<form:radiobutton path="admin" value="0" class="form-check-input" />
-																<label for="admin1">Customer</label>
-															</div>
-															<div class="radio radio-primary">
-																<form:radiobutton path="admin" value="1" class="form-check-input" />
-																<label for="admin2">Admin</label>
-															</div>
-															<%-- <form:errors path="isAdmin" /> --%>
-														</div>
-													</div>
-												</fieldset>
-												<!-- <form class="theme-form">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="name">Name</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="name" type="text" placeholder="Name">
-													</div>
+												<div class="card-footer">
+													<button class="btn btn-primary" type="submit">Update</button>
+													<button class="btn btn-secondary" type="reset">Cancel</button>
 												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="username">Username</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="username" type="text" placeholder="Username">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="email">Email</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="email" type="email" placeholder="Email">
-													</div>
-												</div>
-												<fieldset class="form-group">
-													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">Gender</label>
-														<div class="col-sm-9">
-															<div class="radio radio-primary">
-																<input id="radio11" type="radio" name="radio1" value="option1">
-																<label for="radio11">Male</label>
-															</div>
-															<div class="radio radio-primary">
-																<input id="radio22" type="radio" name="radio1" value="option1">
-																<label for="radio22">Female</label>
-															</div>
-														</div>
-													</div>
-												</fieldset>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="birthday">Birthday</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="birthday" type="text" placeholder="Birthday">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="address">Address</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="address" type="text" placeholder="Address">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="phone">Phone</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="phone" type="text" placeholder="Phone">
-													</div>
-												</div>
-												<div class="mb-2">
-							                        <div class="col-form-label">UpdateAt</div>
-							                        <select class="js-example-basic-single col-sm-12">
-							                            <option value="AL">Alabama</option>
-							                            <option value="WY">Wyoming</option>
-							                        </select>
-							                     </div>
-							                     <div class="form-group form-row">
-							                          <label class="col-sm-3 col-form-label text-right">UpdateAt</label>
-							                          <div class="col-xl-5 col-sm-7 col-lg-8">
-							                            <div class="input-group date" id="dt-date" data-target-input="nearest">
-							                              <input class="form-control datetimepicker-input digits" type="text" data-target="#dt-date">
-							                              <div class="input-group-append" data-target="#dt-date" data-toggle="datetimepicker">
-							                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-							                              </div>
-							                            </div>
-							                         </div>
-							                    </div>
-											</form> -->
-											</div>
-											<div class="card-footer">
-												<button class="btn btn-primary" type="submit">Create</button>
-												<button class="btn btn-secondary">Cancel</button>
-											</div>
-										</form:form>
+											</form:form>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -328,5 +228,6 @@ String sb = String.valueOf(request.getAttribute(MENU));
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
 	<!-- login js-->
 	<!-- Plugin used-->
+
 </body>
 </html>
