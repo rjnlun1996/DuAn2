@@ -9,5 +9,7 @@ public interface CategoryService extends IBaseService<Category, Integer> {
 	List<Category> findAllCategoryByEnabledTrue();
 	
 	boolean deleteByEnabled(Integer id);
+	
+	Category findByNameAndEnabledTrue(String name);
 
 }

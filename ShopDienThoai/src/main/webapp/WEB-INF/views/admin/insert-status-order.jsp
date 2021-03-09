@@ -17,7 +17,7 @@
 <meta name="author" content="pixelstrap">
 <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
 <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
-<title>HOPE - INSERT ADMIN</title>
+<title>HOPE - INSERT STATUS ORDER</title>
 <!-- Google font-->
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -77,7 +77,7 @@
 					<div class="page-header">
 						<div class="row">
 							<div class="col-lg-6">
-								<h3>FORM INSERT ACCOUNT</h3>
+								<h3>FORM INSERT STATUS ORDER</h3>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item">
 										<a href="<%=URL_ADMIN_HOME%>">Home</a>
@@ -134,10 +134,10 @@
 								<div class="col-sm-12">
 									<div class="card">
 										<div class="card-header">
-											<h5>INSERT ADMIN</h5>
+											<h5>INSERT STATUS ORDER</h5>
 										</div>
-										<form:form class="theme-form ${error ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="account" method="post" enctype="multipart/form-data">
-											<div class="card-body datetime-picker">
+										<form:form class="theme-form ${error ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="statusOrder" method="post" >
+											<div class="card-body ">
 												<c:if test="${message != null}">
 													<div class="alert alert-success dark" role="alert">
 														<p>${message}</p>
@@ -148,88 +148,40 @@
 														<p>${error}</p>
 													</div>
 												</c:if>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="name">Name</label>
-													<div class="col-sm-9">
-														<form:input path="name" class="form-control" required="required" />
-														<form:errors path="name" class="invalid-feedback" />
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="username">Username</label>
-													<div class="col-sm-9">
-														<form:input path="username" class="form-control" required="required" minlength="5" maxlength="20" />
-														<form:errors path="username" class="invalid-feedback" />
-														<c:if test="${isExist}">
-															<div class="invalid-feedback">${error}</div>
-														</c:if>
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="email">Email</label>
-													<div class="col-sm-9">
-														<form:input type="email" path="email" class="form-control" required="required" />
-														<form:errors path="email" class="invalid-feedback" />
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="password">Password</label>
-													<div class="col-sm-9">
-														<form:input path="password" class="form-control" required="required" minlength="5" maxlength="20" />
-														<form:errors path="password" class="invalid-feedback" />
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Birthday</label>
-													<div class="col-sm-5">
-														<div class="input-group date" id="dt-date" data-target-input="nearest">
-															<form:input path="birthday" required="required" class="form-control datetimepicker-input digits" disabled="disabled" data-target="#dt-date" />
-															<div class="input-group-append" data-target="#dt-date" data-toggle="datetimepicker">
-																<div class="input-group-text">
-																	<i class="fa fa-calendar"></i>
-																</div>
-															</div>
-														</div>
-														<form:errors path="birthday" class="invalid-feedback" />
-													</div>
-												</div>
+											
+											
+						
+												
 												<fieldset class="form-group row">
-													<label class="col-form-label col-sm-3">Gender</label>
+													<label class="col-form-label col-sm-3">Current</label>
 													<div class="col-sm-9">
 														<div class="radio radio-primary ml-2">
-															<form:radiobutton path="gender" value="0" class="form-check-input" />
-															<label for="gender1">Female</label>
+															<form:radiobutton path="current" value="0" class="form-check-input" />
+															<label for="current1">No</label>
 														</div>
 														<div class="radio radio-primary ml-2">
-															<form:radiobutton path="gender" value="1" class="form-check-input" />
-															<label for="gender2">Male</label>
+															<form:radiobutton path="current" value="1" class="form-check-input" />
+															<label for="current2">Yes</label>
 														</div>
-														<form:errors path="gender" />
+														<form:errors path="current" />
 													</div>
 												</fieldset>
+											
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Upload File</label>
+													<label class="col-sm-3 col-form-label" for="name">Order ID</label>
 													<div class="col-sm-9">
-														<div class="avatar p-2">
-															<img class="img-100 rounded-circle" id="avatar" src="/assets/images/user/default.png" alt="#">
-														</div>
-														<input name="image" class="form-control" type="file" id="imgInp" accept="image/*">
+														<form:input path="order" class="form-control" required="required" />
+														<form:errors path="order" class="invalid-feedback" />
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="address">Address</label>
+													<label class="col-sm-3 col-form-label" for="name">Status ID</label>
 													<div class="col-sm-9">
-														<form:input path="address" class="form-control" required="required" />
-														<form:errors path="address" class="invalid-feedback" />
+														<form:input path="status" class="form-control"  required="required" />
+														<form:errors path="status" class="invalid-feedback" />
 													</div>
 												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="phone">Phone</label>
-													<div class="col-sm-9">
-														<form:input path="phone" class="form-control" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required="required" />
-														<form:errors path="phone" class="invalid-feedback" />
-													</div>
-												</div>
+												
 											</div>
 											<div class="card-footer">
 												<button class="btn btn-primary" type="submit">Create</button>

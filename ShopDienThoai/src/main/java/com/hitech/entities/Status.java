@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -25,6 +27,8 @@ public class Status extends BaseEntity implements Serializable{
 	private String id;
 	
 	@Column
+	@NotBlank(message="Vui lòng nhập Tên Trạng Thái!")
+	@Size(min = 2, max = 50, message = "Tên Trạng Thái phải từ {min} đến {max} kí tự")
 	private String name;
 	
 	@OneToMany(mappedBy = "status")
