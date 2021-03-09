@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="static com.hitech.constraints.ViewConstraint.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,7 +75,7 @@
 						<div class="col-xl-12">
 							<div class="card">
 								<div class="card-header">
-									<h5>List Admin</h5>
+									<h5>LIST MANAGER</h5>
 									<div class="card-header-right">
 										<ul class="list-unstyled card-option">
 											<li>
@@ -148,7 +149,7 @@
 
 															<button class="btn btn-pill btn-outline-primary btn-sm"
 																type="button">View</button>
-															<a class="btn btn-pill btn-outline-success btn-sm" href="/ho-manager/admin/update?id=${acc.username}"">Edit</a>
+															<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_ADMIN_UPDATE%>?id=${acc.username}"">Edit</a>
 															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${acc.username}">Delete</button>
 															<%-- <form method="post" action="/ho-manager/admin/delete">
 																<input type="hidden" name="username" value="${acc.username}"/>
@@ -212,7 +213,7 @@
 					.then((willDelete) => {
 							if(willDelete == true){
 								$.ajax({
-									url : "/ho-manager/admin/delete",
+									url : "<%=URL_ADMIN_ADMIN%>",
 									method : "POST",
 									data : {
 										username : $(this).data('id')

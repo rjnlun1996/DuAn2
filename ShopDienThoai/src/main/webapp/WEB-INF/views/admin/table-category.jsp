@@ -119,9 +119,8 @@
 															<td><span>${cate.id}</span></td>
 															<td><span>${cate.name}</span></td>
 															<td>
-																<button class="btn btn-pill btn-outline-primary btn-sm"
-																	type="button">View</button>
-																<a class="btn btn-pill btn-outline-success btn-sm" href="/ho-manager/categories/update?id=${cate.id}">Edit</a>
+																
+																<a class="btn btn-pill btn-outline-success btn-sm" href="/ho-admin/categories/update?id=${cate.id}">Edit</a>
 																<button
 																	class="btn btn-pill btn-outline-danger btn-sm delete-item"
 																	data-id="${cate.id}"  data-name="${cate.name}">Delete</button>
@@ -211,7 +210,7 @@
 				.then((willDelete) => {
 				  if(willDelete == true){
 					  $.ajax({
-						  url: "/ho-manager/categories/delete",
+						  url: "/ho-admin/categories/delete",
 						  method: "POST",
 						  data: {
 							  id: id

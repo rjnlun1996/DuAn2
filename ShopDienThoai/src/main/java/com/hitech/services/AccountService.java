@@ -21,10 +21,30 @@ public interface AccountService extends IBaseService<Account, String>{
 	 * @return account list
 	 */
 	List<Account> findAllAdminByEnabledTrue();
+	
+	/**
+	 * 
+	 * @return
+	 */
+	List<Account> findAllManagerByEnabledTrue();
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
 	boolean disabledById(String id);
+	
 	/**
 	 * Set Enabled properties to false
 	 * @return
 	 */
 	boolean deleteByEnabled(String username);
+	
+	/**
+	 * 
+	 * @param email
+	 * @return
+	 */
+	Account findByEmail(String email);
 }

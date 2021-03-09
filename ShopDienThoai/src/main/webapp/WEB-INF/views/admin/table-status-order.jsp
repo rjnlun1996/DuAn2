@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="static com.hitech.constraints.ViewConstraint.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,7 +75,7 @@
 						<div class="col-xl-12">
 							<div class="card">
 								<div class="card-header">
-									<h5>List Admin</h5>
+									<h5>List Status Order</h5>
 									<div class="card-header-right">
 										<ul class="list-unstyled card-option">
 											<li>
@@ -103,43 +104,34 @@
 										<table class="table table-bordernone">
 											<thead>
 												<tr>
-													<th scope="col">Name</th>
-													<th scope="col">Username</th>
-													<th scope="col">Gender</th>
-													<th scope="col">Email</th>
-													<th scope="col">Phone</th>
+													<th scope="col">ID</th>
+													<th scope="col">Current</th>
+													<th scope="col">Status ID</th>
+													<th scope="col">Order ID</th>
 													<th scope="col"></th>
+													
 												</tr>
 											</thead>
 											<tbody>
-												<c:forEach var="acc" items="${list}">
+												<c:forEach var="statusOrder" items="${listStatusOrder}">
 													<tr>
+														
 														<td>
-															<div class="d-flex">
-																<img
-																	class="img-radius img-60 align-top m-r-15 rounded-circle"
-																	src="/images/avatars/${acc.photo}" alt="">
-																<div class="d-flex flex-column justify-content-center">
-																	<h6 class="f-w-600">${acc.name}</h6>
-																</div>
-															</div>
+															<span>${statusOrder.id}</span>
 														</td>
 														<td>
-															<span>${acc.username}</span>
-														</td>
-														<td>
-															<c:if test="${acc.gender}">
-																<span class="badge badge-pill pill-badge-primary">Male</span>
+															<c:if test="${statusOrder.current}">
+																<span class="badge badge-pill pill-badge-primary">YES</span>
 															</c:if>
-															<c:if test="${!acc.gender}">
-																<span class="badge badge-pill pill-badge-success">Female</span>
+															<c:if test="${!statusOrder.current}">
+																<span class="badge badge-pill pill-badge-success">NO</span>
 															</c:if>
 														</td>
 														<td>
-															<span>${acc.email}</span>
+															<span>${statusOrder.status.id}</span>
 														</td>
 														<td>
-															<span>${acc.phone}</span>
+															<span>${statusOrder.order.id}</span>
 														</td>
 														<td>
 															<%-- <button class="btn btn-pill btn-outline-primary btn-sm" type="button">View</button>
@@ -148,9 +140,8 @@
 
 															<button class="btn btn-pill btn-outline-primary btn-sm"
 																type="button">View</button>
-															<button class="btn btn-pill btn-outline-success btn-sm"
-																type="button">Edit</button>
-															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${acc.username}">Delete</button>
+															<a class="btn btn-pill btn-outline-success btn-sm"  href="/ho-admin/status-order/update?id=${statusOrder.id}">Edit</a>
+															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${statusOrder.id}">Delete</button>
 															<%-- <form method="post" action="/ho-manager/admin/delete">
 																<input type="hidden" name="username" value="${acc.username}"/>
 																<button class="btn btn-pill btn-outline-danger btn-sm" type="submit">Delete</button>
@@ -205,7 +196,7 @@
 			$('.delete-item').click(function() {
 				swal({
 					  title: "Thông báo!",
-					  text: "Bạn có chắc chắn muôn xóa người dùng này không",
+					  text: "Bạn có chắc chắn muốn xóa trạng thái đơn hàng này không",
 					  icon: "warning",
 					  buttons: true,
 					  dangerMode: true,
@@ -213,7 +204,7 @@
 					.then((willDelete) => {
 							if(willDelete == true){
 								$.ajax({
-									url : "/ho-manager/admin/delete",
+									url : "<%=URL_ADMIN_STATUS_ORDER%>",
 									method : "POST",
 									data : {
 										username : $(this).data('id')
@@ -222,7 +213,7 @@
 										if(data == true){
 											swal("Thông báo!", "Bạn đã xóa thành công!", "success").then(() => location.reload());
 										}else{
-											swal("Thông báo!", "Không thể xóa người dùng này!", "danger");
+											swal("Thông báo!", "Không thể xóa trạng thái đơn hàng này!", "danger");
 										}
 									},
 									error : function() {

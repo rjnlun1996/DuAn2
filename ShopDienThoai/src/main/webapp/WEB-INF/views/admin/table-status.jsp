@@ -116,11 +116,10 @@
 													<c:forEach var="status" items="${listStatus}">
 														<tr>
 															<td><span>${status.id}</span></td>
-															<td><span>${status.name}</span></td>
+															<td><span class="badge badge-info">${status.name}</span></td>
 															<td>
-																<button class="btn btn-pill btn-outline-primary btn-sm"
-																	type="button">View</button>
-																<a class="btn btn-pill btn-outline-success btn-sm"  href="/ho-manager/status/update?id=${status.id}">Edit</a>
+																
+																<a class="btn btn-pill btn-outline-success btn-sm"  href="/ho-admin/status/update?id=${status.id}">Edit</a>
 																<button
 																	class="btn btn-pill btn-outline-danger btn-sm delete-item"
 																data-id="${status.id}" data-name="${status.name}">Delete</button>
@@ -185,7 +184,7 @@
 				.then((willDelete) => {
 				  if(willDelete == true){
 					  $.ajax({
-						  url: "/ho-manager/status/delete",
+						  url: "/ho-admin/status/delete",
 						  method: "POST",
 						  data: {
 							  id: id

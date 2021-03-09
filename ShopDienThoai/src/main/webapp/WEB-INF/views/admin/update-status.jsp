@@ -136,9 +136,8 @@ String sb = String.valueOf(request.getAttribute(MENU));
 										</div>
 										<form:form
 											class="theme-form ${error == true ? 'was-validated' : '' }"
-											modelAttribute="status" method="post" novalidate="novalidate">
+											modelAttribute="status" method="post" novalidate="novalidate" action="<%= URL_ADMIN_STATUS_UPDATE %>">
 											
-
 												<c:if test="${message != null}">
 													<div class="alert alert-success dark" role="alert">
 														<p>${message}</p>
@@ -154,8 +153,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 											    	<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="">Status ID</label>
 													<div class="col-sm-9">
-														<form:input path="id" class="form-control" />
-														<%-- <form:errors path="name" /> --%>
+														<input name="id" value="${status.id}" class="form-control" readonly="readonly"/>
 													</div>
 												</div>
 												<div class="form-group row">
