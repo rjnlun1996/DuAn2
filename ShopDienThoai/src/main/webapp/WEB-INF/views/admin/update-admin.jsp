@@ -176,8 +176,12 @@ String sb = String.valueOf(request.getAttribute(MENU));
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="password">Password</label>
 													<div class="col-sm-9">
-														<form:input path="password" class="form-control" />
+														<form:input path="password" type="password" class="form-control" />
 														<form:errors path="password" class="invalid-feedback" />
+													</div>
+													<div class="col-sm-3 mt-2"></div>
+													<div class="col-sm-9 mt-2">
+														<button type="button" class="btn btn-info" id="btnPassword" onclick="handlePassword()">Show Password</button>
 													</div>
 												</div>
 												<fieldset class="form-group">
@@ -286,6 +290,19 @@ String sb = String.valueOf(request.getAttribute(MENU));
 	<!-- Plugin used-->
 	
 	<script type="text/javascript">
+		function handlePassword(){
+			var passwordElement = document.getElementById('password');
+			var btnPassword = document.getElementById('btnPassword');
+			var type = passwordElement.getAttribute('type');
+			if(type == 'text'){
+				passwordElement.setAttribute('type', 'password');
+				btnPassword.innerHTML = "Show Password";
+			}else{
+				passwordElement.setAttribute('type', 'text');
+				btnPassword.innerHTML = "Hide Password";
+			}
+		}
+		
 		function readURL(input) {
 			if (input.files && input.files[0]) {				
 				var reader = new FileReader();

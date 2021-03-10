@@ -13,6 +13,7 @@ public interface DiscountRepository extends JpaRepository<Discount, Integer>{
 	
 	List<Discount> findByEnabledTrue();
 	
-//	@Query("SELECT d FROM Discount d, Product p WHERE p.id == d.product.id AND d.current == 1 AND d.product.id == ?1")
-//	List<Discount> getDiscount(String id);
+	@Query("SELECT d FROM Discount d, Product p WHERE p.id = d.product.id AND d.current = 1 AND d.product.id = ?1")
+	List<Discount> getDiscountByCurrentTrueAndProductId(int id);
+	
 }

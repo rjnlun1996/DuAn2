@@ -1,12 +1,12 @@
 package com.hitech.services.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hitech.entities.Account;
 import com.hitech.entities.Discount;
 import com.hitech.entities.Product;
 import com.hitech.repository.DiscountRepository;
@@ -48,11 +48,12 @@ public class IDiscountService implements DiscountService {
 
 	@Override
 	public Discount update(Discount discount) {
-		Discount dis = discountRepository.getOne(discount.getId());
 		discount.setUpdatedAt(new Date());
 		discount.setUpdatedBy(sessionUtils.getCreatedOrUpdatedBy());
-		if (dis == null) return null;
-		return discountRepository.saveAndFlush(dis);
+		System.err.println("1:" + discount.isCurrent());
+		transformCurrent(discount);
+		System.err.println("2:" + discount.isCurrent());
+		return discountRepository.saveAndFlush(discount);
 	}
 
 	@Override
@@ -80,9 +81,14 @@ public class IDiscountService implements DiscountService {
 		}
 	}
 	
-	private void transformIsCurrent(Discount disc) {
+	private void transformCurrent(Discount disc) {
 		if(disc.isCurrent()) {
-			//discountRepository.findByIdAndCurrentTrue(null)
+			List<Discount> discounts = discountRepository.getDiscountByCurrentTrueAndProductId(disc.getProduct().getId());
+			for(Discount discount: discounts) {
+				discount.setCurrent(false);
+				discountRepository.saveAndFlush(discount);
+			}
+
 		}
 	}
 
