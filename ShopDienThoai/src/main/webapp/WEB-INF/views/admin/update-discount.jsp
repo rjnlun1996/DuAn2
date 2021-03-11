@@ -136,7 +136,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 										<div class="card-header">
 											<h5>UPDATE DISCOUNT</h5>
 										</div>
-										<div class="card-body">
+										<div class="card-body switch-showcase height-equal">
 											<form:form class="theme-form ${(error || isExistedId) ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="discount" method="post" enctype="multipart/form-data">
 												<c:if test="${message != null}">
 													<div class="alert alert-success dark" role="alert">
@@ -150,11 +150,25 @@ String sb = String.valueOf(request.getAttribute(MENU));
 												</c:if>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="id">Mã khuyễn mãi</label>
-													<div class="col-sm-9">
-														<input class="form-control" type="text" name="id" value="${discount.id }" readonly="readonly"/>
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-key"></i>
+															</span>
+														</div>
+														<input class="form-control" type="text" name="id" value="${discount.id }" readonly="readonly" />
 													</div>
 												</div>
-												<fieldset class="form-group row">
+												<div class="media form-group row">
+													<label class="col-form-label col-sm-3">Current</label>
+													<div class="media-body text-right icon-state col-sm-1">
+														<label class="switch">
+															<input type="checkbox" checked="${discount.current}" name="current" value="1">
+															<span class="switch-state bg-primary"></span>
+														</label>
+													</div>
+												</div>
+											<%-- 	<fieldset class="form-group row">
 													<label class="col-form-label col-sm-3">Current</label>
 													<div class="col-sm-9">
 														<div class="radio radio-primary ml-2">
@@ -167,24 +181,39 @@ String sb = String.valueOf(request.getAttribute(MENU));
 														</div>
 														<form:errors path="current" />
 													</div>
-												</fieldset>
+												</fieldset> --%>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="Product">Product</label>
-													<div class="col-sm-9 ">
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-brand-aliexpress"></i>
+															</span>
+														</div>
 														<input class="form-control" value="${discount.product.name}" type="text" required="required" readonly="readonly" />
-														<input type="hidden" name="productId" value="${discount.product.id }"/>
+														<input type="hidden" name="productId" value="${discount.product.id }" />
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="percents">Percent</label>
-													<div class="col-sm-9 ">
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-sale-discount"></i>
+															</span>
+														</div>
 														<form:input path="percents" class="form-control" type="number" required="required" />
 														<form:errors path="percents" class="invalid-feedback" />
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="description">Description</label>
-													<div class="col-sm-9 ">
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-pencil-alt-2"></i>
+															</span>
+														</div>
 														<form:input path="description" class="form-control" type="text" required="required" />
 														<form:errors path="description" class="invalid-feedback" />
 													</div>

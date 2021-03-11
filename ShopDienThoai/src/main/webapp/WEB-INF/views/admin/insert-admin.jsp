@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page import="static com.hitech.utils.ViewUtils.*"%>
 <%
-	String sb = String.valueOf(request.getAttribute(MENU));
+String sb = String.valueOf(request.getAttribute(MENU));
 %>
 
 <!DOCTYPE html>
@@ -150,14 +150,24 @@
 												</c:if>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="name">Name</label>
-													<div class="col-sm-9">
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-pencil-alt-5"></i>
+															</span>
+														</div>
 														<form:input path="name" class="form-control" required="required" />
 														<form:errors path="name" class="invalid-feedback" />
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="username">Username</label>
-													<div class="col-sm-9">
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-users"></i>
+															</span>
+														</div>
 														<form:input path="username" class="form-control" required="required" minlength="5" maxlength="20" />
 														<form:errors path="username" class="invalid-feedback" />
 														<c:if test="${isExistUsername}">
@@ -167,7 +177,12 @@
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="email">Email</label>
-													<div class="col-sm-9">
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-email"></i>
+															</span>
+														</div>
 														<form:input type="email" path="email" class="form-control" required="required" />
 														<form:errors path="email" class="invalid-feedback" />
 														<c:if test="${isExistEmail}">
@@ -177,21 +192,26 @@
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="password">Password</label>
-													<div class="col-sm-9">
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-ui-password"></i>
+															</span>
+														</div>
 														<form:input path="password" class="form-control" required="required" minlength="5" maxlength="20" />
 														<form:errors path="password" class="invalid-feedback" />
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Birthday</label>
-													<div class="col-sm-5">
+													<div class="col-sm-9 ">
 														<div class="input-group date" id="dt-date" data-target-input="nearest">
-															<form:input path="birthday" required="required" class="form-control datetimepicker-input digits" disabled="disabled" data-target="#dt-date" />
 															<div class="input-group-append" data-target="#dt-date" data-toggle="datetimepicker">
 																<div class="input-group-text">
 																	<i class="fa fa-calendar"></i>
 																</div>
 															</div>
+															<form:input path="birthday" required="required" class="form-control datetimepicker-input digits" disabled="disabled" data-target="#dt-date" />
 														</div>
 														<form:errors path="birthday" class="invalid-feedback" />
 													</div>
@@ -221,14 +241,24 @@
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="address">Address</label>
-													<div class="col-sm-9">
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-home"></i>
+															</span>
+														</div>
 														<form:input path="address" class="form-control" required="required" />
 														<form:errors path="address" class="invalid-feedback" />
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="phone">Phone</label>
-													<div class="col-sm-9">
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-phone"></i>
+															</span>
+														</div>
 														<form:input path="phone" class="form-control" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required="required" />
 														<form:errors path="phone" class="invalid-feedback" />
 													</div>
@@ -285,7 +315,7 @@
 	<!-- Plugin used-->
 	<script type="text/javascript">
 		function readURL(input) {
-			if (input.files && input.files[0]) {				
+			if (input.files && input.files[0]) {
 				var reader = new FileReader();
 
 				reader.readAsDataURL(input.files[0]);

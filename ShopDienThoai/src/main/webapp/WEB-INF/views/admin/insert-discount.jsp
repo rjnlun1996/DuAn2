@@ -135,42 +135,59 @@ String sb = String.valueOf(request.getAttribute(MENU));
 								<div class="col-sm-12">
 									<div class="card">
 										<div class="card-header">
-											<h5>INSERT ADMIN</h5>
+											<h5>INSERT DISCOUNT</h5>
 										</div>
 										<form:form class="theme-form ${error ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="discount" method="post" enctype="multipart/form-data">
-											<c:if test="${message != null}">
-												<div class="alert alert-success dark" role="alert">
-													<p>${message}</p>
+											<div class="card-body">
+												<c:if test="${message != null}">
+													<div class="alert alert-success dark" role="alert">
+														<p>${message}</p>
+													</div>
+												</c:if>
+												<c:if test="${error != null}">
+													<div class="alert alert-secondary dark" role="alert">
+														<p>${error}</p>
+													</div>
+												</c:if>
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="product">Product</label>
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-brand-aliexpress"></i>
+															</span>
+														</div>
+														<select class="form-control js-data-example-ajax" name="productId"></select>
+													</div>
 												</div>
-											</c:if>
-											<c:if test="${error != null}">
-												<div class="alert alert-secondary dark" role="alert">
-													<p>${error}</p>
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="percents">Percent</label>
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-sale-discount"></i>
+															</span>
+														</div>
+														<form:input path="percents" class="form-control" type="number" required="required" />
+														<form:errors path="percents" class="invalid-feedback" />
+													</div>
+												</div> 
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="description">Description</label>
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-pencil-alt-2"></i>
+															</span>
+														</div>
+														<form:input path="description" class="form-control" type="text" required="required" />
+														<form:errors path="description" class="invalid-feedback" />
+													</div>
 												</div>
-											</c:if>
-											<div class="form-group row">
-												<label class="col-sm-3 col-form-label" for="product">Product</label>
-												<div class="col-sm-9">
-													<select class="form-control js-data-example-ajax" name="productId"></select>
+												<div class="card-footer">
+													<button class="btn btn-primary" type="submit">Create</button>
+													<button class="btn btn-secondary" type="reset">Cancel</button>
 												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-sm-3 col-form-label" for="percents">Percent</label>
-												<div class="col-sm-9 ">
-													<form:input path="percents" class="form-control" type="number" required="required" />
-													<form:errors path="percents" class="invalid-feedback" />
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-sm-3 col-form-label" for="description">Description</label>
-												<div class="col-sm-9 ">
-													<form:input path="description" class="form-control" type="text" required="required" />
-													<form:errors path="description" class="invalid-feedback" />
-												</div>
-											</div>
-											<div class="card-footer">
-												<button class="btn btn-primary" type="submit">Create</button>
-												<button class="btn btn-secondary" type="reset">Cancel</button>
 											</div>
 										</form:form>
 									</div>
@@ -247,8 +264,6 @@ String sb = String.valueOf(request.getAttribute(MENU));
 				}
 			});
 
-			
-			
 			function readURL(input) {
 				if (input.files && input.files[0]) {
 					var reader = new FileReader();
