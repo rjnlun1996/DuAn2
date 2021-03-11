@@ -40,9 +40,9 @@ public class IDiscountService implements DiscountService {
 	public Discount save(Discount discount) {
 		Product pt = productRepository.getOne(discount.getProduct().getId());
 		discount.setProduct(pt);
-
 		discount.setCreatedAt(new Date());
 		discount.setCreatedBy(sessionUtils.getCreatedOrUpdatedBy());
+		transformCurrent(discount);
 		return discountRepository.save(discount);
 	}
 
@@ -50,9 +50,7 @@ public class IDiscountService implements DiscountService {
 	public Discount update(Discount discount) {
 		discount.setUpdatedAt(new Date());
 		discount.setUpdatedBy(sessionUtils.getCreatedOrUpdatedBy());
-		System.err.println("1:" + discount.isCurrent());
 		transformCurrent(discount);
-		System.err.println("2:" + discount.isCurrent());
 		return discountRepository.saveAndFlush(discount);
 	}
 
