@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hitech.constraints.ViewConstraint;
-
+import com.hitech.entities.Account;
 import com.hitech.entities.Status;
 import com.hitech.services.StatusService;
 import com.hitech.utils.ViewUtils;
@@ -82,6 +82,7 @@ public class AStatusController {
 			@Validated @ModelAttribute("status") Status status,
 			BindingResult errors,
 			RedirectAttributes ra)throws IOException {	
+		Status statusOnDb = statusService.findById(status.getId());
 		boolean isExistedName= statusService.findByNameAndEnabledTrue(status.getName())!=null;
 		boolean isErrors = errors.hasErrors();
 		if(isErrors || isExistedName ) {
@@ -94,7 +95,9 @@ public class AStatusController {
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_STATUS_UPDATE);
 			return ViewConstraint.VIEW_ADMIN_STATUS_UPDATE;
 		}
-		statusService.update(status);
+		statusOnDb.setId(status.getId());
+		statusOnDb.setName(status.getName());
+		statusService.update(statusOnDb);
 		ra.addFlashAttribute("message", "Cập nhật trạng thái " + status.getName() + " thành công!");
 	    return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_STATUS_UPDATE + "?id=" + status.getId());
 	}

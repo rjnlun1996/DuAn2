@@ -134,8 +134,8 @@ Account user = (Account) session.getAttribute(SessionConstraint.USER);
 									<span>Web Designer</span>
 								</li>
 								<li>
-									<i data-feather="user"> </i>
-									Profile
+								<a href="/admin/profile">	<i data-feather="user"> </i>
+									Profile </a>
 								</li>
 								<li>
 									<i data-feather="message-square"> </i>
