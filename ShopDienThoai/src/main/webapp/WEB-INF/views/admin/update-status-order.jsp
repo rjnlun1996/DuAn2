@@ -136,10 +136,10 @@ String sb = String.valueOf(request.getAttribute(MENU));
 										<div class="card-header">
 											<h5>UPDATE ADMIN</h5>
 										</div>
-										<form:form class="theme-form" modelAttribute="account" method="post">
+										<form:form class="theme-form" modelAttribute="statusOrder" method="post">
 											<div class="card-body">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="username">Username</label>
+													<label class="col-sm-3 col-form-label" for="name">Username</label>
 													<div class="col-sm-9">
 														<form:input path="username" class="form-control" />
 														<%-- <form:errors path="username" /> --%>

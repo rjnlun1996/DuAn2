@@ -104,10 +104,10 @@
 										<table class="table table-bordernone">
 											<thead>
 												<tr>
-													
+													<th scope="col">Id</th>
 													<th scope="col">Current</th>
 													<th scope="col">Status Name</th>
-													
+													<th scope="col">Customer</th>
 													<th scope="col"></th>
 													
 												</tr>
@@ -116,7 +116,9 @@
 												<c:forEach var="statusOrder" items="${listStatusOrder}">
 													<tr>
 														
-														
+														<td>
+															<span>${statusOrder.id}</span>
+														</td>
 														<td>
 															<c:if test="${statusOrder.current}">
 																<span class="badge badge-pill pill-badge-primary">YES</span>
@@ -127,6 +129,9 @@
 														</td>
 														<td>
 															<span>${statusOrder.status.name}</span>
+														</td>
+														<td>
+															<span>${statusOrder.order.account.name}</span>
 														</td>
 													
 														<td>

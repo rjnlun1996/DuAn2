@@ -38,6 +38,11 @@ public class Status extends BaseEntity implements Serializable{
 	public Status() {
 		super();
 	}
+   
+	public Status(String id) {
+		super();
+		this.id = id;
+	}
 
 	public Status(String id, String name, Set<StatusOrder> statusOrders) {
 		super();

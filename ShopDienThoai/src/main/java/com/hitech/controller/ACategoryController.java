@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hitech.constraints.ViewConstraint;
+import com.hitech.entities.Account;
 import com.hitech.entities.Category;
 import com.hitech.services.CategoryService;
 import com.hitech.utils.ViewUtils;
@@ -79,6 +80,7 @@ public class ACategoryController {
 	@PostMapping(ViewConstraint.URL_ADMIN_CATEGORY_UPDATE)
 	public Object update(Model model, @Validated @ModelAttribute("category") Category category, BindingResult errors,
 			RedirectAttributes ra) throws IOException {
+		Category categoryOnDb = categoryService.findById(category.getId());
 		boolean isExistedName = categoryService.findByNameAndEnabledTrue(category.getName()) != null;
 		boolean isErrors = errors.hasErrors();
 		if (isErrors || isExistedName) {
@@ -92,7 +94,9 @@ public class ACategoryController {
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CATEGORY_UPDATE);
 			return ViewConstraint.VIEW_ADMIN_CATEGORY_UPDATE;
 		}
-		categoryService.update(category);
+		categoryOnDb.setId(category.getId());
+		categoryOnDb.setName(category.getName());
+		categoryService.update(categoryOnDb);
 		ra.addFlashAttribute("message", "Cập nhật danh mục " + category.getName() + " thành công!");
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_CATEGORY_UPDATE + "?id=" + category.getId());
 	}
