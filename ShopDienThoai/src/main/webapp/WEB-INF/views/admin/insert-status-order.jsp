@@ -146,7 +146,8 @@ String sb = String.valueOf(request.getAttribute(MENU));
 										<div class="card-header">
 											<h5>INSERT STATUS ORDER</h5>
 										</div>
-										<form:form class="theme-form ${error ? 'was-validated' : ''}"
+										<div class="card-body">
+											<form:form class="theme-form ${error ? 'was-validated' : ''}"
 											novalidate="novalidate" modelAttribute="statusOrder"
 											method="post">
 											<div class="card-body ">
@@ -161,14 +162,14 @@ String sb = String.valueOf(request.getAttribute(MENU));
 													</div>
 												</c:if>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="customer">Customer</label>
+													<label class="col-sm-3 col-form-label" for="customer">Order of Customer</label>
 													<div class="col-sm-9">
 														<select class="form-control js-data-example-ajax"
-															name="orderId">
-															<c:forEach var="order" items="${listOrder}">
+															name="orderId" id="orderId">
+															<%-- <c:forEach var="order" items="${listOrder}">
 																<option value="${order.id }">Đơn hàng
 																	${order.id} ( Khách hàng ${order.account.name} )</option>
-															</c:forEach>
+															</c:forEach> --%>
 														</select>
 													</div>
 												</div>
@@ -177,7 +178,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 													<label class="col-sm-3 col-form-label" for="status">Status
 														Name</label>
 													<div class="col-sm-9">
-														<select class="form-control js-data-example-ajax"
+														<select class="form-control"
 															name="statusId">
 															<c:forEach var="status" items="${listStatus}">
 																<option value="${status.id }">Trạng thái
@@ -203,6 +204,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 												<button class="btn btn-secondary" type="reset">Cancel</button>
 											</div>
 										</form:form>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -254,68 +256,13 @@ String sb = String.valueOf(request.getAttribute(MENU));
 	<!-- login js-->
 	<!-- Plugin used-->
 	<script type="text/javascript">
-	
-	$(document).ready(function() {
-		var data = [ {
-			id : 0,
-			text : 'enhancement'
-		}, {
-			id : 1,
-			text : 'bug'
-		}, {
-			id : 2,
-			text : 'duplicate'
-		}, {
-			id : 3,
-			text : 'invalid'
-		}, {
-			id : 4,
-			text : 'wontfix'
-		} ];
-		$.ajax({
-			url : 'http://localhost:8080/ho-admin/status/search?id=123',
-			success : function(data) {
-				$('.js-data-example-ajax').select2({
-					data : data
-				});
-			}
-		});
-		
-	
-			
-			$(document).ready(function() {
-				var data = [ {
-					id : 0,
-					text : 'enhancement'
-				}, {
-					id : 1,
-					text : 'bug'
-				}, {
-					id : 2,
-					text : 'duplicate'
-				}, {
-					id : 3,
-					text : 'invalid'
-				}, {
-					id : 4,
-					text : 'wontfix'
-				} ];
-				$.ajax({
-					url : 'http://localhost:8080/ho-admin/customer/search?id=123',
-					success : function(data) {
-						$('.js-data-example-ajax').select2({
-							data : data
-						});
-					}
-				});
-		
-	
-		
-		
+		$(document).ready(function() {
 
+			$('.js-data-example-ajax').select2();
+		});
 
 		function readURL(input) {
-			if (input.files && input.files[0]) {				
+			if (input.files && input.files[0]) {
 				var reader = new FileReader();
 
 				reader.readAsDataURL(input.files[0]);
@@ -326,7 +273,6 @@ String sb = String.valueOf(request.getAttribute(MENU));
 
 			}
 		}
-	
 
 		$("#imgInp").change(function() {
 			readURL(this);

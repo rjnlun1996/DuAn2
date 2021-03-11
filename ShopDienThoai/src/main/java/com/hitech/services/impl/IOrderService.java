@@ -28,7 +28,7 @@ public class IOrderService implements OrderService{
 	@Override
 	public Order findById(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return orderRepository.getOne(id);
 	}
 
 	@Override

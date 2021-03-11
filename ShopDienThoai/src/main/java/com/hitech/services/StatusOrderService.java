@@ -9,7 +9,9 @@ import com.hitech.entities.StatusOrder;
 
 public interface StatusOrderService extends IBaseService<StatusOrder, Integer> {
 	
-	List<StatusOrder> findAllStatusOrderByEnabledTrue();
+	List<StatusOrder> findAllByEnabledTrue();
+	
+	List<StatusOrder> findAllByEnabledTrueAndCurrentTrue();
 	
 	boolean deleteByEnabled(Integer id);
 

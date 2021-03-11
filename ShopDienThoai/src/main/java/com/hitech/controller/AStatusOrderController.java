@@ -31,26 +31,23 @@ import com.hitech.utils.ViewUtils;
 public class AStatusOrderController {
 	@Autowired
 	private StatusOrderService statusOrderService;
-	
+
 	@Autowired
 	private StatusService statusService;
 	
 	@Autowired
 	private OrderService orderService;
-	
 
 	@RequestMapping(ViewConstraint.URL_ADMIN_STATUS_ORDER)
 	public String table(Model model) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_STATUS_ORDER);
-
-		model.addAttribute("listStatusOrder", statusOrderService.findAllStatusOrderByEnabledTrue());
+		model.addAttribute("listStatusOrder", statusOrderService.findAllByEnabledTrueAndCurrentTrue());
 		return ViewConstraint.VIEW_ADMIN_STATUS_ORDER;
 	}
 
 	@GetMapping(ViewConstraint.URL_ADMIN_STATUS_ORDER_INSERT)
 	public String show(Model model) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_STATUS_ORDER_INSERT);
-		model.addAttribute("listOrder",	orderService.findAllByEnabledTrue());
 		model.addAttribute("listStatus", statusService.findAllStatusByEnabledTrue());
 		model.addAttribute("statusOrder", new StatusOrder());
 		return ViewConstraint.VIEW_ADMIN_STATUS_ORDER_INSERT;
@@ -58,8 +55,7 @@ public class AStatusOrderController {
 
 	@PostMapping(ViewConstraint.URL_ADMIN_STATUS_ORDER_INSERT)
 	public Object insert(Model model, @Validated @ModelAttribute("statusOrder") StatusOrder statusOrder,
-			BindingResult errors, RedirectAttributes reAttributes,
-			@RequestParam String statusId,  
+			BindingResult errors, RedirectAttributes reAttributes, @RequestParam String statusId,
 			@RequestParam int orderId) throws IOException {
 		boolean isErrors = errors.hasErrors();
 		if (isErrors) {
@@ -69,7 +65,7 @@ public class AStatusOrderController {
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_STATUS_ORDER_INSERT);
 			return ViewConstraint.VIEW_ADMIN_STATUS_ORDER_INSERT;
 		}
-		
+
 		statusOrder.setCurrent(true);
 		statusOrder.setStatus(new Status(statusId));
 		statusOrder.setOrder(new Order(orderId));
@@ -86,9 +82,10 @@ public class AStatusOrderController {
 	}
 
 	@GetMapping(ViewConstraint.URL_ADMIN_STATUS_ORDER_UPDATE)
-	public String updateGet(Model model, @RequestParam Integer id) {
+	public String updateGet(Model model, @RequestParam Integer orderId) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_STATUS_ORDER_UPDATE);
-		model.addAttribute("statusOrder", statusOrderService.findById(id));
+		model.addAttribute("order", orderService.findById(orderId));
+		model.addAttribute("listStatus", statusService.findAllStatusByEnabledTrue());
 		return ViewConstraint.VIEW_ADMIN_STATUS_ORDER_UPDATE;
 	}
 
@@ -105,9 +102,7 @@ public class AStatusOrderController {
 			return ViewConstraint.VIEW_ADMIN_STATUS_ORDER_UPDATE;
 		}
 
-	
-
-		 statusOrderService.update(statusOrderOnDB);
+		statusOrderService.update(statusOrderOnDB);
 		reAttributes.addFlashAttribute("message", "Cập nhật trạng thái đơn hàng thành công!");
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_STATUS_ORDER);
 	}

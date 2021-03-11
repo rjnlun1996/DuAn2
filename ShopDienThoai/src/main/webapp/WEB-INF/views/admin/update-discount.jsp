@@ -163,7 +163,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 													<label class="col-form-label col-sm-3">Current</label>
 													<div class="media-body text-right icon-state col-sm-1">
 														<label class="switch">
-															<input type="checkbox" checked="${discount.current}" name="current" value="1">
+															<input type="checkbox" ${discount.current ? 'checked="checked"' : ''} name="current">
 															<span class="switch-state bg-primary"></span>
 														</label>
 													</div>
