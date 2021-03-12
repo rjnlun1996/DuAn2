@@ -81,4 +81,14 @@ public class SessionUtils {
 		Account created = getUser();
 		return created != null ? created.getUsername() : null;
 	}
+	
+	public String getRoleName() {
+		if(getUser().getLevel() == 0) {
+			return "ADMINISTRATOR";
+		}
+		if(getUser().getLevel() == 1) {
+			return "MANAGER";
+		}
+		return "CUSTOMER";
+	}
 }

@@ -70,10 +70,11 @@ public class IAccountService implements AccountService{
 	@Override
 	public Account update(Account acount) {
 		Account acc = accountRepository.getOne(acount.getUsername());
+		if(acc == null) return null;
 		acount.setUpdatedAt(new Date());
 		acount.setUpdatedBy(sessionUtils.getCreatedOrUpdatedBy());
-		if(acc == null) return null;
-		return accountRepository.saveAndFlush(acc);
+		sessionUtils.setUser(acount);
+		return accountRepository.saveAndFlush(acount);
 	}
 
 	@Override
