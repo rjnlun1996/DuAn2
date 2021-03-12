@@ -82,53 +82,7 @@
 					</div>
 				</div>
 				<!-- Container-fluid starts-->
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-sm-12 col-xl-12">
-							<div class="row">
-								<div class="col-sm-12">
-									<div class="card">
-										<div class="card-header">
-											<h5>INSERT CATEGORIES</h5>
-										</div>
-										<form:form
-											class="theme-form ${(error || isExistName ) ? 'was-validated' : '' }"
-											modelAttribute="category" novalidate="novalidate">
-											<div class="card-body">
-
-												<c:if test="${message != null}">
-													<div class="alert alert-success dark" role="alert">
-														<p>${message}</p>
-													</div>
-												</c:if>
-												<c:if test="${error != null}">
-													<div class="alert alert-secondary dark" role="alert">
-														<p>${error}</p>
-													</div>
-												</c:if>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="name">Name</label>
-													<div class="col-sm-9">
-														<form:input path="name" class="form-control"
-															required="required" minlength="2" maxlength="50" />
-														<form:errors path="name" class="invalid-feedback" />
-															<c:if test="${isExistName}">
-															<div class="invalid-feedback">${errorName}</div>
-														</c:if>
-													</div>
-												</div>
-											</div>
-											<div class="card-footer">
-												<button class="btn btn-primary" type="submit">Create</button>
-												<button class="btn btn-secondary" type="reset">Cancel</button>
-											</div>
-										</form:form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			
 			</div>
 			<!-- footer start-->
 			<!-- footer start-->
