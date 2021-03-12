@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "Accounts")
-public class Account extends BaseEntity implements Serializable{
+public class Account extends BaseEntity implements Serializable {
 
 	/**
 	 * 
@@ -32,54 +32,55 @@ public class Account extends BaseEntity implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column
-	@NotBlank(message="Vui lòng nhập Username !!! ")
+	@NotBlank(message = "Vui lòng nhập Username !!! ")
 	@Size(min = 5, max = 20, message = "Username phải từ {min} đến {max}")
 	private String username;
-		
-	@Column
-	@NotBlank(message="Vui lòng nhập email !!! ")
-	@Email(message="Vui lòng nhập email đúng định dạng !")
-	private String email;
-	
-	@Column
-	@NotBlank(message="Vui lòng nhập Password !!! ")
-	@Size(min = 5, max = 20, message = "Password phải từ {min} đến {max}")
-	private String password;
-	
-	@Column
-	@NotBlank(message="Vui lòng nhập Họ và Tên !!! ")
-	private String name;
-	
-	@Column
-	private boolean gender;
-	
-	@Column
-	private String photo = "default.png";
-	
-	@Column
-	@NotBlank(message="Vui lòng nhập Địa chỉ !!! ")
-	private String address;
-	
-	@Column
-	@NotBlank(message="Vui lòng nhập Số điện thoại !!! ")
-	@Pattern(regexp = "(84|0[3|5|7|8|9])+([0-9]{8})", message = "Vui lòng nhập Số điện thoại đúng định dạng")
-	private String phone ;
 
 	@Column
-	@NotNull(message="Vui lòng chọn ngày sinh !!! ")
+	@NotBlank(message = "Vui lòng nhập email !!! ")
+	@Email(message = "Vui lòng nhập email đúng định dạng !")
+	private String email;
+
+	@Column
+	@NotBlank(message = "Vui lòng nhập Password !!! ")
+	@Size(min = 5, max = 20, message = "Password phải từ {min} đến {max}")
+	private String password;
+
+	@Column
+	@NotBlank(message = "Vui lòng nhập Họ và Tên !!! ")
+	private String name;
+
+	@Column
+	private boolean gender;
+
+	@Column
+	private String photo = "default.png";
+
+	@Column
+	@NotBlank(message = "Vui lòng nhập Địa chỉ !!! ")
+	private String address;
+
+	@Column
+	@NotBlank(message = "Vui lòng nhập Số điện thoại !!! ")
+	@Pattern(regexp = "(84|0[3|5|7|8|9])+([0-9]{8})", message = "Vui lòng nhập Số điện thoại đúng định dạng")
+	private String phone;
+
+	@Column
+	@NotNull(message = "Vui lòng chọn ngày sinh !!! ")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date birthday;
-	
+
 	@Column
 	private int level;
-	
+
 	@OneToMany(mappedBy = "account")
 	@JsonIgnore
 	@JsonManagedReference
 	private Set<Order> orders;
-	
-	public Account() {}
+
+	public Account() {
+	}
 
 	public String getUsername() {
 		return username;
@@ -153,7 +154,6 @@ public class Account extends BaseEntity implements Serializable{
 		this.birthday = birthday;
 	}
 
-
 	public int getLevel() {
 		return level;
 	}
@@ -179,6 +179,6 @@ public class Account extends BaseEntity implements Serializable{
 		return "Account [username=" + username + ", email=" + email + ", password=" + password + ", name=" + name
 				+ ", gender=" + gender + ", photo=" + photo + ", address=" + address + ", phone=" + phone
 				+ ", birthday=" + birthday + ", level=" + level;
-	}	
-	
+	}
+
 }
