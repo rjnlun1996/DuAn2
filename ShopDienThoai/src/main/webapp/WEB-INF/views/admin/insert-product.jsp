@@ -140,7 +140,6 @@
 											class="theme-form ${error == true ? 'was-validated' : '' }"
 											modelAttribute="product" novalidate="novalidate" method="post" enctype="multipart/form-data">
 											<div class="card-body">
-
 												<c:if test="${message != null}">
 													<div class="alert alert-success dark" role="alert">
 														<p>${message}</p>

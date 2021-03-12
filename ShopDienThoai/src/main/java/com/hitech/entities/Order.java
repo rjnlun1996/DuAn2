@@ -46,7 +46,7 @@ public class Order extends BaseEntity implements Serializable{
 	private String	phone ;
 	
 	@Column
-	private double total;
+	private long total;
 	
 	@ManyToOne
 	@JoinColumn(name="username",nullable = false)
@@ -61,7 +61,7 @@ public class Order extends BaseEntity implements Serializable{
 	@JsonManagedReference
 	private Set<StatusOrder> statusOrders;
 	
-	public double getTotal() {
+	public long getTotal() {
 		return total;
 	}
 
@@ -73,7 +73,7 @@ public class Order extends BaseEntity implements Serializable{
 		this.orderDetails = orderDetails;
 	}
 
-	public void setTotal(double total) {
+	public void setTotal(long total) {
 		this.total = total;
 	}
 
