@@ -121,10 +121,8 @@
 															<td><span>${cate.id}</span></td>
 															<td><span>${cate.name}</span></td>
 															<td>
-																<button class="btn btn-pill btn-outline-primary btn-sm"
-																	type="button">View</button>
-																<button class="btn btn-pill btn-outline-success btn-sm"
-																	type="button">Edit</button>
+																
+																<a class="btn btn-pill btn-outline-success btn-sm" href="/ho-admin/categories/update?id=${cate.id}">Edit</a>
 																<button
 																	class="btn btn-pill btn-outline-danger btn-sm delete-item"
 																	data-id="${cate.id}"  data-name="${cate.name}">Delete</button>

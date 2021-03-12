@@ -102,6 +102,13 @@ public class ICategoryService implements CategoryService {
 		
 		return categoryRepository.findByEnabledTrue();
 	}
-   
+
+	@Override
+	public Category findByNameAndEnabledTrue(String name) {
+		
+		return categoryRepository.findByNameAndEnabledTrue(name);
+	}
+
+	
 
 }

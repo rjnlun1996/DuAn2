@@ -9,5 +9,11 @@ import com.hitech.entities.Order;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Integer>{
+<<<<<<< HEAD
 	List<Order> findByEnabledTrue();
+=======
+
+	List<Order> findByEnabledTrue();
+
+>>>>>>> branch 'master' of https://github.com/rjnlun1996/DuAn2.git
 }

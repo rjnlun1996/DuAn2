@@ -112,37 +112,37 @@
 												</tr>
 											</thead>
 											<tbody>
-												<c:forEach var="acc" items="${list}">
+												<c:forEach var="cus" items="${list}">
 													<tr>
 														<td>
 															<div class="d-flex">
-																<img class="img-radius img-60 align-top m-r-15 rounded-circle" src="/images/avatars/${acc.photo}" alt="">
+																<img class="img-radius img-60 align-top m-r-15 rounded-circle" src="/images/avatars/${cus.photo}" alt="">
 																<div class="d-flex flex-column justify-content-center">
-																	<h6 class="f-w-600">${acc.name}</h6>
+																	<h6 class="f-w-600">${cus.name}</h6>
 																</div>
 															</div>
 														</td>
 														<td>
-															<span>${acc.username}</span>
+															<span>${cus.username}</span>
 														</td>
 														<td>
-															<c:if test="${acc.gender}">
+															<c:if test="${cus.gender}">
 																<span class="badge badge-pill pill-badge-primary">Male</span>
 															</c:if>
-															<c:if test="${!acc.gender}">
+															<c:if test="${!cus.gender}">
 																<span class="badge badge-pill pill-badge-success">Female</span>
 															</c:if>
 														</td>
 														<td>
-															<span>${acc.email}</span>
+															<span>${cus.email}</span>
 														</td>
 														<td>
-															<span>${acc.phone}</span>
+															<span>${cus.phone}</span>
 														</td>
 														<td>
 															<button class="btn btn-pill btn-outline-primary btn-sm" type="button">View</button>
-															<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_CUSTOMER_UPDATE%>?id=${acc.username}"">Edit</a>
-															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${acc.username}">Delete</button>
+															<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_CUSTOMER_UPDATE%>?id=${cus.username}"">Edit</a>
+															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${cus.username}">Delete</button>
 
 
 														</td>

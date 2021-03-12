@@ -138,7 +138,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 										<div class="card-header">
 											<h5>UPDATE MANAGER</h5>
 										</div>
-										<form:form class="theme-form ${(error || isExistEmail) ? 'was-validated' : ''}"  novalidate="novalidate" modelAttribute="account" method="post" enctype="multipart/form-data">
+										<form:form class="theme-form ${(error || isExistEmail) ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="account" method="post" enctype="multipart/form-data">
 											<div class="card-body datetime-picker">
 												<c:if test="${message != null}">
 													<div class="alert alert-success dark" role="alert">
@@ -152,15 +152,24 @@ String sb = String.valueOf(request.getAttribute(MENU));
 												</c:if>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="username">Username</label>
-													<div class="col-sm-9">
-														<input type="text" name="username" value="${account.username }" class="form-control" readonly="readonly"/>
+													<div class="col-sm-9  input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-users"></i>
+															</span>
+														</div>
+														<input type="text" name="username" value="${account.username }" class="form-control" readonly="readonly" />
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="email">Email</label>
-													<div class="col-sm-9">
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-email"></i>
+															</span>
+														</div>
 														<form:input path="email" class="form-control" />
-														<form:input path="password" class="form-control" type="hidden" />
 														<form:errors path="email" class="invalid-feedback" />
 														<c:if test="${isExistEmail}">
 															<div class="invalid-feedback">${errorEmail}</div>
@@ -169,16 +178,30 @@ String sb = String.valueOf(request.getAttribute(MENU));
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="name">Name</label>
-													<div class="col-sm-9">
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-pencil-alt-5"></i>
+															</span>
+														</div>
 														<form:input path="name" class="form-control" />
 														<form:errors path="name" class="invalid-feedback" />
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="password">Passowrd</label>
-													<div class="col-sm-9">
-														<form:input path="password" class="form-control" />
+													<label class="col-sm-3 col-form-label" for="password">Password</label>
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-ui-password"></i>
+															</span>
+														</div>
+														<form:input path="password" type="password" class="form-control" />
 														<form:errors path="password" class="invalid-feedback" />
+													</div>
+													<div class="col-sm-3 mt-2"></div>
+													<div class="col-sm-9 mt-2">
+														<button type="button" class="btn btn-info" id="btnPassword" onclick="handlePassword()">Show Password</button>
 													</div>
 												</div>
 												<fieldset class="form-group">
@@ -193,7 +216,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 																<form:radiobutton path="gender" value="1" class="form-check-input" />
 																<label for="gender2">Male</label>
 															</div>
-															<%-- <form:errors path="gender" /> --%>
+															<form:errors path="gender" />
 														</div>
 														<form:errors path="gender" />
 													</div>
@@ -202,12 +225,12 @@ String sb = String.valueOf(request.getAttribute(MENU));
 													<label class="col-sm-3 col-form-label">Birthday</label>
 													<div class="col-sm-5">
 														<div class="input-group date" id="dt-date" data-target-input="nearest">
-															<form:input path="birthday" class="form-control datetimepicker-input digits" data-target="#dt-date" />
 															<div class="input-group-append" data-target="#dt-date" data-toggle="datetimepicker">
 																<div class="input-group-text">
 																	<i class="fa fa-calendar"></i>
 																</div>
 															</div>
+															<form:input path="birthday" class="form-control datetimepicker-input digits" data-target="#dt-date" />
 														</div>
 														<form:errors path="birthday" class="invalid-feedback" />
 													</div>
@@ -223,19 +246,29 @@ String sb = String.valueOf(request.getAttribute(MENU));
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="">Address</label>
-													<div class="col-sm-9">
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-home"></i>
+															</span>
+														</div>
 														<form:input path="address" class="form-control" />
 														<form:errors path="address" class="invalid-feedback" />
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="">Phone</label>
-													<div class="col-sm-9">
+													<div class="col-sm-9 input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text">
+																<i class="icofont icofont-phone"></i>
+															</span>
+														</div>
 														<form:input path="phone" class="form-control" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required="required" />
 														<form:errors path="phone" class="invalid-feedback" />
 													</div>
 												</div>
-											</div>
+											</div>s
 											<div class="card-footer">
 												<button class="btn btn-primary" type="submit">Update</button>
 												<button class="btn btn-secondary" type="reset">Cancel</button>
@@ -285,10 +318,23 @@ String sb = String.valueOf(request.getAttribute(MENU));
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
 	<!-- login js-->
 	<!-- Plugin used-->
-	
+
 	<script type="text/javascript">
+		function handlePassword() {
+			var passwordElement = document.getElementById('password');
+			var btnPassword = document.getElementById('btnPassword');
+			var type = passwordElement.getAttribute('type');
+			if (type == 'text') {
+				passwordElement.setAttribute('type', 'password');
+				btnPassword.innerHTML = "Show Password";
+			} else {
+				passwordElement.setAttribute('type', 'text');
+				btnPassword.innerHTML = "Hide Password";
+			}
+		}
+
 		function readURL(input) {
-			if (input.files && input.files[0]) {				
+			if (input.files && input.files[0]) {
 				var reader = new FileReader();
 
 				reader.readAsDataURL(input.files[0]);

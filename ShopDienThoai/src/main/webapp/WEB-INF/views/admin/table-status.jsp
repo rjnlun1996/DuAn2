@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +14,7 @@
 <meta name="author" content="pixelstrap">
 <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
 <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
-<title>HOPE ONLINE</title>
+<title>HOPE - TABLE STATUS</title>
 <!-- Google font-->
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -74,7 +77,7 @@
 						<div class="col-xl-12">
 							<div class="card">
 								<div class="card-header">
-									<h5>List Admin</h5>
+									<h5>List Status</h5>
 									<div class="card-header-right">
 										<ul class="list-unstyled card-option">
 											<li>
@@ -103,62 +106,27 @@
 										<table class="table table-bordernone">
 											<thead>
 												<tr>
+													<th scope="col">Status ID</th>
 													<th scope="col">Name</th>
-													<th scope="col">Username</th>
-													<th scope="col">Gender</th>
-													<th scope="col">Email</th>
-													<th scope="col">Phone</th>
+													
 													<th scope="col"></th>
 												</tr>
 											</thead>
 											<tbody>
-												<c:forEach var="acc" items="${list}">
-													<tr>
-														<td>
-															<div class="d-flex">
-																<img
-																	class="img-radius img-60 align-top m-r-15 rounded-circle"
-																	src="/images/avatars/${acc.photo}" alt="">
-																<div class="d-flex flex-column justify-content-center">
-																	<h6 class="f-w-600">${acc.name}</h6>
-																</div>
-															</div>
-														</td>
-														<td>
-															<span>${acc.username}</span>
-														</td>
-														<td>
-															<c:if test="${acc.gender}">
-																<span class="badge badge-pill pill-badge-primary">Male</span>
-															</c:if>
-															<c:if test="${!acc.gender}">
-																<span class="badge badge-pill pill-badge-success">Female</span>
-															</c:if>
-														</td>
-														<td>
-															<span>${acc.email}</span>
-														</td>
-														<td>
-															<span>${acc.phone}</span>
-														</td>
-														<td>
-															<%-- <button class="btn btn-pill btn-outline-primary btn-sm" type="button">View</button>
-															<button class="btn btn-pill btn-outline-success btn-sm" type="button">Edit</button>
-															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${acc.username}">Delete</button> --%>
+													<c:forEach var="status" items="${listStatus}">
+														<tr>
+															<td><span>${status.id}</span></td>
+															<td><span >${status.name}</span></td>
+															<td>
+																
+																<a class="btn btn-pill btn-outline-success btn-sm"  href="/ho-admin/status/update?id=${status.id}">Edit</a>
+																<button
+																	class="btn btn-pill btn-outline-danger btn-sm delete-item"
+																data-id="${status.id}" data-name="${status.name}">Delete</button>
 
-															<button class="btn btn-pill btn-outline-primary btn-sm"
-																type="button">View</button>
-															<button class="btn btn-pill btn-outline-success btn-sm"
-																type="button">Edit</button>
-															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${acc.username}">Delete</button>
-															<%-- <form method="post" action="/ho-manager/admin/delete">
-																<input type="hidden" name="username" value="${acc.username}"/>
-																<button class="btn btn-pill btn-outline-danger btn-sm" type="submit">Delete</button>
-															</form> --%>
-
-														</td>
-													</tr>
-												</c:forEach>
+															</td>
+														</tr>
+													</c:forEach>
 											</tbody>
 										</table>
 									</div>
@@ -200,89 +168,44 @@
 	<!-- Theme js-->
 	<script src="/assets/js/script.js"></script>
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('.delete-item').click(function() {
+		<script>
+		//jquery	
+		  $(document).ready(function(){
+			$('.delete-item').click(function(){
+				var id = $(this).data('id');
+				var name = $(this).data('name');
 				swal({
-					  title: "Thông báo!",
-					  text: "Bạn có chắc chắn muôn xóa người dùng này không",
-					  icon: "warning",
-					  buttons: true,
-					  dangerMode: true,
-					})
-					.then((willDelete) => {
-							if(willDelete == true){
-								$.ajax({
-									url : "/ho-manager/admin/delete",
-									method : "POST",
-									data : {
-										username : $(this).data('id')
-									},
-									success : function(data) {
-										if(data == true){
-											swal("Thông báo!", "Bạn đã xóa thành công!", "success").then(() => location.reload());
-										}else{
-											swal("Thông báo!", "Không thể xóa người dùng này!", "danger");
-										}
-									},
-									error : function() {
-
-									}
-								});
-							}
-					});
-			});
-		});
-				/* if(){
-					$.ajax({
-						url : "/ho-manager/admin/delete",
-						method : "POST",
-						data : {
-							username : $(this).data('id')
-						},
-						success : function(data) {
-							alert(data);
-						},
-						error : function() {
-
-						}
-					});
-				} */
-	
-	//jquery	
-	/* $(document).ready(function(){
-		$('.delete-item').click(function(){
-			var username = $(this).data('id');
-			swal({
-			  title: "Thông báo?",
-			  text: "Bạn có chắc chắn xóa tài khoản " + username + " không?",
-			  icon: "warning",
-			  buttons: true,
-			  dangerMode: true,
+				  title: "Thông báo?",
+				  text: "Bạn có chắc chắn xóa trạng thái " + name  + " không?",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((willDelete) => {
+				  if(willDelete == true){
+					  $.ajax({
+						  url: "/ho-admin/status/delete",
+						  method: "POST",
+						  data: {
+							  id: id
+						  },
+						  success: function(data){
+							 if(data == true) location.reload();
+						  },
+	 					  error: function(data){
+							  
+						  },
+					  });
+				  }
+				});
+				//promise
 			})
-		//swal("Good job!", "You clicked the button!", "error");
-			.then((willDelete) => {
-			  if(willDelete == true){
-				  $.ajax({
-					  url: "/ho-manager/admin/delete",
-					  method: "POST",
-					  data: {
-						  username: username
-					  },
-					  success: function(data){
-						 if(data == true) location.reload();
-					  },
- 					  error: function(data){
-						  
-					  },
-				  });
-			  }
-			});
-			//promise
-		})
-	}); */
-	
-	</script>
+		}); 
+		
+		
+		
+		
+		</script>
 	<!-- login js-->
 	<!-- Plugin used-->
 </body>

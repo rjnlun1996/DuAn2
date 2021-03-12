@@ -79,6 +79,11 @@ public class Order extends BaseEntity implements Serializable{
 
 	public Order() {}
 
+	public Order(int id) {
+		super();
+		this.id = id;
+	}
+
 	public int getId() {
 		return id;
 	}

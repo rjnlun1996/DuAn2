@@ -107,40 +107,43 @@
 													<th scope="col">Product</th>
 													<th scope="col">Percent</th>
 													<th scope="col">Current</th>
+													<th scope="col">Description</th>
 													<th scope="col"></th>
 												</tr>
 											</thead>
 											<tbody>
-												<c:forEach var="dis" items="${list}">
+												<c:forEach var="disc" items="${list}">
 													<tr>
 														<td>
-															<span>${dis.id}</span>
+															<span>${disc.id}</span>
 														</td>
 														<td>
 															<div class="d-flex">
-																<img class="img-radius img-100 align-top m-r-15" src="/images/Iphone/${dis.product.photo}" alt="">
+																<img class="img-radius img-100 align-top m-r-15" src="/images/Iphone/${disc.product.photo}" alt="">
 																<div class="d-flex flex-column justify-content-center">
-																	<h6 class="f-w-600">${dis.product.name}</h6>
+																	<h6 class="f-w-600">${disc.product.name}</h6>
 																</div>
 															</div>
 														</td>
 														<td>
-															<span>${dis.percents}</span>
+															<span>${disc.percents} %</span>
 														</td>
 														<td>
-															<c:if test="${dis.current}">
+															<c:if test="${disc.current}">
 																<span class="badge badge-success  f-12">NOW</span>
 															</c:if>
-															<c:if test="${!dis.current}">
-																<span class="badge badge-danger f-12">${dis.createdAt}</span>
+															<c:if test="${!disc.current}">
+																<span class="badge badge-danger f-12">${disc.createdAt}</span>
 															</c:if>
+														</td>
+														<td>
+															<span>${disc.description}</span>
 														</td>
 														<td>
 
 															<button class="btn btn-pill btn-outline-primary btn-sm" type="button">View</button>
-															<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_DISCOUNT_UPDATE%>?id=${dis.id}"">Edit</a>
-															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${dis.id}">Delete</button>
-
+															<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_DISCOUNT_UPDATE%>?id=${disc.id}">Edit</a>
+															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${disc.id}">Delete</button>
 														</td>
 													</tr>
 												</c:forEach>

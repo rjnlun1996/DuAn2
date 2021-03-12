@@ -118,6 +118,7 @@ public class AAdminController {
 		accountOnDb.setBirthday(account.getBirthday());
 		accountOnDb.setPhone(account.getPhone());
 		accountOnDb.setAddress(account.getAddress());
+		accountOnDb.setPassword(account.getPassword());
 
 		accountService.save(accountOnDb);
 		reAttributes.addFlashAttribute("message", "Cập nhật tài khoản" + account.getUsername() + " thành công!");
