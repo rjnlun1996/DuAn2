@@ -37,8 +37,11 @@ public interface ViewConstraint {
 	
 	public static final String URL_ADMIN_ORDER = "/ho-admin/order/";
 	public static final String URL_ADMIN_ORDER_INSERT = URL_ADMIN_ORDER + "insert";
+	public static final String URL_ADMIN_ORDER_SEARCH = URL_ADMIN_ORDER + "search";
 	public static final String VIEW_ADMIN_ORDER = "admin/table-order";
-	public static final String VIEW_ADMIN_ORDER_INSERT = "admin/insert-order";	
+	public static final String VIEW_ADMIN_ORDER_INSERT = "admin/insert-order";
+	
+	
 	
 	public static final String URL_ADMIN_PRODUCT = "/ho-admin/product/";
 	public static final String URL_ADMIN_PRODUCT_INSERT = URL_ADMIN_PRODUCT + "insert";

@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="static com.hitech.constraints.ViewConstraint.*"%>
 <!DOCTYPE html>
@@ -7,18 +8,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Creative admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-<meta name="keywords" content="admin template, Creative admin template, dashboard template, flat admin template, responsive admin template, web app">
+<meta name="description"
+	content="Creative admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+<meta name="keywords"
+	content="admin template, Creative admin template, dashboard template, flat admin template, responsive admin template, web app">
 <meta name="author" content="pixelstrap">
 <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
-<link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="/assets/images/favicon.png"
+	type="image/x-icon">
 <title>HOPE ONLINE</title>
 <!-- Google font-->
-<link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
 <!-- Font Awesome-->
-<link rel="stylesheet" type="text/css" href="/assets/css/fontawesome.css">
+<link rel="stylesheet" type="text/css"
+	href="/assets/css/fontawesome.css">
 <!-- ico-font-->
 <link rel="stylesheet" type="text/css" href="/assets/css/icofont.css">
 <!-- Themify icon-->
@@ -26,19 +37,22 @@
 <!-- Flag icon-->
 <link rel="stylesheet" type="text/css" href="/assets/css/flag-icon.css">
 <!-- Feather icon-->
-<link rel="stylesheet" type="text/css" href="/assets/css/feather-icon.css">
+<link rel="stylesheet" type="text/css"
+	href="/assets/css/feather-icon.css">
 <link rel="stylesheet" type="text/css"
 	href="/assets/css/feather-icon.css">
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
 <!-- Plugins css Ends-->
-<link rel="stylesheet" type="text/css" href="/assets/css/sweetalert2.css">
+<link rel="stylesheet" type="text/css"
+	href="/assets/css/sweetalert2.css">
 <!-- Bootstrap css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
 <!-- App css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-<link id="color" rel="stylesheet" href="/assets/css/light-1.css" media="screen">
+<link id="color" rel="stylesheet" href="/assets/css/light-1.css"
+	media="screen">
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
 </head>
@@ -78,24 +92,14 @@
 									<h5>List Status Order</h5>
 									<div class="card-header-right">
 										<ul class="list-unstyled card-option">
-											<li>
-												<i class="icofont icofont-double-left"></i>
+											<li><i class="icofont icofont-double-left"></i></li>
+											<li><i class="view-html fa fa-code"></i></li>
+											<li><i class="icofont icofont-maximize full-card"></i></li>
+											<li><i class="icofont icofont-minus minimize-card"></i>
 											</li>
-											<li>
-												<i class="view-html fa fa-code"></i>
+											<li><i class="icofont icofont-refresh reload-card"></i>
 											</li>
-											<li>
-												<i class="icofont icofont-maximize full-card"></i>
-											</li>
-											<li>
-												<i class="icofont icofont-minus minimize-card"></i>
-											</li>
-											<li>
-												<i class="icofont icofont-refresh reload-card"></i>
-											</li>
-											<li>
-												<i class="icofont icofont-error close-card"></i>
-											</li>
+											<li><i class="icofont icofont-error close-card"></i></li>
 										</ul>
 									</div>
 								</div>
@@ -105,49 +109,31 @@
 											<thead>
 												<tr>
 													<th scope="col">Id</th>
-													<th scope="col">Current</th>
-													<th scope="col">Status Name</th>
+													<th scope="col">Order Id</th>
 													<th scope="col">Customer</th>
+													<th scope="col">Status Name</th>
+													<th scope="col">Date</th>
 													<th scope="col"></th>
-													
+
 												</tr>
 											</thead>
 											<tbody>
 												<c:forEach var="statusOrder" items="${listStatusOrder}">
 													<tr>
-														
-														<td>
-															<span>${statusOrder.id}</span>
-														</td>
-														<td>
-															<c:if test="${statusOrder.current}">
-																<span class="badge badge-pill pill-badge-primary">YES</span>
-															</c:if>
-															<c:if test="${!statusOrder.current}">
-																<span class="badge badge-pill pill-badge-success">NO</span>
-															</c:if>
-														</td>
-														<td>
-															<span>${statusOrder.status.name}</span>
-														</td>
-														<td>
-															<span>${statusOrder.order.account.name}</span>
-														</td>
-													
-														<td>
-															<%-- <button class="btn btn-pill btn-outline-primary btn-sm" type="button">View</button>
-															<button class="btn btn-pill btn-outline-success btn-sm" type="button">Edit</button>
-															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${acc.username}">Delete</button> --%>
 
-															<button class="btn btn-pill btn-outline-primary btn-sm"
-																type="button">View</button>
-															<a class="btn btn-pill btn-outline-success btn-sm"  href="/ho-admin/status-order/update?id=${statusOrder.id}">Edit</a>
-															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${statusOrder.id}">Delete</button>
-															<%-- <form method="post" action="/ho-manager/admin/delete">
-																<input type="hidden" name="username" value="${acc.username}"/>
-																<button class="btn btn-pill btn-outline-danger btn-sm" type="submit">Delete</button>
-															</form> --%>
-
+														<td><span>${statusOrder.id}</span></td>
+														<td><span>${statusOrder.order.id}</span>
+														</td>
+														<td><span>${statusOrder.order.account.name}</span></td>
+														<td><span>${statusOrder.status.name}</span></td>
+														<td><span
+															class="badge badge-pill pill-badge-primary f-12">${statusOrder.createdAt}</span>
+														</td>
+														<td><a
+															class="btn btn-pill btn-outline-primary btn-sm"
+															href="/ho-admin/order/detail?id=${statusOrder.order.id}">View</a>
+															<a class="btn btn-pill btn-outline-success btn-sm"
+															href="/ho-admin/status-order/update?orderId=${statusOrder.order.id}">Edit</a>
 														</td>
 													</tr>
 												</c:forEach>
@@ -180,7 +166,7 @@
 	<script src="/assets/js/sidebar-menu.js"></script>
 	<script src="/assets/js/config.js"></script>
 	<!-- Plugins JS start-->
-	
+
 	<script src="/assets/js/dashboard/default.js"></script>
 	<script src="/assets/js/notify/index.js"></script>
 	<script src="/assets/js/chat-menu.js"></script>

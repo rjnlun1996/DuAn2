@@ -11,5 +11,7 @@ import com.hitech.entities.StatusOrder;
 public interface StatusOrderRepository extends JpaRepository<StatusOrder, Integer>{
 	
 	List<StatusOrder> findByEnabledTrue();
+	
+	List<StatusOrder> findByEnabledTrueAndCurrentTrue();
 
 }

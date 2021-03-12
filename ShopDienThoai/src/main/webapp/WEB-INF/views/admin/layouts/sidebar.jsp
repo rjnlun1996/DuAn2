@@ -290,7 +290,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_STATUS_ORDER_INSERT)%>">
 						<a href="<%=URL_ADMIN_STATUS_ORDER_INSERT%>">
 							<i class="fa fa-circle"></i>
-							Insert Status Order
+							Update Status Order
 						</a>
 					</li>
 				</ul>

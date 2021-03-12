@@ -133,7 +133,7 @@
 																<span class="badge badge-success  f-12">NOW</span>
 															</c:if>
 															<c:if test="${!disc.current}">
-																<span class="badge badge-danger f-12">${disc.updatedAt}</span>
+																<span class="badge badge-danger f-12">${disc.createdAt}</span>
 															</c:if>
 														</td>
 														<td>
