@@ -1,7 +1,8 @@
 package com.hitech.controller;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,11 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hitech.constraints.ViewConstraint;
-import com.hitech.entities.Account;
 import com.hitech.entities.Order;
 import com.hitech.entities.Status;
 import com.hitech.entities.StatusOrder;
-import com.hitech.services.AccountService;
 import com.hitech.services.OrderService;
 import com.hitech.services.StatusOrderService;
 import com.hitech.services.StatusService;
@@ -34,7 +33,7 @@ public class AStatusOrderController {
 
 	@Autowired
 	private StatusService statusService;
-	
+
 	@Autowired
 	private OrderService orderService;
 
@@ -85,24 +84,19 @@ public class AStatusOrderController {
 	public String updateGet(Model model, @RequestParam Integer orderId) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_STATUS_ORDER_UPDATE);
 		model.addAttribute("order", orderService.findById(orderId));
-		model.addAttribute("listStatus", statusService.findAllStatusByEnabledTrue());
+		model.addAttribute("listStatus", statusService.findAllStatusByEnabledTrue().stream()
+				.sorted(Comparator.comparingInt(Status::getPriority)).collect(Collectors.toList()));
 		return ViewConstraint.VIEW_ADMIN_STATUS_ORDER_UPDATE;
 	}
 
 	@PostMapping(ViewConstraint.URL_ADMIN_STATUS_ORDER_UPDATE)
-	public Object update(Model model, @Validated @ModelAttribute("statusOrder") StatusOrder statusOrder,
-			BindingResult errors, RedirectAttributes reAttributes, @RequestParam String statusId) throws IOException {
-		boolean isErrors = errors.hasErrors();
-		StatusOrder statusOrderOnDB = statusOrderService.findById(statusOrder.getId());
-		if (isErrors) {
-			if (isErrors) {
-				model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
-			}
-			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_STATUS_ORDER_UPDATE);
-			return ViewConstraint.VIEW_ADMIN_STATUS_ORDER_UPDATE;
-		}
-
-		statusOrderService.update(statusOrderOnDB);
+	public Object update(Model model, @RequestParam int orderId, @RequestParam String description,
+			@RequestParam String statusId, RedirectAttributes reAttributes) throws IOException {
+		StatusOrder so = new StatusOrder();
+		so.setDescription(description);
+		so.setStatus(statusService.findById(statusId));
+		so.setOrder(orderService.findById(orderId));
+		statusOrderService.save(so);
 		reAttributes.addFlashAttribute("message", "Cập nhật trạng thái đơn hàng thành công!");
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_STATUS_ORDER);
 	}

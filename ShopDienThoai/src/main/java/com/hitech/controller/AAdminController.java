@@ -120,7 +120,7 @@ public class AAdminController {
 		accountOnDb.setAddress(account.getAddress());
 		accountOnDb.setPassword(account.getPassword());
 
-		accountService.save(accountOnDb);
+		accountService.update(accountOnDb);
 		reAttributes.addFlashAttribute("message", "Cập nhật tài khoản" + account.getUsername() + " thành công!");
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ADMIN);
 	}

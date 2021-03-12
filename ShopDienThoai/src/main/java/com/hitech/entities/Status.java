@@ -31,6 +31,10 @@ public class Status extends BaseEntity implements Serializable{
 	@Size(min = 2, max = 50, message = "Tên Trạng Thái phải từ {min} đến {max} kí tự")
 	private String name;
 	
+	@Column
+	@NotBlank(message="Vui lòng nhập Số ưu tiên!")
+	private int priority;
+	
 	@OneToMany(mappedBy = "status")
 	@JsonManagedReference
 	private Set<StatusOrder> statusOrders;
@@ -77,6 +81,14 @@ public class Status extends BaseEntity implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public int getPriority() {
+		return priority;
+	}
+
+	public void setPriority(int priority) {
+		this.priority = priority;
 	}
 	
 }
