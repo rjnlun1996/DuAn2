@@ -166,10 +166,11 @@ String sb = String.valueOf(request.getAttribute(MENU));
 													<div class="col-sm-9">
 														<select class="form-control js-data-example-ajax"
 															name="orderId" id="orderId">
-															<%-- <c:forEach var="order" items="${listOrder}">
+															<option value="null">Order of Customer</option>
+															<c:forEach var="order" items="${listOrder}">
 																<option value="${order.id }">Đơn hàng
 																	${order.id} ( Khách hàng ${order.account.name} )</option>
-															</c:forEach> --%>
+															</c:forEach>
 														</select>
 													</div>
 												</div>
@@ -257,7 +258,6 @@ String sb = String.valueOf(request.getAttribute(MENU));
 	<!-- Plugin used-->
 	<script type="text/javascript">
 		$(document).ready(function() {
-
 			$('.js-data-example-ajax').select2();
 		});
 

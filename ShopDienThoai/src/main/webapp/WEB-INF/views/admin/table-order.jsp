@@ -145,10 +145,10 @@
 															<td>${order.total}</td>
 															<td>${order.description}</td>
 															<td>
-																<button class="btn btn-pill btn-outline-primary btn-sm"
-																	type="button">View</button> <a
-																class="btn btn-pill btn-outline-success btn-sm"
-																href="<%=URL_ADMIN_ORDER_UPDATE%>?id=${order.id}"">Edit</a>
+																<a class="btn btn-pill btn-outline-primary btn-sm"
+																href="<%=URL_ADMIN_ORDER_DETAIL_VIEW%>?id=${order.id}">View</a> 
+																	<a class="btn btn-pill btn-outline-success btn-sm"
+																href="<%=URL_ADMIN_ORDER_DETAIL_UPDATE%>?id=${order.id}">Edit</a>
 																<button
 																	class="btn btn-pill btn-outline-danger btn-sm delete-item"
 																	data-id="${order.id}">Delete</button>
@@ -252,6 +252,7 @@
 				//promise
 			})
 		}); 
+	
 	 </script>
 
 </body>

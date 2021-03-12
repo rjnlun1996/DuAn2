@@ -50,6 +50,7 @@ public class AStatusOrderController {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_STATUS_ORDER_INSERT);
 		model.addAttribute("listStatus", statusService.findAllStatusByEnabledTrue());
 		model.addAttribute("statusOrder", new StatusOrder());
+		model.addAttribute("listOrder",orderService.findByEnabledTrue());
 		return ViewConstraint.VIEW_ADMIN_STATUS_ORDER_INSERT;
 	}
 

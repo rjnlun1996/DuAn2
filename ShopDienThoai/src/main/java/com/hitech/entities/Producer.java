@@ -13,6 +13,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -32,15 +36,25 @@ public class Producer extends BaseEntity implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "producerId")
 	private int id ;
+	
 	@Column
+	@NotBlank(message="Vui lòng nhập tên !!! ")
+	@Size(min = 5, max = 20, message = "Tên phải có từ {min} đến {max} kí tự")
 	private String name;
+	
 	@Column
 	private String logo;
 	@Column
+	@NotBlank(message="Vui lòng nhập địa chỉ !!! ")
+	@Size( max = 9999, message = "Địa chỉ không được dài quá {max} kí tự")
 	private String address;
 	@Column
+	@NotBlank(message="Vui lòng nhập email !!! ")
+	@Email(message="Vui lòng nhập email đúng định dạng !")
 	private String email ;
 	@Column
+	@NotBlank(message="Vui lòng nhập Số điện thoại !!! ")
+	@Pattern(regexp = "(84|0[3|5|7|8|9])+([0-9]{8})", message = "Vui lòng nhập Số điện thoại đúng định dạng")
 	private String	phone ;
 	
 	@OneToMany(mappedBy = "producer")
