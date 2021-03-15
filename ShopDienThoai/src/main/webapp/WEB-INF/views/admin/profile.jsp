@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="static com.hitech.constraints.ViewConstraint.*"%>
 <%@ page import="static com.hitech.utils.ViewUtils.*"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -115,20 +117,20 @@ String sb = String.valueOf(request.getAttribute(MENU));
 															<span>${profile.email}</span>
 														</div>
 													</div>
-                                                    <div class="col-md-4">
+													<div class="col-md-4">
 														<div class="ttl-info text-left">
 															<h6>
 																<i class="fa fa-user-circle-o"></i>
 																   Gender
 															</h6>
-															
+
 															<c:if test="${profile.gender}">
-																<span >Male</span>
+																<span>Male</span>
 															</c:if>
 															<c:if test="${!profile.gender}">
-																<span >Female</span>
+																<span>Female</span>
 															</c:if>
-														
+
 														</div>
 													</div>
 
@@ -151,7 +153,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 																<i class="fa fa-calendar"></i>
 																   Birthday
 															</h6>
-															<span>${profile.birthday}</span>
+															<fmt:formatDate pattern="dd/MM/yyyy" value="${profile.birthday}" />
 														</div>
 													</div>
 													<div class="col-md-4">
@@ -176,149 +178,150 @@ String sb = String.valueOf(request.getAttribute(MENU));
 											</div>
 										</div>
 										<hr>
-                                     <%--    <a class="btn btn-success" href="<%=URL_ADMIN_PROFILE_UPDATE%>?id=${acc.username}"">Update</a> --%>
+										<%--    <a class="btn btn-success" href="<%=URL_ADMIN_PROFILE_UPDATE%>?id=${acc.username}"">Update</a> --%>
 
 									</div>
 								</div>
-								
-								
-								
-								<!-- Begin Form updtae -->
-						<div class="row">
 
-								<div class="col-sm-12">
-									<div class="card">
-										<div class="card-header">
-											<h5>UPDATE INFORMATION</h5>
-										</div>
-										<form:form class="theme-form ${(error || isExistEmail) ? 'was-validated' : ''}" action="<%=URL_ADMIN_PROFILE_UPDATE %>" novalidate="novalidate" modelAttribute="profile" method="post" enctype="multipart/form-data">
-											<div class="card-body datetime-picker">
-												<c:if test="${message != null}">
-													<div class="alert alert-success dark" role="alert">
-														<p>${message}</p>
-													</div>
-												</c:if>
-												<c:if test="${error != null}">
-													<div class="alert alert-secondary dark" role="alert">
-														<p>${error}</p>
-													</div>
-												</c:if>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="username">Username</label>
-													<div class="col-sm-9  input-group">
-														<div class="input-group-prepend">
-															<span class="input-group-text">
-																<i class="icofont icofont-users"></i>
-															</span>
+
+
+								<!-- Begin Form updtae -->
+								<div class="row">
+
+									<div class="col-sm-12">
+										<div class="card">
+											<div class="card-header">
+												<h5>UPDATE INFORMATION</h5>
+											</div>
+											<form:form class="theme-form ${(error || isExistEmail) ? 'was-validated' : ''}" action="<%=URL_ADMIN_PROFILE_UPDATE %>" novalidate="novalidate" modelAttribute="profile" method="post" enctype="multipart/form-data">
+												<div class="card-body datetime-picker">
+													<c:if test="${message != null}">
+														<div class="alert alert-success dark" role="alert">
+															<p>${message}</p>
 														</div>
-														<input type="text" name="username" value="${profile.username }" class="form-control" readonly="readonly" />
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="email">Email</label>
-													<div class="col-sm-9 input-group">
-														<div class="input-group-prepend">
-															<span class="input-group-text">
-																<i class="icofont icofont-email"></i>
-															</span>
+													</c:if>
+													<c:if test="${error != null}">
+														<div class="alert alert-secondary dark" role="alert">
+															<p>${error}</p>
 														</div>
-														<form:input path="email" class="form-control" />
-														<form:errors path="email" class="invalid-feedback" />
-														<c:if test="${isExistEmail}">
-															<div class="invalid-feedback">${errorEmail}</div>
-														</c:if>
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="name">Name</label>
-													<div class="col-sm-9 input-group">
-														<div class="input-group-prepend">
-															<span class="input-group-text">
-																<i class="icofont icofont-pencil-alt-5"></i>
-															</span>
-														</div>
-														<form:input path="name" class="form-control" />
-														<form:input path="password" type="hidden" class="form-control" />
-														<form:errors path="name" class="invalid-feedback" />
-													</div>
-												</div>
-											    
-												<fieldset class="form-group ">
-													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">Gender</label>
-														<div class="col-sm-9">
-															<div class="radio radio-primary">
-																<form:radiobutton path="gender" value="0" class="form-check-input" />
-																<label for="gender1">Female</label>
+													</c:if>
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label" for="username">Username</label>
+														<div class="col-sm-9  input-group">
+															<div class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="icofont icofont-users"></i>
+																</span>
 															</div>
-															<div class="radio radio-primary">
-																<form:radiobutton path="gender" value="1" class="form-check-input" />
-																<label for="gender2">Male</label>
+															<input type="text" name="username" value="${profile.username }" class="form-control" readonly="readonly" />
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label" for="email">Email</label>
+														<div class="col-sm-9 input-group">
+															<div class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="icofont icofont-email"></i>
+																</span>
+															</div>
+															<form:input path="email" class="form-control" />
+															<form:errors path="email" class="invalid-feedback" />
+															<c:if test="${isExistEmail}">
+																<div class="invalid-feedback">${errorEmail}</div>
+															</c:if>
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label" for="name">Name</label>
+														<div class="col-sm-9 input-group">
+															<div class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="icofont icofont-pencil-alt-5"></i>
+																</span>
+															</div>
+															<form:input path="name" class="form-control" />
+															<form:input path="password" type="hidden" class="form-control" />
+															<form:errors path="name" class="invalid-feedback" />
+														</div>
+													</div>
+
+													<fieldset class="form-group ">
+														<div class="row">
+															<label class="col-form-label col-sm-3 pt-0">Gender</label>
+															<div class="col-sm-9">
+																<div class="radio radio-primary">
+																	<form:radiobutton path="gender" value="0" class="form-check-input" />
+																	<label for="gender1">Female</label>
+																</div>
+																<div class="radio radio-primary">
+																	<form:radiobutton path="gender" value="1" class="form-check-input" />
+																	<label for="gender2">Male</label>
+																</div>
+																<form:errors path="gender" />
 															</div>
 															<form:errors path="gender" />
 														</div>
-														<form:errors path="gender" />
-													</div>
-												</fieldset>
-											
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Birthday</label>
-													<div class="col-sm-5">
-														<div class="input-group date" id="dt-date" data-target-input="nearest">
-															<div class="input-group-append" data-target="#dt-date" data-toggle="datetimepicker">
-																<div class="input-group-text">
-																	<i class="fa fa-calendar"></i>
+													</fieldset>
+
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Birthday</label>
+														<div class="col-sm-5">
+															<div class="input-group date" id="dt-date" data-target-input="nearest">
+																<div class="input-group-append" data-target="#dt-date" data-toggle="datetimepicker">
+																	<div class="input-group-text">
+																		<i class="fa fa-calendar"></i>
+																	</div>
 																</div>
+																<form:input path="birthday" class="form-control datetimepicker-input digits" data-target="#dt-date" />
 															</div>
-															<form:input path="birthday" class="form-control datetimepicker-input digits" data-target="#dt-date" />
+															<form:errors path="birthday" class="invalid-feedback" />
 														</div>
-														<form:errors path="birthday" class="invalid-feedback" />
+													</div>
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Upload File</label>
+														<div class="col-sm-9">
+															<div class="avatar p-2">
+																<img class="img-100 rounded-circle" id="avatar" src="/images/avatars/${profile.photo}" alt="#">
+															</div>
+															<input name="image" class="form-control" type="file" id="imgInp" accept="image/*">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label" for="">Address</label>
+														<div class="col-sm-9 input-group">
+															<div class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="icofont icofont-home"></i>
+																</span>
+															</div>
+															<form:input path="address" class="form-control" />
+															<form:errors path="address" class="invalid-feedback" />
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label" for="">Phone</label>
+														<div class="col-sm-9 input-group">
+															<div class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="icofont icofont-phone"></i>
+																</span>
+															</div>
+															<form:input path="phone" class="form-control" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required="required" />
+															<form:errors path="phone" class="invalid-feedback" />
+														</div>
 													</div>
 												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Upload File</label>
-													<div class="col-sm-9">
-														<div class="avatar p-2">
-															<img class="img-100 rounded-circle" id="avatar" src="/images/avatars/${profile.photo}" alt="#">
-														</div>
-														<input name="image" class="form-control" type="file" id="imgInp" accept="image/*">
-													</div>
+												<div class="card-footer">
+													<button class="btn btn-success" type="submit" href="<%=URL_ADMIN_PROFILE_UPDATE%>?id=${acc.username}">Update</button>
+													<button class="btn btn-secondary" type="reset">Cancel</button>
+													
 												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Address</label>
-													<div class="col-sm-9 input-group">
-														<div class="input-group-prepend">
-															<span class="input-group-text">
-																<i class="icofont icofont-home"></i>
-															</span>
-														</div>
-														<form:input path="address" class="form-control" />
-														<form:errors path="address" class="invalid-feedback" />
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Phone</label>
-													<div class="col-sm-9 input-group">
-														<div class="input-group-prepend">
-															<span class="input-group-text">
-																<i class="icofont icofont-phone"></i>
-															</span>
-														</div>
-														<form:input path="phone" class="form-control" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required="required" />
-														<form:errors path="phone" class="invalid-feedback" />
-													</div>
-												</div>
-											</div>
-											<div class="card-footer">
-												<button class="btn btn-success" type="submit" href="<%=URL_ADMIN_PROFILE_UPDATE%>?id=${acc.username}">Update</button>
-												<button class="btn btn-secondary" type="reset">Cancel</button>
-											</div>
-										</form:form>
+											</form:form>
+										</div>
 									</div>
 								</div>
-							</div>
-							
-							<!-- End Form Update -->
+
+								<!-- End Form Update -->
 							</div>
 						</div>
 					</div>
@@ -356,7 +359,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 	<!-- Theme js-->
 	<script src="/assets/js/script.js"></script>
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
-    <script src="/assets/js/datepicker/date-time-picker/moment.min.js"></script>
+	<script src="/assets/js/datepicker/date-time-picker/moment.min.js"></script>
 	<script src="/assets/js/datepicker/date-time-picker/tempusdominus-bootstrap-4.min.js"></script>
 	<script src="/assets/js/datepicker/date-time-picker/datetimepicker.custom.js"></script>
 
@@ -364,7 +367,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 	<script src="/assets/js/datepicker/date-picker/datepicker.js"></script>
 	<script src="/assets/js/datepicker/date-picker/datepicker.en.js"></script>
 	<script src="/assets/js/datepicker/date-picker/datepicker.custom.js"></script>
-    
+
 	<!-- login js-->
 	<!-- Plugin used-->
 </body>

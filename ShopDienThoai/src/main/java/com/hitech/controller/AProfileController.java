@@ -82,8 +82,9 @@ public class AProfileController {
 		accountOnDb.setAddress(account.getAddress());
 		accountOnDb.setPassword(account.getPassword());
 
-		accountService.update(accountOnDb);
-		reAttributes.addFlashAttribute("message", "Cập nhật tài khoản" + account.getUsername() + " thành công!");
+		Account accountUpdated = accountService.update(accountOnDb);
+		sessionUtils.setUser(accountUpdated);
+		reAttributes.addFlashAttribute("message", "Cập nhật tài khoản " + account.getUsername() + " thành công!");
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_PROFILE);
 	}
 
