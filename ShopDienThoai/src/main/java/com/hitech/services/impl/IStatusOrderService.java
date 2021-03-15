@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hitech.entities.Discount;
+import com.hitech.entities.Order;
 import com.hitech.entities.Status;
 import com.hitech.entities.StatusOrder;
 import com.hitech.repository.OrderRepository;
@@ -36,17 +38,15 @@ public class IStatusOrderService implements StatusOrderService {
 
 	@Override
 	public StatusOrder save(StatusOrder statusOrder) {
-		Status sta = statusRepository.getOne(statusOrder.getStatus().getId());
-		statusOrder.setStatus(sta);
-
+		statusOrder.setCurrent(true);
 		statusOrder.setCreatedAt(new Date());
 		statusOrder.setCreatedBy(sessionUtils.getCreatedOrUpdatedBy());
+		transformCurrent(statusOrder);
 		return statusOrderRepository.save(statusOrder);
 	}
 
 	@Override
 	public StatusOrder update(StatusOrder statusOrder) {
-
 		return statusOrderRepository.saveAndFlush(statusOrder);
 	}
 
@@ -89,7 +89,18 @@ public class IStatusOrderService implements StatusOrderService {
 
 	@Override
 	public List<StatusOrder> findAllByEnabledTrueAndCurrentTrue() {
-		return statusOrderRepository.findByEnabledTrueAndCurrentTrue();
+		List<StatusOrder> list = statusOrderRepository.findByEnabledTrueAndCurrentTrue();
+		return list;
 	}
 
+	private void transformCurrent(StatusOrder sta) {
+		if(sta.isCurrent()) {
+			List<StatusOrder> stas = statusOrderRepository.getStatusOrderByCurrentTrueAndOrderId(sta.getOrder().getId());
+			for(StatusOrder s: stas) {
+				s.setCurrent(false);
+				statusOrderRepository.saveAndFlush(s);
+			}
+
+		}
+	}
 }
