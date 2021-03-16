@@ -148,18 +148,12 @@ String sb = String.valueOf(request.getAttribute(MENU));
 									class="sidebar-header" href="<%=URL_ADMIN_PROFILE%>"> <i
 										data-feather="user"></i> <span>Profile</span>
 								</a></li>
-								<li>
-									<i data-feather="message-square"> </i>
-									Inbox
-								</li>
-								<li>
-									<i data-feather="file-text"> </i>
-									Taskboard
-								</li>
-								<li>
-									<i data-feather="settings"> </i>
-									Settings
-								</li>
+								<li class="<%=renderSubmenuClass(sb, URL_ADMIN_CHANGE_PASSWORD)%>"><a
+									class="sidebar-header" href="<%=URL_ADMIN_CHANGE_PASSWORD%>"> <i
+										data-feather="user"></i> <span>Change Password</span>
+								</a></li>
+								
+								
 								<li>
 									<a href="/ho-admin/logout">
 										<i data-feather="file-text"> </i>

@@ -18,4 +18,5 @@ public class WebMVCConfiguration extends WebMvcConfigurerAdapter {
 		registry.addInterceptor(adminInterceptor);
 	}	
 	
+	
 }

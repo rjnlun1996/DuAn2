@@ -73,7 +73,6 @@ public class IAccountService implements AccountService{
 		if(acc == null) return null;
 		acount.setUpdatedAt(new Date());
 		acount.setUpdatedBy(sessionUtils.getCreatedOrUpdatedBy());
-		sessionUtils.setUser(acount);
 		return accountRepository.saveAndFlush(acount);
 	}
 
