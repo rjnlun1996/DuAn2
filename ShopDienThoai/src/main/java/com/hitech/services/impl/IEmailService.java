@@ -12,6 +12,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.hitech.services.AccountService;
 import com.hitech.services.EmailService;
 
 @Service
@@ -22,12 +23,14 @@ public class IEmailService implements EmailService{
 	
 	@Autowired
 	private VelocityEngine velocityEngine;
+	
+	@Autowired
+	private AccountService accountService;
 
 	@Override
 	public void sendNotifyChangePassword(String emailTo) {
 		VelocityContext context = new VelocityContext();
-		context.put("title", "test");
-		context.put("body", "test luon");
+		context.put("account", accountService.findByEmail(emailTo));
 		StringWriter writer = new StringWriter();
 		velocityEngine.mergeTemplate("email.vm", "UTF-8", context, writer);
 		String body = writer.toString();
@@ -37,7 +40,7 @@ public class IEmailService implements EmailService{
 		try {
 			helper.setFrom("noreply@baeldung.com");
 	        helper.setTo(emailTo); 
-	        helper.setSubject("THONG BAO DAT LAI MAT KHAU"); 
+	        helper.setSubject("THÔNG BÁO THAY ĐỔI MẬT KHẨU"); 
 			helper.setText(body, true);
 		} catch (MessagingException e) {
 			e.printStackTrace();

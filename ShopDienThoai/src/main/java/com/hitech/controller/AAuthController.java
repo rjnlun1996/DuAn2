@@ -33,6 +33,7 @@ public class AAuthController {
 
 	@GetMapping(ViewConstraint.URL_ADMIN_CHANGE_PASSWORD)
 	public String table(Model model) {
+		emailService.sendNotifyChangePassword("vangktps10536@fpt.edu.vn");
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CHANGE_PASSWORD);
 		return ViewConstraint.VIEW_ADMIN_CHANGE_PASSWORD;
 	}
@@ -57,7 +58,11 @@ public class AAuthController {
 		Account accountOnDb = sessionUtils.getUser();
 		accountOnDb.setPassword(newPassword);
 		Account accoundUpdated = accountService.update(accountOnDb);
+		
+		//send email sau khi cập nhật
 		emailService.sendNotifyChangePassword(accountOnDb.getEmail());
+		
+		//cập nhật lại session
 		sessionUtils.setUser(accoundUpdated);
 		reAttributes.addFlashAttribute("message",
 				"Cập nhật tài khoản " + sessionUtils.getUser().getUsername() + " thành công!");
