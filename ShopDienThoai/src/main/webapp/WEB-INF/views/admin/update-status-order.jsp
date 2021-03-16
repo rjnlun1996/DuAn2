@@ -160,11 +160,11 @@ String sb = String.valueOf(request.getAttribute(MENU));
 														</div>
 													</div>
 													<div class="form-group row">
-														<label class="col-sm-3 col-form-label" for="status">Status Name</label>
+														<label class="col-sm-3 col-form-label" for="status">Status Name </label>
 														<div class="col-sm-9">
 															<select class="form-control" name="statusId">
 																<c:forEach var="status" items="${listStatus}">
-																	<option value="${status.id }">Trạng thái ${status.name } (${status.priority })</option>
+																	<option value="${status.id }" ${statusOrder.status.id == status.id ? 'selected="selected"' : '' }>Trạng thái ${status.name } (${status.priority })</option>
 																</c:forEach>
 															</select>
 														</div>
@@ -173,9 +173,13 @@ String sb = String.valueOf(request.getAttribute(MENU));
 														<label class="col-sm-3 col-form-label" for="des">Description</label>
 														<div class="col-sm-9">
 															<textarea class="form-control" name="description" rows="3"></textarea>
+															
+															<c:if test="${errorDes != null}">
+																<div class="invalid-feedback d-block">${errorDes}</div>
+															</c:if>
 														</div>
-
 													</div>
+													<input type="hidden" name="currentStatusId" value="${statusOrder.status.id}">
 												</div>
 												<div class="card-footer">
 													<button class="btn btn-primary" type="submit">Create</button>

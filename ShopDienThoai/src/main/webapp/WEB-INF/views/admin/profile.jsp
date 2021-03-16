@@ -101,7 +101,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 														<div class="ttl-info text-left">
 															<h6>
 																<i class="fa fa-calendar"></i>
-																   User Name
+																   Username
 															</h6>
 															<span>${profile.username}</span>
 														</div>

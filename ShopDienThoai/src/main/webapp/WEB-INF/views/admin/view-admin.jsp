@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="static com.hitech.constraints.ViewConstraint.*"%>
+<%@ page import="static com.hitech.utils.ViewUtils.*"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
-<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.hitech.constraints.SessionConstraint"%>
+<%
+String sb = String.valueOf(request.getAttribute(MENU));
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +19,7 @@
 <meta name="author" content="pixelstrap">
 <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
 <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
-<title>HOPE - TABLE STATUS</title>
+<title>HOPE ONLINE</title>
 <!-- Google font-->
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -69,73 +74,123 @@
 			<!-- Left and Right Sidebar Ends-->
 
 			<div class="page-body">
+				<form:form class="theme-form" novalidate="novalidate" modelAttribute="account" method="post" enctype="multipart/form-data">
+					<!-- Container-fluid starts-->
+					<div class="container-fluid">
+						<div class="user-profile">
+							<div class="row">
+								<!-- user profile first-style start-->
 
-				<!-- Container-fluid starts-->
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-xl-12">
-							<div class="card">
-								<div class="card-header">
-									<h5>List Status</h5>
-									<div class="card-header-right">
-										<ul class="list-unstyled card-option">
-											<li>
-												<i class="icofont icofont-double-left"></i>
-											</li>
-											<li>
-												<i class="view-html fa fa-code"></i>
-											</li>
-											<li>
-												<i class="icofont icofont-maximize full-card"></i>
-											</li>
-											<li>
-												<i class="icofont icofont-minus minimize-card"></i>
-											</li>
-											<li>
-												<i class="icofont icofont-refresh reload-card"></i>
-											</li>
-											<li>
-												<i class="icofont icofont-error close-card"></i>
-											</li>
-										</ul>
+								<div class="col-sm-12">
+									<div class="card hovercard text-center">
+										<div class="cardheader"></div>
+										<div class="user-image">
+											<div class="avatar">
+												<img alt="" src="/images/avatars/${account.photo}">
+											</div>
+											<div class="icon-wrapper">
+												<i class="icofont icofont-pencil-alt-5"></i>
+											</div>
+										</div>
+										<div class="info">
+											<div class="row">
+												<div class="col-sm-6 col-lg-4 order-sm-1 order-xl-0">
+													<div class="row">
+														<div class="col-md-4">
+															<div class="ttl-info text-left">
+																<h6>
+																	<i class="fa fa-calendar"></i>
+																	   Username
+																</h6>
+																<span>${account.username}</span>
+															</div>
+														</div>
+														<div class="col-md-4">
+															<div class="ttl-info text-left">
+																<h6>
+																	<i class="fa fa-envelope"></i>
+																	   Email
+																</h6>
+																<span>${account.email}</span>
+															</div>
+														</div>
+														<div class="col-md-4">
+															<div class="ttl-info text-left">
+																<h6>
+																	<i class="fa fa-user-circle-o"></i>
+																	   Gender
+																</h6>
+
+																<c:if test="${account.gender}">
+																	<span>Male</span>
+																</c:if>
+																<c:if test="${!account.gender}">
+																	<span>Female</span>
+																</c:if>
+
+															</div>
+														</div>
+
+
+													</div>
+												</div>
+												<div class="col-sm-12 col-lg-4 order-sm-0 order-xl-1">
+													<div class="user-designation">
+														<div class="title">
+															<a target="_blank" href="">${account.name}</a>
+														</div>
+														<div class="desc mt-2">
+															<c:if test="${account.level == 1}">
+																<span>MANAGER</span>
+															</c:if>
+															<c:if test="${account.level == 2}">
+																<span>CUSTOMER</span>
+															</c:if>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-6 col-lg-4 order-sm-2 order-xl-2">
+													<div class="row">
+														<div class="col-md-4">
+															<div class="ttl-info text-left">
+																<h6>
+																	<i class="fa fa-calendar"></i>
+																	   Birthday
+																</h6>
+																<span>${account.birthday}</span>
+															</div>
+														</div>
+														<div class="col-md-4">
+															<div class="ttl-info text-left">
+																<h6>
+																	<i class="fa fa-phone"></i>
+																	   Phone
+																</h6>
+																<span>${account.phone}</span>
+															</div>
+														</div>
+														<div class="col-md-4">
+															<div class="ttl-info text-left">
+																<h6>
+																	<i class="fa fa-location-arrow"></i>
+																	  Address
+																</h6>
+																<span>${account.address}</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<hr>
+										</div>
 									</div>
+
 								</div>
-								<div class="card-body p-0">
-									<div class="sales-product-table table-responsive">
-										<table class="table table-bordernone">
-											<thead>
-												<tr>
-													<th scope="col">Status ID</th>
-													<th scope="col">Name</th>
 
-													<th scope="col"></th>
-												</tr>
-											</thead>
-											<tbody>
-												<c:forEach var="status" items="${listStatus}">
-													<tr>
-														<td>
-															<span>${status.id}</span>
-														</td>
-														<td>
-															<span>${status.name}</span>
-														</td>
-														<td>
-
-															<a class="btn btn-pill btn-outline-success btn-sm" href="/ho-admin/status/update?id=${status.id}">Edit</a>
-															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${status.id}" data-name="${status.name}">Delete</button>
-
-														</td>
-													</tr>
-												</c:forEach>
-											</tbody>
-										</table>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</form:form>
 				<!-- Container-fluid Ends-->
 			</div>
 
@@ -169,44 +224,15 @@
 	<!-- Theme js-->
 	<script src="/assets/js/script.js"></script>
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
-	<script>
-		//jquery	
-		  $(document).ready(function(){
-			$('.delete-item').click(function(){
-				var id = $(this).data('id');
-				var name = $(this).data('name');
-				swal({
-				  title: "Thông báo?",
-				  text: "Bạn có chắc chắn xóa trạng thái " + name  + " không?",
-				  icon: "warning",
-				  buttons: true,
-				  dangerMode: true,
-				})
-				.then((willDelete) => {
-				  if(willDelete == true){
-					  $.ajax({
-						  url: "/ho-admin/status/delete",
-						  method: "POST",
-						  data: {
-							  id: id
-						  },
-						  success: function(data){
-							 if(data == true) location.reload();
-						  },
-	 					  error: function(data){
-							  
-						  },
-					  });
-				  }
-				});
-				//promise
-			})
-		}); 
-		
-		
-		
-		
-		</script>
+	<script src="/assets/js/datepicker/date-time-picker/moment.min.js"></script>
+	<script src="/assets/js/datepicker/date-time-picker/tempusdominus-bootstrap-4.min.js"></script>
+	<script src="/assets/js/datepicker/date-time-picker/datetimepicker.custom.js"></script>
+
+
+	<script src="/assets/js/datepicker/date-picker/datepicker.js"></script>
+	<script src="/assets/js/datepicker/date-picker/datepicker.en.js"></script>
+	<script src="/assets/js/datepicker/date-picker/datepicker.custom.js"></script>
+
 	<!-- login js-->
 	<!-- Plugin used-->
 </body>

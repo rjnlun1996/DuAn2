@@ -140,8 +140,6 @@
 															<span>${disc.description}</span>
 														</td>
 														<td>
-
-															<button class="btn btn-pill btn-outline-primary btn-sm" type="button">View</button>
 															<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_DISCOUNT_UPDATE%>?id=${disc.id}">Edit</a>
 															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${disc.id}">Delete</button>
 														</td>

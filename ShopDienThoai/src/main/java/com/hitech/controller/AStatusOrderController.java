@@ -83,7 +83,10 @@ public class AStatusOrderController {
 	@GetMapping(ViewConstraint.URL_ADMIN_STATUS_ORDER_UPDATE)
 	public String updateGet(Model model, @RequestParam Integer orderId) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_STATUS_ORDER_UPDATE);
-		model.addAttribute("order", orderService.findById(orderId));
+		Order order = orderService.findById(orderId);
+		StatusOrder statusOrder = order.getStatusOrders().stream().filter(e -> e.isCurrent()).findFirst().orElse(null);
+		model.addAttribute("order", order);
+		model.addAttribute("statusOrder", statusOrder);
 		model.addAttribute("listStatus", statusService.findAllStatusByEnabledTrue().stream()
 				.sorted(Comparator.comparingInt(Status::getPriority)).collect(Collectors.toList()));
 		return ViewConstraint.VIEW_ADMIN_STATUS_ORDER_UPDATE;
@@ -91,9 +94,19 @@ public class AStatusOrderController {
 
 	@PostMapping(ViewConstraint.URL_ADMIN_STATUS_ORDER_UPDATE)
 	public Object update(Model model, @RequestParam int orderId, @RequestParam String description,
-			@RequestParam String statusId, RedirectAttributes reAttributes) throws IOException {
+			@RequestParam String statusId, @RequestParam String currentStatusId ,RedirectAttributes reAttributes) throws IOException {
+		int beforeStatus = statusService.findById(currentStatusId).getPriority();
+		int afterStatus = statusService.findById(statusId).getPriority();
+		if(afterStatus < beforeStatus && description.trim().length() == 0) {
+			reAttributes.addFlashAttribute("errorDes", "Vui lòng nhập ghi chú cho đơn hàng này!");
+			return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_STATUS_ORDER_UPDATE + "?orderId=" + orderId);
+		}
+		if(afterStatus == beforeStatus) {
+			reAttributes.addFlashAttribute("error", "Trạng thái không thay đổi.");
+			return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_STATUS_ORDER_UPDATE + "?orderId=" + orderId);
+		}
 		StatusOrder so = new StatusOrder();
-		so.setDescription(description);
+		so.setDescription(description.trim());
 		so.setStatus(statusService.findById(statusId));
 		so.setOrder(orderService.findById(orderId));
 		statusOrderService.save(so);
