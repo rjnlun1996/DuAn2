@@ -28,7 +28,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 			<c:if test="${user.level == 0}">
 				<li class="<%=renderMenuClass(sb, URL_ADMIN_ADMIN)%>">
 					<a class="sidebar-header" href="#">
-						<i data-feather="airplay"></i>
+						<i data-feather="user-check"></i>
 						<span> Manager </span>
 						<i class="fa fa-angle-right pull-right"></i>
 					</a>
@@ -51,7 +51,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_CUSTOMER)%>">
 				<a class="sidebar-header" href="#">
-					<i data-feather="sidebar"></i>
+					<i data-feather="user"></i>
 					<span>Customers</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
@@ -182,7 +182,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_PRODUCT)%>">
 				<a class="sidebar-header" href="#">
-					<i data-feather="cloud-lightning"></i>
+					<i data-feather="book"></i>
 					<span>Products</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
@@ -202,31 +202,10 @@ String sb = String.valueOf(request.getAttribute(MENU));
 				</ul>
 			</li>
 
-			<li class="<%=renderMenuClass(sb, URL_ADMIN_IMAGE)%>">
-				<a class="sidebar-header" href="#">
-					<i data-feather="cloud-lightning"></i>
-					<span>Images</span>
-					<i class="fa fa-angle-right pull-right"></i>
-				</a>
-				<ul class="sidebar-submenu">
-					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_IMAGE)%>">
-						<a href="<%=URL_ADMIN_IMAGE%>">
-							<i class="fa fa-circle"></i>
-							View Images
-						</a>
-					</li>
-					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_IMAGE_INSERT)%>">
-						<a href="<%=URL_ADMIN_IMAGE_INSERT%>">
-							<i class="fa fa-circle"></i>
-							Insert Images
-						</a>
-					</li>
-				</ul>
-			</li>
 
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_STATUS)%>">
 				<a class="sidebar-header" href="#">
-					<i data-feather="cloud-lightning"></i>
+					<i data-feather="git-pull-request"></i>
 					<span>Status</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
@@ -248,7 +227,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_ORDER)%>">
 				<a class="sidebar-header" href="#">
-					<i data-feather="cloud-lightning"></i>
+					<i data-feather="briefcase"></i>
 					<span>Order</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>
@@ -298,7 +277,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_DISCOUNT)%>">
 				<a class="sidebar-header" href="#">
-					<i data-feather="cloud-lightning"></i>
+					<i data-feather="dollar-sign"></i>
 					<span>Discount</span>
 					<i class="fa fa-angle-right pull-right"></i>
 				</a>

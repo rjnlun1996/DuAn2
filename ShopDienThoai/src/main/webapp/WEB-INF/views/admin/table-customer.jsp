@@ -140,7 +140,7 @@
 															<span>${cus.phone}</span>
 														</td>
 														<td>
-															<button class="btn btn-pill btn-outline-primary btn-sm" type="button">View</button>
+															<a class="btn btn-pill btn-outline-primary btn-sm" href="<%=URL_ADMIN_CUSTOMER_DETAIL%>?id=${cus.username}">View</a>
 															<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_CUSTOMER_UPDATE%>?id=${cus.username}"">Edit</a>
 															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${cus.username}">Delete</button>
 

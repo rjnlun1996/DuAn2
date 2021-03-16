@@ -29,8 +29,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/flag-icon.css">
 <!-- Feather icon-->
 <link rel="stylesheet" type="text/css" href="/assets/css/feather-icon.css">
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/feather-icon.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/feather-icon.css">
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
@@ -119,9 +118,7 @@
 													<tr>
 														<td>
 															<div class="d-flex">
-																<img
-																	class="img-radius img-60 align-top m-r-15 rounded-circle"
-																	src="/images/avatars/${acc.photo}" alt="">
+																<img class="img-radius img-60 align-top m-r-15 rounded-circle" src="/images/avatars/${acc.photo}" alt="">
 																<div class="d-flex flex-column justify-content-center">
 																	<h6 class="f-w-600">${acc.name}</h6>
 																</div>
@@ -145,18 +142,9 @@
 															<span>${acc.phone}</span>
 														</td>
 														<td>
-															<%-- <button class="btn btn-pill btn-outline-primary btn-sm" type="button">View</button>
-															<button class="btn btn-pill btn-outline-success btn-sm" type="button">Edit</button>
-															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${acc.username}">Delete</button> --%>
-
-															<button class="btn btn-pill btn-outline-primary btn-sm"
-																type="button">View</button>
-															<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_ADMIN_UPDATE%>?id=${acc.username}"">Edit</a>
+															<a class="btn btn-pill btn-outline-primary btn-sm" href="<%=URL_ADMIN_ADMIN_DETAIL%>?id=${acc.username}">View</a>
+															<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_ADMIN_UPDATE%>?id=${acc.username}">Edit</a>
 															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${acc.username}">Delete</button>
-															<%-- <form method="post" action="/ho-manager/admin/delete">
-																<input type="hidden" name="username" value="${acc.username}"/>
-																<button class="btn btn-pill btn-outline-danger btn-sm" type="submit">Delete</button>
-															</form> --%>
 
 														</td>
 													</tr>
@@ -190,7 +178,7 @@
 	<script src="/assets/js/sidebar-menu.js"></script>
 	<script src="/assets/js/config.js"></script>
 	<!-- Plugins JS start-->
-	
+
 	<script src="/assets/js/dashboard/default.js"></script>
 	<script src="/assets/js/notify/index.js"></script>
 	<script src="/assets/js/chat-menu.js"></script>
