@@ -23,12 +23,8 @@
                               <h5 class="footer-links__title">Information</h5>
                               <ul class="footer-links__list">
                                  <li class="footer-links__item"><a href="" class="footer-links__link">About Us</a></li>
-                                 <li class="footer-links__item"><a href="" class="footer-links__link">Delivery Information</a></li>
-                                 <li class="footer-links__item"><a href="" class="footer-links__link">Privacy Policy</a></li>
-                                 <li class="footer-links__item"><a href="" class="footer-links__link">Brands</a></li>
                                  <li class="footer-links__item"><a href="" class="footer-links__link">Contact Us</a></li>
-                                 <li class="footer-links__item"><a href="" class="footer-links__link">Returns</a></li>
-                                 <li class="footer-links__item"><a href="" class="footer-links__link">Site Map</a></li>
+                                 <li class="footer-links__item"><a href="" class="footer-links__link">Brands</a></li>
                               </ul>
                            </div>
                         </div>
@@ -38,11 +34,8 @@
                               <ul class="footer-links__list">
                                  <li class="footer-links__item"><a href="" class="footer-links__link">Store Location</a></li>
                                  <li class="footer-links__item"><a href="" class="footer-links__link">Order History</a></li>
-                                 <li class="footer-links__item"><a href="" class="footer-links__link">Wish List</a></li>
-                                 <li class="footer-links__item"><a href="" class="footer-links__link">Newsletter</a></li>
                                  <li class="footer-links__item"><a href="" class="footer-links__link">Specials</a></li>
                                  <li class="footer-links__item"><a href="" class="footer-links__link">Gift Certificates</a></li>
-                                 <li class="footer-links__item"><a href="" class="footer-links__link">Affiliate</a></li>
                               </ul>
                            </div>
                         </div>
