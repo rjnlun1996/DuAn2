@@ -1,14 +1,12 @@
 package com.hitech.services.impl;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
+import java.io.StringWriter;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -21,39 +19,32 @@ public class IEmailService implements EmailService{
 	
 	@Autowired
     private JavaMailSender emailSender;
+	
+	@Autowired
+	private VelocityEngine velocityEngine;
 
 	@Override
-	public void sendNotifyChangePassword() throws MessagingException, IOException {
-		//SimpleMailMessage message = new SimpleMailMessage(); 
+	public void sendNotifyChangePassword(String emailTo) {
+		VelocityContext context = new VelocityContext();
+		context.put("title", "test");
+		context.put("body", "test luon");
+		StringWriter writer = new StringWriter();
+		velocityEngine.mergeTemplate("email.vm", "UTF-8", context, writer);
+		String body = writer.toString();
 		
 		MimeMessage mimeMessage = emailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
-		helper.setFrom("noreply@baeldung.com");
-        helper.setTo("vangktps10536@fpt.edu.vn"); 
-        helper.setSubject("THONG BAO DAT LAI MAT KHAU"); 
-        URL url = new URL("http://localhost:8080/ho-admin/mails/change-password/");
-        
-        String a = "";
 		try {
-			InputStream in = new URL( "http://localhost:8080/mails/change-password/" ).openStream();
-			 try {
-			   InputStreamReader inR = new InputStreamReader( in );
-			   BufferedReader buf = new BufferedReader( inR );
-			   String line;
-			   while ( ( line = buf.readLine() ) != null ) {
-			     a += line;
-			   }
-			 } finally {
-			   in.close();
-			 }
-	        helper.setText(a, true);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			helper.setFrom("noreply@baeldung.com");
+	        helper.setTo(emailTo); 
+	        helper.setSubject("THONG BAO DAT LAI MAT KHAU"); 
+			helper.setText(body, true);
+		} catch (MessagingException e) {
 			e.printStackTrace();
-		}
-        
+		} 
         //message.setText("Mat khau dang nhap HOPEONLIE cua ban vua duoc thay doi luc: " + new Date());
         emailSender.send(mimeMessage);
+		
 	}
 
 }

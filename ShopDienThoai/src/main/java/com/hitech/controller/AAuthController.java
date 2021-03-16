@@ -7,20 +7,15 @@ import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hitech.constraints.ViewConstraint;
 import com.hitech.entities.Account;
 import com.hitech.services.AccountService;
 import com.hitech.services.EmailService;
-import com.hitech.services.FileStorageService;
 import com.hitech.utils.SessionUtils;
 import com.hitech.utils.ViewUtils;
 
@@ -39,17 +34,6 @@ public class AAuthController {
 	@GetMapping(ViewConstraint.URL_ADMIN_CHANGE_PASSWORD)
 	public String table(Model model) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CHANGE_PASSWORD);
-		try {
-			try {
-				emailService.sendNotifyChangePassword();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return ViewConstraint.VIEW_ADMIN_CHANGE_PASSWORD;
 	}
 
@@ -73,6 +57,7 @@ public class AAuthController {
 		Account accountOnDb = sessionUtils.getUser();
 		accountOnDb.setPassword(newPassword);
 		Account accoundUpdated = accountService.update(accountOnDb);
+		emailService.sendNotifyChangePassword(accountOnDb.getEmail());
 		sessionUtils.setUser(accoundUpdated);
 		reAttributes.addFlashAttribute("message",
 				"Cập nhật tài khoản " + sessionUtils.getUser().getUsername() + " thành công!");
