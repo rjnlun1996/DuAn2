@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="static com.hitech.constraints.ViewConstraint.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,7 +77,7 @@
 						<div class="col-xl-12">
 							<div class="card">
 								<div class="card-header">
-									<h5>List Product</h5>
+									<h5>List Photo</h5>
 									<div class="card-header-right">
 										<ul class="list-unstyled card-option">
 											<li>
@@ -101,20 +103,29 @@
 								</div>
 								<div class="card-body p-3">
 									<div class="sales-product-table table-responsive">
+										
 										<table class="table table-bordernone">
 											<thead>
 												<tr class="text-center">
-													<th >STT</th>
-													<th >Hình ảnh</th>
+													<th>STT</th>
+													<th>Hình ảnh</th>
 													<th></th>
 												</tr>
 											</thead>
 											<tbody>
-												<tr class="text-center">
-													<td scope="col"></td>
-													<td scope="col"></td>
-													<button	class="btn btn-pill btn-outline-danger btn-sm delete-item">Add</button>
-												</tr>
+												<c:forEach var="p" items="${photos}">
+													<tr class="text-center">
+														<td scope="col">${p.id}</td>
+														<td scope="col">
+															<div class="img-radius align-top">
+																<img class="img-100" id="photo" src="/images/photos/${p.link }" alt="#">
+															</div>
+														</td>
+														<td>
+															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${p.id}">Delete</button>
+														</td>
+													</tr>
+												</c:forEach>
 											</tbody>
 										</table>
 									</div>
@@ -123,11 +134,11 @@
 						</div>
 					</div>
 
-					<div class="row">
+					<div class="row" id="add-photo">
 						<div class="col-xl-12">
 							<div class="card">
 								<div class="card-header">
-									<h5>List Product</h5>
+									<h5>Add Photo</h5>
 									<div class="card-header-right">
 										<ul class="list-unstyled card-option">
 											<li>
@@ -219,7 +230,46 @@
 
 	<script src="https://danielmg.org/assets/demo/uploader/js/ui-multiple.js?v=v10"></script>
 	<script src="/js/photo-plugin/controls.js"></script>
-
+    <script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
+		
+		<script>
+		//jquery	
+		  $(document).ready(function(){
+			$('.delete-item').click(function(){
+				var id = $(this).data('id');
+				
+				swal({
+				  title: "Thông báo?",
+				  text: "Bạn có chắc chắn xóa hình này không?",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((willDelete) => {
+				  if(willDelete == true){
+					  $.ajax({
+						  url: '<%=URL_ADMIN_PHOTO_DELETE %>',
+						  method: "POST",
+						  data: {
+							  id: id
+						  },
+						  success: function(data){
+							 if(data == true) location.reload();
+						  },
+	 					  error: function(data){
+							  
+						  },
+					  });
+				  }
+				});
+				//promise
+			})
+		}); 
+		
+		
+		
+		
+		</script>
 	<!-- File item template -->
 	<script type="text/html" id="files-template">
   <li class="media">
@@ -237,7 +287,7 @@
       </div>
       
       <p class="controls mb-2">
-        <button href="#" class="btn btn-sm btn-primary start" role="button">Start</button>
+        
         <button href="#" class="btn btn-sm btn-danger cancel" role="button" disabled="disabled">Cancel</button>
       </p>
       

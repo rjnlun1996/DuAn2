@@ -36,6 +36,7 @@ public interface ViewConstraint {
 	
 	public static final String URL_ADMIN_PHOTO = "/ho-admin/photo/";
 	public static final String URL_ADMIN_PHOTO_INSERT = URL_ADMIN_PHOTO + "insert";	
+	public static final String URL_ADMIN_PHOTO_DELETE = URL_ADMIN_PHOTO + "delete";
 	public static final String VIEW_ADMIN_PHOTO = "admin/table-photo";
 	public static final String VIEW_ADMIN_PHOTO_INSERT = "admin/insert-photo";	
 	
