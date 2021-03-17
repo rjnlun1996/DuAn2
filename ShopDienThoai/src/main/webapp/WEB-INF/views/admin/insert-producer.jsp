@@ -190,7 +190,7 @@
 													<label class="col-sm-3 col-form-label" for="salePrice">Phone</label>
 													<div class="col-sm-9">
 														<form:input path="phone" class="form-control" 
-															required="required" minlength="10" maxlength="15" />
+															required="required"  pattern="(84|0[3|5|7|8|9])+([0-9]{8})"/>
 														<form:errors path="phone" class="invalid-feedback" />
 													</div>
 												</div>

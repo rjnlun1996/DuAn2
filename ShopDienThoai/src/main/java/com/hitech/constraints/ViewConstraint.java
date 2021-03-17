@@ -41,11 +41,23 @@ public interface ViewConstraint {
 	
 	public static final String URL_ADMIN_ORDER = "/ho-admin/order/";
 	public static final String URL_ADMIN_ORDER_INSERT = URL_ADMIN_ORDER + "insert";
+	public static final String URL_ADMIN_ORDER_UPDATE = URL_ADMIN_ORDER + "update";
+	public static final String URL_ADMIN_ORDER_DELETE = URL_ADMIN_ORDER + "delete";
 	public static final String URL_ADMIN_ORDER_SEARCH = URL_ADMIN_ORDER + "search";
 	public static final String VIEW_ADMIN_ORDER = "admin/table-order";
-	public static final String VIEW_ADMIN_ORDER_INSERT = "admin/insert-order";
+	public static final String VIEW_ADMIN_ORDER_INSERT = "admin/insert-order";	
+	public static final String VIEW_ADMIN_ORDER_UPDATE = "admin/update-order";	
 	
-	
+	public static final String URL_ADMIN_ORDER_DETAIL =  "/ho-admin/order-detail/";
+	public static final String URL_ADMIN_ORDER_DETAIL_VIEW =  "/ho-admin/order-detail/view";
+	public static final String URL_ADMIN_ORDER_DETAIL_INSERT = URL_ADMIN_ORDER_DETAIL + "insert";
+	public static final String URL_ADMIN_ORDER_DETAIL_UPDATE = URL_ADMIN_ORDER_DETAIL + "update";
+	public static final String URL_ADMIN_ORDER_DETAIL_DELETE = URL_ADMIN_ORDER_DETAIL + "delete";
+	public static final String URL_ADMIN_ORDER_DETAIL_SEARCH = URL_ADMIN_ORDER_DETAIL + "search";
+	public static final String VIEW_ADMIN_ORDER_DETAIL = "admin/table-order-detail";
+	public static final String VIEW_ADMIN_ORDER_DETAIL_VIEW = "admin/table-order-detail";
+	public static final String VIEW_ADMIN_ORDER_DETAIL_INSERT = "admin/insert-order-detail";	
+	public static final String VIEW_ADMIN_ORDER_DETAIL_UPDATE = "admin/update-order-detail";	
 	
 	public static final String URL_ADMIN_PRODUCT = "/ho-admin/product/";
 	public static final String URL_ADMIN_PRODUCT_INSERT = URL_ADMIN_PRODUCT + "insert";
@@ -88,6 +100,7 @@ public interface ViewConstraint {
 	public static final String VIEW_ADMIN_DISCOUNT = "admin/table-discount";
 	public static final String VIEW_ADMIN_DISCOUNT_INSERT = "admin/insert-discount";	
 	public static final String VIEW_ADMIN_DISCOUNT_UPDATE = "admin/update-discount";
+	public static final String URL_ADMIN_DISCOUNT_SEARCH = URL_ADMIN_DISCOUNT + "search";
 	
 	public static final String URL_ADMIN_REPORT = "/ho-admin/report/";
 	public static final String VIEW_ADMIN_REPORT = "admin/report";

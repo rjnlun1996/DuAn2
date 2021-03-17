@@ -1,6 +1,5 @@
 package com.hitech.services.impl;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -88,6 +87,12 @@ public class IDiscountService implements DiscountService {
 			}
 
 		}
+	}
+
+	@Override
+	public List<Discount> findByProductId(int id) {
+		// TODO Auto-generated method stub
+		return discountRepository.getDiscountByCurrentTrueAndProductId(id);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.hitech.services.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,17 +13,16 @@ import com.hitech.utils.SessionUtils;
 
 @Service
 public class IOrderService implements OrderService{
-		
-	@Autowired
-	private OrderRepository orderRepository;
 
 	@Autowired
 	private SessionUtils sessionUtils;
-
-	@Override
-	public List<Order> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	@Autowired
+	private OrderRepository orderRepository;
+	
+	@Autowired
+	public List<Order> findAll(){
+		return orderRepository.findAll();
 	}
 
 	@Override
@@ -32,15 +32,17 @@ public class IOrderService implements OrderService{
 	}
 
 	@Override
-	public Order save(Order entity) {
-		// TODO Auto-generated method stub
-		return null;
+	public Order save(Order order) {
+		order.setCreatedBy(sessionUtils.getCreatedOrUpdatedBy());
+		order.setCreatedAt(new Date());
+		return orderRepository.save(order);
 	}
 
 	@Override
-	public Order update(Order entity) {
-		// TODO Auto-generated method stub
-		return null;
+	public Order update(Order order) {
+		order.setUpdatedBy(sessionUtils.getCreatedOrUpdatedBy());
+		order.setUpdatedAt(new Date());
+		return orderRepository.save(order);
 	}
 
 	@Override
@@ -50,11 +52,24 @@ public class IOrderService implements OrderService{
 	}
 
 	@Override
-	public List<Order> findAllByEnabledTrue() {
+	public List<Order> findByEnabledTrue() {
 		return orderRepository.findByEnabledTrue();
 	}
 
+	@Override
+	public boolean deleteByEnable(Integer id) {
+		try {
+			Order od = orderRepository.getOne(id);
+			if(od == null) {
+				return false;
+			}
+			od.setEnabled(false);
+			orderRepository.saveAndFlush(od);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 
 
-	
 }

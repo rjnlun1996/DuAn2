@@ -11,7 +11,7 @@ public interface DiscountService extends IBaseService<Discount, Integer> {
 	 * @return
 	 */
 	List<Discount> findByEnabledTrue();
-	
+	List<Discount> findByProductId(int id);
 	/**
 	 * Set Enabled properties to false
 	 * @return

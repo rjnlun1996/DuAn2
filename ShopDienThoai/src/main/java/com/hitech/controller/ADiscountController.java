@@ -12,15 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hitech.constraints.ViewConstraint;
-import com.hitech.entities.Account;
 import com.hitech.entities.Discount;
 import com.hitech.entities.Product;
 import com.hitech.services.DiscountService;
-import com.hitech.services.FileStorageService;
 import com.hitech.services.ProductService;
 import com.hitech.utils.ViewUtils;
 
@@ -104,7 +101,12 @@ public class ADiscountController {
 	public boolean delete1(Model model, @RequestParam int id) {
 		return discountService.deleteByEnabled(id);
 	}
-
+	
+	@GetMapping(ViewConstraint.URL_ADMIN_DISCOUNT_SEARCH)
+	@ResponseBody
+	public Object table(Model model, @RequestParam int productId) {
+		return discountService.findByProductId(productId);
+	}
 //	@PostMapping(ViewConstraint.URL_ADMIN_DISCOUNT_DELETE)
 //	@ResponseBody
 //	public boolean delete1(Model model, @RequestParam String username) {
