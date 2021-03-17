@@ -6,6 +6,6 @@ import com.hitech.entities.Order;
 
 public interface OrderService extends IBaseService<Order, Integer>{
 	
-	List<Order> findAllByEnabledTrue();
-
+	boolean deleteByEnable(Integer id);
+	List<Order> findByEnabledTrue();
 }

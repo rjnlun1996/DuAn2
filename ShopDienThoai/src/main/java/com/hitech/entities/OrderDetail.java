@@ -1,7 +1,6 @@
 package com.hitech.entities;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,11 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "OrderDetails")
@@ -34,10 +34,12 @@ public class OrderDetail extends BaseEntity implements Serializable {
 	private int productId;
 
 	@Column
+	@Min(value=1,message = "Số lượng phải lớn hơn {value}")
+	@Max(value=99,message = "Số lượng phải lớn hơn {value}")
 	private int quantity;
 
 	@Column
-	private double amount;
+	private long amount;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "orderId", nullable = false)
@@ -61,7 +63,7 @@ public class OrderDetail extends BaseEntity implements Serializable {
 	public OrderDetail() {
 	}
 
-	public OrderDetail(int id, int productId, int quantity, double amount, Order order, Product product,
+	public OrderDetail(int id, int productId, int quantity, long amount, Order order, Product product,
 			Discount discount) {
 		super();
 		this.id = id;
@@ -113,11 +115,11 @@ public class OrderDetail extends BaseEntity implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public double getAmount() {
+	public long getAmount() {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(long amount) {
 		this.amount = amount;
 	}
 

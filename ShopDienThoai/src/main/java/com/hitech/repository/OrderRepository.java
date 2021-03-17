@@ -9,7 +9,5 @@ import com.hitech.entities.Order;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Integer>{
-
 	List<Order> findByEnabledTrue();
-
 }
