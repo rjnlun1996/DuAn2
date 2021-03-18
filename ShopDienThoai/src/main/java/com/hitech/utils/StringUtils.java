@@ -1,17 +1,19 @@
 package com.hitech.utils;
 
-import org.apache.commons.text.RandomStringGenerator;
+import org.apache.commons.lang.RandomStringUtils;
 
 public class StringUtils {
 
 	public static String generatorPassword(int len) {
-		RandomStringGenerator generator = new RandomStringGenerator.Builder().withinRange('a', 'z').build();
-		return generator.generate(len);
+	    boolean useLetters = true;
+	    boolean useNumbers = true;
+	    return RandomStringUtils.random(len, useLetters, useNumbers);
 	}
 	
-	public static String generatorPassword() {RandomStringGenerator generator = new RandomStringGenerator.Builder()
-		     .withinRange('a', 'z').build();
-	 String randomLetters = generator.generate(20);
-		return randomLetters;
+	public static String generatorPassword() {
+		int length = 10;
+	    boolean useLetters = true;
+	    boolean useNumbers = true;
+	    return RandomStringUtils.random(length, useLetters, useNumbers);
 	}
 }

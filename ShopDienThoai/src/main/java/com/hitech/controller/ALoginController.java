@@ -24,8 +24,6 @@ public class ALoginController {
 
 	@GetMapping(ViewConstraint.URL_ADMIN_LOGIN)
 	public String table(Model model) {
-
-		//System.err.println(StringUtils.generatorPassword());
 		return ViewConstraint.VIEW_ADMIN_LOGIN;
 	}
 	
