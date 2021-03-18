@@ -46,7 +46,7 @@
 				<!-- desktop site__header / end -->
 
 				<div class="site-header__nav-panel">
-					<jsp:include page="layouts/nav.jsp"></jsp:include>
+					<jsp:include page="layouts/nav_index.jsp"></jsp:include>
 				</div>
 			</div>
 		</header>

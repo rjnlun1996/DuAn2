@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.hitech.constraints.ViewConstraint;
 import com.hitech.services.AccountService;
 import com.hitech.utils.SessionUtils;
+import com.hitech.utils.StringUtils;
 import com.hitech.utils.ViewUtils;
 
 @Controller
@@ -23,13 +24,14 @@ public class ALoginController {
 
 	@GetMapping(ViewConstraint.URL_ADMIN_LOGIN)
 	public String table(Model model) {
+
+		//System.err.println(StringUtils.generatorPassword());
 		return ViewConstraint.VIEW_ADMIN_LOGIN;
 	}
 	
 	@PostMapping(ViewConstraint.URL_ADMIN_LOGIN)
 	public String insert(Model model, @RequestParam String username, @RequestParam String password) {
 		boolean isValidLogin = accountService.loginAdmin(username, password);
-		System.out.println(isValidLogin);
 		if(!isValidLogin) {
 			model.addAttribute("isValidLogin", isValidLogin);
 			model.addAttribute("message", "Tài khoản hoặc mật khẩu không đúng");

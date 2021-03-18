@@ -9,7 +9,7 @@ $(function(){
    *   - assets/demo/uploader/js/ui-single.js
    */
   $('#drag-and-drop-zone').dmUploader({ //
-    url: '/demo/java-script/upload',
+    url: '',
     maxFileSize: 3000000, // 3 Megs max
     auto: false,
     queue: false,
@@ -28,6 +28,7 @@ $(function(){
     onComplete: function(){
       // All files in the queue are processed (success or error)
       ui_add_log('All pending tranfers finished');
+      console.log(123123)
     },
     onNewFile: function(id, file){
       // When a new file is added using the file selector or the DnD area
@@ -61,6 +62,7 @@ $(function(){
       ui_multi_update_file_status(id, 'success', 'Upload Complete');
       ui_multi_update_file_progress(id, 100, 'success', false);
       ui_multi_update_file_controls(id, false, false);  // change control buttons status
+      console.log(id, data)
     },
     onUploadCanceled: function(id) {
       // Happens when a file is directly canceled by the user.
