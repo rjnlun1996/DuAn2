@@ -33,7 +33,6 @@ public class AAuthController {
 
 	@GetMapping(ViewConstraint.URL_ADMIN_CHANGE_PASSWORD)
 	public String table(Model model) {
-		emailService.sendNotifyChangePassword("vangktps10536@fpt.edu.vn");
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CHANGE_PASSWORD);
 		return ViewConstraint.VIEW_ADMIN_CHANGE_PASSWORD;
 	}
