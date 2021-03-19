@@ -8,11 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -37,18 +40,28 @@ public class Category extends BaseEntity implements Serializable{
 	@JsonManagedReference
 	private Set<Product> products;
 	
-	public Category() {}
+	@ManyToOne
+	@JoinColumn(name = "producerId")
+	@JsonBackReference
+	private Producer producer;
 	
+	public Category() {}	
+	
+	public Producer getProducer() {
+		return producer;
+	}
+
+	public void setProducer(Producer producer) {
+		this.producer = producer;
+	}
 
 	public Set<Product> getProducts() {
 		return products;
 	}
 
-
 	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
-
 
 	public int getId() {
 		return id;

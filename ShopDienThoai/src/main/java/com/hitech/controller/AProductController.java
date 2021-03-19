@@ -116,7 +116,6 @@ public class AProductController {
 		pdOnDb.setImportPrice(product.getImportPrice());
 		pdOnDb.setSalePrice(product.getSalePrice());
 		pdOnDb.setLatest(product.isLatest());
-		pdOnDb.setProducer(product.getProducer());
 		pdOnDb.setName(product.getName());
 		pdOnDb.setViews(product.getViews());
 		pdOnDb.setSpecial(product.isSpecial());

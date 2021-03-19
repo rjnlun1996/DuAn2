@@ -142,7 +142,7 @@
 																src="/images/products/${product.photo}" alt="loading"></td>
 															<td>${product.name}</td>
 															<td><img class="img-radius img-80 align-top m-r-15"
-																src="/images/producer/${product.producer.logo}"
+																src="/images/producer/${product.category.producer.logo}"
 																alt="loading" style="box-shadow: unset !important"></td>
 															<td>${product.salePrice}</td>
 															<td>${product.views}</td>
@@ -187,29 +187,9 @@
 	<!-- Sidebar jquery-->
 	<script src="/assets/js/sidebar-menu.js"></script>
 	<script src="/assets/js/config.js"></script>
-	<!-- Plugins JS start-->
-	<script src="/assets/js/chart/chartjs/chart.min.js"></script>
-	<script src="/assets/js/chart/chartist/chartist.js"></script>
-	<script src="/assets/js/chart/chartist/chartist-plugin-tooltip.js"></script>
-	<script src="/assets/js/chart/knob/knob.min.js"></script>
-	<script src="/assets/js/chart/knob/knob-chart.js"></script>
 	<script src="/assets/js/prism/prism.min.js"></script>
-	<script src="/assets/js/clipboard/clipboard.min.js"></script>
-	<script src="/assets/js/counter/jquery.waypoints.min.js"></script>
-	<script src="/assets/js/counter/jquery.counterup.min.js"></script>
-	<script src="/assets/js/counter/counter-custom.js"></script>
 	<script src="/assets/js/custom-card/custom-card.js"></script>
 	<script src="/assets/js/notify/bootstrap-notify.min.js"></script>
-	<script src="/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-au-mill.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-in-mill.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
 	<script src="/assets/js/dashboard/default.js"></script>
 	<script src="/assets/js/notify/index.js"></script>
 	<script src="/assets/js/chat-menu.js"></script>
@@ -260,26 +240,3 @@
 
 </body>
 </html>
-<!-- <div class="welcome-popup modal fade" id="loadModal" tabindex="-1"
-	role="dialog" aria-labelledby="exampleModalCenterTitle"
-	aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<button class="close" type="button" data-dismiss="modal"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			<div class="modal-body">
-				<div class="modal-header"></div>
-				<div class="contain p-50">
-					<div class="text-center">
-						<h3>Welcome to creative admin</h3>
-						<p>start your project with developer friendly admin</p>
-						<button class="btn btn-primary btn-lg txt-white" type="button"
-							data-dismiss="modal" aria-label="Close">Get Started</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div> -->

@@ -27,7 +27,7 @@ public class IProducerService implements ProducerService {
 	}
 
 	@Override
-	public Producer findById(Integer id) {
+	public Producer findById(String id) {
 		return producerRepository.getOne(id);
 	}
 
@@ -46,7 +46,7 @@ public class IProducerService implements ProducerService {
 	}
 
 	@Override
-	public boolean deleteById(Integer id) {
+	public boolean deleteById(String id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -58,7 +58,7 @@ public class IProducerService implements ProducerService {
 	}
 
 	@Override
-	public boolean deleteByEnable(Integer id) {
+	public boolean deleteByEnable(String id) {
 		try {
 			Producer pd = producerRepository.getOne(id);
 			if(pd == null) {

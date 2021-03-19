@@ -7,55 +7,7 @@
 		<div class="departments__body">
 			<div class="departments__links-wrapper">
 				<div class="departments__submenus-container"></div>
-				<ul class="departments__links">
-					<li class="departments__item">
-						<a class="departments__item-link" href="">
-							Power Tools
-							<svg class="departments__item-arrow" width="6px" height="9px">
-                                                   <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
-                                                </svg>
-						</a>
-						<div class="departments__submenu departments__submenu--type--megamenu departments__submenu--size--xl">
-							<!-- .megamenu -->
-							<div class="megamenu megamenu--departments">
-								<div class="megamenu__body" style="background-image: url('images/megamenu/megamenu-1.jpg');">
-									<div class="row">
-										<div class="col-3">
-											<ul class="megamenu__links megamenu__links--level--0">
-												<li class="megamenu__item megamenu__item--with-submenu">
-													<a href="">Power Tools</a>
-													<ul class="megamenu__links megamenu__links--level--1">
-														<li class="megamenu__item">
-															<a href="">Engravers</a>
-														</li>
-														<li class="megamenu__item">
-															<a href="">Drills</a>
-														</li>
-
-													</ul>
-												</li>
-												<li class="megamenu__item">
-													<a href="">Workbenches</a>
-												</li>
-												<li class="megamenu__item">
-													<a href="">Presses</a>
-												</li>
-												<li class="megamenu__item">
-													<a href="">Spray Guns</a>
-												</li>
-												<li class="megamenu__item">
-													<a href="">Riveters</a>
-												</li>
-											</ul>
-										</div>
-
-
-									</div>
-								</div>
-							</div>
-							<!-- .megamenu / end -->
-						</div>
-					</li>
+				<ul class="departments__links">				
 
 					<c:forEach items="${producers }" var="pro">
 						<li class="departments__item">
@@ -71,15 +23,23 @@
 										<div class="row">
 											<div class="col-3">
 												<ul class="megamenu__links megamenu__links--level--0">
-													<%-- <c:forEach items="${pro.category }" var="cate">
-													<li class="megamenu__item">
-														<a href="">${cate.name }</a>
+													<c:forEach items="${pro.categories }" var="cate">
+													<li class="megamenu__item megamenu__item--with-submenu">
+														<a href="">${cate.name}</a>
+														<ul class="megamenu__links megamenu__links--level--1">
+															<c:forEach items="${cate.products }" var="prod">
+																<li class="megamenu__item">
+																	<a href="">${prod.name }</a>
+																</li>
+															</c:forEach>
+														</ul>
 													</li>
-													</c:forEach> --%>
+													<%-- <li class="megamenu__item">
+														<a href="">${cate.name }</a>
+													</li> --%>
+													</c:forEach>
 												</ul>
 											</div>
-
-
 										</div>
 									</div>
 								</div>

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.hitech.entities.Producer;
 
 @Repository
-public interface ProducerRepository extends JpaRepository<Producer, Integer>{
+public interface ProducerRepository extends JpaRepository<Producer, String>{
 	
 	List<Producer> findByEnabledTrue();
 
