@@ -50,4 +50,26 @@ public class IEmailService implements EmailService{
 		
 	}
 
+	@Override
+	public void sendNotifyForgotPassword(String emailTo) {
+		VelocityContext context = new VelocityContext();
+		context.put("account", accountService.findByEmail(emailTo));
+		StringWriter writer = new StringWriter();
+		velocityEngine.mergeTemplate("forgotpass.vm", "UTF-8", context, writer);
+		String body = writer.toString();
+		
+		MimeMessage mimeMessage = emailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
+		try {
+	        helper.setTo(emailTo); 
+	        helper.setSubject("THÔNG BÁO ĐẶT LẠI MẬT KHẨU"); 
+			helper.setText(body, true);
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		} 
+        //message.setText("Mat khau dang nhap HOPEONLIE cua ban vua duoc thay doi luc: " + new Date());
+        emailSender.send(mimeMessage);
+		
+	}
+
 }

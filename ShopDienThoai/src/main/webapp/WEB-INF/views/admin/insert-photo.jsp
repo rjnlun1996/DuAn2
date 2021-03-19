@@ -103,19 +103,19 @@
 								</div>
 								<div class="card-body p-3">
 									<div class="sales-product-table table-responsive">
-										
+
 										<table class="table table-bordernone">
 											<thead>
 												<tr class="text-center">
-													<th>STT</th>
+													<!-- <th>STT</th> -->
 													<th>Hình ảnh</th>
 													<th></th>
 												</tr>
 											</thead>
-											<tbody>
+											<tbody id="photo-body">
 												<c:forEach var="p" items="${photos}">
 													<tr class="text-center">
-														<td scope="col">${p.id}</td>
+														<%-- <td scope="col">${p.id}</td> --%>
 														<td scope="col">
 															<div class="img-radius align-top">
 																<img class="img-100" id="photo" src="/images/photos/${p.link }" alt="#">
@@ -230,43 +230,45 @@
 
 	<script src="https://danielmg.org/assets/demo/uploader/js/ui-multiple.js?v=v10"></script>
 	<script src="/js/photo-plugin/controls.js"></script>
-    <script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
-		
-		<script>
+	<script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
+
+	<script>
 		//jquery	
-		  $(document).ready(function(){
-			$('.delete-item').click(function(){
-				var id = $(this).data('id');
-				
-				swal({
-				  title: "Thông báo?",
-				  text: "Bạn có chắc chắn xóa hình này không?",
-				  icon: "warning",
-				  buttons: true,
-				  dangerMode: true,
-				})
-				.then((willDelete) => {
-				  if(willDelete == true){
-					  $.ajax({
-						  url: '<%=URL_ADMIN_PHOTO_DELETE %>',
-						  method: "POST",
-						  data: {
-							  id: id
-						  },
-						  success: function(data){
-							 if(data == true) location.reload();
-						  },
-	 					  error: function(data){
-							  
-						  },
-					  });
-				  }
-				});
-				//promise
-			})
+		$(document).ready(function(){			
+			addListenerForBtnDelete();
 		}); 
 		
-		
+		  function addListenerForBtnDelete(){
+				$('.delete-item').on('click',function(){
+					var id = $(this).data('id');
+					
+					swal({
+					  title: "Thông báo?",
+					  text: "Bạn có chắc chắn xóa hình này không?",
+					  icon: "warning",
+					  buttons: true,
+					  dangerMode: true,
+					})
+					.then((willDelete) => {
+					  if(willDelete == true){
+						  $.ajax({
+							  url: '<%=URL_ADMIN_PHOTO_DELETE%>',
+							  method: "POST",
+							  data: {
+								  id: id
+							  },
+							  success: function(data){
+								 if(data == true) location.reload();
+							  },
+		 					  error: function(data){
+								  
+							  },
+						  });
+					  }
+					});
+					//promise
+				})
+			}
 		
 		
 		</script>
