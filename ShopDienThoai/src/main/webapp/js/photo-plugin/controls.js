@@ -28,7 +28,6 @@ $(function(){
     onComplete: function(){
       // All files in the queue are processed (success or error)
       ui_add_log('All pending tranfers finished');
-      console.log(123123)
     },
     onNewFile: function(id, file){
       // When a new file is added using the file selector or the DnD area
@@ -62,7 +61,7 @@ $(function(){
       ui_multi_update_file_status(id, 'success', 'Upload Complete');
       ui_multi_update_file_progress(id, 100, 'success', false);
       ui_multi_update_file_controls(id, false, false);  // change control buttons status
-      console.log(id, data)
+      appendNewRowForTable(data);
     },
     onUploadCanceled: function(id) {
       // Happens when a file is directly canceled by the user.
@@ -84,6 +83,22 @@ $(function(){
       ui_add_log('File \'' + file.name + '\' cannot be added: size excess limit', 'danger');
     }
   });
+  
+  function appendNewRowForTable(data){
+  	var row = `<tr class="text-center">
+		    <td scope="col">
+			    <div class="img-radius align-top">
+				    <img class="img-100" id="photo" src="/images/photos/${data.link}" alt="#">
+				</div>
+			</td>
+			<td>
+				<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${data.id}">Delete</button>
+			</td>
+		</tr>`;
+      var tbody = $('#photo-body');
+      tbody.append(row);
+      addListenerForBtnDelete();
+  }
 
   /*
     Global controls

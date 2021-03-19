@@ -117,6 +117,9 @@ public interface ViewConstraint {
 	public static final String URL_ADMIN_CHANGE_PASSWORD = "/ho-admin/change-password";
 	public static final String VIEW_ADMIN_CHANGE_PASSWORD = "/admin/change-password";
 	
+	public static final String URL_ADMIN_FORGET_PASSWORD = "/ho-admin/forget-password";
+	public static final String VIEW_ADMIN_FORGET_PASSWORD = "/admin/forget-password";
+	
 	public static final String URL_ADMIN_LOGOUT = "/ho-admin/logout";
 	public static final String URL_ADMIN_404 = "/ho-admin/404/";
 	public static final String VIEW_ADMIN_404 = "admin/404";
