@@ -25,8 +25,8 @@
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Login Hope Online</h2>
+				<div class="col-md-6 text-center mb-4">
+					<h2 class="heading-section">Đăng nhập Hope Online</h2>
 				</div>
 			</div>
 			<div class="row justify-content-center">
@@ -36,7 +36,7 @@
 							<div class="text w-100">
 								<h2>Chào mừng bạn đến với Hope Online</h2>
 								<p>Bạn đã có tài khoản???</p>
-								<a href="#" class="btn btn-white btn-outline-white">Đăng kí</a>
+								<a href="/register" class="btn btn-white btn-outline-white">Đăng kí</a>
 							</div>
 						</div>
 						<div class="login-wrap p-4 p-lg-5">
@@ -52,7 +52,7 @@
 							</c:if>
 							<form method="POST" class="signin-form">
 								<div class="form-group mb-3">
-									<label for="username">Username hoặc Email </label>
+									<label for="username">Tên đăng nhập hoặc Email </label>
 									<input id="username" type="text" class="form-control" name="username" tabindex="1">
 									<div class="invalid-feedback">Vui lòng nhập username hoặc email</div>
 								</div>

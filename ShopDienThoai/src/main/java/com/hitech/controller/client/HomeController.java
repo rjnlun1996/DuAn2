@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.hitech.constraints.CViewConstraint;
 
 @Controller
-public class HomeController {
+public class HomeController extends BaseController{
 	
 	@RequestMapping(CViewConstraint.URL_HOME)
 	public String table(Model model) {

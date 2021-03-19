@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="nav-panel__departments">
 	<!-- .departments -->
@@ -30,7 +31,7 @@
 														<li class="megamenu__item">
 															<a href="">Drills</a>
 														</li>
-														
+
 													</ul>
 												</li>
 												<li class="megamenu__item">
@@ -47,8 +48,8 @@
 												</li>
 											</ul>
 										</div>
-										
-										
+
+
 									</div>
 								</div>
 							</div>
@@ -56,24 +57,36 @@
 						</div>
 					</li>
 
-					<li class="departments__item">
-						<a class="departments__item-link" href="">Power Machinery</a>
-					</li>
-					<li class="departments__item">
-						<a class="departments__item-link" href="">Measurement</a>
-					</li>
-					<li class="departments__item">
-						<a class="departments__item-link" href="">Clothes & PPE</a>
-					</li>
-					<li class="departments__item">
-						<a class="departments__item-link" href="">Plumbing</a>
-					</li>
-					<li class="departments__item">
-						<a class="departments__item-link" href="">Storage & Organization</a>
-					</li>
-					<li class="departments__item">
-						<a class="departments__item-link" href="">Welding & Soldering</a>
-					</li>
+					<c:forEach items="${producers }" var="pro">
+						<li class="departments__item">
+							<a class="departments__item-link" href="">${pro.name }
+								<svg class="departments__item-arrow" width="6px" height="9px">
+                                                   <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
+                                                </svg>
+							</a>
+							<div class="departments__submenu departments__submenu--type--megamenu departments__submenu--size--xl">
+								<!-- .megamenu -->
+								<div class="megamenu megamenu--departments">
+									<div class="megamenu__body" style="background-image: url('images/megamenu/megamenu-1.jpg');">
+										<div class="row">
+											<div class="col-3">
+												<ul class="megamenu__links megamenu__links--level--0">
+													<%-- <c:forEach items="${pro.category }" var="cate">
+													<li class="megamenu__item">
+														<a href="">${cate.name }</a>
+													</li>
+													</c:forEach> --%>
+												</ul>
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+								<!-- .megamenu / end -->
+							</div>
+						</li>
+					</c:forEach>
 				</ul>
 			</div>
 		</div>

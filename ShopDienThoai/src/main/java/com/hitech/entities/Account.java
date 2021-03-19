@@ -57,11 +57,11 @@ public class Account extends BaseEntity implements Serializable {
 	private String photo = "default.png";
 
 	@Column
-	@NotBlank(message = "Vui lòng nhập Địa chỉ !!! ")
+//	@NotBlank(message = "Vui lòng nhập Địa chỉ !!! ")
 	private String address;
 
 	@Column
-	@NotBlank(message = "Vui lòng nhập Số điện thoại !!! ")
+//	@NotBlank(message = "Vui lòng nhập Số điện thoại !!! ")
 	@Pattern(regexp = "(84|0[3|5|7|8|9])+([0-9]{8})", message = "Vui lòng nhập Số điện thoại đúng định dạng")
 	private String phone;
 
