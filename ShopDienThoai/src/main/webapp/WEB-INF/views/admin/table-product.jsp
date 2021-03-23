@@ -139,7 +139,7 @@
 															<c:set var="count" value="${count+1 }" />
 															<td>${count}</td>
 															<td><img class="img-radius img-80 align-top m-r-15"
-																src="/images/products/${product.photo}" alt="loading"></td>
+																src="/images/products/${product.category.producer.name.toLowerCase()}/${product.photo}" alt="loading"></td>
 															<td>${product.name}</td>
 															<td><img class="img-radius img-80 align-top m-r-15"
 																src="/images/producer/${product.category.producer.logo}"
