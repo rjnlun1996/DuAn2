@@ -14,6 +14,18 @@ public class CViewConstraint {
 	public static final String URL_REGISTER = "/register";
 	public static final String VIEW_REGISTER = "client/register";
 	
+	public static final String URL_FORGET_PASSWORD = "/forget-password";
+	public static final String VIEW_FORGET_PASSWORD = "client/forget-password";
+	
+	public static final String URL_CHANGE_PASSWORD = "/change-password";
+	public static final String VIEW_CHANGE_PASSWORD = "client/change-password";
+	
+	public static final String URL_PROFILE = "/profile";
+	public static final String URL_PROFILE_UPDATE = URL_PROFILE + "update";
+	public static final String VIEW_PROFILE = "client/profile";
+	public static final String VIEW_PROFILE_UPDATE = "client/profile";
+	
 	public static final String URL_404 = "/404/";
 	public static final String VIEW_404 = "client/404";
+	
 }

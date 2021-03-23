@@ -20,12 +20,12 @@
 
 <title>Form Change Password</title>
 </head>
-<body class="img js-fullheight" style="background-image: url(/assetsChangePass/images/bg.jpg);">
+<body class="img js-fullheight" style="background-image: url(/assetsChangePass/images/banner.jpg);">
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Change Password</h2>
+					<h2 class="heading-section">CHANGE PASSWORD</h2>
 				</div>
 			</div>
 			<div class="row justify-content-center">
@@ -58,6 +58,13 @@
 								<!-- <div class="w-50 text-md-right">
 									<a href="" style="color: #fff">Forgot Password ?</a>
 								</div> -->
+							</div>
+							<div class="social d-flex text-center">
+								<a href="/ho-admin/login" class="px-2 py-2 mr-md-1 rounded">
+									<span class="ion-logo-facebook mr-2"></span>
+									BACK LOGIN PAGE
+								</a>
+
 							</div>
 
 						</form>

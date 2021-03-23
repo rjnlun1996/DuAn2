@@ -90,7 +90,7 @@
 						<label for="header-signin-password" class="sr-only">Mật khẩu</label>
 						<div class="account-menu__form-forgot">
 							<input id="header-signin-password" type="password" class="form-control form-control-sm" placeholder="Password">
-							<a href="" class="account-menu__form-forgot-link">Quên mật khẩu?</a>
+							<a href="/forget-password" class="account-menu__form-forgot-link">Quên mật khẩu?</a>
 						</div>
 					</div>
 					<div class="form-group account-menu__form-button">
@@ -113,10 +113,10 @@
 				<div class="account-menu__divider"></div>
 				<ul class="account-menu__links">
 					<li>
-						<a href="account-profile.html">Hồ sơ</a>
+						<a href="/profile">Hồ sơ</a>
 					</li>
 					<li>
-						<a href="account-password.html">Đổi mật khẩu</a>
+						<a href="/change-password">Đổi mật khẩu</a>
 					</li>
 					<li>
 						<a href="account-orders.html">Lịch sử đơn hàng</a>

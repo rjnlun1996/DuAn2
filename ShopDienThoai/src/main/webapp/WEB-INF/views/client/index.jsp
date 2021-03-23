@@ -7886,7 +7886,7 @@
 								</li>
 								<li class="mobile-links__item" data-collapse-item="">
 									<div class="mobile-links__item-title">
-										<a href="account-dashboard.html" class="mobile-links__item-link">Dashboard</a>
+										<a href="/profile" class="mobile-links__item-link">Dashboard</a>
 									</div>
 								</li>
 								<li class="mobile-links__item" data-collapse-item="">

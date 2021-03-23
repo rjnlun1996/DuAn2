@@ -19,6 +19,7 @@ import com.hitech.constraints.ViewConstraint;
 import com.hitech.entities.Account;
 import com.hitech.entities.Category;
 import com.hitech.services.CategoryService;
+import com.hitech.services.ProducerService;
 import com.hitech.utils.ViewUtils;
 
 @Controller
@@ -26,6 +27,9 @@ public class ACategoryController {
 
 	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	private ProducerService producerService;
 
 	@RequestMapping(ViewConstraint.URL_ADMIN_CATEGORY)
 	public String table(Model model) {
@@ -39,6 +43,7 @@ public class ACategoryController {
 	public String show(Model model) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CATEGORY_INSERT);
 		model.addAttribute("category", new Category());
+		model.addAttribute("listProducer",producerService.findAllByEnabledTrue());
 		return ViewConstraint.VIEW_ADMIN_CATEGORY_INSERT;
 	}
 

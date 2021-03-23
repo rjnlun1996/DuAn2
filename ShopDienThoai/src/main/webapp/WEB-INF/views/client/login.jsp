@@ -73,7 +73,7 @@
 										</label>
 									</div>
 									<div class="w-50 text-md-right">
-										<a href="#">Quên mật khẩu</a>
+										<a href="/forget-password">Quên mật khẩu</a>
 									</div>
 								</div>
 							</form>

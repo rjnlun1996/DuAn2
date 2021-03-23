@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="static com.hitech.utils.ViewUtils.*"%>
+<%
+String sb = String.valueOf(request.getAttribute(MENU));
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,12 +24,12 @@
 
 <title>Form Forget Password</title>
 </head>
-<body class="img js-fullheight" style="background-image: url(/assetsChangePass/images/banner2.jpg);">
+<body class="img js-fullheight" style="background-image: url(/assetsChangePass/images/banner1.jpg);">
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">RESET PASSWORD</h2>
+					<h2 class="heading-section">ĐẶT LẠI MẬT KHẨU</h2>
 				</div>
 			</div>
 			<div class="row justify-content-center">
@@ -40,7 +44,7 @@
 								<p style="color: red; font-weight: bold; text-align: center;">${error}</p>
 							</c:if>
 							<div class="form-group">
-								<input type="email" name="email" class="form-control" placeholder="Enter Your Email" required>
+								<input type="email" name="email" class="form-control" placeholder="Vui lòng nhập Email của bạn" required>
 							</div>
 							<!-- <div class="form-group rounded p-4 opt-box">
 								<label class="col-form-label pt-0">Enter OTP</label>
@@ -66,7 +70,7 @@
 								<input class="form-control" type="password">
 							</div> -->
 							<div class="form-group">
-								<button type="submit" class="form-control btn btn-primary submit px-3">Save Change</button>
+								<button type="submit" class="form-control btn btn-primary submit px-3">LƯU </button>
 							</div>
 							<div class="form-group d-md-flex">
 								<div class="w-50"></div>
@@ -74,10 +78,10 @@
 									<a href="" style="color: #fff">Forgot Password ?</a>
 								</div> -->
 							</div>
-								<div class="social d-flex text-center">
-								<a href="/ho-admin/login" class="px-2 py-2 mr-md-1 rounded">
+							<div class="social d-flex text-center">
+								<a href="/login" class="px-2 py-2 mr-md-1 rounded">
 									<span class="ion-logo-facebook mr-2"></span>
-									BACK LOGIN PAGE
+									TRỞ VỀ TRANG ĐĂNG NHẬP
 								</a>
 
 							</div>

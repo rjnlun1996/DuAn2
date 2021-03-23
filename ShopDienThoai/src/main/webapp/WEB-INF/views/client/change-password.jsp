@@ -18,14 +18,14 @@
 <link rel="stylesheet" href="/assetsChangePass/css/style.css">
 
 
-<title>Form Forget Password</title>
+<title>Form Change Password</title>
 </head>
-<body class="img js-fullheight" style="background-image: url(/assetsChangePass/images/banner2.jpg);">
+<body class="img js-fullheight" style="background-image: url(/assetsChangePass/images/banner0.jpg);">
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">RESET PASSWORD</h2>
+					<h2 class="heading-section" >THAY ĐỔI MẬT KHẨU</h2>
 				</div>
 			</div>
 			<div class="row justify-content-center">
@@ -40,33 +40,18 @@
 								<p style="color: red; font-weight: bold; text-align: center;">${error}</p>
 							</c:if>
 							<div class="form-group">
-								<input type="email" name="email" class="form-control" placeholder="Enter Your Email" required>
-							</div>
-							<!-- <div class="form-group rounded p-4 opt-box">
-								<label class="col-form-label pt-0">Enter OTP</label>
-								<div class="form-row">
-									<div class="col">
-										<input class="form-control digits text-center opt-text" type="text" value="00" maxlength="2">
-									</div>
-									<div class="col">
-										<input class="form-control digits text-center opt-text" type="text" value="00" maxlength="2">
-									</div>
-									<div class="col">
-										<input class="form-control digits text-center opt-text" type="text" value="00" maxlength="2">
-									</div>
-								</div>
-							</div>
-							<h6 class="f-14 mt-4 mb-3">CREATE YOUR PASSWORD</h6>
-							<div class="form-group">
-								<label class="col-form-label">New Password</label>
-								<input class="form-control" type="password">
+								<input type="password" minlength="5" name="oldPassword" class="form-control" placeholder="Mật khẩu cũ" required>
 							</div>
 							<div class="form-group">
-								<label class="col-form-label">Retype Password</label>
-								<input class="form-control" type="password">
-							</div> -->
+								<input id="password-field" minlength="5" name="newPassword" type="password" class="form-control" placeholder="Mật khẩu mới" required>
+								<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+							</div>
 							<div class="form-group">
-								<button type="submit" class="form-control btn btn-primary submit px-3">Save Change</button>
+								<input id="password-field" minlength="5" name="rePassword" type="password" class="form-control" placeholder="Nhập lại mật khẩu mới" required>
+								<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="form-control btn btn-primary submit px-3">LƯU THAY ĐỔI</button>
 							</div>
 							<div class="form-group d-md-flex">
 								<div class="w-50"></div>
@@ -74,10 +59,10 @@
 									<a href="" style="color: #fff">Forgot Password ?</a>
 								</div> -->
 							</div>
-								<div class="social d-flex text-center">
-								<a href="/ho-admin/login" class="px-2 py-2 mr-md-1 rounded">
+							<div class="social d-flex text-center">
+								<a href="/login" class="px-2 py-2 mr-md-1 rounded">
 									<span class="ion-logo-facebook mr-2"></span>
-									BACK LOGIN PAGE
+									TRỞ VỀ TRANG ĐĂNG NHẬP
 								</a>
 
 							</div>

@@ -1413,12 +1413,12 @@ a:hover {
 
 .btn-outline-danger {
   border-color: #ff3f70;
-  color: #ff3f70;
+  color: #ff3f70 !important;
   background-color: transparent; }
   .btn-outline-danger.disabled {
     color: #ff3f70; }
   .btn-outline-danger:hover, .btn-outline-danger:focus, .btn-outline-danger:active, .btn-outline-danger.active {
-    color: white;
+    color: white !important;
     background-color: #ff0c4a !important;
     border-color: #ff0c4a !important; }
 
