@@ -17,8 +17,6 @@ public class CViewConstraint {
 	public static final String URL_DETAIL_PRODUCT = "/detail_product";
 	public static final String VIEW_DETAIL_PRODUCT = "client/detail_product";
 	
-	public static final String URL_WISHLIST = "/wishlist";
-	public static final String VIEW_WISHLIST = "client/wishlist";
 	
 	public static final String URL_CART = "/cart";
 	public static final String VIEW_CART = "client/cart";

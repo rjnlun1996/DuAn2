@@ -92,7 +92,8 @@ String sb = String.valueOf(request.getAttribute(MENU));
 									</div>
 								</fieldset>
 								<div class="form-group row">
-									<input type="date" name="birthday" class="form-control" required="required" placeholder="dd/mm/yyyy" />
+									<input type="text" name="birthday" class="form-control" required="required" placeholder="dd/mm/yyyy"/>
+									<form:errors path="birthday" class="invalid-feedback" />
 								</div>
 								<div class="form-group row">
 									<button type="submit" class="form-control btn btn-primary">Đăng ký</button>
@@ -114,8 +115,11 @@ String sb = String.valueOf(request.getAttribute(MENU));
 	<script src="/assetsChangePass/js/popper.js"></script>
 	<script src="/assetsChangePass/js/bootstrap.min.js"></script>
 	<script src="/assetsChangePass/js/main.js"></script>
+	<script src="/assetsChangePass/js/jquery.datetextentry.js"></script>
 
 	<script type="text/javascript">
+			
+		
 		function readURL(input) {
 			if (input.files && input.files[0]) {
 				var reader = new FileReader();
@@ -132,10 +136,11 @@ String sb = String.valueOf(request.getAttribute(MENU));
 		$("#imgInp").change(function() {
 			readURL(this);
 		});
-
+		
 		$(document)
 				.ready(
 						function() {
+							
 							$("#show_hide_password a")
 									.on(
 											'click',

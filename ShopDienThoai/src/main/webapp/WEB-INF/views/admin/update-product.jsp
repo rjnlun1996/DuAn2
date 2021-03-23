@@ -172,12 +172,12 @@
 													<label class="col-sm-3 col-form-label">Image</label>
 													<div class="col-sm-9">
 														<div class="img-radius img-80 align-top m-r-15">
-															<img class="img-100" id="photo" src="/images/products/${product.photo}" alt="#">
+															<img class="img-100" id="photo" src="/images/products/${product.category.producer.name.toLowerCase()}/${product.photo}" alt="#">
 														</div>
 														<input name="image" class="form-control" type="file" id="imgInp" accept="image/*" value="${product.photo}">
 													</div>
 												</div>
-												<div class="form-group row">
+												<%-- <div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="producer">Producer</label>
 													<div class="col-sm-9">
 														<form:select path="producer" class="form-control">
@@ -185,7 +185,7 @@
 														</form:select>
 														<form:errors path="producer"  />
 													</div>
-												</div>
+												</div> --%>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="importPrice">Import
 														Price</label>

@@ -1,6 +1,9 @@
 package com.hitech.controller.client;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,14 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hitech.constraints.CViewConstraint;
-import com.hitech.constraints.ViewConstraint;
 import com.hitech.entities.Account;
 import com.hitech.services.AccountService;
-import com.hitech.services.FileStorageService;
 import com.hitech.utils.SessionUtils;
 import com.hitech.utils.ViewUtils;
 
@@ -61,7 +61,6 @@ public class AuthController {
 	public String insertPost(@Validated @ModelAttribute("register") Account account, BindingResult errors,
 			RedirectAttributes reAttributes, Model model)
 			throws IOException {
-		System.err.println(errors.getFieldError());
 		boolean isExistedUsername = accountService.findById(account.getUsername()) != null;
 		boolean isExistedEmail = accountService.findByEmail(account.getEmail()) != null;
 		boolean isErrors = errors.hasErrors();
