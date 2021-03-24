@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -65,12 +66,12 @@ body {
                               </svg>
 								</li>
 								<li class="breadcrumb-item">
-									<a href="">Breadcrumb</a>
+									<a href="">${product.category.producer.name }</a>
 									<svg class="breadcrumb-arrow" width="6px" height="9px">
                                  <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
                               </svg>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Brandix Screwdriver SCREW1500ACC</li>
+								<li class="breadcrumb-item active" aria-current="page">${product.name }</li>
 							</ol>
 						</nav>
 					</div>
@@ -91,9 +92,8 @@ body {
 										</button>
 										<div class="owl-carousel" id="product-image">
 											<div class="product-image product-image--location--gallery">
-
-												<a href="images/products/product-16.jpg" data-width="700" data-height="700" class="product-image__body" target="_blank">
-													<img class="product-image__img" src="images/products/product-16.jpg" alt="">
+												<a href="/images/products/${product.category.producer.name.toLowerCase()}/${product.photo}" data-width="700" data-height="700" class="product-image__body" target="_blank">
+													<img class="product-image__img" src="/images/products/${product.category.producer.name.toLowerCase()}/${product.photo}" alt="">
 												</a>
 											</div>
 											<div class="product-image product-image--location--gallery">
@@ -124,31 +124,12 @@ body {
 									</div>
 									<div class="product-gallery__carousel">
 										<div class="owl-carousel" id="product-carousel">
-											<a href="images/products/product-16.jpg" class="product-image product-gallery__carousel-item">
+											<a href="/images/products/${product.category.producer.name.toLowerCase()}/${product.photo}" class="product-image product-gallery__carousel-item">
 												<div class="product-image__body">
-													<img class="product-image__img product-gallery__carousel-image" src="images/products/product-16.jpg" alt="">
+													<img class="product-image__img product-gallery__carousel-image" src="/images/products/${product.category.producer.name.toLowerCase()}/${product.photo}" alt="">
 												</div>
 											</a>
-											<a href="images/products/product-16-1.jpg" class="product-image product-gallery__carousel-item">
-												<div class="product-image__body">
-													<img class="product-image__img product-gallery__carousel-image" src="images/products/product-16-1.jpg" alt="">
-												</div>
-											</a>
-											<a href="images/products/product-16-2.jpg" class="product-image product-gallery__carousel-item">
-												<div class="product-image__body">
-													<img class="product-image__img product-gallery__carousel-image" src="images/products/product-16-2.jpg" alt="">
-												</div>
-											</a>
-											<a href="images/products/product-16-3.jpg" class="product-image product-gallery__carousel-item">
-												<div class="product-image__body">
-													<img class="product-image__img product-gallery__carousel-image" src="images/products/product-16-3.jpg" alt="">
-												</div>
-											</a>
-											<a href="images/products/product-16-4.jpg" class="product-image product-gallery__carousel-item">
-												<div class="product-image__body">
-													<img class="product-image__img product-gallery__carousel-image" src="images/products/product-16-4.jpg" alt="">
-												</div>
-											</a>
+
 										</div>
 									</div>
 								</div>
@@ -168,7 +149,7 @@ body {
                                  </svg>
 									</button>
 								</div>
-								<h1 class="product__name">Brandix Screwdriver SCREW1500ACC</h1>
+								<h1 class="product__name">${product.name }</h1>
 								<div class="product__rating">
 									<div class="product__rating-stars">
 										<div class="rating">
@@ -257,29 +238,11 @@ body {
 										</div>
 									</div>
 									<div class="product__rating-legend">
-										<a href="">7 Reviews</a>
-										<span>/</span>
-										<a href="">Write A Review</a>
+										<a href="">${product.views } Views</a>
 									</div>
 								</div>
-								<div class="product__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ornare, mi in ornare elementum, libero nibh lacinia urna, quis convallis lorem erat at purus. Maecenas eu varius nisi.</div>
-								<ul class="product__features">
-									<li>Speed: 750 RPM</li>
-									<li>Power Source: Cordless-Electric</li>
-									<li>Battery Cell Type: Lithium</li>
-									<li>Voltage: 20 Volts</li>
-									<li>Battery Capacity: 2 Ah</li>
-								</ul>
+								<div class="product__description">${product.description}</div>
 								<ul class="product__meta">
-									<li class="product__meta-availability">
-										Availability:
-										<span class="text-success">In Stock</span>
-									</li>
-									<li>
-										Brand:
-										<a href="">Wakita</a>
-									</li>
-									<li>SKU: 83690/32</li>
 								</ul>
 							</div>
 							<!-- .product__info / end -->
@@ -289,11 +252,14 @@ body {
 									Availability:
 									<span class="text-success">In Stock</span>
 								</div>
-								<div class="product__prices">$1,499.00</div>
+								<div class="product__prices">
+									<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.importPrice}" />
+									VNĐ
+								</div>
 								<!-- .product__options -->
 								<form class="product__options">
 									<div class="form-group product__option">
-										<label class="product__option-label">Color</label>
+										<label class="product__option-label">Màu sắc</label>
 										<div class="input-radio-color">
 											<div class="input-radio-color__list">
 												<label class="input-radio-color__item input-radio-color__item--white" style="color: #fff;" data-toggle="tooltip" title="White">
@@ -315,27 +281,9 @@ body {
 											</div>
 										</div>
 									</div>
+									
 									<div class="form-group product__option">
-										<label class="product__option-label">Material</label>
-										<div class="input-radio-label">
-											<div class="input-radio-label__list">
-												<label>
-													<input type="radio" name="material">
-													<span>Metal</span>
-												</label>
-												<label>
-													<input type="radio" name="material">
-													<span>Wood</span>
-												</label>
-												<label>
-													<input type="radio" name="material" disabled="disabled">
-													<span>Plastic</span>
-												</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group product__option">
-										<label class="product__option-label" for="product-quantity">Quantity</label>
+										<label class="product__option-label" for="product-quantity">Số lượng</label>
 										<div class="product__actions">
 											<div class="product__actions-item">
 												<div class="input-number product__quantity">
@@ -345,19 +293,12 @@ body {
 												</div>
 											</div>
 											<div class="product__actions-item product__actions-item--addtocart">
-												<button class="btn btn-primary btn-lg">Add to cart</button>
+												<button class="btn btn-primary btn-lg">Thêm Vào Giỏ Hàng</button>
 											</div>
 											<div class="product__actions-item product__actions-item--wishlist">
 												<button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="Wishlist">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
-                                          </svg>
-												</button>
-											</div>
-											<div class="product__actions-item product__actions-item--compare">
-												<button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="Compare">
-													<svg width="16px" height="16px">
-                                             <use xlink:href="images/sprite.svg#compare-16"></use>
                                           </svg>
 												</button>
 											</div>

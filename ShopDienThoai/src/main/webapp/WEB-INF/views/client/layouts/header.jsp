@@ -3,7 +3,7 @@
 
 <div class="site-header__middle container">
 	<div class="site-header__logo">
-		<a href="index.html">
+		<a href="/">
 			<!-- logo -->
 			<svg xmlns="http://www.w3.org/2000/svg" width="196px" height="26px">
                            <path
