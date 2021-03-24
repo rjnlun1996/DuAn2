@@ -1,6 +1,9 @@
 package com.hitech.controller.client;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,15 +14,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hitech.constraints.CViewConstraint;
-import com.hitech.constraints.ViewConstraint;
 import com.hitech.entities.Account;
 import com.hitech.services.AccountService;
+<<<<<<< HEAD
 import com.hitech.services.EmailService;
 import com.hitech.services.FileStorageService;
+=======
+>>>>>>> branch 'master' of https://github.com/rjnlun1996/DuAn2.git
 import com.hitech.utils.SessionUtils;
 import com.hitech.utils.StringUtils;
 import com.hitech.utils.ViewUtils;
@@ -65,8 +69,13 @@ public class AuthController {
 
 	@PostMapping(CViewConstraint.URL_REGISTER)
 	public String insertPost(@Validated @ModelAttribute("register") Account account, BindingResult errors,
+<<<<<<< HEAD
 			RedirectAttributes reAttributes, Model model) throws IOException {
 		System.err.println(errors.getFieldError());
+=======
+			RedirectAttributes reAttributes, Model model)
+			throws IOException {
+>>>>>>> branch 'master' of https://github.com/rjnlun1996/DuAn2.git
 		boolean isExistedUsername = accountService.findById(account.getUsername()) != null;
 		boolean isExistedEmail = accountService.findByEmail(account.getEmail()) != null;
 		boolean isErrors = errors.hasErrors();
