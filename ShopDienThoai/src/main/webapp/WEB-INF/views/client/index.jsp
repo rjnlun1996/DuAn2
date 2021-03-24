@@ -2514,7 +2514,7 @@ body {
 				<div class="block block-products block-products--layout--large-first" data-mobile-grid-columns="2">
 					<div class="container">
 						<div class="block-header">
-							<h3 class="block-header__title">${pro.name }</h3>
+							<h3 class="block-header__title">Điện Thoại ${pro.name }</h3>
 							<div class="block-header__divider"></div>
 						</div>
 						<div class="block-products__body">
@@ -2533,7 +2533,7 @@ body {
 													<div class="product-card__badge product-card__badge--hot">Hot</div>
 												</div>
 												<div class="product-card__image product-image">
-													<a href="product.html" class="product-image__body">
+													<a href="/detail_product?productId=${prod.id}" class="product-image__body">
 														<img class="product-image__img" src="/images/products/${prod.category.producer.name.toLowerCase()}/${prod.photo}" alt="">
 													</a>
 												</div>

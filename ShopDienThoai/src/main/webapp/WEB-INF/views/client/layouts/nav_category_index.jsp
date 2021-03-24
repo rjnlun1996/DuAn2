@@ -11,7 +11,7 @@
 
 					<c:forEach items="${producers }" var="pro">
 						<li class="departments__item">
-							<a class="departments__item-link" href="">${pro.name }
+							<a class="departments__item-link" href="">Điện Thoại ${pro.name }
 								<svg class="departments__item-arrow" width="6px" height="9px">
                                                    <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
                                                 </svg>
@@ -54,7 +54,7 @@
 			<svg class="departments__button-icon" width="18px" height="14px">
                                        <use xlink:href="images/sprite.svg#menu-18x14"></use>
                                     </svg>
-			Shop By Category
+			Danh Mục Sản Phấm
 			<svg class="departments__button-arrow" width="9px" height="6px">
                                        <use xlink:href="images/sprite.svg#arrow-rounded-down-9x6"></use>
                                     </svg>

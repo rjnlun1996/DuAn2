@@ -10,4 +10,6 @@ public interface ProductService extends IBaseService<Product, Integer> {
 	boolean deleteByEnable(Integer id);
 	Product findById(Integer id);
 	Product findAllByName(String name);
+	
+	List<Product> findAllHaveSamePrice(long price);
 }
