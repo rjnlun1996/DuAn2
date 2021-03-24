@@ -120,12 +120,12 @@
 												</c:if>
 												<thead>
 													<tr class="text-center">
-														<th scope="col">STT</th>
+														<th scope="col">ID</th>
 														<th scope="col">Logo</th>
-														<th scope="col">Tên nhà sản xuất</th>
-														<th scope="col">Địa chỉ</th>
+														<th scope="col">Name </th>
+														<th scope="col">Address</th>
 														<th scope="col">Email</th>
-														<th scope="col">Phone</th>
+														
 														<th></th>
 													</tr>
 												</thead>

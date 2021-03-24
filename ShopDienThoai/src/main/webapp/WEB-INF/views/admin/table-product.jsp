@@ -122,12 +122,12 @@
 												</c:if>
 												<thead>
 													<tr class="text-center">
-														<th scope="col">STT</th>
-														<th scope="col">Hình ảnh</th>
-														<th scope="col">Tên sản phẩm</th>
-														<th scope="col">Nhà sản xuất</th>
-														<th scope="col">Giá bán</th>
-														<th scope="col">Ghi chú</th>
+														<th scope="col">ID</th>
+														<th scope="col">Photo</th>
+														<th scope="col">Name</th>
+														<th scope="col">Producer</th>
+														<th scope="col">Price</th>
+														<th scope="col">Detail</th>
 														<th></th>
 													</tr>
 												</thead>

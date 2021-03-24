@@ -106,11 +106,9 @@ body {
 								<h4 class="account-nav__title">Navigation</h4>
 								<ul>
 									<li class="account-nav__item account-nav__item--active">
-										<a href="account-dashboard.html">Trang chủ</a>
+										<a href="/">Trang chủ</a>
 									</li>
-									<li class="account-nav__item">
-										<a href="account-profile.html">Chỉnh sửa hồ sơ</a>
-									</li>
+									
 									<li class="account-nav__item">
 										<a href="account-orders.html">Lịch sử đặt hàng</a>
 									</li>
