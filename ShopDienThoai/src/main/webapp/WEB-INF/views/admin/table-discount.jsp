@@ -40,6 +40,16 @@
 <link id="color" rel="stylesheet" href="/assets/css/light-1.css" media="screen">
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+
+<style type="text/css">
+	table tbody td {
+		padding: 20px !important;
+		
+	}
+	table thead{
+		background: #f3eded;
+	}
+</style>
 </head>
 <body>
 	<!-- Loader starts-->
@@ -118,9 +128,9 @@
 															<span>${disc.id}</span>
 														</td>
 														<td>
-															<div class="d-flex">
-																<img class="img-radius img-100 align-top m-r-15" src="/images/Iphone/${disc.product.photo}" alt="">
-																<div class="d-flex flex-column justify-content-center">
+															<div class="d-flex" style="align-items: center;">
+																<img class="img-radius img-100 align-top m-r-15" style="filter:none" src="/images/products/${disc.product.category.producer.name.toLowerCase()}/${disc.product.photo}" alt="">
+																<div class="d-flex flex-column">
 																	<h6 class="f-w-600">${disc.product.name}</h6>
 																</div>
 															</div>

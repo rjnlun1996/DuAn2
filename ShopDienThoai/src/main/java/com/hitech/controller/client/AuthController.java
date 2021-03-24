@@ -65,11 +65,12 @@ public class AuthController {
 	@PostMapping(CViewConstraint.URL_REGISTER)
 	public String insertPost(@Validated @ModelAttribute("register") Account account, BindingResult errors,
 			RedirectAttributes reAttributes, Model model) throws IOException {
-		System.err.println(errors.getFieldError());
-
+		System.err.println(accountService.findById(account.getUsername()));
+		
 		boolean isExistedUsername = accountService.findById(account.getUsername()) != null;
 		boolean isExistedEmail = accountService.findByEmail(account.getEmail()) != null;
 		boolean isErrors = errors.hasErrors();
+		System.err.println(isExistedUsername);
 		if (isErrors || isExistedUsername || isExistedEmail) {
 			if (isErrors) {
 				model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");

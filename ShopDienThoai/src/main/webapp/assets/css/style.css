@@ -29641,8 +29641,8 @@ td.fc-widget-header {
   .sales-product-table table tbody tr td:nth-child(5) {
     color: rgba(27, 49, 85, 0.6); }
   .sales-product-table table tbody tr td img {
-    -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.18));
-            filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.18)); }
+    /* -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.18));
+            filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.18));  */}
   .sales-product-table table tbody tr td .badge-secondary {
     -webkit-box-shadow: -0.5px 4.33px 16px 0px rgba(251, 46, 99, 0.25);
             box-shadow: -0.5px 4.33px 16px 0px rgba(251, 46, 99, 0.25); }

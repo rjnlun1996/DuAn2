@@ -44,42 +44,6 @@ public class AStatusOrderController {
 		return ViewConstraint.VIEW_ADMIN_STATUS_ORDER;
 	}
 
-	@GetMapping(ViewConstraint.URL_ADMIN_STATUS_ORDER_INSERT)
-	public String show(Model model) {
-		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_STATUS_ORDER_INSERT);
-		model.addAttribute("listStatus", statusService.findAllStatusByEnabledTrue());
-		model.addAttribute("statusOrder", new StatusOrder());
-		model.addAttribute("listOrder",orderService.findByEnabledTrue());
-		return ViewConstraint.VIEW_ADMIN_STATUS_ORDER_INSERT;
-	}
-
-	@PostMapping(ViewConstraint.URL_ADMIN_STATUS_ORDER_INSERT)
-	public Object insert(Model model, @Validated @ModelAttribute("statusOrder") StatusOrder statusOrder,
-			BindingResult errors, RedirectAttributes reAttributes, @RequestParam String statusId,
-			@RequestParam int orderId) throws IOException {
-		boolean isErrors = errors.hasErrors();
-		if (isErrors) {
-			if (isErrors) {
-				model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
-			}
-			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_STATUS_ORDER_INSERT);
-			return ViewConstraint.VIEW_ADMIN_STATUS_ORDER_INSERT;
-		}
-
-		statusOrder.setCurrent(true);
-		statusOrder.setStatus(new Status(statusId));
-		statusOrder.setOrder(new Order(orderId));
-		statusOrderService.save(statusOrder);
-
-		reAttributes.addFlashAttribute("message", "Tạo trạng thái đơn hàng thành công!");
-		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_DISCOUNT_INSERT);
-	}
-
-	@PostMapping(ViewConstraint.URL_ADMIN_STATUS_ORDER_DELETE)
-	@ResponseBody
-	public boolean delete(Model model, @RequestParam Integer id) {
-		return statusOrderService.deleteByEnabled(id);
-	}
 
 	@GetMapping(ViewConstraint.URL_ADMIN_STATUS_ORDER_UPDATE)
 	public String updateGet(Model model, @RequestParam Integer orderId) {
@@ -95,14 +59,15 @@ public class AStatusOrderController {
 
 	@PostMapping(ViewConstraint.URL_ADMIN_STATUS_ORDER_UPDATE)
 	public Object update(Model model, @RequestParam int orderId, @RequestParam String description,
-			@RequestParam String statusId, @RequestParam String currentStatusId ,RedirectAttributes reAttributes) throws IOException {
+			@RequestParam String statusId, @RequestParam String currentStatusId, RedirectAttributes reAttributes)
+			throws IOException {
 		int beforeStatus = statusService.findById(currentStatusId).getPriority();
 		int afterStatus = statusService.findById(statusId).getPriority();
-		if(afterStatus < beforeStatus && description.trim().length() == 0) {
+		if (afterStatus < beforeStatus && description.trim().length() == 0) {
 			reAttributes.addFlashAttribute("errorDes", "Vui lòng nhập ghi chú cho đơn hàng này!");
 			return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_STATUS_ORDER_UPDATE + "?orderId=" + orderId);
 		}
-		if(afterStatus == beforeStatus) {
+		if (afterStatus == beforeStatus) {
 			reAttributes.addFlashAttribute("error", "Trạng thái không thay đổi.");
 			return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_STATUS_ORDER_UPDATE + "?orderId=" + orderId);
 		}
@@ -114,4 +79,60 @@ public class AStatusOrderController {
 		reAttributes.addFlashAttribute("message", "Cập nhật trạng thái đơn hàng thành công!");
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_STATUS_ORDER);
 	}
+	
+	@PostMapping(ViewConstraint.URL_ADMIN_STATUS_ORDER_DELETE)
+	@ResponseBody
+	public boolean delete(Model model, @RequestParam Integer id) {
+		return statusOrderService.deleteByEnabled(id);
+	}
+	
+
+	/*
+	 * @GetMapping(ViewConstraint.URL_ADMIN_STATUS_ORDER_INSERT) public String
+	 * insertGet(Model model) { model.addAttribute(ViewConstraint.MENU,
+	 * ViewConstraint.URL_ADMIN_STATUS_ORDER_INSERT);
+	 * model.addAttribute("listStatus",
+	 * statusService.findAllStatusByEnabledTrue().stream()
+	 * .sorted(Comparator.comparingInt(Status::getPriority)).collect(Collectors.
+	 * toList())); model.addAttribute("listOrder",
+	 * orderService.findByEnabledTrue());
+	 * 
+	 * model.addAttribute("listStatus", statusService.findAllStatusByEnabledTrue());
+	 * model.addAttribute("statusOrder", new StatusOrder());
+	 * model.addAttribute("listOrder", orderService.findByEnabledTrue());
+	 * 
+	 * return ViewConstraint.VIEW_ADMIN_STATUS_ORDER_INSERT; }
+	 * 
+	 * @PostMapping(ViewConstraint.URL_ADMIN_STATUS_ORDER_INSERT) public Object
+	 * insert(Model model, @Validated @ModelAttribute("statusOrder") StatusOrder
+	 * statusOrder, BindingResult errors, RedirectAttributes
+	 * reAttributes, @RequestParam String statusId,
+	 * 
+	 * @RequestParam int orderId, @RequestParam String description, @RequestParam
+	 * String currentStatusId) throws IOException { int beforeStatus =
+	 * statusService.findById(currentStatusId).getPriority(); int afterStatus =
+	 * statusService.findById(statusId).getPriority(); if (afterStatus <
+	 * beforeStatus && description.trim().length() == 0) {
+	 * reAttributes.addFlashAttribute("errorDes",
+	 * "Vui lòng nhập ghi chú cho đơn hàng này!"); return
+	 * ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_STATUS_ORDER_UPDATE +
+	 * "?orderId=" + orderId); } if (afterStatus == beforeStatus) {
+	 * reAttributes.addFlashAttribute("error", "Trạng thái không thay đổi."); return
+	 * ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_STATUS_ORDER_UPDATE +
+	 * "?orderId=" + orderId); }
+	 * 
+	 * boolean isErrors = errors.hasErrors(); if (isErrors) { if (isErrors) {
+	 * model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!"); }
+	 * model.addAttribute(ViewConstraint.MENU,
+	 * ViewConstraint.URL_ADMIN_STATUS_ORDER_INSERT); return
+	 * ViewConstraint.VIEW_ADMIN_STATUS_ORDER_INSERT; }
+	 * 
+	 * statusOrder.setCurrent(true); statusOrder.setStatus(new Status(statusId));
+	 * statusOrder.setOrder(new Order(orderId));
+	 * statusOrderService.save(statusOrder);
+	 * 
+	 * reAttributes.addFlashAttribute("message",
+	 * "Tạo trạng thái đơn hàng thành công!"); return
+	 * ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_DISCOUNT_INSERT); }
+	 */
 }
