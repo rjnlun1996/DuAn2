@@ -50,6 +50,14 @@
 body {
 	font-family: 'Source Serif Pro', serif;
 }
+
+.invalid-feedback {
+	display: block;
+}
+
+.was-validated .form-control:valid, .form-control.is-valid {
+	background-image: none !important;
+}
 </style>
 
 </head>
@@ -197,7 +205,7 @@ body {
 									<h5>Chỉnh sửa Hồ Sơ</h5>
 								</div>
 								<div class="card-divider"></div>
-								<form:form class="theme-form ${(error || isExistEmail) ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="profile" method="post" enctype="multipart/form-data">
+								<form:form class="theme-form ${(error || isExistEmail) ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="profileAttr" method="post" enctype="multipart/form-data">
 									<div class="card-body datetime-picker">
 										<c:if test="${message != null}">
 											<div class="alert alert-success dark" role="alert">
@@ -205,7 +213,7 @@ body {
 											</div>
 										</c:if>
 										<c:if test="${error != null}">
-											<div class="alert alert-secondary dark" role="alert">
+											<div class="alert alert-danger" role="alert">
 												<p>${error}</p>
 											</div>
 										</c:if>

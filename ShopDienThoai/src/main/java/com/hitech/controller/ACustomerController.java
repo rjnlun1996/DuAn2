@@ -54,9 +54,7 @@ public class ACustomerController {
 		boolean isExistedEmail = accountService.findByEmail(account.getEmail()) != null;
 		boolean isErrors = errors.hasErrors();
 		if (isErrors || isExistedUsername || isExistedEmail) {
-			if (isErrors) {
-				model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
-			}
+			model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
 			if (isExistedUsername) {
 				model.addAttribute("errorUsername", "Username này đã tồn tại");
 				model.addAttribute("isExistUsername", true);
@@ -100,9 +98,7 @@ public class ACustomerController {
 		String tempEmail = account.getEmail();
 		boolean isExistedEmail = accountWithEmail != null && !dbEmail.equals(tempEmail);
 		if (isErrors || isExistedEmail) {
-			if (isErrors) {
-				model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
-			}
+			model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
 			if (isExistedEmail) {
 				model.addAttribute("errorEmail", "Email này đã tồn tại");
 				model.addAttribute("isExistEmail", true);

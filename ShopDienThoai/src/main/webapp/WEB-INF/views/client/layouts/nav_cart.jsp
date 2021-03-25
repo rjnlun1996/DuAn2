@@ -9,7 +9,7 @@ Account user = (Account) session.getAttribute(SessionConstraint.USER);
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
-String sb = String.valueOf(request.getAttribute(MENUC));
+String sb = String.valueOf(request.getAttribute(CMENU));
 %>
 
 <div class="nav-panel__indicators">

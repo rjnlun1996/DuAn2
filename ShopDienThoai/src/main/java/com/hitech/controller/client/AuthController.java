@@ -41,7 +41,7 @@ public class AuthController {
 
 	@GetMapping(CViewConstraint.URL_REGISTER)
 	public String registerGet(Model model) {
-		model.addAttribute(CViewConstraint.MENUC, CViewConstraint.URL_REGISTER);
+		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_REGISTER);
 		model.addAttribute("register", new Account());
 		return CViewConstraint.VIEW_REGISTER;
 	}
@@ -67,7 +67,7 @@ public class AuthController {
 				model.addAttribute("errorEmail", "Email này đã tồn tại");
 				model.addAttribute("isExistEmail", true);
 			}
-			model.addAttribute(CViewConstraint.MENUC, CViewConstraint.URL_REGISTER);
+			model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_REGISTER);
 			return CViewConstraint.VIEW_REGISTER;
 		}
 		account.setLevel(2);
@@ -101,7 +101,7 @@ public class AuthController {
 
 	@GetMapping(CViewConstraint.URL_CHANGE_PASSWORD)
 	public String ChangePassGet(Model model) {
-		model.addAttribute(CViewConstraint.MENUC, CViewConstraint.URL_CHANGE_PASSWORD);
+		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_CHANGE_PASSWORD);
 		return CViewConstraint.VIEW_CHANGE_PASSWORD;
 	}
 

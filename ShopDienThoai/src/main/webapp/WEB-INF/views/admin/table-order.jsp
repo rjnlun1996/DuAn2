@@ -144,12 +144,11 @@ table thead {
 												<thead>
 													<tr class="text-center">
 														<th scope="col">STT</th>
-														<th scope="col">Thời gian</th>
-														<th scope="col">Người nhận</th>
-														<th scope="col">Username</th>
-														<th scope="col">SĐT</th>
+														<th scope="col">Tên Khách Hàng</th>
+														<th scope="col">Tên Người Nhận</th>
+														<th scope="col">Số Điện Thoại</th>
 														<th scope="col">Tổng tiền</th>
-														<th scope="col">Ghi chú</th>
+														<th scope="col">Trạng Thái</th>
 														<th></th>
 													</tr>
 												</thead>
@@ -170,16 +169,10 @@ table thead {
 																href="<%=URL_ADMIN_ORDER_DETAIL_VIEW%>?orderId=${order.id}">View</a> 
 																	<a class="btn btn-pill btn-outline-success btn-sm"
 																href="<%=URL_ADMIN_ORDER_UPDATE%>?orderId=${order.id}">Edit</a>
-
-															<td><a
-																class="btn btn-pill btn-outline-primary btn-sm"
-																href="<%=URL_ADMIN_ORDER_DETAIL_VIEW%>?id=${order.id}">View</a>
-																<a class="btn btn-pill btn-outline-success btn-sm"
-																href="<%=URL_ADMIN_ORDER_DETAIL_UPDATE%>?id=${order.id}">Edit</a>
-
 																<button
 																	class="btn btn-pill btn-outline-danger btn-sm delete-item"
-																	data-id="${order.id}">Delete</button></td>
+																	data-id="${order.id}">Delete</button>
+															</td>
 														</tr>
 													</c:forEach>
 												</tbody>

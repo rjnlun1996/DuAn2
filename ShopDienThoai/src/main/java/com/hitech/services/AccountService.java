@@ -54,5 +54,14 @@ public interface AccountService extends IBaseService<Account, String>{
 	 */
 	Account findByEmail(String email);
 	
+	/**
+	 * The method to login for customer roles
+	 * 
+	 * @param usernameOrEmail the username or email
+	 * @param password        the password
+	 * @return Return true if match usernameOrEmail and password. Default false
+	 */
+	boolean loginCustomer(String usernameOrEmail, String password);
+	
 
 }

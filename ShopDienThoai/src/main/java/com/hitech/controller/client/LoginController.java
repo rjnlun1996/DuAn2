@@ -29,8 +29,7 @@ public class LoginController {
 
 	@PostMapping(CViewConstraint.URL_LOGIN)
 	public String insert(Model model, @RequestParam String username, @RequestParam String password) {
-		boolean isValidLogin = accountService.loginAdmin(username, password);
-		System.out.println(isValidLogin);
+		boolean isValidLogin = accountService.loginCustomer(username, password);
 		if (!isValidLogin) {
 			model.addAttribute("isValidLogin", isValidLogin);
 			model.addAttribute("message", "Tài khoản hoặc mật khẩu không đúng");

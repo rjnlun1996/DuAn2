@@ -11,13 +11,13 @@ public class CartController extends BaseController{
 	
 	@RequestMapping(CViewConstraint.URL_CART)
 	public String cart(Model model) {
-		model.addAttribute(CViewConstraint.MENUC, CViewConstraint.URL_CART);
+		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_CART);
 		return CViewConstraint.VIEW_CART;
 	}
 	
 	@RequestMapping(CViewConstraint.URL_ORDER_SUCCESS)
 	public String orderSuccess(Model model) {
-		model.addAttribute(CViewConstraint.MENUC, CViewConstraint.URL_ORDER_SUCCESS);
+		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_ORDER_SUCCESS);
 		return CViewConstraint.VIEW_ORDER_SUCCESS;
 	}
 }

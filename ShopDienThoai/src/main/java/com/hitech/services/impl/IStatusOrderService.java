@@ -92,7 +92,7 @@ public class IStatusOrderService implements StatusOrderService {
 
 	@Override
 	public List<StatusOrder> findAllByOrderIdAndEnabledTrue(Integer orderId) {
-		return statusOrderRepository.findByOrderIdAndEnabledTrue(orderId);
+		return statusOrderRepository.getStatusOrderByCurrentTrueAndOrderId(orderId);
 	}
 
 	private void transformCurrent(StatusOrder sta) {

@@ -36,20 +36,21 @@ public class AProfileController {
 	public String table(Model model) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_PROFILE);
 		model.addAttribute("profile", sessionUtils.getUser());
+		model.addAttribute("profileAttr", accountService.findById(sessionUtils.getUser().getUsername()));
 		model.addAttribute("se", sessionUtils);
 		return ViewConstraint.VIEW_ADMIN_PROFILE;
 	}
 
-	@GetMapping(ViewConstraint.URL_ADMIN_PROFILE_UPDATE)
-	public String updateGet(Model model, @RequestParam String id) {
-		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_PROFILE_UPDATE);
-		model.addAttribute("profile", accountService.findById(id));
-		return ViewConstraint.VIEW_ADMIN_PROFILE_UPDATE; // render view => prefix + ViewConstraint.VIEW_ADMIN_ADMIN_INSERT
-														// + subfix => path jsp => render html -> client
-	}
+//	@GetMapping(ViewConstraint.URL_ADMIN_PROFILE_UPDATE)
+//	public String updateGet(Model model, @RequestParam String id) {
+//		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_PROFILE_UPDATE);
+//		model.addAttribute("profile", accountService.findById(id));
+//		return ViewConstraint.VIEW_ADMIN_PROFILE_UPDATE; // render view => prefix + ViewConstraint.VIEW_ADMIN_ADMIN_INSERT
+//														// + subfix => path jsp => render html -> client
+//	}
 
 	@PostMapping(ViewConstraint.URL_ADMIN_PROFILE)
-	public String updatePost(@Validated @ModelAttribute("profile") Account account, BindingResult errors,
+	public String updatePost(@Validated @ModelAttribute("profileAttr") Account account, BindingResult errors,
 			RedirectAttributes reAttributes, Model model, @RequestParam("image") MultipartFile file)
 			throws IOException {
 		boolean isErrors = errors.hasErrors();
@@ -59,13 +60,12 @@ public class AProfileController {
 		String tempEmail = account.getEmail();
 		boolean isExistedEmail = accountWithEmail != null && !dbEmail.equals(tempEmail);
 		if (isErrors || isExistedEmail) {
-			if (isErrors) {
-				model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
-			}
+			model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
 			if (isExistedEmail) {
 				model.addAttribute("errorEmail", "Email này đã tồn tại");
 				model.addAttribute("isExistEmail", true);
 			}
+			model.addAttribute("profile", sessionUtils.getUser());
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_PROFILE);
 			return ViewConstraint.VIEW_ADMIN_PROFILE;
 		}
@@ -83,7 +83,7 @@ public class AProfileController {
 		accountOnDb.setPassword(account.getPassword());
 
 		Account accountUpdated = accountService.update(accountOnDb);
-		sessionUtils.setUser(accountService.update(accountUpdated));
+		//sessionUtils.setUser(accountService.update(accountUpdated));
 		reAttributes.addFlashAttribute("message", "Cập nhật tài khoản " + account.getUsername() + " thành công!");
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_PROFILE);
 	}

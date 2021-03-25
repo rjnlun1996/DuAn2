@@ -26,16 +26,22 @@ import com.hitech.utils.ViewUtils;
 
 @Controller
 public class AOrderDetailController {
+	
 	@Autowired
 	OrderDetailService orderDetailService;
+	
 	@Autowired
 	OrderService orderService;
+	
 	@Autowired
 	ProductService productService;
+	
 	@Autowired
 	DiscountService discountService;
+	
 	@Autowired
 	StatusOrderService statusOrderService;
+	
 	@GetMapping(ViewConstraint.URL_ADMIN_ORDER_DETAIL_VIEW)
 	public String table(Model model, @RequestParam int orderId) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);

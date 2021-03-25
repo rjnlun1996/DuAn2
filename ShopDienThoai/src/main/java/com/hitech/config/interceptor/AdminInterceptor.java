@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import com.hitech.constraints.CViewConstraint;
 import com.hitech.constraints.ViewConstraint;
 import com.hitech.utils.SessionUtils;
 
@@ -24,8 +25,15 @@ public class AdminInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		String path = request.getRequestURI();	
-		List<String> listAuthenAdminPages = Arrays.asList(new String[] {ViewConstraint.URL_ADMIN_LOGIN,ViewConstraint.URL_ADMIN_FORGET_PASSWORD});
-		List<String> listOnlyAllowAdminPages = Arrays.asList(new String[] {ViewConstraint.URL_ADMIN_ADMIN, ViewConstraint.URL_ADMIN_REPORT});
+		// Client
+//		List<String> allowAnyClientsAccess = Arrays.asList(new String[] {"" , CViewConstraint.URL_LOGIN,CViewConstraint.URL_FORGET_PASSWORD, CViewConstraint.URL_DETAIL_PRODUCT});
+//		if(!allowAnyClientsAccess.contains(path)) {
+//			
+//		}
+		
+		// ho-admin
+		List<String> listAuthenAdminPages = Arrays.asList(new String[] {ViewConstraint.URL_ADMIN_LOGIN,ViewConstraint.URL_ADMIN_FORGET_PASSWORD});		
+		List<String> listOnlyAllowAdminPages = Arrays.asList(new String[] {ViewConstraint.URL_ADMIN_ADMIN, ViewConstraint.URL_ADMIN_REPORT});		
 		boolean isAccessAdminPage = path.startsWith(ViewConstraint.URL_ADMIN_HOME);
 		boolean isAuthenAdminPage = listAuthenAdminPages.contains(path);
 		boolean isNextAdminPage = isAccessAdminPage && !isAuthenAdminPage && !sessionUtils.isDashboardLogin();

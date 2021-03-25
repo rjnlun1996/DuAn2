@@ -237,6 +237,7 @@
 												</div>
 											</div>
 											<div class="card-footer">
+												<a href="<%=URL_ADMIN_DISCOUNT_INSERT%>?productId=<%= request.getParameter("id") %>" class="btn btn-primary">Update Discount</a>
 												<button class="btn btn-primary" type="submit">Update</button>
 												<button class="btn btn-secondary" type="reset">Cancel</button>
 											</div>

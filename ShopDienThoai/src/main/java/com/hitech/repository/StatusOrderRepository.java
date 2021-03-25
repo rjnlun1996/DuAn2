@@ -14,8 +14,9 @@ public interface StatusOrderRepository extends JpaRepository<StatusOrder, Intege
 	List<StatusOrder> findByEnabledTrue();
 	
 	List<StatusOrder> findByEnabledTrueAndCurrentTrue();
-	@Query("SELECT o from HopeOnline.dbo.StatusOrder o INNER JOIN HopeOnline.dbo.Status s ON o.statusId= s.statusId where o.orderId= 1 and s.isEnabled=1 ")
-	List<StatusOrder> findByOrderIdAndEnabledTrue(Integer orderId);
+	
+//	@Query("SELECT o from StatusOrder o INNER JOIN Status s ON o.status.statusId= s.statusId where o.orderId= 1 and o.isEnabled=1 ")
+//	List<StatusOrder> findByOrderIdAndEnabledTrue(int orderId);
 
 	@Query("SELECT s FROM StatusOrder s, Order o WHERE o.id = s.order.id AND s.current = 1 AND s.order.id = ?1")
 	List<StatusOrder> getStatusOrderByCurrentTrueAndOrderId(int id);
