@@ -244,12 +244,6 @@ String sb = String.valueOf(request.getAttribute(MENU));
 							Insert Order
 						</a>
 					</li>
-					<li>
-						<a href="footer-dark.html">
-							<i class="fa fa-circle"></i>
-							History Order
-						</a>
-					</li>
 				</ul>
 			</li>
 

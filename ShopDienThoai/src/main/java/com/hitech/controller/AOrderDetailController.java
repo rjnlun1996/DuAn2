@@ -21,6 +21,7 @@ import com.hitech.services.DiscountService;
 import com.hitech.services.OrderDetailService;
 import com.hitech.services.OrderService;
 import com.hitech.services.ProductService;
+import com.hitech.services.StatusOrderService;
 import com.hitech.utils.ViewUtils;
 
 @Controller
@@ -33,11 +34,14 @@ public class AOrderDetailController {
 	ProductService productService;
 	@Autowired
 	DiscountService discountService;
+	@Autowired
+	StatusOrderService statusOrderService;
 	@GetMapping(ViewConstraint.URL_ADMIN_ORDER_DETAIL_VIEW)
 	public String table(Model model, @RequestParam int orderId) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);
 		model.addAttribute("listOrderDetail", orderDetailService.findAllByOrderId(orderId));
 		model.addAttribute("order",orderService.findById(orderId));
+		model.addAttribute("listStatus",statusOrderService.findAllByOrderIdAndEnabledTrue(orderId));
 		return ViewConstraint.VIEW_ADMIN_ORDER_DETAIL_VIEW;
 	}
 
@@ -85,5 +89,13 @@ public class AOrderDetailController {
 	public boolean delete1(Model model, @RequestParam int orderDetailId) {
 		System.err.println(orderDetailId);
 		return orderDetailService.deleteByEnable(orderDetailId);
+	}
+	@GetMapping(ViewConstraint.URL_ADMIN_ORDER_DETAIL_UPDATE)
+	public String updateGet(Model model, @RequestParam int orderId,@RequestParam int odId) {
+		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);
+		model.addAttribute("order",orderService.findById(orderId));
+		model.addAttribute("orderDetail", orderDetailService.findById(odId));
+		model.addAttribute("listProduct",productService.findAllByEnabledTrue());
+		return ViewConstraint.VIEW_ADMIN_ORDER_DETAIL_UPDATE;
 	}
 }

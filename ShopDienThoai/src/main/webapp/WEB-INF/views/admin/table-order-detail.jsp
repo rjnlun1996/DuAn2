@@ -52,6 +52,8 @@
 <!-- Plugins css Ends-->
 <!-- Bootstrap css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
+<link
+	href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
 <!-- App css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 <link id="color" rel="stylesheet" href="/assets/css/light-1.css"
@@ -59,6 +61,7 @@
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
 
+<link rel="stylesheet" type="text/css" href="/css/timeline.css">
 <style type="text/css">
 	table tbody td {
 		padding: 20px !important;
@@ -101,23 +104,9 @@
 					<!-- Container-fluid starts-->
 					<div class="container-fluid">
 						<div class="row">
-							<div class="col-xl-12">
+							<div class="col-xl-9">
 								<div class="card">
-									<div class="card-header">
-										<h5>OrderID : ${order.id} - ${order.account.name } - ${order.requireDate }</h5>
-										<div class="card-header-right">
-											<ul class="list-unstyled card-option">
-												<li><i class="icofont icofont-double-left"></i></li>
-												<li><i class="view-html fa fa-code"></i></li>
-												<li><i class="icofont icofont-maximize full-card"></i></li>
-												<li><i class="icofont icofont-minus minimize-card"></i>
-												</li>
-												<li><i class="icofont icofont-refresh reload-card"></i>
-												</li>
-												<li><i class="icofont icofont-error close-card"></i></li>
-											</ul>
-										</div>
-									</div>
+
 									<div class="card-body p-0">
 										<div class="sales-product-table table-responsive">
 											<table class="table table-bordernone">
@@ -137,8 +126,10 @@
 														<th scope="col">Sản phẩm</th>
 														<th scope="col">Số lượng</th>
 														<th scope="col">Đơn giá</th>
-														<th><a class="btn btn-pill btn-outline-primary btn-sm"
-																href="<%=URL_ADMIN_ORDER_DETAIL_INSERT%>?orderId=${order.id}" method="post">ADD+</a> </th>
+														<th><a
+															class="btn btn-pill btn-outline-primary btn-sm"
+															href="<%=URL_ADMIN_ORDER_DETAIL_INSERT%>?orderId=${order.id}">ADD+</a>
+														</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -146,19 +137,17 @@
 														<tr>
 															<c:set var="count" value="${count+1 }" />
 															<td>${count}</td>
-															<td>${orderDetail.product.name}</td>
+															<td><img class="img-radius img-80 align-top m-r-15"
+																src="/images/products/${orderDetail.product.photo}"
+																alt="loading"> ${orderDetail.product.name}</td>
 															<td>${orderDetail.quantity}</td>
 															<td>${orderDetail.amount}</td>
-															<td>
-																<a class="btn btn-pill btn-outline-primary btn-sm"
-																href="<%=URL_ADMIN_ORDER_DETAIL_VIEW%>?id=${orderDetail.id}">View</a> 
-																	<a class="btn btn-pill btn-outline-success btn-sm"
-																href="<%=URL_ADMIN_ORDER_DETAIL_UPDATE%>?id=${orderDetail.id}">Edit</a>
+															<td><a
+																class="btn btn-pill btn-outline-success btn-sm"
+																href="<%=URL_ADMIN_ORDER_DETAIL_UPDATE%>?orderId=${order.id}&odId=${orderDetail.id}">Edit</a>
 																<button
 																	class="btn btn-pill btn-outline-danger btn-sm delete-item"
-																	data-id="${orderDetail.id}">Delete</button>
-
-															</td>
+																	data-id="${orderDetail.id}">Delete</button></td>
 														</tr>
 													</c:forEach>
 												</tbody>
@@ -166,6 +155,52 @@
 										</div>
 									</div>
 								</div>
+							</div>
+							<div class="col-xl-3">
+									<div class="main-card mb-3 card">
+										<div class="card-body">
+											<h5 class="card-title">
+												<b>Status :</b>
+											</h5>
+											<div
+												class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+												<c:forEach var="status" items="${listStatus}">
+													<c:if test="${status.current}">
+														<div style='margin-bottom: 40px;'
+															class="vertical-timeline-item vertical-timeline-element current">
+															<div>
+																<span class="vertical-timeline-element-icon bounce-in">
+																	<i class="badge badge-dot badge-dot-xl badge-primary">
+																</i>
+																</span>
+																<div class="vertical-timeline-element-content bounce-in">
+																	<h4 class="timeline-title">${status.status.name}</h4>
+																	<p style="margin: 0px">${status.description}</p>
+																	<p>${status.createdAt}</p>
+																</div>
+															</div>
+														</div>
+													</c:if>
+													<c:if test="${!status.current}">
+														<div style='margin-bottom: 40px; color: #b5b5b5;'
+															class="vertical-timeline-item vertical-timeline-element">
+															<div>
+																<span class="vertical-timeline-element-icon bounce-in">
+																	<i class="badge badge-dot badge-dot-xl badge-primary">
+																</i>
+																</span>
+																<div class="vertical-timeline-element-content bounce-in">
+																	<h4 class="timeline-title">${status.status.name}</h4>
+																	<p style="margin: 0px">${status.description}</p>
+																	<p>${status.createdAt}</p>
+																</div>
+															</div>
+														</div>
+													</c:if>
+												</c:forEach>
+											</div>
+										</div>
+									</div>
 							</div>
 						</div>
 					</div>
@@ -183,6 +218,8 @@
 	<!-- Bootstrap js-->
 	<script src="/assets/js/bootstrap/popper.min.js"></script>
 	<script src="/assets/js/bootstrap/bootstrap.js"></script>
+	<script
+		src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
 	<!-- feather icon js-->
 	<script src="/assets/js/icons/feather-icon/feather.min.js"></script>
 	<script src="/assets/js/icons/feather-icon/feather-icon.js"></script>
@@ -222,6 +259,7 @@
 	<script src="/assets/js/script.js"></script>
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
 	<script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
+
 	<script>
 	 $(document).ready(function(){
 			$('.delete-item').click(function(){

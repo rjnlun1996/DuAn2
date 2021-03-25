@@ -68,6 +68,15 @@ public class AOrderController {
 	public boolean delete1(Model model, @RequestParam int id) {
 		return orderService.deleteByEnable(id);
 	}
+	@GetMapping(ViewConstraint.URL_ADMIN_ORDER_UPDATE)
+	public String updateGet(Model model, @RequestParam int orderId) {
+
+		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER_UPDATE);
+		Order od = orderService.findById(orderId);
+		model.addAttribute("order", od);
+		model.addAttribute("listUser",accountService.findAllCustomerByEnabledTrue());
+		return ViewConstraint.VIEW_ADMIN_ORDER_UPDATE;
+	}
 //	@GetMapping(ViewConstraint.URL_ADMIN_ORDER_SEARCH)
 //	public Object search(@RequestParam )
 

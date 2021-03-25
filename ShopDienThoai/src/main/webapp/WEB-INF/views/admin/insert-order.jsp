@@ -161,13 +161,13 @@ String sb = String.valueOf(request.getAttribute(MENU));
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="account">Username</label>
 													<div class="col-sm-9">
-														<select class="form-control js-data-example-ajax"
-															name="account" id="account" required="required">
+														<form:select class="form-control js-data-example-ajax"
+															name="account" id="account" required="required" path="account">
 															<option value="null">--Username--</option>
 															<c:forEach var="user" items="${listUser}">
 																<option value="${user.username}"> ${user.name } (Username: ${user.username}) </option>
 															</c:forEach>
-														</select>
+														</form:select>
 													</div>
 												</div>
 												<div class="form-group row">
