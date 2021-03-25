@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.hitech.constraints.SessionConstraint"%>
+<%@ page import="com.hitech.entities.Account"%>
+<%@ page import="static com.hitech.utils.ViewUtils.*"%>
+<%@ page import="static com.hitech.constraints.CViewConstraint.*"%>
+<%
+Account user = (Account) session.getAttribute(SessionConstraint.USER);
+%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+String sb = String.valueOf(request.getAttribute(MENUC));
+%>
 
 <div class="nav-panel__indicators">
 	<div class="indicator">
@@ -70,63 +81,67 @@
 			<!-- .dropcart / end -->
 		</div>
 	</div>
+
+
 	<div class="indicator indicator--trigger--click">
 		<a href="account-login.html" class="indicator__button">
 			<span class="indicator__area">
 				<svg width="20px" height="20px">
-                                          <use xlink:href="images/sprite.svg#person-20"></use>
-                                       </svg>
+					<use xlink:href="images/sprite.svg#person-20"></use></svg>
 			</span>
 		</a>
 		<div class="indicator__dropdown">
 			<div class="account-menu">
+
 				<form class="account-menu__form">
 					<div class="account-menu__form-title">Đăng nhập vào tài khoản của bạn</div>
 					<div class="form-group">
-						<label for="header-signin-email" class="sr-only">Username hoặc email</label>
-						<input id="header-signin-email" type="email" class="form-control form-control-sm" placeholder="Username or email">
+						<input id="header-signin-email" type="email" class="form-control form-control-sm" placeholder="Tên đăng nhập hoặc email">
 					</div>
 					<div class="form-group">
-						<label for="header-signin-password" class="sr-only">Mật khẩu</label>
 						<div class="account-menu__form-forgot">
-							<input id="header-signin-password" type="password" class="form-control form-control-sm" placeholder="Password">
+							<input id="header-signin-password" type="password" class="form-control form-control-sm" placeholder="Mật khẩu">
 							<a href="/forget-password" class="account-menu__form-forgot-link">Quên mật khẩu?</a>
 						</div>
 					</div>
 					<div class="form-group account-menu__form-button">
 						<button type="submit" class="btn btn-primary btn-sm">Đăng nhập</button>
 					</div>
-					<div class="account-menu__form-link">
-						<a href="account-login.html">Tạo tài khoản</a>
+					<div class="form-group account-menu__form-button">
+						<a href="<%=URL_REGISTER%>">Tạo tài khoản</a>
 					</div>
 				</form>
 				<div class="account-menu__divider"></div>
-				<a href="account-dashboard.html" class="account-menu__user">
-					<div class="account-menu__user-avatar">
-						<img src="images/avatars/avatar-3.jpg" alt="">
-					</div>
-					<div class="account-menu__user-info">
-						<div class="account-menu__user-name">Helena Garcia</div>
-						<div class="account-menu__user-email">stroyka@example.com</div>
-					</div>
-				</a>
-				<div class="account-menu__divider"></div>
 				<ul class="account-menu__links">
-					<li>
+					<!-- <li>
 						<a href="/profile">Hồ sơ</a>
+					</li> -->
+					<li class="<%=renderSubmenuClass(sb, URL_PROFILE)%>">
+						<a class="sidebar-header" href="<%=URL_PROFILE%>">
+							<i data-feather="user"></i>
+							<span>Hồ sơ</span>
+						</a>
 					</li>
+
+					<li class="<%=renderSubmenuClass(sb, URL_CHANGE_PASSWORD)%>">
+						<a class="sidebar-header" href="<%=URL_CHANGE_PASSWORD%>">
+							<i data-feather="user"></i>
+							<span>Đổi mật khẩu</span>
+						</a>
+					</li>
+					<!-- 
 					<li>
 						<a href="/change-password">Đổi mật khẩu</a>
-					</li>
+					</li> -->
 					<li>
 						<a href="account-orders.html">Lịch sử đơn hàng</a>
 					</li>
-					
+
 				</ul>
 				<div class="account-menu__divider"></div>
 				<ul class="account-menu__links">
 					<li>
-						<a href="account-login.html">Đăng xuất</a>
+						<a href="/logout">Đăng xuất</a>
 					</li>
 				</ul>
 			</div>

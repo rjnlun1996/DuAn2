@@ -104,10 +104,10 @@ button, select {
 [type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring, button:-moz-focusring {
   outline: ButtonText dotted 1px; }
 
-fieldset {
+/* fieldset {
   border: 1px solid silver;
   margin: 0 2px;
-  padding: .35em .625em .75em; }
+  padding: .35em .625em .75em; } */
 
 legend {
   -webkit-box-sizing: border-box;

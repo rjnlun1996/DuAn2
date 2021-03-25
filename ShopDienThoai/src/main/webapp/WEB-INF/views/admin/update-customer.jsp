@@ -239,7 +239,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 													<label class="col-sm-3 col-form-label">Upload File</label>
 													<div class="col-sm-9">
 														<div class="avatar p-2">
-															<img class="img-100 rounded-circle" id="avatar" src="/images/avatars/${account.photo}" alt="#">
+															<img class="img-100 rounded-circle" id="avatar" src="/images/avatars/${customer.photo}" alt="#">
 														</div>
 														<input name="image" class="form-control" type="file" id="imgInp" accept="image/*">
 													</div>

@@ -193,7 +193,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 											<div class="card-header">
 												<h5>UPDATE INFORMATION</h5>
 											</div>
-											<form:form class="theme-form ${(error || isExistEmail) ? 'was-validated' : ''}" action="<%=URL_ADMIN_PROFILE_UPDATE %>" novalidate="novalidate" modelAttribute="profile" method="post" enctype="multipart/form-data">
+											<form:form class="theme-form ${(error || isExistEmail) ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="profile" method="post" enctype="multipart/form-data">
 												<div class="card-body datetime-picker">
 													<c:if test="${message != null}">
 														<div class="alert alert-success dark" role="alert">
@@ -217,7 +217,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 														</div>
 													</div>
 													<div class="form-group row">
-														<label class="col-sm-3 col-form-label" for="email">Email</label>
+														<label class="col-sm-3 col-form-label" for="email">Email </label>
 														<div class="col-sm-9 input-group">
 															<div class="input-group-prepend">
 																<span class="input-group-text">
@@ -312,9 +312,9 @@ String sb = String.valueOf(request.getAttribute(MENU));
 													</div>
 												</div>
 												<div class="card-footer">
-													<button class="btn btn-success" type="submit" href="<%=URL_ADMIN_PROFILE_UPDATE%>?id=${acc.username}">Update</button>
+													<button class="btn btn-success" type="submit" href="<%=URL_ADMIN_PROFILE_UPDATE%>?id=${profile.username}">Update</button>
 													<button class="btn btn-secondary" type="reset">Cancel</button>
-													
+
 												</div>
 											</form:form>
 										</div>
