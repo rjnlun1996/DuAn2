@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.hitech.entities.Status;
 import com.hitech.entities.StatusOrder;
-import com.hitech.repository.OrderRepository;
 import com.hitech.repository.StatusOrderRepository;
 import com.hitech.repository.StatusRepository;
 import com.hitech.services.StatusOrderService;
@@ -26,8 +25,6 @@ public class IStatusOrderService implements StatusOrderService {
 	@Autowired
 	private StatusRepository statusRepository;
 
-	@Autowired
-	private OrderRepository orderRepository;
 
 	@Override
 	public StatusOrder findById(Integer id) {
@@ -90,6 +87,11 @@ public class IStatusOrderService implements StatusOrderService {
 	@Override
 	public List<StatusOrder> findAllByEnabledTrueAndCurrentTrue() {
 		return statusOrderRepository.findByEnabledTrueAndCurrentTrue();
+	}
+
+	@Override
+	public List<StatusOrder> findAllByOrderIdAndEnabledTrue(Integer orderId) {
+		return statusOrderRepository.findByOrderIdAndEnabledTrue(orderId);
 	}
 
 }

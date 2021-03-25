@@ -40,6 +40,16 @@ public class StatusOrder extends BaseEntity implements Serializable {
 	@JoinColumn(name="statusId",nullable = false)
 	@JsonBackReference
 	private Status status;
+	
+	@Column
+	private String description;
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String decription) {
+		this.description = decription;
+	}
 
 	public StatusOrder() {
 		super();

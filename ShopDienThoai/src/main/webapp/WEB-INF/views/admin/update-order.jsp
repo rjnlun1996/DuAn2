@@ -1,24 +1,40 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page import="static com.hitech.utils.ViewUtils.*"%>
+<%
+String sb = String.valueOf(request.getAttribute(MENU));
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Creative admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-<meta name="keywords" content="admin template, Creative admin template, dashboard template, flat admin template, responsive admin template, web app">
+<meta name="description"
+	content="Creative admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+<meta name="keywords"
+	content="admin template, Creative admin template, dashboard template, flat admin template, responsive admin template, web app">
 <meta name="author" content="pixelstrap">
 <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
-<link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
-<title>HOPE - INSERT ADMIN</title>
+<link rel="shortcut icon" href="/assets/images/favicon.png"
+	type="image/x-icon">
+<title>HOPE - UPDATE ORDER</title>
 <!-- Google font-->
-<link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
 <!-- Font Awesome-->
-<link rel="stylesheet" type="text/css" href="/assets/css/fontawesome.css">
+<link rel="stylesheet" type="text/css"
+	href="/assets/css/fontawesome.css">
 <!-- ico-font-->
 <link rel="stylesheet" type="text/css" href="/assets/css/icofont.css">
 <!-- Themify icon-->
@@ -26,20 +42,27 @@
 <!-- Flag icon-->
 <link rel="stylesheet" type="text/css" href="/assets/css/flag-icon.css">
 <!-- Feather icon-->
-<link rel="stylesheet" type="text/css" href="/assets/css/feather-icon.css">
+<link rel="stylesheet" type="text/css"
+	href="/assets/css/feather-icon.css">
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/chartist.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/vector-map.css">
 <!-- Plugins css Ends-->
 <!-- Bootstrap css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
 <!-- App css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-<link id="color" rel="stylesheet" href="/assets/css/light-1.css" media="screen">
+<link id="color" rel="stylesheet" href="/assets/css/light-1.css"
+	media="screen">
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+<link
+	href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+	rel="stylesheet" />
+<style>
+.invalid-feedback {
+	display: block;
+}
+</style>
 </head>
 <body>
 	<!-- Loader starts-->
@@ -70,13 +93,9 @@
 					<div class="page-header">
 						<div class="row">
 							<div class="col-lg-6">
-								<h3>FORM INSERT ACCOUNT</h3>
+								<h3>FORM INSERT ORDER</h3>
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item">
-										<a href="index-1.html">Home</a>
-									<li class="breadcrumb-item">Forms</li>
-									<li class="breadcrumb-item">Form Widgets</li>
-									<li class="breadcrumb-item active">Default Forms</li>
+									<li class="breadcrumb-item"><a href="<%=URL_ADMIN_HOME%>">Home</a>
 									</li>
 
 								</ol>
@@ -85,36 +104,31 @@
 								<!-- Bookmark Start-->
 								<div class="bookmark pull-right">
 									<ul>
-										<li>
-											<a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Tables">
-												<i data-feather="inbox"></i>
-											</a>
-										</li>
-										<li>
-											<a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Chat">
-												<i data-feather="message-square"></i>
-											</a>
-										</li>
-										<li>
-											<a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Icons">
-												<i data-feather="command"></i>
-											</a>
-										</li>
-										<li>
-											<a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Learning">
-												<i data-feather="layers"></i>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="bookmark-search" data-feather="star"></i>
-											</a>
+										<li><a href="#" data-container="body"
+											data-toggle="popover" data-placement="top" title=""
+											data-original-title="Tables"> <i data-feather="inbox"></i>
+										</a></li>
+										<li><a href="#" data-container="body"
+											data-toggle="popover" data-placement="top" title=""
+											data-original-title="Chat"> <i
+												data-feather="message-square"></i>
+										</a></li>
+										<li><a href="#" data-container="body"
+											data-toggle="popover" data-placement="top" title=""
+											data-original-title="Icons"> <i data-feather="command"></i>
+										</a></li>
+										<li><a href="#" data-container="body"
+											data-toggle="popover" data-placement="top" title=""
+											data-original-title="Learning"> <i data-feather="layers"></i>
+										</a></li>
+										<li><a href="#"> <i class="bookmark-search"
+												data-feather="star"></i>
+										</a>
 											<form class="form-inline search-form">
 												<div class="form-group form-control-search">
 													<input type="text" placeholder="Search..">
 												</div>
-											</form>
-										</li>
+											</form></li>
 									</ul>
 								</div>
 								<!-- Bookmark Ends-->
@@ -127,161 +141,89 @@
 					<div class="row">
 						<div class="col-sm-12 col-xl-12">
 							<div class="row">
-
 								<div class="col-sm-12">
 									<div class="card">
 										<div class="card-header">
-											<h5>INSERT ADMIN</h5>
+											<h5>UPDATE ORDER</h5>
 										</div>
-										<form:form class="theme-form" modelAttribute="account" method="post">
-											<div class="card-body">
+										<form:form class="theme-form  ${error ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="order" method="post" >
+											<div class="card-body datetime-picker">
+												<c:if test="${message != null}">
+													<div class="alert alert-success dark" role="alert">
+														<p>${message}</p>
+													</div>
+												</c:if>
+												<c:if test="${error != null}">
+													<div class="alert alert-secondary dark" role="alert">
+														<p>${error}</p>
+													</div>
+												</c:if>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Name</label>
+													<label class="col-sm-3 col-form-label" for="account">Username</label>
 													<div class="col-sm-9">
-														<form:input path="name" class="form-control" />
-														<%-- <form:errors path="name" /> --%>
+														<form:select class="form-control js-data-example-ajax"
+															required="required" path="account" value="${order.account.username}">
+															<c:forEach var="user" items="${listUser}">
+																<form:option value="${user.username}"> ${user.name } (Username: ${user.username}) </form:option>
+															</c:forEach>
+														</form:select>
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Username</label>
+													<label class="col-sm-3 col-form-label" for="receiver">Người nhận</label>
 													<div class="col-sm-9">
-														<form:input path="username" class="form-control" />
-														<%-- <form:errors path="username" /> --%>
+														<form:input path="receiver" class="form-control" required="required" />
+														<form:errors path="receiver" class="invalid-feedback" />
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Email</label>
+													<label class="col-sm-3 col-form-label" for="address">Địa chỉ</label>
 													<div class="col-sm-9">
-														<form:input path="email" class="form-control" />
-														<%-- <form:errors path="email" /> --%>
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Password</label>
-													<div class="col-sm-9">
-														<form:input path="password" class="form-control" />
-														<%-- <form:errors path="password" /> --%>
-													</div>
-												</div>
-												<fieldset class="form-group">
-													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">Gender</label>
-														<div class="col-sm-9">
-															<div class="radio radio-primary">
-																<form:radiobutton path="gender" value="0" class="form-check-input" />
-																<label for="gender1">Male</label>
-															</div>
-															<div class="radio radio-primary">
-																<form:radiobutton path="gender" value="1" class="form-check-input" />
-																<label for="gender2">Female</label>
-															</div>
-															<%-- <form:errors path="gender" /> --%>
-														</div>
-													</div>
-												</fieldset>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Birthday</label>
-													<div class="col-sm-9">
-														<form:input path="birthday" class="form-control" />
-														<%-- <form:errors path="birthday" /> --%>
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Address</label>
-													<div class="col-sm-9">
-														<form:input path="address" class="form-control" />
-														<%-- <form:errors path="address" /> --%>
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="">Phone</label>
-													<div class="col-sm-9">
-														<form:input path="phone" class="form-control" />
-														<%-- <form:errors path="phone" /> --%>
-													</div>
-												</div>
-												<fieldset class="form-group">
-													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">IsAdmin</label>
-														<div class="col-sm-9">
-															<div class="radio radio-primary">
-																<form:radiobutton path="isAdmin" value="0" class="form-check-input" />
-																<label for="isAdmin1">Customer</label>
-															</div>
-															<div class="radio radio-primary">
-																<form:radiobutton path="isAdmin" value="1" class="form-check-input" />
-																<label for="isAdmin2">Admin</label>
-															</div>
-															<%-- <form:errors path="isAdmin" /> --%>
-														</div>
-													</div>
-												</fieldset>
-
-												<!-- <form class="theme-form">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="name">Name</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="name" type="text" placeholder="Name">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="username">Username</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="username" type="text" placeholder="Username">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="email">Email</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="email" type="email" placeholder="Email">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="password">Password</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="password" type="password" placeholder="Password">
-													</div>
-												</div>
-												<fieldset class="form-group">
-													<div class="row">
-														<label class="col-form-label col-sm-3 pt-0">Gender</label>
-														<div class="col-sm-9">
-															<div class="radio radio-primary">
-																<input id="radio11" type="radio" name="radio1" value="option1">
-																<label for="radio11">Male</label>
-															</div>
-															<div class="radio radio-primary">
-																<input id="radio22" type="radio" name="radio1" value="option1">
-																<label for="radio22">Female</label>
-															</div>
-															
-														</div>
-													</div>
-												</fieldset>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="birthday">Birthday</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="birthday" type="text" placeholder="Birthday">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="address">Address</label>
-													<div class="col-sm-9">
-														<input class="form-control" id="address" type="text" placeholder="Address">
+														<form:input path="address" class="form-control" required="required" />
+														<form:errors path="address" class="invalid-feedback" />
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="phone">Phone</label>
 													<div class="col-sm-9">
-														<input class="form-control" id="phone" type="text" placeholder="Phone">
+														<form:input path="phone" class="form-control" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required="required" />
+														<form:errors path="phone" class="invalid-feedback" />
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Ngày đặt</label>
+													<div class="col-sm-5">
+														<div class="input-group date" id="dt-date" data-target-input="nearest">
+															<form:input path="requireDate" required="required" class="form-control datetimepicker-input digits" disabled="disabled" data-target="#dt-date" />
+															<div class="input-group-append" data-target="#dt-date" data-toggle="datetimepicker">
+																<div class="input-group-text">
+																	<i class="fa fa-calendar"></i>
+																</div>
+															</div>
+														</div>
+														<form:errors path="requireDate" class="invalid-feedback" />
 													</div>
 												</div>
 												
-											</form> -->
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="total" >Tổng tiền</label>
+													<div class="col-sm-9">
+														<form:input path="total" class="form-control" required="required" disabled="true"/>
+														<form:errors path="total" class="invalid-feedback" />
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="description">Ghi chú</label>
+													<div class="col-sm-9">
+														<form:input path="description" class="form-control" required="required" />
+														<form:errors path="description" class="invalid-feedback" />
+													</div>
+												</div>
+												
 											</div>
 											<div class="card-footer">
 												<button class="btn btn-primary" type="submit">Create</button>
-												<button class="btn btn-secondary">Cancel</button>
+												<button class="btn btn-secondary" type="reset">Cancel</button>
 											</div>
 										</form:form>
 									</div>
@@ -308,14 +250,53 @@
 	<!-- Sidebar jquery-->
 	<script src="/assets/js/sidebar-menu.js"></script>
 	<script src="/assets/js/config.js"></script>
-	<!-- Plugins JS start-->
+
+	<script src="/assets/js/datepicker/date-time-picker/moment.min.js"></script>
+	<script
+		src="/assets/js/datepicker/date-time-picker/tempusdominus-bootstrap-4.min.js"></script>
+	<script
+		src="/assets/js/datepicker/date-time-picker/datetimepicker.custom.js"></script>
+
+
+	<script src="/assets/js/datepicker/date-picker/datepicker.js"></script>
+	<script src="/assets/js/datepicker/date-picker/datepicker.en.js"></script>
+	<script src="/assets/js/datepicker/date-picker/datepicker.custom.js"></script>
+
+	<!-- Plugins JS Start-->
 	<script src="/assets/js/chat-menu.js"></script>
+	<script src="/assets/js/form-validation-custom.js"></script>
 	<script src="/assets/js/tooltip-init.js"></script>
 	<!-- Plugins JS Ends-->
 	<!-- Theme js-->
 	<script src="/assets/js/script.js"></script>
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 	<!-- login js-->
 	<!-- Plugin used-->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.js-data-example-ajax').select2();
+		});
+
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+
+				reader.readAsDataURL(input.files[0]);
+
+				reader.onload = function(e) {
+					$('#avatar').attr('src', e.target.result);
+				}
+
+			}
+		}
+
+		$("#imgInp").change(function() {
+			readURL(this);
+		});
+	</script>
 </body>
 </html>
