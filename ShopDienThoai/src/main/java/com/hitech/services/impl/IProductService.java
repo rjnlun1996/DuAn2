@@ -76,4 +76,9 @@ public class IProductService implements ProductService{
 	public Product findAllByName(String name) {
 		return productRepository.findByName(name);
 	}
+
+	@Override
+	public List<Product> findAllHaveSamePrice(long price) {
+		return productRepository.findAllHaveSamePrice(price - 1000000, price + 1000000);
+	}
 }

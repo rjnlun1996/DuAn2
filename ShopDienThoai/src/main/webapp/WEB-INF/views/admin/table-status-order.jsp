@@ -55,6 +55,15 @@
 	media="screen">
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+<style type="text/css">
+	table tbody td {
+		padding: 20px !important;
+		
+	}
+	table thead{
+		background: #f3eded;
+	}
+</style>
 </head>
 <body>
 	<!-- Loader starts-->
@@ -121,13 +130,12 @@
 												<c:forEach var="statusOrder" items="${listStatusOrder}">
 													<tr>
 
-														<td><span>${statusOrder.id}</span></td>
-														<td><span>${statusOrder.order.id}</span>
+														<td>${statusOrder.id}</td>
+														<td>${statusOrder.order.id}
 														</td>
-														<td><span>${statusOrder.order.account.name}</span></td>
-														<td><span>${statusOrder.status.name}</span></td>
-														<td><span
-															class="badge badge-pill pill-badge-primary f-12">${statusOrder.createdAt}</span>
+														<td>${statusOrder.order.account.name}</td>
+														<td>${statusOrder.status.name}</td>
+														<td><span class="badge badge-pill pill-badge-primary f-12">${statusOrder.createdAt}</span>
 														</td>
 														<td><a
 															class="btn btn-pill btn-outline-primary btn-sm"

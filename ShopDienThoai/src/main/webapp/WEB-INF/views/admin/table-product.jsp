@@ -1,40 +1,31 @@
 <%@page import="com.hitech.entities.Product"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="static com.hitech.constraints.ViewConstraint.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description"
-	content="Creative admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-<meta name="keywords"
-	content="admin template, Creative admin template, dashboard template, flat admin template, responsive admin template, web app">
+<meta name="description" content="Creative admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+<meta name="keywords" content="admin template, Creative admin template, dashboard template, flat admin template, responsive admin template, web app">
 <meta name="author" content="pixelstrap">
 <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
-<link rel="shortcut icon" href="/assets/images/favicon.png"
-	type="image/x-icon">
+<link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
 <title>HOPE - TABLE PRODUCT</title>
 <!-- Google font-->
-<link
-	href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 <!-- Font Awesome-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/fontawesome.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/fontawesome.css">
 <!-- ico-font-->
 <link rel="stylesheet" type="text/css" href="/assets/css/icofont.css">
 <!-- Themify icon-->
@@ -42,8 +33,7 @@
 <!-- Flag icon-->
 <link rel="stylesheet" type="text/css" href="/assets/css/flag-icon.css">
 <!-- Feather icon-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/feather-icon.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/feather-icon.css">
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/chartist.css">
@@ -54,10 +44,19 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
 <!-- App css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-<link id="color" rel="stylesheet" href="/assets/css/light-1.css"
-	media="screen">
+<link id="color" rel="stylesheet" href="/assets/css/light-1.css" media="screen">
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+
+<style type="text/css">
+	table tbody td {
+		padding: 20px !important;
+		
+	}
+	table thead{
+		background: #f3eded;
+	}
+</style>
 </head>
 <body>
 	<!-- Loader starts-->
@@ -97,14 +96,24 @@
 										<h5>List Product</h5>
 										<div class="card-header-right">
 											<ul class="list-unstyled card-option">
-												<li><i class="icofont icofont-double-left"></i></li>
-												<li><i class="view-html fa fa-code"></i></li>
-												<li><i class="icofont icofont-maximize full-card"></i></li>
-												<li><i class="icofont icofont-minus minimize-card"></i>
+												<li>
+													<i class="icofont icofont-double-left"></i>
 												</li>
-												<li><i class="icofont icofont-refresh reload-card"></i>
+												<li>
+													<i class="view-html fa fa-code"></i>
 												</li>
-												<li><i class="icofont icofont-error close-card"></i></li>
+												<li>
+													<i class="icofont icofont-maximize full-card"></i>
+												</li>
+												<li>
+													<i class="icofont icofont-minus minimize-card"></i>
+												</li>
+												<li>
+													<i class="icofont icofont-refresh reload-card"></i>
+												</li>
+												<li>
+													<i class="icofont icofont-error close-card"></i>
+												</li>
 											</ul>
 										</div>
 									</div>
@@ -123,13 +132,12 @@
 												</c:if>
 												<thead>
 													<tr class="text-center">
-														<th scope="col">STT</th>
-														<th scope="col">Hình ảnh</th>
-														<th scope="col">Tên sản phẩm</th>
-														<th scope="col">Nhà sản xuất</th>
-														<th scope="col">Giá bán</th>
-														<th scope="col">View</th>
-														<th scope="col">Ghi chú</th>
+														<th scope="col">ID</th>
+														<th scope="col">Photo</th>
+														<th scope="col">Name</th>
+														<th scope="col">Producer</th>
+														<th scope="col">Price</th>
+														<th scope="col">Detail</th>
 														<th></th>
 													</tr>
 												</thead>
@@ -138,23 +146,26 @@
 														<tr>
 															<c:set var="count" value="${count+1 }" />
 															<td>${count}</td>
-															<td><img class="img-radius img-80 align-top m-r-15"
-																src="/images/products/${product.photo}" alt="loading"></td>
-															<td>${product.name}</td>
-															<td><img class="img-radius img-80 align-top m-r-15"
-																src="/images/producer/${product.producer.logo}"
-																alt="loading" style="box-shadow: unset !important"></td>
-															<td>${product.salePrice}</td>
-															<td>${product.views}</td>
+															<td>
+																<img class="img-radius img-80 align-top m-r-15" src="/images/products/${product.category.producer.name.toLowerCase()}/${product.photo}" alt="loading">
+															</td>
+															<td class="text-center">
+																<span class="badge badge-success f-12">${product.name}</span>
+															</td>
+															<td>
+																<img class="img-radius img-80 align-top m-r-15" src="/images/producer/${product.category.producer.logo}" alt="loading" style="box-shadow: unset !important">
+															</td>
+															<td>
+																<span class="badge badge-danger f-12">
+																	<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.importPrice}" />
+																	VNĐ
+																</span>
+															</td>
 															<td>${product.description}</td>
 															<td>
-																<button class="btn btn-pill btn-outline-primary btn-sm"
-																	type="button">View</button> <a
-																class="btn btn-pill btn-outline-success btn-sm"
-																href="<%=URL_ADMIN_PRODUCT_UPDATE%>?id=${product.id}"">Edit</a>
-																<button
-																	class="btn btn-pill btn-outline-danger btn-sm delete-item"
-																	data-id="${product.id}" data-name="${product.name}">Delete</button>
+																<button class="btn btn-pill btn-outline-primary btn-sm" type="button">View</button>
+																<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_PRODUCT_UPDATE%>?id=${product.id}"">Edit</a>
+																<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${product.id}" data-name="${product.name}">Delete</button>
 
 															</td>
 														</tr>
@@ -187,29 +198,9 @@
 	<!-- Sidebar jquery-->
 	<script src="/assets/js/sidebar-menu.js"></script>
 	<script src="/assets/js/config.js"></script>
-	<!-- Plugins JS start-->
-	<script src="/assets/js/chart/chartjs/chart.min.js"></script>
-	<script src="/assets/js/chart/chartist/chartist.js"></script>
-	<script src="/assets/js/chart/chartist/chartist-plugin-tooltip.js"></script>
-	<script src="/assets/js/chart/knob/knob.min.js"></script>
-	<script src="/assets/js/chart/knob/knob-chart.js"></script>
 	<script src="/assets/js/prism/prism.min.js"></script>
-	<script src="/assets/js/clipboard/clipboard.min.js"></script>
-	<script src="/assets/js/counter/jquery.waypoints.min.js"></script>
-	<script src="/assets/js/counter/jquery.counterup.min.js"></script>
-	<script src="/assets/js/counter/counter-custom.js"></script>
 	<script src="/assets/js/custom-card/custom-card.js"></script>
 	<script src="/assets/js/notify/bootstrap-notify.min.js"></script>
-	<script src="/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-au-mill.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-in-mill.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
 	<script src="/assets/js/dashboard/default.js"></script>
 	<script src="/assets/js/notify/index.js"></script>
 	<script src="/assets/js/chat-menu.js"></script>
@@ -260,26 +251,3 @@
 
 </body>
 </html>
-<!-- <div class="welcome-popup modal fade" id="loadModal" tabindex="-1"
-	role="dialog" aria-labelledby="exampleModalCenterTitle"
-	aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<button class="close" type="button" data-dismiss="modal"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			<div class="modal-body">
-				<div class="modal-header"></div>
-				<div class="contain p-50">
-					<div class="text-center">
-						<h3>Welcome to creative admin</h3>
-						<p>start your project with developer friendly admin</p>
-						<button class="btn btn-primary btn-lg txt-white" type="button"
-							data-dismiss="modal" aria-label="Close">Get Started</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div> -->

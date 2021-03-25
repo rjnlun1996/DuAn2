@@ -4,8 +4,11 @@ import java.util.List;
 
 import com.hitech.entities.Producer;
 
-public interface ProducerService extends IBaseService<Producer, Integer>{
+public interface ProducerService extends IBaseService<Producer, String>{
+	
 	List<Producer> findAllByEnabledTrue();
-	Producer findById(Integer id);
-	boolean deleteByEnable(Integer id);
+	
+	Producer findById(String id);
+	
+	boolean deleteByEnable(String id);
 }

@@ -31,6 +31,9 @@ public class StatusOrder extends BaseEntity implements Serializable {
 	@Column(name = "isCurrent")
 	private boolean current;
 	
+	@Column
+	private String description;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="orderId",nullable = false)
 	@JsonBackReference
@@ -97,6 +100,14 @@ public class StatusOrder extends BaseEntity implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }

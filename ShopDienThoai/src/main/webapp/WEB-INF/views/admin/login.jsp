@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="static com.hitech.utils.ViewUtils.*"%>
+<%@ page import="com.hitech.constraints.SessionConstraint"%>
+<%@ page import="static com.hitech.constraints.ViewConstraint.*"%>
+<%
+String sb = String.valueOf(request.getAttribute(MENU));
+%>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -43,7 +49,7 @@
 										<div class="d-block">
 											<label for="password" class="control-label">Password</label>
 											<div class="float-right">
-												<a href="auth-forgot-password.html" class="text-small"> Forgot Password? </a>
+												<a href="<%=URL_ADMIN_FORGET_PASSWORD %>" class="text-small"> Forgot Password? </a>
 											</div>
 										</div>
 										<input id="password" type="password" class="form-control" name="password" tabindex="2" required="">

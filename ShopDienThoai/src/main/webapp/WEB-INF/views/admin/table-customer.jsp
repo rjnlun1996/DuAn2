@@ -40,6 +40,16 @@
 <link id="color" rel="stylesheet" href="/assets/css/light-1.css" media="screen">
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+
+<style type="text/css">
+	table tbody td {
+		padding: 20px !important;
+		
+	}
+	table thead{
+		background: #f3eded;
+	}
+</style>
 </head>
 <body>
 	<!-- Loader starts-->
@@ -140,7 +150,7 @@
 															<span>${cus.phone}</span>
 														</td>
 														<td>
-															<button class="btn btn-pill btn-outline-primary btn-sm" type="button">View</button>
+															<a class="btn btn-pill btn-outline-primary btn-sm" href="<%=URL_ADMIN_CUSTOMER_DETAIL%>?id=${cus.username}">View</a>
 															<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_CUSTOMER_UPDATE%>?id=${cus.username}"">Edit</a>
 															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${cus.username}">Delete</button>
 

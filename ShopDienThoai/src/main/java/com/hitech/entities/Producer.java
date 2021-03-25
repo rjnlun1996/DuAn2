@@ -35,7 +35,7 @@ public class Producer extends BaseEntity implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "producerId")
-	private int id ;
+	private String id ;
 	
 	@Column
 	@NotBlank(message="Vui lòng nhập tên !!! ")
@@ -59,26 +59,23 @@ public class Producer extends BaseEntity implements Serializable{
 	
 	@OneToMany(mappedBy = "producer")
 	@JsonManagedReference
-	private Set<Product> productsProducer;
+	private Set<Category> categories;
 	
-	public Producer() {}
+	public Producer() {}	
 
-	public Set<Product> getProductsProducer() {
-		return productsProducer;
+	public Set<Category> getCategories() {
+		return categories;
 	}
 
-
-	public void setProductsProducer(Set<Product> productsProducer) {
-		this.productsProducer = productsProducer;
+	public void setCategories(Set<Category> categories) {
+		this.categories = categories;
 	}
 
-
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

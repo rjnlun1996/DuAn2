@@ -138,7 +138,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 										<div class="card-header">
 											<h5>UPDATE CUSTOMER</h5>
 										</div>
-										<form:form class="theme-form ${(error || isExistEmail) ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="account" method="post" enctype="multipart/form-data">
+										<form:form class="theme-form ${(error || isExistEmail) ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="customer" method="post" enctype="multipart/form-data">
 											<div class="card-body datetime-picker">
 												<c:if test="${message != null}">
 													<div class="alert alert-success dark" role="alert">
@@ -158,7 +158,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 																<i class="icofont icofont-users"></i>
 															</span>
 														</div>
-														<input type="text" name="username" value="${account.username }" class="form-control" readonly="readonly" />
+														<input type="text" name="username" value="${customer.username }" class="form-control" readonly="readonly" />
 													</div>
 												</div>
 												<div class="form-group row">
@@ -253,7 +253,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 															</span>
 														</div>
 														<form:input path="address" class="form-control" />
-														<form:errors path="address" class="invalid-feedback" />
+														<%-- <form:errors path="address" class="invalid-feedback" /> --%>
 													</div>
 												</div>
 												<div class="form-group row">
@@ -265,7 +265,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 															</span>
 														</div>
 														<form:input path="phone" class="form-control" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required="required" />
-														<form:errors path="phone" class="invalid-feedback" />
+														<%-- <form:errors path="phone" class="invalid-feedback" /> --%>
 													</div>
 												</div>
 											</div>

@@ -19,6 +19,7 @@ import com.hitech.constraints.ViewConstraint;
 import com.hitech.entities.Account;
 import com.hitech.services.AccountService;
 import com.hitech.services.FileStorageService;
+import com.hitech.utils.SessionUtils;
 import com.hitech.utils.ViewUtils;
 
 @Controller
@@ -29,6 +30,9 @@ public class AAdminController {
 
 	@Autowired
 	private FileStorageService fileStorageService;
+	
+	@Autowired
+	private SessionUtils sessionUtils;
 
 	@GetMapping(ViewConstraint.URL_ADMIN_ADMIN)
 	public String table(Model model) {
@@ -120,7 +124,7 @@ public class AAdminController {
 		accountOnDb.setAddress(account.getAddress());
 		accountOnDb.setPassword(account.getPassword());
 
-		accountService.save(accountOnDb);
+		accountService.update(accountOnDb);
 		reAttributes.addFlashAttribute("message", "Cập nhật tài khoản" + account.getUsername() + " thành công!");
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ADMIN);
 	}
@@ -146,4 +150,18 @@ public class AAdminController {
 	// 1. access to /ho-admin/admin/insert
 	// 2.
 
+//	@GetMapping(ViewConstraint.URL_ADMIN_ADMIN_DETAIL)
+//	public String view(Model model) {
+//		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ADMIN_DETAIL);
+//		model.addAttribute("viewAdmin", sessionUtils.getUser());
+//		model.addAttribute("se", sessionUtils);
+//		return ViewConstraint.VIEW_ADMIN_ADMIN_DETAIL;
+//	}
+	
+	@GetMapping(ViewConstraint.URL_ADMIN_ADMIN_DETAIL)
+	public String viewAdmin(Model model, @RequestParam String id) {
+		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ADMIN_DETAIL);
+		model.addAttribute("account", accountService.findById(id));
+		return ViewConstraint.VIEW_ADMIN_ADMIN_DETAIL; 
+	}
 }

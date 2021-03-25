@@ -29,8 +29,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/flag-icon.css">
 <!-- Feather icon-->
 <link rel="stylesheet" type="text/css" href="/assets/css/feather-icon.css">
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/feather-icon.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/feather-icon.css">
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
@@ -43,6 +42,16 @@
 <link id="color" rel="stylesheet" href="/assets/css/light-1.css" media="screen">
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+
+<style type="text/css">
+	table tbody td {
+		padding: 20px !important;
+		
+	}
+	table thead{
+		background: #f3eded;
+	}
+</style>
 </head>
 <body>
 	<!-- Loader starts-->
@@ -108,25 +117,27 @@
 												<tr>
 													<th scope="col">Status ID</th>
 													<th scope="col">Name</th>
-													
+
 													<th scope="col"></th>
 												</tr>
 											</thead>
 											<tbody>
-													<c:forEach var="status" items="${listStatus}">
-														<tr>
-															<td><span>${status.id}</span></td>
-															<td><span >${status.name}</span></td>
-															<td>
-																
-																<a class="btn btn-pill btn-outline-success btn-sm"  href="/ho-admin/status/update?id=${status.id}">Edit</a>
-																<button
-																	class="btn btn-pill btn-outline-danger btn-sm delete-item"
-																data-id="${status.id}" data-name="${status.name}">Delete</button>
+												<c:forEach var="status" items="${listStatus}">
+													<tr>
+														<td>
+															<span>${status.id}</span>
+														</td>
+														<td>
+															<span>${status.name}</span>
+														</td>
+														<td>
 
-															</td>
-														</tr>
-													</c:forEach>
+															<a class="btn btn-pill btn-outline-success btn-sm" href="/ho-admin/status/update?id=${status.id}">Edit</a>
+															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${status.id}" data-name="${status.name}">Delete</button>
+
+														</td>
+													</tr>
+												</c:forEach>
 											</tbody>
 										</table>
 									</div>
@@ -156,7 +167,7 @@
 	<script src="/assets/js/sidebar-menu.js"></script>
 	<script src="/assets/js/config.js"></script>
 	<!-- Plugins JS start-->
-	
+
 	<script src="/assets/js/dashboard/default.js"></script>
 	<script src="/assets/js/notify/index.js"></script>
 	<script src="/assets/js/chat-menu.js"></script>
@@ -168,7 +179,7 @@
 	<!-- Theme js-->
 	<script src="/assets/js/script.js"></script>
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
-		<script>
+	<script>
 		//jquery	
 		  $(document).ready(function(){
 			$('.delete-item').click(function(){

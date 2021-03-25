@@ -176,7 +176,7 @@
 														<input name="image" class="form-control" type="file" id="imgInp" accept="image/*">
 													</div>
 												</div>
-												<div class="form-group row">
+												<%-- <div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="producer" >Producer</label>
 													<div class="col-sm-9">
 														<form:select path="producer" class="form-control">
@@ -184,7 +184,7 @@
 														</form:select>
 														<form:errors path="producer" class="invalid-feedback" />
 													</div>
-												</div>
+												</div> --%>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="importPrice">Import
 														Price</label>

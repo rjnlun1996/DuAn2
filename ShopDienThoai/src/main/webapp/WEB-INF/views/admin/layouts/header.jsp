@@ -8,6 +8,11 @@
 Account user = (Account) session.getAttribute(SessionConstraint.USER);
 %>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+String sb = String.valueOf(request.getAttribute(MENU));
+%>
+
 <div class="page-main-header">
 	<div class="main-header-right row">
 		<div class="main-header-left d-lg-none">
@@ -120,9 +125,9 @@ Account user = (Account) session.getAttribute(SessionConstraint.USER);
 					<div class="dropdown">
 						<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
 							<span class="media user-header">
-								<img class="mr-2 rounded-circle img-35" src="/images/avatars/${acc.photo}" alt="">
+								<img class="mr-2 rounded-circle img-35" width="35" src="/images/avatars/<%=user.getPhoto()%>" alt="">
 								<span class="media-body">
-									<span class="f-12 f-w-600"><%= user.getName() %></span>
+									<span class="f-12 f-w-600"><%=user.getName()%></span>
 									<span class="d-block">Admin</span>
 								</span>
 							</span>
@@ -133,25 +138,27 @@ Account user = (Account) session.getAttribute(SessionConstraint.USER);
 									<h6 class="mb-0">Elana Saint</h6>
 									<span>Web Designer</span>
 								</li>
+								<!-- <li>
+									<a href="/ho-admin/profile">
+										<i data-feather="user"> </i>
+										Profile
+									</a>
+								</li> -->
+								<li class="<%=renderSubmenuClass(sb, URL_ADMIN_PROFILE)%>"><a
+									class="sidebar-header" href="<%=URL_ADMIN_PROFILE%>"> <i
+										data-feather="user"></i> <span>Profile</span>
+								</a></li>
+								<li class="<%=renderSubmenuClass(sb, URL_ADMIN_CHANGE_PASSWORD)%>"><a
+									class="sidebar-header" href="<%=URL_ADMIN_CHANGE_PASSWORD%>"> <i
+										data-feather="user"></i> <span>Change Password</span>
+								</a></li>
+								
+								
 								<li>
-								<a href="/admin/profile">	<i data-feather="user"> </i>
-									Profile </a>
-								</li>
-								<li>
-									<i data-feather="message-square"> </i>
-									Inbox
-								</li>
-								<li>
-									<i data-feather="file-text"> </i>
-									Taskboard
-								</li>
-								<li>
-									<i data-feather="settings"> </i>
-									Settings
-								</li>
-								<li>
-									<a href="/ho-admin/logout"><i data-feather="file-text"> </i>
-									Logout</a>
+									<a href="/ho-admin/logout">
+										<i data-feather="file-text"> </i>
+										Logout
+									</a>
 								</li>
 							</ul>
 						</div>

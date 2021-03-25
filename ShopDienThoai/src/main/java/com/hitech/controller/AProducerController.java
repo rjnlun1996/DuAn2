@@ -45,7 +45,7 @@ public class AProducerController {
 	}
 	
 	@GetMapping(ViewConstraint.URL_ADMIN_PRODUCER_UPDATE)
-	public String updateGet(Model model, @RequestParam int id) {
+	public String updateGet(Model model, @RequestParam String id) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_PRODUCER_UPDATE);
 		Producer pd = producerService.findById(id);
 		model.addAttribute("producer", pd);
@@ -53,7 +53,7 @@ public class AProducerController {
 	}
 	
 	@GetMapping(ViewConstraint.URL_ADMIN_PRODUCER_DELETE + "{id}")
-	public String delete(Model model, @PathVariable("id") int id) {
+	public String delete(Model model, @PathVariable("id") String id) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_PRODUCT);
 		producerService.deleteByEnable(id);
 		model.addAttribute("listProducer", producerService.findAllByEnabledTrue());
@@ -62,7 +62,7 @@ public class AProducerController {
 	
 	@PostMapping(ViewConstraint.URL_ADMIN_PRODUCER_DELETE)
 	@ResponseBody
-	public boolean delete1(Model model, @RequestParam int id) {
+	public boolean delete1(Model model, @RequestParam String id) {
 		return producerService.deleteByEnable(id);
 	}
 	

@@ -17,7 +17,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 <meta name="author" content="pixelstrap">
 <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
 <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
-<title>HOPE - INSERT MANAGER</title>
+<title>HOPE ONLINE</title>
 <!-- Google font-->
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -248,7 +248,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 															</span>
 														</div>
 														<form:input path="address" class="form-control" required="required" />
-														<form:errors path="address" class="invalid-feedback" />
+													<%-- 	<form:errors path="address" class="invalid-feedback" /> --%>
 													</div>
 												</div>
 												<div class="form-group row">
@@ -260,7 +260,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 															</span>
 														</div>
 														<form:input path="phone" class="form-control" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required="required" />
-														<form:errors path="phone" class="invalid-feedback" />
+														<%-- <form:errors path="phone" class="invalid-feedback" /> --%>
 													</div>
 												</div>
 											</div>

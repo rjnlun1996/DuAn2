@@ -67,12 +67,7 @@ public class Product extends BaseEntity implements Serializable{
 	
 	@OneToMany(mappedBy = "product")
 	@JsonManagedReference
-	private Set<OrderDetail> orderDetails;
-	
-	@ManyToOne
-	@JoinColumn(name = "producerId")
-	@JsonBackReference
-	private Producer producer;
+	private Set<OrderDetail> orderDetails;	
 	
 	@ManyToOne
 	@JoinColumn(name = "categoryId")
@@ -87,17 +82,12 @@ public class Product extends BaseEntity implements Serializable{
 	@JsonManagedReference
 	private Set<Discount> discounts;
 	
-	public Product() {
-		
-	}
-	
+	public Product() {}	
 
 	public Product(int id) {
 		super();
 		this.id = id;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -186,15 +176,7 @@ public class Product extends BaseEntity implements Serializable{
 	public void setOrderDetails(Set<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
-
-	public Producer getProducer() {
-		return producer;
-	}
-
-	public void setProducer(Producer producer) {
-		this.producer = producer;
-	}
-
+	
 	public Category getCategory() {
 		return category;
 	}

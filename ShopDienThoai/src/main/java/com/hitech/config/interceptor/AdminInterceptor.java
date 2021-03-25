@@ -24,7 +24,7 @@ public class AdminInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		String path = request.getRequestURI();	
-		List<String> listAuthenAdminPages = Arrays.asList(new String[] {ViewConstraint.URL_ADMIN_LOGIN});
+		List<String> listAuthenAdminPages = Arrays.asList(new String[] {ViewConstraint.URL_ADMIN_LOGIN,ViewConstraint.URL_ADMIN_FORGET_PASSWORD});
 		List<String> listOnlyAllowAdminPages = Arrays.asList(new String[] {ViewConstraint.URL_ADMIN_ADMIN, ViewConstraint.URL_ADMIN_REPORT});
 		boolean isAccessAdminPage = path.startsWith(ViewConstraint.URL_ADMIN_HOME);
 		boolean isAuthenAdminPage = listAuthenAdminPages.contains(path);

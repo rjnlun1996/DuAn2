@@ -54,6 +54,16 @@
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css"
 	href="/assets/css/responsive.css">
+	
+<style type="text/css">
+	table tbody td {
+		padding: 20px !important;
+		
+	}
+	table thead{
+		background: #f3eded;
+	}
+</style>
 </head>
 <body>
 	<!-- Loader starts-->

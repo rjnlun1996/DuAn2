@@ -1,6 +1,16 @@
 <%@page import="com.hitech.entities.Order"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<style type="text/css">
+table tbody td {
+	padding: 20px !important;
+}
+
+table thead {
+	background: #f3eded;
+}
+</style>
 <!DOCTYPE html>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
@@ -58,6 +68,16 @@
 	media="screen">
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+
+<style type="text/css">
+	table tbody td {
+		padding: 20px !important;
+		
+	}
+	table thead{
+		background: #f3eded;
+	}
+</style>
 </head>
 <body>
 	<!-- Loader starts-->
@@ -144,16 +164,22 @@
 															<td>${order.phone}</td>
 															<td>${order.total}</td>
 															<td>${order.description}</td>
+
 															<td>
 																<a class="btn btn-pill btn-outline-primary btn-sm"
 																href="<%=URL_ADMIN_ORDER_DETAIL_VIEW%>?orderId=${order.id}">View</a> 
 																	<a class="btn btn-pill btn-outline-success btn-sm"
 																href="<%=URL_ADMIN_ORDER_UPDATE%>?orderId=${order.id}">Edit</a>
+
+															<td><a
+																class="btn btn-pill btn-outline-primary btn-sm"
+																href="<%=URL_ADMIN_ORDER_DETAIL_VIEW%>?id=${order.id}">View</a>
+																<a class="btn btn-pill btn-outline-success btn-sm"
+																href="<%=URL_ADMIN_ORDER_DETAIL_UPDATE%>?id=${order.id}">Edit</a>
+
 																<button
 																	class="btn btn-pill btn-outline-danger btn-sm delete-item"
-																	data-id="${order.id}">Delete</button>
-
-															</td>
+																	data-id="${order.id}">Delete</button></td>
 														</tr>
 													</c:forEach>
 												</tbody>

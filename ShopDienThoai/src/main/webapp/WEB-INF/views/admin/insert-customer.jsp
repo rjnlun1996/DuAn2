@@ -136,7 +136,7 @@
 										<div class="card-header">
 											<h5>INSERT CUSTOMER</h5>
 										</div>
-										<form:form class="theme-form ${(error || isExistUsername || isExistEmail) ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="account" method="post" enctype="multipart/form-data">
+										<form:form class="theme-form ${(error || isExistUsername || isExistEmail) ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="customer" method="post" enctype="multipart/form-data">
 											<div class="card-body datetime-picker">
 												<c:if test="${message != null}">
 													<div class="alert alert-success dark" role="alert">
@@ -248,7 +248,7 @@
 															</span>
 														</div>
 														<form:input path="address" class="form-control" required="required" />
-														<form:errors path="address" class="invalid-feedback" />
+														<%-- <form:errors path="address" class="invalid-feedback" /> --%>
 													</div>
 												</div>
 												<div class="form-group row">
@@ -260,7 +260,7 @@
 															</span>
 														</div>
 														<form:input path="phone" class="form-control" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required="required" />
-														<form:errors path="phone" class="invalid-feedback" />
+														<%-- <form:errors path="phone" class="invalid-feedback" /> --%>
 													</div>
 												</div>
 											</div>

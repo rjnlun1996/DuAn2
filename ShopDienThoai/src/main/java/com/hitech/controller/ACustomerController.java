@@ -40,7 +40,7 @@ public class ACustomerController {
 	@GetMapping(ViewConstraint.URL_ADMIN_CUSTOMER_INSERT)
 	public String insertGet(Model model) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CUSTOMER_INSERT);
-		model.addAttribute("account", new Account());
+		model.addAttribute("customer", new Account());
 		return ViewConstraint.VIEW_ADMIN_CUSTOMER_INSERT; // render view => prefix + ViewConstraint.VIEW_ADMIN_ADMIN_INSERT
 														// + subfix => path jsp => render html -> client
 	}
@@ -81,7 +81,7 @@ public class ACustomerController {
 	@GetMapping(ViewConstraint.URL_ADMIN_CUSTOMER_UPDATE)
 	public String updateGet(Model model, @RequestParam String id) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CUSTOMER_UPDATE);
-		model.addAttribute("account", accountService.findById(id));
+		model.addAttribute("customer", accountService.findById(id));
 		return ViewConstraint.VIEW_ADMIN_CUSTOMER_UPDATE; // render view => prefix + ViewConstraint.VIEW_ADMIN_ADMIN_INSERT
 														// + subfix => path jsp => render html -> client
 	}
@@ -145,5 +145,12 @@ public class ACustomerController {
 
 	// 1. access to /ho-admin/admin/insert
 	// 2.
+	
+	@GetMapping(ViewConstraint.URL_ADMIN_CUSTOMER_DETAIL)
+	public String viewCustomer(Model model, @RequestParam String id) {
+		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CUSTOMER_DETAIL);
+		model.addAttribute("customer", accountService.findById(id));
+		return ViewConstraint.VIEW_ADMIN_CUSTOMER_DETAIL; 
+	}
 
 }
