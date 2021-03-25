@@ -62,7 +62,7 @@ public class Account extends BaseEntity implements Serializable {
 
 	@Column
 //	@NotBlank(message = "Vui lòng nhập Số điện thoại !!! ")
-	@Pattern(regexp = "(84|0[3|5|7|8|9])+([0-9]{8})", message = "Vui lòng nhập Số điện thoại đúng định dạng")
+	@Pattern(regexp = "^$|(84|0[3|5|7|8|9])+([0-9]{8})", message = "Vui lòng nhập Số điện thoại đúng định dạng")
 	private String phone;
 
 	@Column

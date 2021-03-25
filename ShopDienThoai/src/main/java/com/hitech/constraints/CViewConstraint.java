@@ -1,7 +1,7 @@
 package com.hitech.constraints;
 
 public class CViewConstraint {
-	public static final String MENU = "menu";
+	public static final String MENUC = "menu";
 
 	public static final String URL_HOME = "";
 	public static final String VIEW_HOME = "client/index";
