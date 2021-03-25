@@ -46,7 +46,7 @@ public class ACustomerController {
 	}
 
 	@PostMapping(ViewConstraint.URL_ADMIN_CUSTOMER_INSERT)
-	public String insertPost(@Validated @ModelAttribute("account") Account account, BindingResult errors,
+	public String insertPost(@Validated @ModelAttribute("customer") Account account, BindingResult errors,
 			RedirectAttributes reAttributes, Model model, @RequestParam("image") MultipartFile file)
 			throws IOException {
 		boolean isExistedUsername = accountService.findById(account.getUsername()) != null;
@@ -87,10 +87,11 @@ public class ACustomerController {
 	}
 
 	@PostMapping(ViewConstraint.URL_ADMIN_CUSTOMER_UPDATE)
-	public String updatePost(@Validated @ModelAttribute("account") Account account, BindingResult errors,
+	public String updatePost(@Validated @ModelAttribute("customer") Account account, BindingResult errors,
 			RedirectAttributes reAttributes, Model model, @RequestParam("image") MultipartFile file)
 			throws IOException {
 		boolean isErrors = errors.hasErrors();
+		System.err.println(errors.getFieldError());
 		Account accountOnDb = accountService.findById(account.getUsername());
 		Account accountWithEmail = accountService.findByEmail(account.getEmail());
 		String dbEmail = accountOnDb.getEmail();
