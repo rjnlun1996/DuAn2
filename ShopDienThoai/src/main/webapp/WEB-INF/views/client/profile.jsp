@@ -164,7 +164,9 @@ body {
 										</div>
 										<div class="address-card__row">
 											<div class="address-card__row-title">Ngày sinh</div>
-											<div class="address-card__row-content">${profile.birthday}</div>
+											<div class="address-card__row-content">
+												<fmt:formatDate pattern="dd/MM/yyyy" value="${profile.birthday}" />
+											</div>
 										</div>
 										<div class="address-card__row">
 											<div class="address-card__row-title">Số điện thoại</div>
@@ -292,7 +294,7 @@ body {
 											<label class="col-sm-3 col-form-label">HÌNH ẢNH</label>
 											<div class="col-sm-9">
 												<div class="avatar p-2">
-													<img class="img-100 rounded-circle" id="avatar" src="/images/avatars/${profile.photo}" alt="#">
+													<img class="profile-card__avatar" id="avatar" src="/images/avatars/${profile.photo}" alt="#">
 												</div>
 												<input name="image" class="form-control" type="file" id="imgInp" accept="image/*">
 											</div>

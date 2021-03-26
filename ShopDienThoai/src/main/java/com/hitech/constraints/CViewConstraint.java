@@ -9,6 +9,9 @@ public class CViewConstraint {
 	public static final String URL_LOGIN = "/login";
 	public static final String VIEW_LOGIN = "client/login";
 	
+	public static final String URL_LOGIN_NAV = "/login_nav";
+	public static final String VIEW_LOGIN_NAV = "client/layouts/nav_cart";
+	
 	public static final String URL_LOGOUT = "/logout";
 	
 	public static final String URL_REGISTER = "/register";

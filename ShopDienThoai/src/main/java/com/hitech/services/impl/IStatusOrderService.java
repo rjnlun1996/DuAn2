@@ -83,7 +83,7 @@ public class IStatusOrderService implements StatusOrderService {
 	public List<StatusOrder> findAllByEnabledTrue() {
 		return statusOrderRepository.findByEnabledTrue();
 	}
-
+	
 	@Override
 	public List<StatusOrder> findAllByEnabledTrueAndCurrentTrue() {
 		List<StatusOrder> list = statusOrderRepository.findDistinctByEnabledTrueAndCurrentTrue();

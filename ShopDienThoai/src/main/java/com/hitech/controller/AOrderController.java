@@ -24,32 +24,25 @@ import com.hitech.utils.ViewUtils;
 @Controller
 public class AOrderController {
 	@Autowired
-	private OrderService  orderService;
+	private OrderService orderService;
 	@Autowired
 	private AccountService accountService;
-	
+
 	@GetMapping(ViewConstraint.URL_ADMIN_ORDER)
 	public String table(Model model) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);
 		model.addAttribute("listOrder", orderService.findByEnabledTrue());
 		return ViewConstraint.VIEW_ADMIN_ORDER;
 	}
-	
+
 	@GetMapping(ViewConstraint.URL_ADMIN_ORDER_INSERT)
-	public String insert(Model model) {	
+	public String insert(Model model) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER_INSERT);
 		model.addAttribute("order", new Order());
-		model.addAttribute("listUser",accountService.findAllCustomerByEnabledTrue());
+		model.addAttribute("listUser", accountService.findAllCustomerByEnabledTrue());
 		return ViewConstraint.VIEW_ADMIN_ORDER_INSERT;
 	}
 
-	@GetMapping(ViewConstraint.URL_ADMIN_ORDER_DELETE + "{id}")
-	public String delete(Model model, @PathVariable("id") int id) {
-		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);
-		orderService.deleteByEnable(id);
-		model.addAttribute("listOrder", orderService.findByEnabledTrue());
-		return ViewConstraint.VIEW_ADMIN_ORDER;
-	}
 	@PostMapping(ViewConstraint.URL_ADMIN_ORDER_INSERT)
 	public Object insert(Model model, @Validated @ModelAttribute("order") Order order, BindingResult errors,
 			RedirectAttributes ra) throws IOException {
@@ -63,21 +56,31 @@ public class AOrderController {
 		orderService.save(order);
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ORDER_INSERT);
 	}
-	@PostMapping(ViewConstraint.URL_ADMIN_ORDER_DELETE)
-	@ResponseBody
-	public boolean delete1(Model model, @RequestParam int id) {
-		return orderService.deleteByEnable(id);
-	}
+
 	@GetMapping(ViewConstraint.URL_ADMIN_ORDER_UPDATE)
 	public String updateGet(Model model, @RequestParam int orderId) {
 
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER_UPDATE);
 		Order od = orderService.findById(orderId);
 		model.addAttribute("order", od);
-		model.addAttribute("listUser",accountService.findAllCustomerByEnabledTrue());
+		model.addAttribute("listUser", accountService.findAllCustomerByEnabledTrue());
 		return ViewConstraint.VIEW_ADMIN_ORDER_UPDATE;
 	}
 //	@GetMapping(ViewConstraint.URL_ADMIN_ORDER_SEARCH)
 //	public Object search(@RequestParam )
+
+	@GetMapping(ViewConstraint.URL_ADMIN_ORDER_DELETE + "{id}")
+	public String delete(Model model, @PathVariable("id") int id) {
+		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);
+		orderService.deleteByEnable(id);
+		model.addAttribute("listOrder", orderService.findByEnabledTrue());
+		return ViewConstraint.VIEW_ADMIN_ORDER;
+	}
+
+	@PostMapping(ViewConstraint.URL_ADMIN_ORDER_DELETE)
+	@ResponseBody
+	public boolean delete1(Model model, @RequestParam int id) {
+		return orderService.deleteByEnable(id);
+	}
 
 }
