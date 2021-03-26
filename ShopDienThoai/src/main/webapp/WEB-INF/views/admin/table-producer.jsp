@@ -143,8 +143,9 @@
 												<tbody>
 													<c:forEach items="${listProducer}" var="producer">
 														<tr>
-															<c:set var="count" value="${count+1 }" />
-															<td>${count}</td>
+															<%-- <c:set var="count" value="${count+1 }" />
+															<td>${count}</td> --%>
+															<td>${producer.id}</td>
 															<td style="text-align: center">
 																<img class="img-radius img-80 align-top m-r-15" src="/images/producer/${producer.logo}" alt="loading">
 															</td>

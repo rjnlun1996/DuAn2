@@ -134,7 +134,7 @@
 								<div class="col-sm-12">
 									<div class="card">
 										<div class="card-header">
-											<h5>INSERT PRODUCT</h5>
+											<h5>UPDATE PRODUCER</h5>
 										</div>
 										<form:form
 											class="theme-form ${error == true ? 'was-validated' : '' }"
@@ -151,6 +151,15 @@
 														<p>${error}</p>
 													</div>
 												</c:if>
+													<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="name">ID</label>
+													<div class="col-sm-9">
+														<%-- <form:input path="id" class="form-control"
+															required="required" minlength="2" maxlength="5" readonly="readonly" /> --%>
+														<input name="id" value="${producer.id}" class="form-control" readonly="readonly"/>
+														<form:errors path="id" class="invalid-feedback" />
+													</div>
+												</div>
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="name">Name</label>
 													<div class="col-sm-9">

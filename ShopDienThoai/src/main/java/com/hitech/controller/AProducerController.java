@@ -79,7 +79,7 @@ public class AProducerController {
 			producer.setLogo(image);
 		}
 		producerService.save(producer);
-		ra.addFlashAttribute("message", "Tạo sản phẩm " + producer.getName() + " thành công!");
+		ra.addFlashAttribute("message", "Tạo nhà sản xuất " + producer.getName() + " thành công!");
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_PRODUCER_INSERT);
 	}
 	
@@ -97,6 +97,7 @@ public class AProducerController {
 		if (image != null) {
 			pdOnDb.setLogo(image);
 		}
+		pdOnDb.setId(producer.getId());
 		pdOnDb.setAddress(producer.getAddress());
 		pdOnDb.setEmail(producer.getEmail());
 		pdOnDb.setName(producer.getName());

@@ -33,8 +33,9 @@ public class Producer extends BaseEntity implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "producerId")
+	@NotBlank(message=" Vui lòng nhập mã của nhà sản xuất !!! ")
+	@Size(min = 2, max = 5, message = "Mã phải có từ {min} đến {max} kí tự")
 	private String id ;
 	
 	@Column

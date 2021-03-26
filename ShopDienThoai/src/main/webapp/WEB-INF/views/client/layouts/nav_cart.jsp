@@ -129,10 +129,6 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 					<div class="form-group account-menu__form-button mb-3 mt-0">
 						<a href="<%=URL_REGISTER%>">Tạo tài khoản</a>
 					</div>
-<<<<<<< HEAD
-
-				</div>
-=======
 				</c:if>
 				<c:if test="${user != null}">
 					<div class=" account-menu__form d-flex text-center">
@@ -141,7 +137,6 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 							<h6 class="f-w-600">${user.name}</h6>
 						</div>
 					</div>
->>>>>>> branch 'master' of https://github.com/rjnlun1996/DuAn2.git
 
 					<div class="form-group account-menu__form-button mb-3 mt-0">
 
