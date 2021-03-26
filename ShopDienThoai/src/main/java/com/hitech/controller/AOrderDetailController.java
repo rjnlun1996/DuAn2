@@ -90,7 +90,7 @@ public class AOrderDetailController {
 		model.addAttribute("order", orderService.findById(orderId));
 		model.addAttribute("orderDetail", orderDetailService.findById(odId));
 		model.addAttribute("listProduct", productService.findAllByEnabledTrue());
-		return ViewConstraint.VIEW_ADMIN_ORDER_DETAIL_UPDATE;
+		return ViewConstraint.VIEW_ADMIN_ORDER_DETAIL_VIEW;
 	}
 
 	@GetMapping(ViewConstraint.URL_ADMIN_ORDER_DETAIL_DELETE + "{id}")

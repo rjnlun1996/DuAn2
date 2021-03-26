@@ -194,15 +194,7 @@
 														<form:errors path="importPrice" class="invalid-feedback" />
 													</div>
 												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="salePrice">Sale
-														Price</label>
-													<div class="col-sm-9">
-														<form:input path="salePrice" class="form-control"
-															required="required" min="1000" max="999999999" />
-														<form:errors path="salePrice" class="invalid-feedback" />
-													</div>
-												</div>
+											
 												<fieldset class="form-group row">
 													<label class="col-form-label col-sm-3">Is Special</label>
 													<div class="col-sm-9">
@@ -221,8 +213,9 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="description">Description</label>
 													<div class="col-sm-9">
-														<form:input path="description" class="form-control"
-															required="required" minlength="0" maxlength="99999" />
+													<textarea class="form-control" name="description" rows="3"></textarea>
+														<%-- <form:input path="description" class="form-control"
+															required="required" minlength="0" maxlength="99999" /> --%>
 														<form:errors path="description" class="invalid-feedback" />
 													</div>
 												</div>

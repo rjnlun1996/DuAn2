@@ -3,6 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="static com.hitech.constraints.ViewConstraint.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +34,7 @@
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/datatables.css">
 <!-- Plugins css Ends-->
 <link rel="stylesheet" type="text/css" href="/assets/css/sweetalert2.css">
 <!-- Bootstrap css-->
@@ -44,13 +46,13 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
 
 <style type="text/css">
-	table tbody td {
-		padding: 20px !important;
-		
-	}
-	table thead{
-		background: #f3eded;
-	}
+table tbody td {
+	padding: 20px !important;
+}
+
+table thead {
+	background: #f3eded;
+}
 </style>
 </head>
 <body>
@@ -110,9 +112,9 @@
 										</ul>
 									</div>
 								</div>
-								<div class="card-body p-0">
+								<div class="card-body ">
 									<div class="sales-product-table table-responsive">
-										<table class="table table-bordernone">
+										<table class="table table-bordernone" id="basic-1">
 											<thead>
 												<tr>
 													<th scope="col">Status ID</th>
@@ -133,7 +135,7 @@
 														<td>
 
 															<a class="btn btn-pill btn-outline-success btn-sm" href="/ho-admin/status/update?id=${status.id}">Edit</a>
-															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${status.id}" data-name="${status.name}">Delete</button>
+															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" onClick="onDelete(this)" data-id="${status.id}" data-name="${status.name}">Delete</button>
 
 														</td>
 													</tr>
@@ -179,12 +181,14 @@
 	<!-- Theme js-->
 	<script src="/assets/js/script.js"></script>
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
+	<!--  Pagination -->
+	<script src="/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+	<script src="/assets/js/datatable/datatables/datatable.custom.js"></script>
 	<script>
-		//jquery	
-		  $(document).ready(function(){
-			$('.delete-item').click(function(){
-				var id = $(this).data('id');
-				var name = $(this).data('name');
+			
+		function onDelete(elm){ 
+		var id = $(elm).data('id');
+		var name = $(elm).data('name');
 				swal({
 				  title: "Thông báo?",
 				  text: "Bạn có chắc chắn xóa trạng thái " + name  + " không?",
@@ -195,7 +199,7 @@
 				.then((willDelete) => {
 				  if(willDelete == true){
 					  $.ajax({
-						  url: "/ho-admin/status/delete",
+						  url: '<%=URL_ADMIN_STATUS_DELETE%>',
 						  method: "POST",
 						  data: {
 							  id: id
@@ -210,8 +214,7 @@
 				  }
 				});
 				//promise
-			})
-		}); 
+			}
 		
 		
 		

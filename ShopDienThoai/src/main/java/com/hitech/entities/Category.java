@@ -40,6 +40,7 @@ public class Category extends BaseEntity implements Serializable{
 	@JsonManagedReference
 	private Set<Product> products;
 	
+	
 	@ManyToOne
 	@JoinColumn(name = "producerId")
 	@JsonBackReference

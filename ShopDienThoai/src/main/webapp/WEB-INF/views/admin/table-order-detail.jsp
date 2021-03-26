@@ -1,4 +1,3 @@
-<%@page import="com.hitech.entities.Order"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -75,6 +74,18 @@ table thead {
 	background: #fff !important;
 	padding: 10px 15px;
 }
+
+.bootstrap-touchspin button.btn {
+	padding: 0.1px 5px !important;
+	background-color: #17a2b8 !important;
+	border-color: #17a2b8 !important;
+}
+
+.input-group>.form-control.touchspin {
+	flex: 0.1 auto !important;
+	text-align: center;
+	padding: 12px 12px !important;
+}
 </style>
 </head>
 <body>
@@ -111,9 +122,7 @@ table thead {
 							<div class="col-lg-6">
 								<h3>Order Detail</h3>
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item">
-										<a href="/ho-admin/">Home</a>
-									</li>
+									<li class="breadcrumb-item"><a href="/ho-admin/">Home</a></li>
 
 								</ol>
 							</div>
@@ -121,36 +130,21 @@ table thead {
 								<!-- Bookmark Start-->
 								<div class="bookmark pull-right">
 									<ul>
-										<li>
-											<a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Tables">
-												<i data-feather="inbox"></i>
-											</a>
-										</li>
-										<li>
-											<a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Chat">
-												<i data-feather="message-square"></i>
-											</a>
-										</li>
-										<li>
-											<a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Icons">
-												<i data-feather="command"></i>
-											</a>
-										</li>
-										<li>
-											<a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Learning">
-												<i data-feather="layers"></i>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="bookmark-search" data-feather="star"></i>
-											</a>
+										<li><a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Tables"> <i data-feather="inbox"></i>
+										</a></li>
+										<li><a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Chat"> <i data-feather="message-square"></i>
+										</a></li>
+										<li><a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Icons"> <i data-feather="command"></i>
+										</a></li>
+										<li><a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Learning"> <i data-feather="layers"></i>
+										</a></li>
+										<li><a href="#"> <i class="bookmark-search" data-feather="star"></i>
+										</a>
 											<form class="form-inline search-form">
 												<div class="form-group form-control-search">
 													<input type="text" placeholder="Search..">
 												</div>
-											</form>
-										</li>
+											</form></li>
 									</ul>
 								</div>
 								<!-- Bookmark Ends-->
@@ -168,16 +162,13 @@ table thead {
 									<div class="card-header pt-3 pb-3">Thông tin nhận hàng</div>
 									<div class="card-body">
 										<p>
-											<b>Tên người nhận</b>
-											: ${order.receiver }
+											<b>Tên người nhận</b> : ${order.receiver }
 										</p>
 										<p>
-											<b>Địa chỉ</b>
-											: ${order.address }
+											<b>Địa chỉ</b> : ${order.address }
 										</p>
 										<p>
-											<b>Số điện thoại</b>
-											: ${order.phone }
+											<b>Số điện thoại</b> : ${order.phone }
 										</p>
 									</div>
 								</div>
@@ -187,13 +178,11 @@ table thead {
 									<div class="card-header  pt-3 pb-3">Ngày Giao - Nhận</div>
 									<div class="card-body">
 										<p>
-											<b>Ngày đặt hàng</b>
-											:
+											<b>Ngày đặt hàng</b> :
 											<fmt:formatDate pattern="dd-MM-yyyy" value="${order.createdAt }" />
 										</p>
 										<p>
-											<b>Ngày nhận hàng</b>
-											:
+											<b>Ngày nhận hàng</b> :
 											<fmt:formatDate pattern="dd-MM-yyyy" value="${order.createdAt }" />
 										</p>
 									</div>
@@ -231,31 +220,43 @@ table thead {
 													</div>
 												</c:if>
 												<thead>
-													<tr class="text-center">
-														<th scope="col">STT</th>
-														<th scope="col">Sản phẩm</th>
-														<th scope="col">Số lượng</th>
-														<th scope="col">Đơn giá</th>
-														<th>
-															<a class="btn btn-pill btn-outline-primary btn-sm" href="<%=URL_ADMIN_ORDER_DETAIL_INSERT%>?orderId=${order.id}">ADD+</a>
-														</th>
+													<tr>
+														<th scope="col">Id</th>
+														<th scope="col">Product</th>
+														<th scope="col">Quantity</th>
+														<th scope="col">Total</th>
+														<th scope="col">Discount</th>
+														<th><a class="btn btn-pill btn-outline-primary btn-sm ml-5 mb-0" href="<%=URL_ADMIN_ORDER_DETAIL_INSERT%>?orderId=${order.id}">ADD+</a></th>
 													</tr>
 												</thead>
 												<tbody>
 													<c:forEach items="${listOrderDetail}" var="orderDetail">
 														<tr>
-															<c:set var="count" value="${count+1 }" />
-															<td>${count}</td>
-															<td>
-																<img class="img-radius img-80 align-top m-r-15" src="/images/products/${orderDetail.product.photo}" alt="loading">
-																${orderDetail.product.name}
-															</td>
-															<td>${orderDetail.quantity}</td>
-															<td>${orderDetail.amount}</td>
-															<td>
-																<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_ORDER_DETAIL_UPDATE%>?orderId=${order.id}&odId=${orderDetail.id}">Edit</a>
-																<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${orderDetail.id}">Delete</button>
-															</td>
+															<form action="<%=URL_ADMIN_ORDER_DETAIL_UPDATE%>?orderId=${order.id }" method="get">
+																<td>${orderDetail.id}</td>
+																<td>
+																	<div class="d-flex">
+																		<img class=" img-60 align-top m-r-15" src="/images/products/${orderDetail.product.category.producer.name.toLowerCase()}/${orderDetail.product.photo}" alt="loading">
+																		<div class="d-flex flex-column justify-content-center">
+																			<h6 class="f-w-600">${orderDetail.product.name}</h6>
+																		</div>
+																	</div>
+																</td>
+																<td class="bootstrap-touchspin" style="max-width: 150px">
+																	<fieldset>
+																		<div class="input-group text-center">
+																			<input name="quantity" class="touchspin" type="text" value="${orderDetail.quantity}" min="1" max="99" />
+																		</div>
+																	</fieldset>
+																</td>
+																<td>${orderDetail.amount}</td>
+
+																<td>${orderDetail.discount.percents}</td>
+																<td>
+																	<button class="btn btn-pill btn-outline-success btn-sm">Update</button>
+																	<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${orderDetail.id}">Delete</button>
+																</td>
+															</form>
 														</tr>
 													</c:forEach>
 												</tbody>
@@ -278,8 +279,7 @@ table thead {
 													</div>
 													<div class="media-body">
 														<h6>
-															${statusOrder.status.name}
-															<span class="pull-right f-14">New</span>
+															${statusOrder.status.name} <span class="pull-right f-14">New</span>
 														</h6>
 														<p>${statusOrder.description}</p>
 													</div>
@@ -299,51 +299,37 @@ table thead {
 				</div>
 			</div>
 		</div>
-		<!-- latest jquery-->
-		<script src="/assets/js/jquery-3.2.1.min.js"></script>
-		<!-- Bootstrap js-->
-		<script src="/assets/js/bootstrap/popper.min.js"></script>
-		<script src="/assets/js/bootstrap/bootstrap.js"></script>
-		<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
-		<!-- feather icon js-->
-		<script src="/assets/js/icons/feather-icon/feather.min.js"></script>
-		<script src="/assets/js/icons/feather-icon/feather-icon.js"></script>
-		<!-- Sidebar jquery-->
-		<script src="/assets/js/sidebar-menu.js"></script>
-		<script src="/assets/js/config.js"></script>
-		<!-- Plugins JS start-->
-		<script src="/assets/js/chart/chartjs/chart.min.js"></script>
-		<script src="/assets/js/chart/chartist/chartist.js"></script>
-		<script src="/assets/js/chart/chartist/chartist-plugin-tooltip.js"></script>
-		<script src="/assets/js/chart/knob/knob.min.js"></script>
-		<script src="/assets/js/chart/knob/knob-chart.js"></script>
-		<script src="/assets/js/prism/prism.min.js"></script>
-		<script src="/assets/js/clipboard/clipboard.min.js"></script>
-		<script src="/assets/js/counter/jquery.waypoints.min.js"></script>
-		<script src="/assets/js/counter/jquery.counterup.min.js"></script>
-		<script src="/assets/js/counter/counter-custom.js"></script>
-		<script src="/assets/js/custom-card/custom-card.js"></script>
-		<script src="/assets/js/notify/bootstrap-notify.min.js"></script>
-		<script src="/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js"></script>
-		<script src="/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
-		<script src="/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
-		<script src="/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
-		<script src="/assets/js/vector-map/map/jquery-jvectormap-au-mill.js"></script>
-		<script src="/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
-		<script src="/assets/js/vector-map/map/jquery-jvectormap-in-mill.js"></script>
-		<script src="/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
-		<script src="/assets/js/dashboard/default.js"></script>
-		<script src="/assets/js/notify/index.js"></script>
-		<script src="/assets/js/chat-menu.js"></script>
-		<script src="/assets/js/tooltip-init.js"></script>
-		<script src="/assets/js/animation/wow/wow.min.js"></script>
-		<!-- Plugins JS Ends-->
-		<!-- Theme js-->
-		<script src="/assets/js/script.js"></script>
-		<script src="/assets/js/theme-customizer/customizer.js"></script>
-		<script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
+	</div>
+	<!-- latest jquery-->
+	<script src="/assets/js/jquery-3.2.1.min.js"></script>
+	<!-- Bootstrap js-->
+	<script src="/assets/js/bootstrap/popper.min.js"></script>
+	<script src="/assets/js/bootstrap/bootstrap.js"></script>
+	<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+	<!-- feather icon js-->
+	<script src="/assets/js/icons/feather-icon/feather.min.js"></script>
+	<script src="/assets/js/icons/feather-icon/feather-icon.js"></script>
+	<!-- Sidebar jquery-->
+	<script src="/assets/js/sidebar-menu.js"></script>
+	<script src="/assets/js/config.js"></script>
 
-		<script>
+	<script src="/assets/js/dashboard/default.js"></script>
+	<script src="/assets/js/notify/index.js"></script>
+	<script src="/assets/js/chat-menu.js"></script>
+	<script src="/assets/js/tooltip-init.js"></script>
+	<script src="/assets/js/animation/wow/wow.min.js"></script>
+
+
+	<script src="/assets/js/touchspin/vendors.min.js"></script>
+	<script src="/assets/js/touchspin/touchspin.js"></script>
+	<script src="/assets/js/touchspin/input-groups.min.js"></script>
+	<!-- Plugins JS Ends-->
+	<!-- Theme js-->
+	<script src="/assets/js/script.js"></script>
+	<script src="/assets/js/theme-customizer/customizer.js"></script>
+	<script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
+
+	<script>
 	 $(document).ready(function(){
 			$('.delete-item').click(function(){
 				var id = $(this).data('id');

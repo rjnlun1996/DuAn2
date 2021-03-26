@@ -203,7 +203,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 			</li>
 
 
-			<li class="<%=renderMenuClass(sb, URL_ADMIN_STATUS)%>">
+			<%-- <li class="<%=renderMenuClass(sb, URL_ADMIN_STATUS)%>">
 				<a class="sidebar-header" href="#">
 					<i data-feather="git-pull-request"></i>
 					<span>Status</span>
@@ -223,7 +223,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 						</a>
 					</li>
 				</ul>
-			</li>
+			</li> --%>
 
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_ORDER)%>">
 				<a class="sidebar-header" href="#">

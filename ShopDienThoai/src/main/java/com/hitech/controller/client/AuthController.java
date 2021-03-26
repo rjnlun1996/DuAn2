@@ -136,6 +136,4 @@ public class AuthController {
 		return ViewUtils.redirectTo(CViewConstraint.URL_CHANGE_PASSWORD);
 	}
 
-	
-
 }

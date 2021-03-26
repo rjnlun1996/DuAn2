@@ -121,6 +121,7 @@
 														<th scope="col">Id</th>
 														<th scope="col">Name</th>
 														<th scope="col">Producer Name</th>
+														<th scope="col">Producer Logo</th>
 														<th scope="col"></th>
 													</tr>
 												</thead>
@@ -135,6 +136,9 @@
 															</td>
 															<td>
 																<span>${cate.producer.name}</span>
+															</td>
+															<td>
+																<img class="img-radius img-80 align-top m-r-15" src="/images/producer/${cate.producer.logo}" alt="loading" style="box-shadow: unset !important">
 															</td>
 															<td>
 
