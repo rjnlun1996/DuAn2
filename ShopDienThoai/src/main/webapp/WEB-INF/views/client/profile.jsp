@@ -111,7 +111,7 @@ body {
 					<div class="row">
 						<div class="col-12 col-lg-3 d-flex">
 							<div class="account-nav flex-grow-1">
-								<h4 class="account-nav__title">Navigation</h4>
+								<h4 class="account-nav__title"></h4>
 								<ul>
 									<li class="account-nav__item account-nav__item--active">
 										<a href="/">Trang chủ</a>
@@ -125,7 +125,7 @@ body {
 									</li>
 
 									<li class="account-nav__item">
-										<a href="/change-pasword">Đổi mật khẩu</a>
+										<a href="/change-password">Đổi mật khẩu</a>
 									</li>
 									<li class="account-nav__item">
 										<a href="account-login.html">Đăng xuất</a>
@@ -164,9 +164,11 @@ body {
 										</div>
 										<div class="address-card__row">
 											<div class="address-card__row-title">Ngày sinh</div>
+
 											<div class="address-card__row-content">
 												<fmt:formatDate pattern="dd/MM/yyyy" value="${profile.birthday}" />
 											</div>
+
 										</div>
 										<div class="address-card__row">
 											<div class="address-card__row-title">Số điện thoại</div>
@@ -204,21 +206,24 @@ body {
 						<div class="col-12 col-lg-12 mt-4 mt-lg-0">
 							<div class="card">
 								<div class="card-header">
-									<h5>Chỉnh sửa Hồ Sơ</h5>
+									<h5>CHỈNH SỬA HỒ SƠ</h5>
 								</div>
 								<div class="card-divider"></div>
 								<form:form class="theme-form ${(error || isExistEmail) ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="profileAttr" method="post" enctype="multipart/form-data">
 									<div class="card-body datetime-picker">
 										<c:if test="${message != null}">
-											<div class="alert alert-success dark" role="alert">
+											<div class="alert alert-info dark" role="alert">
 												<p>${message}</p>
 											</div>
 										</c:if>
 										<c:if test="${error != null}">
-											<div class="alert alert-danger" role="alert">
+
+											<div class="alert alert-warning dark" role="alert">
+
 												<p>${error}</p>
 											</div>
 										</c:if>
+
 										<div class="form-group row">
 											<label class="col-sm-3 col-form-label" for="username">TÊN ĐĂNG NHẬP</label>
 											<div class="col-sm-9  input-group">
@@ -226,6 +231,7 @@ body {
 													<span class="input-group-text">
 														<i class="icofont icofont-users"></i>
 													</span>
+
 												</div>
 												<input type="text" name="username" value="${profile.username }" class="form-control" readonly="readonly" />
 												<input type="hidden" name="password" value="*********" class="form-control" readonly="readonly" />
@@ -296,6 +302,7 @@ body {
 												<div class="avatar p-2">
 													<img class="profile-card__avatar" id="avatar" src="/images/avatars/${profile.photo}" alt="#">
 												</div>
+
 												<input name="image" class="form-control" type="file" id="imgInp" accept="image/*">
 											</div>
 										</div>
@@ -306,6 +313,7 @@ body {
 													<span class="input-group-text">
 														<i class="icofont icofont-home"></i>
 													</span>
+
 												</div>
 												<form:input path="address" class="form-control" required="required" />
 												<form:errors path="address" class="invalid-feedback" />
@@ -319,8 +327,10 @@ body {
 														<i class="icofont icofont-phone"></i>
 													</span>
 												</div>
+
 												<form:input path="phone" class="form-control" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required="required" />
 												<%-- <form:errors path="phone" class="invalid-feedback" /> --%>
+
 											</div>
 
 										</div>

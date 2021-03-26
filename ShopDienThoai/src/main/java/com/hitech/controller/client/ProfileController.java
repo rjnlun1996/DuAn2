@@ -84,7 +84,7 @@ public class ProfileController extends BaseController {
 		accountOnDb.setAddress(account.getAddress());
 		Account acc = accountService.update(accountOnDb);
 		sessionUtils.setUser(acc);
-		reAttributes.addFlashAttribute("message", "Cập nhật tài khoản" + account.getUsername() + " thành công!");
+		reAttributes.addFlashAttribute("message", "Cập nhật tài khoản " + account.getUsername() + " thành công!");
 		return ViewUtils.redirectTo(CViewConstraint.URL_PROFILE);
 	}
 }

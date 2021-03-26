@@ -33,8 +33,9 @@ public class Producer extends BaseEntity implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "producerId")
+	@NotBlank(message=" Vui lòng nhập mã của nhà sản xuất !!! ")
+	@Size(min = 2, max = 5, message = "Mã phải có từ {min} đến {max} kí tự")
 	private String id ;
 	
 	@Column
@@ -54,7 +55,7 @@ public class Producer extends BaseEntity implements Serializable{
 	private String email ;
 	@Column
 	@NotBlank(message="Vui lòng nhập Số điện thoại !!! ")
-	@Pattern(regexp = "(84|0[3|5|7|8|9])+([0-9]{8})", message = "Vui lòng nhập Số điện thoại đúng định dạng")
+	@Pattern(regexp = "[0-9]+", message = "Vui lòng nhập Số điện thoại đúng định dạng")
 	private String	phone ;
 	
 	@OneToMany(mappedBy = "producer")

@@ -35,6 +35,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/chartist.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/vector-map.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/datatables.css">
 <!-- Plugins css Ends-->
 <!-- Bootstrap css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
@@ -117,9 +118,11 @@ table thead {
 											</ul>
 										</div>
 									</div>
+
 									<div class="card-body p-0">
 										<div class="sales-product-table table-responsive ">
-											<table class="table table-bordernone">
+											<table class="table table-bordernone" id="basic-1">
+
 												<c:if test="${message != null}">
 													<div class="alert alert-success dark" role="alert">
 														<p>${message}</p>
@@ -137,6 +140,7 @@ table thead {
 														<th scope="col">Phone</th>
 														<th scope="col">Price</th>
 														<th scope="col">Status</th>
+
 														<th></th>
 													</tr>
 												</thead>
@@ -165,8 +169,9 @@ table thead {
 															<td>
 																<a class="btn btn-pill btn-outline-primary btn-sm" href="<%=URL_ADMIN_ORDER_DETAIL_VIEW%>?orderId=${order.id}">View</a>
 																<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_ORDER_UPDATE%>?orderId=${order.id}">Edit</a>
-																<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${order.id}">Delete</button>
+																<button class="btn btn-pill btn-outline-danger btn-sm delete-item"  onClick="onDelete(this)" data-id="${order.id}">Delete</button>
 															</td>
+
 														</tr>
 													</c:forEach>
 												</tbody>
@@ -228,10 +233,14 @@ table thead {
 	<script src="/assets/js/script.js"></script>
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
 	<script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
+	<!--  Pagination -->
+	<script src="/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+	<script src="/assets/js/datatable/datatables/datatable.custom.js"></script>
 	<script>
-	 $(document).ready(function(){
-			$('.delete-item').click(function(){
-				var id = $(this).data('id');
+	/*  $(document).ready(function(){
+			$('.delete-item').click(function(){ */
+				function onDelete(elm){ 
+				var id = $(elm).data('id');
 				swal({
 				  title: "Thông báo?",
 				  text: "Bạn có chắc chắn xóa đơn hàng này không?",
@@ -261,8 +270,7 @@ table thead {
 				  }
 				});
 				//promise
-			})
-		}); 
+			}
 	
 	 </script>
 

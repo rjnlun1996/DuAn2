@@ -33,6 +33,7 @@
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/datatables.css">
 <!-- Plugins css Ends-->
 <link rel="stylesheet" type="text/css" href="/assets/css/sweetalert2.css">
 <!-- Bootstrap css-->
@@ -44,10 +45,15 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
 
 <style type="text/css">
-	
-	table thead{
-		background: #f3eded;
-	}
+
+table tbody td {
+	padding: 20px !important;
+}
+
+table thead {
+	background: #f3eded;
+}
+
 </style>
 </head>
 <body>
@@ -107,9 +113,9 @@
 										</ul>
 									</div>
 								</div>
-								<div class="card-body p-0">
+								<div class="card-body ">
 									<div class="sales-product-table table-responsive">
-										<table class="table table-bordernone">
+										<table class="table table-bordernone" id="basic-1">
 											<thead>
 												<tr>
 													<th scope="col">Name</th>
@@ -151,7 +157,7 @@
 														<td>
 															<a class="btn btn-pill btn-outline-primary btn-sm" href="<%=URL_ADMIN_ADMIN_DETAIL%>?id=${acc.username}">View</a>
 															<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_ADMIN_UPDATE%>?id=${acc.username}">Edit</a>
-															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${acc.username}">Delete</button>
+															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" onClick="onDelete(this)" data-id="${acc.username}">Delete</button>
 
 														</td>
 													</tr>
@@ -197,9 +203,14 @@
 	<!-- Theme js-->
 	<script src="/assets/js/script.js"></script>
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
+
+	<!--  Pagination -->
+	<script src="/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+	<script src="/assets/js/datatable/datatables/datatable.custom.js"></script>
 	<script>
-		$(document).ready(function() {
-			$('.delete-item').click(function() {
+		/* $(document).ready(function() {
+			$('.delete-item').click(function() */
+		function onDelete(elm){ 
 				swal({
 					  title: "Thông báo!",
 					  text: "Bạn có chắc chắn muôn xóa người dùng này không",
@@ -213,7 +224,7 @@
 									url : "<%=URL_ADMIN_ADMIN_DELETE%>",
 									method : "POST",
 									data : {
-										username : $(this).data('id')
+										username : $(elm).data('id')
 									},
 									success : function(data) {
 										if(data == true){
@@ -228,8 +239,8 @@
 								});
 							}
 					});
-			});
-		});
+			}/* );
+		}); */
 				/* if(){
 					$.ajax({
 						url : "/ho-manager/admin/delete",

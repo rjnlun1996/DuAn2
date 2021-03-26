@@ -195,15 +195,7 @@
 														<form:errors path="importPrice"  />
 													</div>
 												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="salePrice">Sale
-														Price</label>
-													<div class="col-sm-9">
-														<form:input path="salePrice" class="form-control"
-															required="required" min="1000" max="999999999" />
-														<form:errors path="salePrice"/>
-													</div>
-												</div>
+											
 												
 												<fieldset class="form-group row">
 													<label class="col-form-label col-sm-3">Is Available</label>

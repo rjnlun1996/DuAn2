@@ -44,6 +44,7 @@
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/datatables.css">
 <!-- Plugins css Ends-->
 <link rel="stylesheet" type="text/css"
 	href="/assets/css/sweetalert2.css">
@@ -112,9 +113,9 @@
 										</ul>
 									</div>
 								</div>
-								<div class="card-body p-0">
+								<div class="card-body ">
 									<div class="sales-product-table table-responsive">
-										<table class="table table-bordernone">
+										<table class="table table-bordernone" id="basic-1">
 											<thead>
 												<tr>
 													<th scope="col">Id</th>
@@ -186,9 +187,11 @@
 	<!-- Theme js-->
 	<script src="/assets/js/script.js"></script>
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
+	<!--  Pagination -->
+	<script src="/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+	<script src="/assets/js/datatable/datatables/datatable.custom.js"></script>
 	<script>
-		$(document).ready(function() {
-			$('.delete-item').click(function() {
+	function onDelete(elm){ 
 				swal({
 					  title: "Thông báo!",
 					  text: "Bạn có chắc chắn muốn xóa trạng thái đơn hàng này không",
@@ -202,7 +205,7 @@
 									url : "<%=URL_ADMIN_STATUS_ORDER%>",
 									method : "POST",
 									data : {
-										username : $(this).data('id')
+										username : $(elm).data('id')
 									},
 									success : function(data) {
 										if(data == true){
@@ -217,8 +220,7 @@
 								});
 							}
 					});
-			});
-		});
+			}
 				/* if(){
 					$.ajax({
 						url : "/ho-manager/admin/delete",
