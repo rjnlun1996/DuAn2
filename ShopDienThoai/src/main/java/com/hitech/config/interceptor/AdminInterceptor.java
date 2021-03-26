@@ -26,10 +26,12 @@ public class AdminInterceptor implements HandlerInterceptor {
 			throws Exception {
 		String path = request.getRequestURI();	
 		// Client
-//		List<String> allowAnyClientsAccess = Arrays.asList(new String[] {"" , CViewConstraint.URL_LOGIN,CViewConstraint.URL_FORGET_PASSWORD, CViewConstraint.URL_DETAIL_PRODUCT});
-//		if(!allowAnyClientsAccess.contains(path)) {
-//			
-//		}
+		List<String> allowAnyClientsAccess = Arrays.asList(new String[] {"" , CViewConstraint.URL_LOGIN,CViewConstraint.URL_FORGET_PASSWORD, CViewConstraint.URL_DETAIL_PRODUCT});
+		
+		
+		if(!allowAnyClientsAccess.contains(path)) {
+			
+		}
 		
 		// ho-admin
 		List<String> listAuthenAdminPages = Arrays.asList(new String[] {ViewConstraint.URL_ADMIN_LOGIN,ViewConstraint.URL_ADMIN_FORGET_PASSWORD});		
