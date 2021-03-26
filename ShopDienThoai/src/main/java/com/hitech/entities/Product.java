@@ -44,12 +44,7 @@ public class Product extends BaseEntity implements Serializable{
 	@Min(value=1000,message = "Giá tiền phải lớn hơn {value}")
 	@Max(value=999999999,message = "Giá tiền phải lớn hơn {value}")
 	private long importPrice;
-	
-	@Column
-	@Min(value=1000,message = "Giá tiền phải lớn hơn {value}")
-	@Max(value=999999999,message = "Giá tiền phải lớn hơn {value}")
-	private long salePrice;
-	
+		
 	@Column
 	private String description;
 	
@@ -119,14 +114,6 @@ public class Product extends BaseEntity implements Serializable{
 
 	public void setImportPrice(long importPrice) {
 		this.importPrice = importPrice;
-	}
-
-	public long getSalePrice() {
-		return salePrice;
-	}
-
-	public void setSalePrice(long salePrice) {
-		this.salePrice = salePrice;
 	}
 
 	public String getDescription() {

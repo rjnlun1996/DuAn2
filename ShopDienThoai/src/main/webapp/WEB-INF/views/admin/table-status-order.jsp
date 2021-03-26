@@ -139,7 +139,7 @@
 														</td>
 														<td><a
 															class="btn btn-pill btn-outline-primary btn-sm"
-															href="/ho-admin/order/detail?id=${statusOrder.order.id}">View</a>
+															href="<%= URL_ADMIN_ORDER_DETAIL_VIEW %>?orderId=${statusOrder.order.id}">View</a>
 															<a class="btn btn-pill btn-outline-success btn-sm"
 															href="/ho-admin/status-order/update?orderId=${statusOrder.order.id}">Edit</a>
 														</td>
