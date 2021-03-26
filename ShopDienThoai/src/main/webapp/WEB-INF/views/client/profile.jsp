@@ -103,7 +103,7 @@ body {
 					<div class="row">
 						<div class="col-12 col-lg-3 d-flex">
 							<div class="account-nav flex-grow-1">
-								<h4 class="account-nav__title">Navigation</h4>
+								<h4 class="account-nav__title"></h4>
 								<ul>
 									<li class="account-nav__item account-nav__item--active">
 										<a href="/">Trang chủ</a>
@@ -117,7 +117,7 @@ body {
 									</li>
 
 									<li class="account-nav__item">
-										<a href="/change-pasword">Đổi mật khẩu</a>
+										<a href="/change-password">Đổi mật khẩu</a>
 									</li>
 									<li class="account-nav__item">
 										<a href="account-login.html">Đăng xuất</a>
@@ -156,7 +156,7 @@ body {
 										</div>
 										<div class="address-card__row">
 											<div class="address-card__row-title">Ngày sinh</div>
-											<div class="address-card__row-content">${profile.birthday}</div>
+											<div class="address-card__row-content"><fmt:formatDate pattern="dd/MM/yyyy" value="${profile.birthday}" /></div>
 										</div>
 										<div class="address-card__row">
 											<div class="address-card__row-title">Số điện thoại</div>
@@ -194,25 +194,25 @@ body {
 						<div class="col-12 col-lg-12 mt-4 mt-lg-0">
 							<div class="card">
 								<div class="card-header">
-									<h5>Chỉnh sửa Hồ Sơ</h5>
+									<h5>CHỈNH SỬA HỒ SƠ</h5>
 								</div>
 								<div class="card-divider"></div>
 								<form:form class="theme-form ${(error || isExistEmail) ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="profile" method="post" enctype="multipart/form-data">
 									<div class="card-body datetime-picker">
 										<c:if test="${message != null}">
-											<div class="alert alert-success dark" role="alert">
+											<div class="alert alert-info dark" role="alert">
 												<p>${message}</p>
 											</div>
 										</c:if>
 										<c:if test="${error != null}">
-											<div class="alert alert-secondary dark" role="alert">
+											<div class="alert alert-warning dark" role="alert">
 												<p>${error}</p>
 											</div>
 										</c:if>
 										<div class="row no-gutters">
 											<div class="col-12 ">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="username">Tên đăng nhập</label>
+													<label class="col-sm-3 col-form-label" for="username">TÊN ĐĂNG NHẬP</label>
 													<div class="col-sm-9  input-group">
 														<div class="input-group-prepend">
 															<span class="input-group-text">
@@ -285,7 +285,7 @@ body {
 													<label class="col-sm-3 col-form-label">HÌNH ẢNH</label>
 													<div class="col-sm-9">
 														<div class="avatar p-2">
-															<img class="img-100 rounded-circle" id="avatar" src="/images/avatars/${profile.photo}" alt="#">
+															<img class="img-100 rounded-circle" id="avatar" src="/images/avatars/${profile.photo}" width="150px" height="150px" alt="#">
 														</div>
 														<input name="image" class="form-control" type="file" id="imgInp" accept="image/*">
 													</div>
@@ -311,7 +311,7 @@ body {
 															</span>
 														</div>
 														<form:input path="phone" class="form-control" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required="required" />
-														<%-- <form:errors path="phone" class="invalid-feedback" /> --%>
+														 <form:errors path="phone" class="invalid-feedback" /> 
 													</div>
 												</div>
 											</div>

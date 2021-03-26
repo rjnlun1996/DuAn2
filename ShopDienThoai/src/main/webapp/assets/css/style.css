@@ -1380,7 +1380,7 @@ a:hover {
 
 .btn-outline-primary {
   border-color: #158df7;
-  color: #158df7;
+  color: #158df7 !important;
   background-color: transparent; }
   .btn-outline-primary.disabled {
     color: #158df7; }

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-
+<%@ page import="com.hitech.constraints.SessionConstraint"%>
+<%@ page import="com.hitech.entities.Account"%>
+<%
+Account user = (Account) session.getAttribute(SessionConstraint.USER);
+%>
 <div class="nav-panel__indicators">
 	<div class="indicator">
 		<a href="wishlist.html" class="indicator__button">
@@ -103,11 +106,11 @@
 				<div class="account-menu__divider"></div>
 				<a href="account-dashboard.html" class="account-menu__user">
 					<div class="account-menu__user-avatar">
-						<img src="images/avatars/avatar-3.jpg" alt="">
+						<img src="/images/avatars/<%=user.getPhoto()%>" alt="">
 					</div>
 					<div class="account-menu__user-info">
-						<div class="account-menu__user-name">Helena Garcia</div>
-						<div class="account-menu__user-email">stroyka@example.com</div>
+						<div class="account-menu__user-name"><%=user.getName()%></div>
+						<div class="account-menu__user-email"><%=user.getEmail()%></div>
 					</div>
 				</a>
 				<div class="account-menu__divider"></div>

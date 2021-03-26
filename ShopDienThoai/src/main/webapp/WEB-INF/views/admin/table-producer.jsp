@@ -37,6 +37,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/chartist.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/vector-map.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/datatables.css">
 <!-- Plugins css Ends-->
 <!-- Bootstrap css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
@@ -115,9 +116,9 @@
 											</ul>
 										</div>
 									</div>
-									<div class="card-body p-0">
+									<div class="card-body ">
 										<div class="sales-product-table table-responsive">
-											<table class="table table-bordernone">
+											<table class="table table-bordernone" id="basic-1">
 												<c:if test="${message != null}">
 													<div class="alert alert-success dark" role="alert">
 														<p>${message}</p>
@@ -153,7 +154,7 @@
 															<td>
 																
 																<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_PRODUCER_UPDATE%>?id=${producer.id}"">Edit</a>
-																<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${producer.id}" data-name="${producer.name}">Delete</button>
+																<button class="btn btn-pill btn-outline-danger btn-sm delete-item" onClick="onDelete(this)" data-id="${producer.id}" data-name="${producer.name}">Delete</button>
 
 															</td>
 														</tr>
@@ -217,14 +218,18 @@
 	<script src="/assets/js/script.js"></script>
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
 	<script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
+	<!--  Pagination -->
+	<script src="/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+	<script src="/assets/js/datatable/datatables/datatable.custom.js"></script>
 	<script>
-	 $(document).ready(function(){
-			$('.delete-item').click(function(){
-				var id = $(this).data('id');
-				var name = $(this).data('name');
+	 /* $(document).ready(function(){
+			$('.delete-item').click(function(){ */
+				function onDelete(elm){ 
+				var id = $(elm).data('id');
+				var name = $(elm).data('name');
 				swal({
 				  title: "Thông báo?",
-				  text: "Bạn có chắc chắn xóa danh mục " + name  + " không?",
+				  text: "Bạn có chắc chắn xóa sản phẩm " + name  + " không?",
 				  icon: "warning",
 				  buttons: true,
 				  dangerMode: true,
@@ -251,8 +256,7 @@
 				  }
 				});
 				//promise
-			})
-		}); 
+			}
 	 </script>
 
 </body>

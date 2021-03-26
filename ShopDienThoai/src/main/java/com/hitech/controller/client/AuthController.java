@@ -201,7 +201,7 @@ public class AuthController {
 		accountOnDb.setPhone(account.getPhone());
 		accountOnDb.setAddress(account.getAddress());
 		sessionUtils.setUser(accountService.update(accountOnDb));
-		reAttributes.addFlashAttribute("message", "Cập nhật tài khoản" + account.getUsername() + " thành công!");
+		reAttributes.addFlashAttribute("message", "Cập nhật tài khoản " + account.getUsername() + " thành công!");
 		return ViewUtils.redirectTo(CViewConstraint.URL_PROFILE);
 	}
 
