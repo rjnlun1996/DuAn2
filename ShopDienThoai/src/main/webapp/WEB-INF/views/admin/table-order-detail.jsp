@@ -181,7 +181,7 @@
 															</div>
 														</div>
 													</c:if>
-													<c:if test="${!status.current}">
+													<%-- <c:if test="${!status.current}">
 														<div style='margin-bottom: 40px; color: #b5b5b5;'
 															class="vertical-timeline-item vertical-timeline-element">
 															<div>
@@ -196,7 +196,7 @@
 																</div>
 															</div>
 														</div>
-													</c:if>
+													</c:if> --%>
 												</c:forEach>
 											</div>
 										</div>

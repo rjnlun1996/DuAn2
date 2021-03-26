@@ -12,6 +12,13 @@ Account user = (Account) session.getAttribute(SessionConstraint.USER);
 String sb = String.valueOf(request.getAttribute(CMENU));
 %>
 
+<style type="text/css">
+.account-menu__form-title {
+	font-family: 'Dancing Script', cursive;
+	font-size: 20px;
+}
+</style>
+
 <div class="nav-panel__indicators">
 	<div class="indicator">
 		<a href="wishlist.html" class="indicator__button">
@@ -92,30 +99,45 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 		</a>
 		<div class="indicator__dropdown">
 			<div class="account-menu">
+				<div class="account-menu__form-title text-primary">Hope Online, Xin chào !!!</div>
 
-				<form class="account-menu__form">
-					<div class="account-menu__form-title">Đăng nhập vào tài khoản của bạn</div>
-					<div class="form-group">
-						<input id="header-signin-email" type="email" class="form-control form-control-sm" placeholder="Tên đăng nhập hoặc email">
-					</div>
-					<div class="form-group">
-						<div class="account-menu__form-forgot">
-							<input id="header-signin-password" type="password" class="form-control form-control-sm" placeholder="Mật khẩu">
-							<a href="/forget-password" class="account-menu__form-forgot-link">Quên mật khẩu?</a>
+				<c:if test="${not empty message}">
+					<div class="alert alert-danger">${message}</div>
+				</c:if>
+				<c:if test="${user == null}">
+					<form method="POST" action="<%=URL_LOGIN_NAV%>" class="account-menu__form mb-0 mt-2">
+
+						<div class="form-group">
+							<input type="text" name="username" class="form-control form-control-sm" placeholder="Tên đăng nhập hoặc email">
+							<div class="invalid-feedback">Vui lòng nhập username hoặc email</div>
 						</div>
+						<div class="form-group">
+							<div class="account-menu__form-forgot">
+								<input type="password" name="password" class="form-control form-control-sm" placeholder="Mật khẩu">
+								<div class="invalid-feedback">Vui lòng nhập mật khẩu</div>
+								<a href="<%=URL_FORGET_PASSWORD%>" class="account-menu__form-forgot-link">Quên mật khẩu?</a>
+							</div>
+						</div>
+						<div class="form-group account-menu__form-button mt-4 mb-0">
+							<button type="submit" class="btn btn-primary btn-sm">Đăng nhập</button>
+						</div>
+					</form>
+				</c:if>
+
+				<div class=" account-menu__form d-flex text-center">
+					<img class="img-radius mr-3 mt-0 mb-2 rounded-circle" width="45" src="/images/avatars/${user.photo}" alt="">
+					<div class="d-flex flex-column justify-content-center">
+						<h6 class="f-w-600">${user.name}</h6>
 					</div>
-					<div class="form-group account-menu__form-button">
-						<button type="submit" class="btn btn-primary btn-sm">Đăng nhập</button>
-					</div>
-					<div class="form-group account-menu__form-button">
-						<a href="<%=URL_REGISTER%>">Tạo tài khoản</a>
-					</div>
-				</form>
+				</div>
+
+				<div class="form-group account-menu__form-button mb-3 mt-0">
+					<a href="<%=URL_REGISTER%>">Tạo tài khoản</a>
+				</div>
+
+
 				<div class="account-menu__divider"></div>
 				<ul class="account-menu__links">
-					<!-- <li>
-						<a href="/profile">Hồ sơ</a>
-					</li> -->
 					<li class="<%=renderSubmenuClass(sb, URL_PROFILE)%>">
 						<a class="sidebar-header" href="<%=URL_PROFILE%>">
 							<i data-feather="user"></i>
@@ -129,10 +151,6 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 							<span>Đổi mật khẩu</span>
 						</a>
 					</li>
-					<!-- 
-					<li>
-						<a href="/change-password">Đổi mật khẩu</a>
-					</li> -->
 					<li>
 						<a href="account-orders.html">Lịch sử đơn hàng</a>
 					</li>
@@ -141,9 +159,13 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 				<div class="account-menu__divider"></div>
 				<ul class="account-menu__links">
 					<li>
-						<a href="/logout">Đăng xuất</a>
+						<a href="/logout">
+							<i data-feather="file-text"> </i>
+							Đăng xuất
+						</a>
 					</li>
 				</ul>
+
 			</div>
 		</div>
 	</div>

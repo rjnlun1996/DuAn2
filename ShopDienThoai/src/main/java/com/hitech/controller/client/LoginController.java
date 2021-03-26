@@ -38,11 +38,28 @@ public class LoginController {
 		return ViewUtils.redirectTo(CViewConstraint.URL_HOME);
 
 	}
+	
+	@GetMapping(CViewConstraint.URL_LOGIN_NAV)
+	public String loginNavGet(Model model) {
+		return CViewConstraint.VIEW_LOGIN_NAV;
+	}
+
+	@PostMapping(CViewConstraint.URL_LOGIN_NAV)
+	public String loginNavPost(Model model, @RequestParam String username, @RequestParam String password) {
+		boolean isValidLogin = accountService.loginCustomer(username, password);
+		if (!isValidLogin) {
+			model.addAttribute("isValidLogin", isValidLogin);
+			model.addAttribute("message", "Tài khoản hoặc mật khẩu không đúng");
+			return CViewConstraint.VIEW_LOGIN_NAV;
+		}
+		return ViewUtils.redirectTo(CViewConstraint.URL_HOME);
+
+	}
 
 	@GetMapping(CViewConstraint.URL_LOGOUT)
 	public String logout() {
 		sessionUtils.destroyAll();
-		return ViewUtils.redirectTo(CViewConstraint.URL_LOGOUT);
+		return ViewUtils.redirectTo(CViewConstraint.URL_LOGIN);
 	}
 
 }
