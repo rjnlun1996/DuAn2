@@ -24,23 +24,25 @@ public class AdminInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		String path = request.getRequestURI();
-		// Client
-//		List<String> allowAnyClientsAccess = Arrays
-//				.asList(new String[] { "", CViewConstraint.URL_LOGIN, CViewConstraint.URL_FORGET_PASSWORD,
-//						CViewConstraint.URL_DETAIL_PRODUCT, CViewConstraint.URL_REGISTER });
-//		boolean isAuthenClientPage = allowAnyClientsAccess.contains(path);
-//		boolean isNextClientPage = !isAuthenClientPage && !sessionUtils.isCustomerLogin();
-//		if (isNextClientPage) {
-//			response.sendRedirect(CViewConstraint.URL_LOGIN);
-//			return false;
-//		}
-//
-//		// Invalidate Session when access to Login page
-//		if (isAuthenClientPage) {
-//			sessionUtils.destroyAll();
-//		} else {
-//			return true;
-//		}
+		
+		// Cho phép các định dạng file luôn luôn được truy cập
+		List<String> media = Arrays.asList(new String[] {"css", "js", "png", "jpg", "svg", "map", "woff", "tff"});
+		for(String m : media) {
+			if(path.endsWith(m)) {
+				return true;
+			}
+		}
+		
+		// Cho phép truy cập và phân quyền cho Client
+		List<String> allowAnyClientsAccess = Arrays
+				.asList(new String[] {"/", CViewConstraint.URL_LOGIN, CViewConstraint.URL_FORGET_PASSWORD,
+						CViewConstraint.URL_DETAIL_PRODUCT, CViewConstraint.URL_REGISTER, CViewConstraint.URL_LOGIN_NAV});
+		boolean isAuthenClientPage = allowAnyClientsAccess.contains(path) || path.startsWith(ViewConstraint.URL_ADMIN_HOME);
+		boolean isNextClientPage = !isAuthenClientPage && !sessionUtils.isCustomerLogin();
+		if (isNextClientPage) {
+			response.sendRedirect(CViewConstraint.URL_LOGIN);
+			return false;
+		}
 
 		// ho-admin
 		List<String> listAuthenAdminPages = Arrays

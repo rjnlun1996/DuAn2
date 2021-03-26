@@ -161,6 +161,17 @@ String sb = String.valueOf(request.getAttribute(MENU));
 														<%-- <form:errors path="name" /> --%>
 													</div>
 												</div>
+														
+									 		<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="producer">Producer Name</label>
+													<div class="col-sm-9">
+														<form:select path="producer"  class="form-control">
+															<form:options items="${listProducer}" itemLabel="name"></form:options>
+														</form:select>
+														<form:errors path="producer" class="invalid-feedback" />
+													</div>
+												</div> 
+											</div>
 												
 													</div>
 											

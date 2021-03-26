@@ -79,6 +79,7 @@ public class ACategoryController {
 	public String updateGet(Model model, @RequestParam Integer id) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CATEGORY_UPDATE);
 		model.addAttribute("category", categoryService.findById(id));
+		model.addAttribute("listProducer", producerService.findAllByEnabledTrue());
 		return ViewConstraint.VIEW_ADMIN_CATEGORY_UPDATE;
 	}
 
@@ -86,7 +87,7 @@ public class ACategoryController {
 	public Object update(Model model, @Validated @ModelAttribute("category") Category category, BindingResult errors,
 			RedirectAttributes ra) throws IOException {
 		Category categoryOnDb = categoryService.findById(category.getId());
-		boolean isExistedName = categoryService.findByNameAndEnabledTrue(category.getName()) != null;
+		/*boolean isExistedName = categoryService.findByNameAndEnabledTrue(category.getName()) != null;
 		boolean isErrors = errors.hasErrors();
 		if (isErrors || isExistedName) {
 			if (isErrors) {
@@ -95,6 +96,11 @@ public class ACategoryController {
 			if (isExistedName) {
 				model.addAttribute("error", "Danh mục này đã tồn tại!");
 				model.addAttribute("isExistName", true);
+			}*/
+		boolean isErrors = errors.hasErrors();
+		if (isErrors ) {
+			if (isErrors) {
+				model.addAttribute("error", "Vui lòng kiểm tra thông tin nhập sai!");
 			}
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CATEGORY_UPDATE);
 			return ViewConstraint.VIEW_ADMIN_CATEGORY_UPDATE;

@@ -126,51 +126,64 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 							<button type="submit" class="btn btn-primary btn-sm">Đăng nhập</button>
 						</div>
 					</form>
-				</c:if>
+					<div class="form-group account-menu__form-button mb-3 mt-0">
+						<a href="<%=URL_REGISTER%>">Tạo tài khoản</a>
+					</div>
+<<<<<<< HEAD
 
-				<div class=" account-menu__form d-flex text-center">
-					<img class="img-radius mr-3 mt-0 mb-2 rounded-circle" width="45" src="/images/avatars/${user.photo}" alt="">
-					<div class="d-flex flex-column justify-content-center">
-						<h6 class="f-w-600">${user.name}</h6>
+				</div>
+=======
+				</c:if>
+				<c:if test="${user != null}">
+					<div class=" account-menu__form d-flex text-center">
+						<img class="img-radius mr-3 mt-0 mb-2 rounded-circle" width="45" src="/images/avatars/${user.photo}" alt="">
+						<div class="d-flex flex-column justify-content-center">
+							<h6 class="f-w-600">${user.name}</h6>
+						</div>
+					</div>
+>>>>>>> branch 'master' of https://github.com/rjnlun1996/DuAn2.git
+
+					<div class="form-group account-menu__form-button mb-3 mt-0">
+
+						<a href="<%=URL_REGISTER%>">Tạo tài khoản</a>
 					</div>
 
-				</div>
 
-				<div class="form-group account-menu__form-button mb-3 mt-0">
-					<a href="<%=URL_REGISTER%>">Tạo tài khoản</a>
-				</div>
+					<div class="account-menu__divider"></div>
+					<ul class="account-menu__links account-menu__form">
+						<li class="<%=renderSubmenuClass(sb, URL_PROFILE)%>">
+							<a class="sidebar-header" href="<%=URL_PROFILE%>">
+								<i class="far fa-address-book mr-3"></i>
+								<span>Hồ sơ</span>
+							</a>
+						</li>
+
+						<li class="<%=renderSubmenuClass(sb, URL_CHANGE_PASSWORD)%>">
+							<a class="sidebar-header" href="<%=URL_CHANGE_PASSWORD%>">
+								<i class="fas fa-unlock-alt mr-3"></i>
+								<span>  Đổi mật khẩu</span>
+							</a>
+						</li>
+						<li class="">
+							<a class="sidebar-header" href="">
+								<i class="fas fa-history mr-3"></i>
+								<span>Lịch sử đơn hàng</span>
+							</a>
+						</li>
 
 
-				<div class="account-menu__divider"></div>
-				<ul class="account-menu__links">
-					<li class="<%=renderSubmenuClass(sb, URL_PROFILE)%>">
-						<a class="sidebar-header" href="<%=URL_PROFILE%>">
-							<i data-feather="user"></i>
-							<span>Hồ sơ</span>
-						</a>
-					</li>
+					</ul>
+					<div class="account-menu__divider"></div>
+					<ul class="account-menu__links">
+						<li>
+							<a href="/logout">
+								<i class="fas fa-power-off mr-3"></i>
+								Đăng xuất
+							</a>
+						</li>
+					</ul>
 
-					<li class="<%=renderSubmenuClass(sb, URL_CHANGE_PASSWORD)%>">
-						<a class="sidebar-header" href="<%=URL_CHANGE_PASSWORD%>">
-							<i data-feather="user"></i>
-							<span>Đổi mật khẩu</span>
-						</a>
-					</li>
-					<li>
-						<a href="account-orders.html">Lịch sử đơn hàng</a>
-					</li>
-
-				</ul>
-				<div class="account-menu__divider"></div>
-				<ul class="account-menu__links">
-					<li>
-						<a href="/logout">
-							<i data-feather="file-text"> </i>
-							Đăng xuất
-						</a>
-					</li>
-				</ul>
-
+				</c:if>
 			</div>
 		</div>
 	</div>

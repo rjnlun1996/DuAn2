@@ -54,7 +54,7 @@ public class Producer extends BaseEntity implements Serializable{
 	private String email ;
 	@Column
 	@NotBlank(message="Vui lòng nhập Số điện thoại !!! ")
-	@Pattern(regexp = "(84|0[3|5|7|8|9])+([0-9]{8})", message = "Vui lòng nhập Số điện thoại đúng định dạng")
+	@Pattern(regexp = "[0-9]+", message = "Vui lòng nhập Số điện thoại đúng định dạng")
 	private String	phone ;
 	
 	@OneToMany(mappedBy = "producer")
