@@ -69,7 +69,7 @@ public class AOrderDetailController {
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);
 			return ViewConstraint.VIEW_ADMIN_ORDER_DETAIL_INSERT;
 		}
-		orderDetail.setAmount(orderDetail.getProduct().getSalePrice());
+		orderDetail.setAmount(orderDetail.getProduct().getImportPrice());
 		orderDetail.setOrder(orderService.findById(orderId));
 		orderDetail.setProductId(orderDetail.getProduct().getId());
 		if (discountService.findByProductId(orderDetail.getProduct().getId()).size() != 0) {

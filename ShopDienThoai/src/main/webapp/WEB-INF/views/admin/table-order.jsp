@@ -1,19 +1,7 @@
-<%@page import="com.hitech.entities.Order"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-<style type="text/css">
-table tbody td {
-	padding: 20px !important;
-}
-
-table thead {
-	background: #f3eded;
-}
-</style>
-<!DOCTYPE html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
-<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="static com.hitech.constraints.ViewConstraint.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -163,9 +151,20 @@ table thead {
 															<td>${order.id}</td>
 															<td>${order.account.name}__(Username:${order.account.username})</td>
 															<td>${order.phone}</td>
-															<td>${order.total}</td>
+															<td>
+																<span class="badge badge-danger f-12">
+																	<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.total}" />
+																	VNĐ
+																</span>
+															</td>
 
-															<td>${order.total}</td>
+															<td>
+																<c:forEach items="${order.statusOrders}" var="statusOrder">
+																	<c:if test="${statusOrder.current}">																		
+																		<a class="f-14" href="<%= URL_ADMIN_STATUS_ORDER_UPDATE %>?orderId=${order.id}">${statusOrder.status.name } <span class="fa fa-arrow-right"></span></a>
+																	</c:if>
+																</c:forEach>
+															</td>
 															<%-- <td>${order.statusOrders.status.statusId}</td> --%>
 
 															<td>

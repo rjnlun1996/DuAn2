@@ -37,7 +37,15 @@ public class AdminInterceptor implements HandlerInterceptor {
 		List<String> allowAnyClientsAccess = Arrays
 				.asList(new String[] {"/", CViewConstraint.URL_LOGIN, CViewConstraint.URL_FORGET_PASSWORD,
 						CViewConstraint.URL_DETAIL_PRODUCT, CViewConstraint.URL_REGISTER, CViewConstraint.URL_LOGIN_NAV});
-		boolean isAuthenClientPage = allowAnyClientsAccess.contains(path) || path.startsWith(ViewConstraint.URL_ADMIN_HOME);
+		boolean isAllowAnyClientsAccess = false;
+		for(String a : allowAnyClientsAccess) {
+			if(path.startsWith(a)) {
+				isAllowAnyClientsAccess = true;
+				break;
+			}
+		}
+		
+		boolean isAuthenClientPage = isAllowAnyClientsAccess || path.startsWith(ViewConstraint.URL_ADMIN_HOME);
 		boolean isNextClientPage = !isAuthenClientPage && !sessionUtils.isCustomerLogin();
 		if (isNextClientPage) {
 			response.sendRedirect(CViewConstraint.URL_LOGIN);
