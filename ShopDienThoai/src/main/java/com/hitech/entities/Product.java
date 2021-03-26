@@ -1,4 +1,4 @@
-	package com.hitech.entities;
+package com.hitech.entities;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -19,9 +19,10 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "Products")
-public class Product extends BaseEntity implements Serializable{
+public class Product extends BaseEntity implements Serializable {
 
 	/**
 	 * 
@@ -31,53 +32,54 @@ public class Product extends BaseEntity implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "productId")
 	private int id;
-	
+
 	@Column
 	@NotBlank(message = "Vui lòng nhập Tên Sản Phẩm!")
 	@Size(min = 2, max = 50, message = "Tên Danh Mục phải từ {min} đến {max} kí tự")
 	private String name;
-	
+
 	@Column
-	private String	photo ;
-	
+	private String photo;
+
 	@Column
-	@Min(value=1000,message = "Giá tiền phải lớn hơn {value}")
-	@Max(value=999999999,message = "Giá tiền phải lớn hơn {value}")
+	@Min(value = 1000, message = "Giá tiền phải lớn hơn {value}")
+	@Max(value = 999999999, message = "Giá tiền phải lớn hơn {value}")
 	private long importPrice;
-	
+
 	@Column
 	private String description;
-	
+
 	@Column
 	private int views;
-	
+
 	@Column
-	private boolean	available;
-	
+	private boolean available;
+
 	@Column
-	private boolean	special;
-	
+	private boolean special;
+
 	@Column
-	private boolean	latest;
-	
+	private boolean latest;
+
 	@OneToMany(mappedBy = "product")
 	@JsonManagedReference
-	private Set<OrderDetail> orderDetails;	
-	
+	private Set<OrderDetail> orderDetails;
+
 	@ManyToOne
 	@JoinColumn(name = "categoryId")
 	@JsonBackReference
 	private Category category;
-	
+
 	@OneToMany(mappedBy = "product")
 	@JsonManagedReference
 	private Set<Photo> photos;
-	
+
 	@OneToMany(mappedBy = "product")
 	@JsonManagedReference
 	private Set<Discount> discounts;
-	
-	public Product() {}	
+
+	public Product() {
+	}
 
 	public Product(int id) {
 		super();
@@ -163,7 +165,7 @@ public class Product extends BaseEntity implements Serializable{
 	public void setOrderDetails(Set<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
-	
+
 	public Category getCategory() {
 		return category;
 	}
@@ -190,6 +192,6 @@ public class Product extends BaseEntity implements Serializable{
 
 	public void setDiscounts(Set<Discount> discounts) {
 		this.discounts = discounts;
-	}	
-	
+	}
+
 }
