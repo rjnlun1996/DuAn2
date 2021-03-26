@@ -12,7 +12,7 @@ public interface StatusOrderService extends IBaseService<StatusOrder, Integer> {
 	List<StatusOrder> findAllByEnabledTrue();
 	
 	List<StatusOrder> findAllByEnabledTrueAndCurrentTrue();
-	
-	boolean deleteByEnabled(Integer id);
+	List<StatusOrder> findAllByOrderIdAndEnabledTrue(Integer orderId);
+ 	boolean deleteByEnabled(Integer id);
 
 }

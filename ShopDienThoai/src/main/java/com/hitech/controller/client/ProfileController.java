@@ -1,4 +1,4 @@
-package com.hitech.controller;
+package com.hitech.controller.client;
 
 import java.io.IOException;
 
@@ -10,10 +10,12 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.hitech.constraints.CViewConstraint;
 import com.hitech.constraints.ViewConstraint;
 import com.hitech.entities.Account;
 import com.hitech.services.AccountService;
@@ -22,34 +24,35 @@ import com.hitech.utils.SessionUtils;
 import com.hitech.utils.ViewUtils;
 
 @Controller
-public class AProfileController {
+public class ProfileController extends BaseController {
+
 	@Autowired
-	private AccountService accountService; // access modify [public, protected, default, private]
+	private AccountService accountService;
 
 	@Autowired
 	private FileStorageService fileStorageService;
-	
+
 	@Autowired
 	private SessionUtils sessionUtils;
 
-	@GetMapping(ViewConstraint.URL_ADMIN_PROFILE)
-	public String table(Model model) {
-		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_PROFILE);
+	@GetMapping(CViewConstraint.URL_PROFILE)
+	public String Profile(Model model) {
+		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_PROFILE);
 		model.addAttribute("profile", sessionUtils.getUser());
 		model.addAttribute("profileAttr", accountService.findById(sessionUtils.getUser().getUsername()));
 		model.addAttribute("se", sessionUtils);
-		return ViewConstraint.VIEW_ADMIN_PROFILE;
+		return CViewConstraint.VIEW_PROFILE;
 	}
 
-//	@GetMapping(ViewConstraint.URL_ADMIN_PROFILE_UPDATE)
-//	public String updateGet(Model model, @RequestParam String id) {
-//		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_PROFILE_UPDATE);
+//	@GetMapping(CViewConstraint.URL_PROFILE_UPDATE)
+//	public String ProfileUpdateGet(Model model, @RequestParam String id) {
+//		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_PROFILE_UPDATE);
 //		model.addAttribute("profile", accountService.findById(id));
-//		return ViewConstraint.VIEW_ADMIN_PROFILE_UPDATE; // render view => prefix + ViewConstraint.VIEW_ADMIN_ADMIN_INSERT
-//														// + subfix => path jsp => render html -> client
+//		return CViewConstraint.VIEW_PROFILE_UPDATE; // render view => prefix + ViewConstraint.VIEW_ADMIN_ADMIN_INSERT
+//													// + subfix => path jsp => render html -> client
 //	}
 
-	@PostMapping(ViewConstraint.URL_ADMIN_PROFILE)
+	@PostMapping(CViewConstraint.URL_PROFILE)
 	public String updatePost(@Validated @ModelAttribute("profileAttr") Account account, BindingResult errors,
 			RedirectAttributes reAttributes, Model model, @RequestParam("image") MultipartFile file)
 			throws IOException {
@@ -66,10 +69,9 @@ public class AProfileController {
 				model.addAttribute("isExistEmail", true);
 			}
 			model.addAttribute("profile", sessionUtils.getUser());
-			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_PROFILE);
-			return ViewConstraint.VIEW_ADMIN_PROFILE;
+			model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_PROFILE);
+			return CViewConstraint.VIEW_PROFILE;
 		}
-
 		String avatar = fileStorageService.saveImage(file);
 		if (avatar != null) {
 			accountOnDb.setPhoto(avatar);
@@ -80,12 +82,9 @@ public class AProfileController {
 		accountOnDb.setBirthday(account.getBirthday());
 		accountOnDb.setPhone(account.getPhone());
 		accountOnDb.setAddress(account.getAddress());
-		accountOnDb.setPassword(account.getPassword());
-
-		Account accountUpdated = accountService.update(accountOnDb);
-		//sessionUtils.setUser(accountService.update(accountUpdated));
+		Account acc = accountService.update(accountOnDb);
+		sessionUtils.setUser(acc);
 		reAttributes.addFlashAttribute("message", "Cập nhật tài khoản " + account.getUsername() + " thành công!");
-		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_PROFILE);
+		return ViewUtils.redirectTo(CViewConstraint.URL_PROFILE);
 	}
-
 }

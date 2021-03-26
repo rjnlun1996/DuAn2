@@ -16,7 +16,6 @@ public class WebMVCConfiguration extends WebMvcConfigurerAdapter {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(adminInterceptor);
-	}	
-	
-	
+	}
+
 }

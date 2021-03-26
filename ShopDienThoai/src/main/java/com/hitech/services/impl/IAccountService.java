@@ -115,5 +115,15 @@ public class IAccountService implements AccountService{
 		return accountRepository.findByLevelAndEnabledTrue(1);
 	}
 
+	@Override
+	public boolean loginCustomer(String usernameOrEmail, String password) {
+		Account account = accountRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail);
+		if (account != null && account.getPassword().equals(password) && account.getLevel() == 2) {
+			sessionUtils.setUser(account);
+			return true;
+		}
+		return false;
+	}
+
 
 }

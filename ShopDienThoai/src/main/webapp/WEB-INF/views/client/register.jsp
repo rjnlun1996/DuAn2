@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page import="static com.hitech.utils.ViewUtils.*"%>
@@ -13,25 +12,18 @@ String sb = String.valueOf(request.getAttribute(MENU));
 <!-- General CSS Files -->
 
 <!-- Font Awesome-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/fontawesome.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/fontawesome.css">
 <!-- ico-font-->
 
 <link rel="stylesheet" href="/assetsChangePass/css/bootstrap.min.css">
 <link rel="stylesheet" href="/assetsChangePass/bootstrap/media.css">
 <link rel="stylesheet" href="/assetsChangePass/fonts">
-<link rel="stylesheet"
-	href="/assetsChangePass/bootstrap/mixins/border-radius.css">
-<link rel="stylesheet"
-	href="/assetsChangePass/bootstrap/mixins/reset-text.css">
-<link rel="stylesheet"
-	href="/assetsChangePass/bootstrap/mixins/screen-reader.css">
-<link rel="stylesheet"
-	href="/assetsChangePass/bootstrap/mixins/text-hide.css">
-<link rel="stylesheet"
-	href="/assetsChangePass/bootstrap/mixins/visibility.css">
-<link rel="stylesheet"
-	href="/assetsChangePass/bootstrap/utilities/stretched-link.css">
+<link rel="stylesheet" href="/assetsChangePass/bootstrap/mixins/border-radius.css">
+<link rel="stylesheet" href="/assetsChangePass/bootstrap/mixins/reset-text.css">
+<link rel="stylesheet" href="/assetsChangePass/bootstrap/mixins/screen-reader.css">
+<link rel="stylesheet" href="/assetsChangePass/bootstrap/mixins/text-hide.css">
+<link rel="stylesheet" href="/assetsChangePass/bootstrap/mixins/visibility.css">
+<link rel="stylesheet" href="/assetsChangePass/bootstrap/utilities/stretched-link.css">
 <link rel="stylesheet" href="/assetsChangePass/css/style.css">
 
 <style>
@@ -44,8 +36,10 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-.invalid-feedback{
-display: block}
+
+.invalid-feedback {
+	display: block
+}
 </style>
 <title>HOPE ONLINE</title>
 </head>
@@ -61,10 +55,7 @@ display: block}
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap p-0">
 						<h3 class="mb-4 text-center"></h3>
-						<form:form
-							class="theme-form signin-form ${(error || isExistUsername || isExistEmail) ? 'was-validated' : ''}"
-							novalidate="novalidate" modelAttribute="register" method="post"
-							enctype="multipart/form-data">
+						<form:form class="theme-form signin-form ${(error || isExistUsername || isExistEmail) ? 'was-validated' : ''}" novalidate="novalidate" modelAttribute="register" method="post" enctype="multipart/form-data">
 							<div class="card-body">
 								<c:if test="${message != null}">
 									<div class="alert alert-success dark" role="alert">
@@ -77,31 +68,30 @@ display: block}
 									</div>
 								</c:if>
 								<div class="form-group row">
-									<form:input path="name" class="form-control"
-										required="required" placeholder="Họ và Tên" />
+									<form:input path="name" class="form-control" required="required" placeholder="Họ và Tên" />
 									<form:errors path="name" class="invalid-feedback" />
+
+									<input name="image" class="form-control" type="hidden" id="avatar" src="/images/avatars/default.png">
+
+
 								</div>
+
 								<div class="form-group row">
-									<form:input path="username" class="form-control"
-										required="required" placeholder="Tên đăng nhập" minlength="5"
-										maxlength="20" />
+									<form:input path="username" class="form-control" required="required" placeholder="Tên đăng nhập" minlength="5" maxlength="20" />
 									<form:errors path="username" class="invalid-feedback" />
 									<c:if test="${isExistUsername}">
 										<div class="invalid-feedback">${errorUsername}</div>
 									</c:if>
 								</div>
 								<div class="form-group row">
-									<form:input type="email" path="email" class="form-control"
-										placeholder="Email" required="required" />
+									<form:input type="email" path="email" class="form-control" placeholder="Email" required="required" />
 									<form:errors path="email" class="invalid-feedback" />
 									<c:if test="${isExistEmail}">
 										<div class="invalid-feedback">${errorEmail}</div>
 									</c:if>
 								</div>
 								<div class="form-group row" id="show_hide_password">
-									<form:input path="password" class="form-control"
-										required="required" placeholder="Mật khẩu" minlength="5"
-										maxlength="20" />
+									<form:input path="password" class="form-control" required="required" placeholder="Mật khẩu" minlength="5" maxlength="20" />
 									<a href="" style="position: absolute; top: 10px; right: 20px;">
 										<i class="fa fa-eye-slash" aria-hidden="true"></i>
 									</a>
@@ -110,34 +100,27 @@ display: block}
 								<fieldset class="form-group row">
 									<div class="col-sm-9">
 										<div class="radio radio-primary ml-2">
-											<form:radiobutton path="gender" value="0"
-												class="form-check-input" />
+											<form:radiobutton path="gender" value="0" class="form-check-input" />
 											<label for="gender1">Female</label>
 										</div>
 										<div class="radio radio-primary ml-2">
-											<form:radiobutton path="gender" value="1"
-												class="form-check-input" />
+											<form:radiobutton path="gender" value="1" class="form-check-input" />
 											<label for="gender2">Male</label>
 										</div>
 										<form:errors path="gender" />
 									</div>
 								</fieldset>
 								<div class="form-group row">
-									<input type="text" name="birthday" id="birthday"
-										class="form-control"
-										pattern="/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/"
-										required="required" placeholder="dd/mm/yyyy" />
+									<input type="text" name="birthday" id="birthday" class="form-control" pattern="/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/" required="required" placeholder="dd/mm/yyyy" />
 									<form:errors path="birthday" class="invalid-feedback" />
-									<span id="error-birthday" class="invalid-feedback">
-										
-									</span>
+									<span id="error-birthday" class="invalid-feedback"> </span>
 								</div>
 								<div class="form-group row">
-									<button type="submit" class="form-control btn btn-primary">Đăng
-										ký</button>
+									<button type="submit" class="form-control btn btn-primary">Đăng ký</button>
 								</div>
 								<p class="text-center">
-									Nếu bạn đã có tài khoản!!! <a href="/login"> Đăng nhập</a>
+									Nếu bạn đã có tài khoản!!!
+									<a href="/login"> Đăng nhập</a>
 								</p>
 							</div>
 						</form:form>
@@ -197,7 +180,12 @@ display: block}
 										31, 30, 31, 30, 31 ];
 								if (mm == 1 || mm > 2) {
 									if (dd > ListofDays[mm - 1]) {
-										$('#error-birthday').html('Không có ngày ' + dd + ' trong tháng ' + mm )
+										$('#error-birthday')
+												.html(
+														'Không có ngày '
+																+ dd
+																+ ' trong tháng '
+																+ mm)
 										return false;
 									}
 								}
@@ -207,17 +195,21 @@ display: block}
 										lyear = true;
 									}
 									if ((lyear == false) && (dd >= 29)) {
-										$('#error-birthday').html('Tháng 2 không có ngày 29')
+										$('#error-birthday').html(
+												'Tháng 2 không có ngày 29')
 										return false;
 									}
 									if ((lyear == true) && (dd > 29)) {
-										$('#error-birthday').html('Tháng 2 không có ngày 29')
+										$('#error-birthday').html(
+												'Tháng 2 không có ngày 29')
 										return false;
 									}
 								}
 								$('#error-birthday').html('');
 							} else {
-								$('#error-birthday').html('Định dạng không hợp lệ dd/mm/yyyy')
+								$('#error-birthday')
+										.html(
+												'Định dạng không hợp lệ dd/mm/yyyy')
 								return false;
 							}
 						})

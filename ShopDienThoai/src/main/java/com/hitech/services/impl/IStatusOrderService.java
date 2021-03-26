@@ -10,7 +10,6 @@ import com.hitech.entities.Discount;
 import com.hitech.entities.Order;
 import com.hitech.entities.Status;
 import com.hitech.entities.StatusOrder;
-import com.hitech.repository.OrderRepository;
 import com.hitech.repository.StatusOrderRepository;
 import com.hitech.repository.StatusRepository;
 import com.hitech.services.StatusOrderService;
@@ -28,8 +27,6 @@ public class IStatusOrderService implements StatusOrderService {
 	@Autowired
 	private StatusRepository statusRepository;
 
-	@Autowired
-	private OrderRepository orderRepository;
 
 	@Override
 	public StatusOrder findById(Integer id) {
@@ -86,11 +83,16 @@ public class IStatusOrderService implements StatusOrderService {
 	public List<StatusOrder> findAllByEnabledTrue() {
 		return statusOrderRepository.findByEnabledTrue();
 	}
-
+	
 	@Override
 	public List<StatusOrder> findAllByEnabledTrueAndCurrentTrue() {
 		List<StatusOrder> list = statusOrderRepository.findDistinctByEnabledTrueAndCurrentTrue();
 		return list;
+	}
+
+	@Override
+	public List<StatusOrder> findAllByOrderIdAndEnabledTrue(Integer orderId) {
+		return statusOrderRepository.getStatusOrderByCurrentTrueAndOrderId(orderId);
 	}
 
 	private void transformCurrent(StatusOrder sta) {

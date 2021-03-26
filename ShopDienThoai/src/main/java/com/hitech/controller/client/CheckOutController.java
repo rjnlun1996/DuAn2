@@ -11,7 +11,7 @@ public class CheckOutController extends BaseController{
 	
 	@RequestMapping(CViewConstraint.URL_CHECK_OUT)
 	public String checkOut(Model model) {
-		model.addAttribute(CViewConstraint.MENU, CViewConstraint.URL_CHECK_OUT);
+		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_CHECK_OUT);
 		return CViewConstraint.VIEW_CHECK_OUT;
 	}
 }

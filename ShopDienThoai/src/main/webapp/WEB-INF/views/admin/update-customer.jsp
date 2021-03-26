@@ -239,7 +239,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 													<label class="col-sm-3 col-form-label">Upload File</label>
 													<div class="col-sm-9">
 														<div class="avatar p-2">
-															<img class="img-100 rounded-circle" id="avatar" src="/images/avatars/${account.photo}" alt="#">
+															<img class="img-100 rounded-circle" id="avatar" src="/images/avatars/${customer.photo}" alt="#">
 														</div>
 														<input name="image" class="form-control" type="file" id="imgInp" accept="image/*">
 													</div>
@@ -265,7 +265,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 															</span>
 														</div>
 														<form:input path="phone" class="form-control" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required="required" />
-														<%-- <form:errors path="phone" class="invalid-feedback" /> --%>
+														<form:errors path="phone" class="invalid-feedback" />
 													</div>
 												</div>
 											</div>

@@ -94,7 +94,7 @@ public class AProductController {
 		model.addAttribute("product", pd);
 		return ViewConstraint.VIEW_ADMIN_PRODUCT_UPDATE;
 	}
-
+	
 	@PostMapping(ViewConstraint.URL_ADMIN_PRODUCT_UPDATE)
 	public String updatePost(@Validated @ModelAttribute("product") Product product, BindingResult errors, Model model,
 			RedirectAttributes ra, @RequestParam("image") MultipartFile file) throws IOException {

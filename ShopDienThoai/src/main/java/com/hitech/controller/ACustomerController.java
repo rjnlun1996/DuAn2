@@ -41,21 +41,20 @@ public class ACustomerController {
 	public String insertGet(Model model) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CUSTOMER_INSERT);
 		model.addAttribute("customer", new Account());
-		return ViewConstraint.VIEW_ADMIN_CUSTOMER_INSERT; // render view => prefix + ViewConstraint.VIEW_ADMIN_ADMIN_INSERT
-														// + subfix => path jsp => render html -> client
+		return ViewConstraint.VIEW_ADMIN_CUSTOMER_INSERT; // render view => prefix +
+															// ViewConstraint.VIEW_ADMIN_ADMIN_INSERT
+															// + subfix => path jsp => render html -> client
 	}
 
 	@PostMapping(ViewConstraint.URL_ADMIN_CUSTOMER_INSERT)
-	public String insertPost(@Validated @ModelAttribute("account") Account account, BindingResult errors,
+	public String insertPost(@Validated @ModelAttribute("customer") Account account, BindingResult errors,
 			RedirectAttributes reAttributes, Model model, @RequestParam("image") MultipartFile file)
 			throws IOException {
 		boolean isExistedUsername = accountService.findById(account.getUsername()) != null;
 		boolean isExistedEmail = accountService.findByEmail(account.getEmail()) != null;
 		boolean isErrors = errors.hasErrors();
 		if (isErrors || isExistedUsername || isExistedEmail) {
-			if (isErrors) {
-				model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
-			}
+			model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
 			if (isExistedUsername) {
 				model.addAttribute("errorUsername", "Username này đã tồn tại");
 				model.addAttribute("isExistUsername", true);
@@ -82,24 +81,24 @@ public class ACustomerController {
 	public String updateGet(Model model, @RequestParam String id) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CUSTOMER_UPDATE);
 		model.addAttribute("customer", accountService.findById(id));
-		return ViewConstraint.VIEW_ADMIN_CUSTOMER_UPDATE; // render view => prefix + ViewConstraint.VIEW_ADMIN_ADMIN_INSERT
-														// + subfix => path jsp => render html -> client
+		return ViewConstraint.VIEW_ADMIN_CUSTOMER_UPDATE; // render view => prefix +
+															// ViewConstraint.VIEW_ADMIN_ADMIN_INSERT
+															// + subfix => path jsp => render html -> client
 	}
 
 	@PostMapping(ViewConstraint.URL_ADMIN_CUSTOMER_UPDATE)
-	public String updatePost(@Validated @ModelAttribute("account") Account account, BindingResult errors,
+	public String updatePost(@Validated @ModelAttribute("customer") Account account, BindingResult errors,
 			RedirectAttributes reAttributes, Model model, @RequestParam("image") MultipartFile file)
 			throws IOException {
 		boolean isErrors = errors.hasErrors();
+		System.err.println(errors.getFieldError());
 		Account accountOnDb = accountService.findById(account.getUsername());
 		Account accountWithEmail = accountService.findByEmail(account.getEmail());
 		String dbEmail = accountOnDb.getEmail();
 		String tempEmail = account.getEmail();
 		boolean isExistedEmail = accountWithEmail != null && !dbEmail.equals(tempEmail);
 		if (isErrors || isExistedEmail) {
-			if (isErrors) {
-				model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
-			}
+			model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
 			if (isExistedEmail) {
 				model.addAttribute("errorEmail", "Email này đã tồn tại");
 				model.addAttribute("isExistEmail", true);
@@ -145,12 +144,12 @@ public class ACustomerController {
 
 	// 1. access to /ho-admin/admin/insert
 	// 2.
-	
+
 	@GetMapping(ViewConstraint.URL_ADMIN_CUSTOMER_DETAIL)
 	public String viewCustomer(Model model, @RequestParam String id) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CUSTOMER_DETAIL);
 		model.addAttribute("customer", accountService.findById(id));
-		return ViewConstraint.VIEW_ADMIN_CUSTOMER_DETAIL; 
+		return ViewConstraint.VIEW_ADMIN_CUSTOMER_DETAIL;
 	}
 
 }

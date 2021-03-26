@@ -11,7 +11,7 @@ public class HomeController extends BaseController{
 	
 	@RequestMapping(CViewConstraint.URL_HOME)
 	public String table(Model model) {
-		model.addAttribute(CViewConstraint.MENU, CViewConstraint.URL_HOME);
+		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_HOME);
 		return CViewConstraint.VIEW_HOME;
 	}
 }
