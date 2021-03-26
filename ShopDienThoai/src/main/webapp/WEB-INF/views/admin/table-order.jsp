@@ -144,7 +144,7 @@ table thead {
 												</c:if>
 												<thead>
 													<tr class="text-center">
-														<th scope="col">STT</th>
+														<th scope="col">Id</th>
 														<th scope="col">Customer</th>
 														<th scope="col">Phone</th>
 														<th scope="col">Price</th>

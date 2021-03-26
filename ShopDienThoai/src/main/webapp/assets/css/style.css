@@ -4102,7 +4102,7 @@ table tbody .border-bottom-warning td {
       font-size: 24px;
       margin-bottom: 0;
       font-weight: 600;
-      text-transform: capitalize; }
+     /*  text-transform: capitalize; */ }
       .page-wrapper .page-body-wrapper .page-header .row h3 small {
         display: block;
         font-size: 12px;
