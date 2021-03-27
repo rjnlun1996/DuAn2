@@ -122,7 +122,9 @@ table thead {
 							<div class="col-lg-6">
 								<h3>Order Detail</h3>
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="/ho-admin/">Home</a></li>
+									<li class="breadcrumb-item">
+										<a href="/ho-admin/">Home</a>
+									</li>
 
 								</ol>
 							</div>
@@ -130,21 +132,36 @@ table thead {
 								<!-- Bookmark Start-->
 								<div class="bookmark pull-right">
 									<ul>
-										<li><a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Tables"> <i data-feather="inbox"></i>
-										</a></li>
-										<li><a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Chat"> <i data-feather="message-square"></i>
-										</a></li>
-										<li><a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Icons"> <i data-feather="command"></i>
-										</a></li>
-										<li><a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Learning"> <i data-feather="layers"></i>
-										</a></li>
-										<li><a href="#"> <i class="bookmark-search" data-feather="star"></i>
-										</a>
+										<li>
+											<a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Tables">
+												<i data-feather="inbox"></i>
+											</a>
+										</li>
+										<li>
+											<a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Chat">
+												<i data-feather="message-square"></i>
+											</a>
+										</li>
+										<li>
+											<a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Icons">
+												<i data-feather="command"></i>
+											</a>
+										</li>
+										<li>
+											<a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Learning">
+												<i data-feather="layers"></i>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="bookmark-search" data-feather="star"></i>
+											</a>
 											<form class="form-inline search-form">
 												<div class="form-group form-control-search">
 													<input type="text" placeholder="Search..">
 												</div>
-											</form></li>
+											</form>
+										</li>
 									</ul>
 								</div>
 								<!-- Bookmark Ends-->
@@ -162,13 +179,16 @@ table thead {
 									<div class="card-header pt-3 pb-3">Thông tin nhận hàng</div>
 									<div class="card-body">
 										<p>
-											<b>Tên người nhận</b> : ${order.receiver }
+											<b>Tên người nhận</b>
+											: ${order.receiver }
 										</p>
 										<p>
-											<b>Địa chỉ</b> : ${order.address }
+											<b>Địa chỉ</b>
+											: ${order.address }
 										</p>
 										<p>
-											<b>Số điện thoại</b> : ${order.phone }
+											<b>Số điện thoại</b>
+											: ${order.phone }
 										</p>
 									</div>
 								</div>
@@ -178,11 +198,13 @@ table thead {
 									<div class="card-header  pt-3 pb-3">Ngày Giao - Nhận</div>
 									<div class="card-body">
 										<p>
-											<b>Ngày đặt hàng</b> :
+											<b>Ngày đặt hàng</b>
+											:
 											<fmt:formatDate pattern="dd-MM-yyyy" value="${order.createdAt }" />
 										</p>
 										<p>
-											<b>Ngày nhận hàng</b> :
+											<b>Ngày nhận hàng</b>
+											:
 											<fmt:formatDate pattern="dd-MM-yyyy" value="${order.createdAt }" />
 										</p>
 									</div>
@@ -226,13 +248,21 @@ table thead {
 														<th scope="col">Quantity</th>
 														<th scope="col">Total</th>
 														<th scope="col">Discount</th>
-														<th><a class="btn btn-pill btn-outline-primary btn-sm ml-5 mb-0" href="<%=URL_ADMIN_ORDER_DETAIL_INSERT%>?orderId=${order.id}">ADD+</a></th>
+														<th>
+															<a class="btn btn-pill btn-outline-primary btn-sm ml-5 mb-0" href="<%=URL_ADMIN_ORDER_DETAIL_INSERT%>?orderId=${order.id}">ADD+</a>
+														</th>
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach items="${listOrderDetail}" var="orderDetail">
+													<c:set var="productTotal" value="0"></c:set>
+													<c:set var="amount" value="0"></c:set>
+													<c:set var="discount" value="0"></c:set>
+													<c:forEach items="${order.orderDetails}" var="orderDetail">
 														<tr>
 															<form action="<%=URL_ADMIN_ORDER_DETAIL_UPDATE%>?orderId=${order.id }" method="get">
+																<c:set value="${productTotal +  orderDetail.quantity}" var="productTotal"></c:set>
+																<c:set value="${amount +  orderDetail.amount}" var="amount"></c:set>
+																<c:set value="${discount +  orderDetail.product.importPrice * orderDetail.discount.percents / 100 *  orderDetail.quantity}" var="discount"></c:set>
 																<td>${orderDetail.id}</td>
 																<td>
 																	<div class="d-flex">
@@ -249,8 +279,12 @@ table thead {
 																		</div>
 																	</fieldset>
 																</td>
-																<td>${orderDetail.amount}</td>
-
+																<td>
+																	<span class="badge badge-primary">
+																		<fmt:formatNumber type="number" maxFractionDigits="3" value="${orderDetail.amount}" />
+																		VNĐ
+																	</span>
+																</td>
 																<td>${orderDetail.discount.percents}</td>
 																<td>
 																	<button class="btn btn-pill btn-outline-success btn-sm">Update</button>
@@ -265,26 +299,63 @@ table thead {
 									</div>
 								</div>
 							</div>
-							<div class="col-12">
+							<div class="col-6">
 								<div class="card">
 									<div class="card-header">
 										<h5>Trạng Thái Đơn hàng</h5>
 									</div>
 									<div class="card-body">
 										<div class="timeline-small">
-											<c:forEach items="${order.statusOrders }" var="statusOrder">
+											<c:forEach items="${status }" var="statusOrder">
 												<div class="media">
-													<div class="timeline-round m-r-30 timeline-line-1 bg-success">
-														<i data-feather="shopping-bag"></i>
+													<div class="timeline-round m-r-30 timeline-line-1 bg-${statusOrder.current ? 'success' : '' }" ${statusOrder.current ? '' : 'style="background: #919191"' }>
+														<i data-feather="${statusOrder.current ? 'check-circle' : 'x-circle' }"></i>
 													</div>
 													<div class="media-body">
-														<h6>
-															${statusOrder.status.name} <span class="pull-right f-14">New</span>
+														<h6 class="f-12">
+															${statusOrder.status.name}
+															<span class="pull-right f-12">
+																<fmt:formatDate pattern="dd-MM-yyyy" value="${statusOrder.createdAt }" />
+															</span>
 														</h6>
-														<p>${statusOrder.description}</p>
+														<p class="f-12">${statusOrder.description}</p>
 													</div>
 												</div>
 											</c:forEach>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="card">
+									<div class="card-header">
+										<h5>Tổng Đơn Hàng</h5>
+									</div>
+									<div class="card-body p-0">
+										<div class="sales-product-table table-responsive">
+											<table class="table table-bordernone">
+												<tbody>
+													<tr>
+														<td class="w-50 text-right"> Number Products Total</td>
+														<td>${productTotal }</td>
+													</tr>
+													<tr>
+														<td class="w-50 text-right"> Price Products Total</td>
+														<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${amount}" />
+																		VNĐ</td>
+													</tr>
+													<tr>
+														<td class="w-50 text-right">Total Discount</td>
+														<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${discount}" />
+																		VNĐ</td>
+													</tr>
+													<tr>
+														<td class="w-50 text-right"> Price Total</td>
+														<td class="text-danger"><fmt:formatNumber type="number" maxFractionDigits="3" value="${amount - discount }" />
+																		VNĐ</td>
+													</tr>
+												</tbody>
+											</table>
 										</div>
 									</div>
 								</div>

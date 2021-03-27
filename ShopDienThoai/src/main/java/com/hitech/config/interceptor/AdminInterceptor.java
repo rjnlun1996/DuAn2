@@ -26,7 +26,7 @@ public class AdminInterceptor implements HandlerInterceptor {
 		String path = request.getRequestURI();
 		
 		// Cho phép các định dạng file luôn luôn được truy cập
-		List<String> media = Arrays.asList(new String[] {"css", "js", "png", "jpg", "svg", "map", "woff", "tff"});
+		List<String> media = Arrays.asList(new String[] {"css", "js", "png", "jpg", "svg", "map", "woff", "tff", "woff2"});
 		for(String m : media) {
 			if(path.endsWith(m)) {
 				return true;
@@ -39,7 +39,7 @@ public class AdminInterceptor implements HandlerInterceptor {
 						CViewConstraint.URL_DETAIL_PRODUCT, CViewConstraint.URL_REGISTER, CViewConstraint.URL_LOGIN_NAV});
 		boolean isAllowAnyClientsAccess = false;
 		for(String a : allowAnyClientsAccess) {
-			if(path.startsWith(a)) {
+			if(path.equals(a)) {
 				isAllowAnyClientsAccess = true;
 				break;
 			}

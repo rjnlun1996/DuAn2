@@ -1,6 +1,10 @@
 package com.hitech.controller;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hitech.constraints.ViewConstraint;
+import com.hitech.entities.Order;
 import com.hitech.entities.OrderDetail;
+import com.hitech.entities.StatusOrder;
 import com.hitech.services.DiscountService;
 import com.hitech.services.OrderDetailService;
 import com.hitech.services.OrderService;
@@ -45,9 +51,11 @@ public class AOrderDetailController {
 	@GetMapping(ViewConstraint.URL_ADMIN_ORDER_DETAIL_VIEW)
 	public String table(Model model, @RequestParam int orderId) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);
-		model.addAttribute("listOrderDetail", orderDetailService.findAllByOrderId(orderId));
-		model.addAttribute("order", orderService.findById(orderId));
-		model.addAttribute("listStatus", statusOrderService.findAllByEnabledTrue());
+		Order order = orderService.findById(orderId);
+		model.addAttribute("order", order);
+		List<StatusOrder> status = order.getStatusOrders().stream().sorted(Comparator.comparing(StatusOrder::getCreatedAt)).collect(Collectors.toList());
+		Collections.reverse(status);
+		model.addAttribute("status", status);
 		return ViewConstraint.VIEW_ADMIN_ORDER_DETAIL_VIEW;
 	}
 
