@@ -154,6 +154,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 													<label class="col-sm-3 col-form-label" for="">Status ID</label>
 													<div class="col-sm-9">
 														<input name="id" value="${status.id}" class="form-control" readonly="readonly"/>
+														<input name="priority" type="hidden" value="${status.id}" class="form-control" readonly="readonly"/>
 													</div>
 												</div>
 												<div class="form-group row">

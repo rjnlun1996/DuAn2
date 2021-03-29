@@ -119,7 +119,7 @@ table thead {
 										</div>
 									</div>
 
-									<div class="card-body p-0">
+									<div class="card-body">
 										<div class="sales-product-table table-responsive ">
 											<table class="table table-bordernone" id="basic-1">
 
@@ -135,8 +135,7 @@ table thead {
 												</c:if>
 												<thead>
 													<tr class="text-center">
-
-														<th scope="col">STT</th>
+														<th scope="col">Id</th>
 														<th scope="col">Customer</th>
 														<th scope="col">Phone</th>
 														<th scope="col">Price</th>

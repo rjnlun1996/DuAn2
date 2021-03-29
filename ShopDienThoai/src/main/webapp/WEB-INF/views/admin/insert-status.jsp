@@ -157,6 +157,7 @@
 														<form:input path="id" class="form-control"
 															required="required" minlength="2" maxlength="10" />
 														<form:errors path="id" class="invalid-feedback" />
+														<input name="priority" type="hidden" class="form-control"/>
 													</div>
 												</div>
 												<div class="form-group row">
