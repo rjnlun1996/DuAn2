@@ -57,6 +57,12 @@ table tbody tr {
 table thead {
 	background: #f3eded;
 }
+
+.dataTables_wrapper button {
+	border-radius: 60px !important;
+	font-size: 14px !important;
+	padding: 0.375rem 1.75rem !important;
+}
 </style>
 </head>
 <body>
@@ -146,21 +152,27 @@ table thead {
 												</thead>
 												<tbody class="text-center">
 													<c:forEach items="${listOrder}" var="order">
+														<%-- <c:set var="productTotal" value="0"></c:set>
+														<c:set var="amountTotal" value="0"></c:set>
+														<c:set var="discountPrice" value="0"></c:set>
+														<c:forEach items="${orderDetails}" var="orderDetail"> --%>
 														<tr>
 															<td>${order.id}</td>
 															<td>${order.account.name}__(Username:${order.account.username})</td>
 															<td>${order.phone}</td>
 															<td>
 																<span class="badge badge-danger f-12">
-																	<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.total}" />
+																	<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.getOrderTotal()}" />
 																	VNĐ
 																</span>
 															</td>
 
 															<td>
 																<c:forEach items="${order.statusOrders}" var="statusOrder">
-																	<c:if test="${statusOrder.current}">																		
-																		<a class="f-14" href="<%= URL_ADMIN_STATUS_ORDER_UPDATE %>?orderId=${order.id}">${statusOrder.status.name } <span class="fa fa-arrow-right"></span></a>
+																	<c:if test="${statusOrder.current}">
+																		<a class="f-14" href="<%= URL_ADMIN_STATUS_ORDER_UPDATE %>?orderId=${order.id}">${statusOrder.status.name }
+																			<span class="fa fa-arrow-right"></span>
+																		</a>
 																	</c:if>
 																</c:forEach>
 															</td>
@@ -169,7 +181,7 @@ table thead {
 															<td>
 																<a class="btn btn-pill btn-outline-primary btn-sm" href="<%=URL_ADMIN_ORDER_DETAIL_VIEW%>?orderId=${order.id}">View</a>
 																<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_ORDER_UPDATE%>?orderId=${order.id}">Edit</a>
-																<button class="btn btn-pill btn-outline-danger btn-sm delete-item"  onClick="onDelete(this)" data-id="${order.id}">Delete</button>
+																<button class="btn btn-pill btn-outline-danger btn-sm delete-item" onClick="onDelete(this)" data-id="${order.id}">Delete</button>
 															</td>
 
 														</tr>

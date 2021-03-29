@@ -48,13 +48,19 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
 
 <style type="text/css">
-	table tbody td {
-		padding: 20px !important;
-		
-	}
-	table thead{
-		background: #f3eded;
-	}
+table tbody td {
+	padding: 20px !important;
+}
+
+table thead {
+	background: #f3eded;
+}
+
+.dataTables_wrapper button {
+	border-radius: 60px !important;
+	font-size: 14px !important;
+	padding: 0.375rem 1.75rem !important;
+}
 </style>
 </head>
 <body>
@@ -133,10 +139,10 @@
 													<tr class="text-center">
 														<th scope="col">ID</th>
 														<th scope="col">Logo</th>
-														<th scope="col">Name </th>
+														<th scope="col">Name</th>
 														<th scope="col">Address</th>
 														<th scope="col">Email</th>
-														
+
 														<th></th>
 													</tr>
 												</thead>
@@ -153,7 +159,7 @@
 															<td>${producer.address}</td>
 															<td>${producer.email}</td>
 															<td>
-																
+
 																<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_PRODUCER_UPDATE%>?id=${producer.id}"">Edit</a>
 																<button class="btn btn-pill btn-outline-danger btn-sm delete-item" onClick="onDelete(this)" data-id="${producer.id}" data-name="${producer.name}">Delete</button>
 

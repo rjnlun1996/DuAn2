@@ -358,7 +358,7 @@ body {
 											</div>
 											<div class="product-card__info">
 												<div class="product-card__name">
-													<a href="/">${prod.name}</a>
+													<a href="/detail_product?productId=${prod.id}">${prod.name}</a>
 												</div>
 												<div class="product-card__rating">
 													<div class="product-card__rating-stars">

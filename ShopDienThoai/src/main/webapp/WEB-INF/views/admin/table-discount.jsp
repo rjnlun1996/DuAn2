@@ -43,13 +43,19 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
 
 <style type="text/css">
-	table tbody td {
-		padding: 20px !important;
-		
-	}
-	table thead{
-		background: #f3eded;
-	}
+table tbody td {
+	padding: 20px !important;
+}
+
+table thead {
+	background: #f3eded;
+}
+
+.dataTables_wrapper button {
+	border-radius: 60px !important;
+	font-size: 14px !important;
+	padding: 0.375rem 1.75rem !important;
+}
 </style>
 </head>
 <body>
@@ -130,7 +136,7 @@
 														</td>
 														<td>
 															<div class="d-flex" style="align-items: center;">
-																<img class="img-radius img-100 align-top m-r-15" style="filter:none" src="/images/products/${disc.product.category.producer.name.toLowerCase()}/${disc.product.photo}" alt="">
+																<img class="img-radius img-100 align-top m-r-15" style="filter: none" src="/images/products/${disc.product.category.producer.name.toLowerCase()}/${disc.product.photo}" alt="">
 																<div class="d-flex flex-column">
 																	<h6 class="f-w-600">${disc.product.name}</h6>
 																</div>
@@ -152,7 +158,7 @@
 														</td>
 														<td>
 															<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_DISCOUNT_UPDATE%>?id=${disc.id}">Edit</a>
-															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" onClick="onDelete(this)"  data-id="${disc.id}">Delete</button>
+															<button class="btn btn-pill btn-outline-danger btn-sm delete-item" onClick="onDelete(this)" data-id="${disc.id}">Delete</button>
 														</td>
 													</tr>
 												</c:forEach>

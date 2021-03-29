@@ -226,25 +226,10 @@ String sb = String.valueOf(request.getAttribute(MENU));
 			</li> --%>
 
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_ORDER)%>">
-				<a class="sidebar-header" href="#">
+				<a class="sidebar-header" href="<%=URL_ADMIN_ORDER%>">
 					<i data-feather="briefcase"></i>
 					<span>Order</span>
-					<i class="fa fa-angle-right pull-right"></i>
 				</a>
-				<ul class="sidebar-submenu">
-					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_ORDER)%>">
-						<a href="<%=URL_ADMIN_ORDER%>">
-							<i class="fa fa-circle"></i>
-							Views Order
-						</a>
-					</li>
-					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_ORDER_INSERT)%>">
-						<a href="<%=URL_ADMIN_ORDER_INSERT%>">
-							<i class="fa fa-circle"></i>
-							Insert Order
-						</a>
-					</li>
-				</ul>
 			</li>
 
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_STATUS_ORDER)%>">

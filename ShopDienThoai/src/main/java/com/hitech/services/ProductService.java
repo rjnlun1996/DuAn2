@@ -12,4 +12,6 @@ public interface ProductService extends IBaseService<Product, Integer> {
 	Product findAllByName(String name);
 	
 	List<Product> findAllHaveSamePrice(long price);
+	
+	List<Product> findSaleProduct();
 }

@@ -53,6 +53,8 @@ public class AOrderDetailController {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);
 		Order order = orderService.findById(orderId);
 		model.addAttribute("order", order);
+		List<OrderDetail> orderDetails = order.getOrderDetails().stream().filter(e -> e.isEnabled()).sorted(Comparator.comparing(OrderDetail::getCreatedAt).reversed()).collect(Collectors.toList());
+		model.addAttribute("orderDetails", orderDetails);
 		List<StatusOrder> status = order.getStatusOrders().stream().sorted(Comparator.comparing(StatusOrder::getCreatedAt)).collect(Collectors.toList());
 		Collections.reverse(status);
 		model.addAttribute("status", status);
@@ -100,19 +102,38 @@ public class AOrderDetailController {
 		model.addAttribute("listProduct", productService.findAllByEnabledTrue());
 		return ViewConstraint.VIEW_ADMIN_ORDER_DETAIL_VIEW;
 	}
-
-	@GetMapping(ViewConstraint.URL_ADMIN_ORDER_DETAIL_DELETE + "{id}")
-	public String delete(Model model, @PathVariable("id") int id) {
+	
+	@PostMapping(ViewConstraint.URL_ADMIN_ORDER_DETAIL_UPDATE)
+	public String updatePost(Model model, @RequestParam int orderId, @RequestParam int productId, @RequestParam int quantity) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);
-		orderDetailService.deleteByEnable(id);
-		model.addAttribute("listOrderDetail", orderDetailService.findAllByOrderId(id));
-		return ViewConstraint.VIEW_ADMIN_ORDER_DETAIL_VIEW;
+		
+		List<OrderDetail> orderDetails = orderDetailService.findByOrderIdAndProductId(orderId, productId);		
+		
+		for(OrderDetail orderDetail: orderDetails) {
+			if(orderDetail.getProductId() == productId) {
+				orderDetail.setQuantity(quantity);
+				orderDetail.calAmount();
+				orderDetail.getOrder().calOrderTotal();
+				
+				orderDetailService.save(orderDetail);
+				break;
+			}
+		}
+
+		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ORDER_DETAIL_VIEW + "?orderId=" + orderId);
 	}
+//
+//	@GetMapping(ViewConstraint.URL_ADMIN_ORDER_DETAIL_DELETE + "{id}")
+//	public String delete(Model model, @PathVariable("id") int id) {
+//		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);
+//		orderDetailService.deleteByEnable(id);
+//		model.addAttribute("listOrderDetail", orderDetailService.findAllByOrderId(id));
+//		return ViewConstraint.VIEW_ADMIN_ORDER_DETAIL_VIEW;
+//	}
 
 	@PostMapping(ViewConstraint.URL_ADMIN_ORDER_DETAIL_DELETE)
 	@ResponseBody
 	public boolean delete1(Model model, @RequestParam int orderDetailId) {
-		System.err.println(orderDetailId);
 		return orderDetailService.deleteByEnable(orderDetailId);
 	}
 

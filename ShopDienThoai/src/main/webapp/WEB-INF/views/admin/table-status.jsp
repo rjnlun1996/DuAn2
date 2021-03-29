@@ -53,6 +53,12 @@ table tbody td {
 table thead {
 	background: #f3eded;
 }
+
+.dataTables_wrapper button {
+	border-radius: 60px !important;
+	font-size: 14px !important;
+	padding: 0.375rem 1.75rem !important;
+}
 </style>
 </head>
 <body>

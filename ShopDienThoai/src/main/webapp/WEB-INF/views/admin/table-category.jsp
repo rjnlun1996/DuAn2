@@ -47,13 +47,19 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
 
 <style type="text/css">
-	table tbody td {
-		padding: 20px !important;
-		
-	}
-	table thead{
-		background: #f3eded;
-	}
+table tbody td {
+	padding: 20px !important;
+}
+
+table thead {
+	background: #f3eded;
+}
+
+.dataTables_wrapper button {
+	border-radius: 60px !important;
+	font-size: 14px !important;
+	padding: 0.375rem 1.75rem !important;
+}
 </style>
 </head>
 <body>
@@ -183,10 +189,10 @@
 		<script src="/assets/js/script.js"></script>
 		<script src="/assets/js/theme-customizer/customizer.js"></script>
 		<script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
-		
+
 		<!--  Pagination -->
 		<script src="/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
-	 	<script src="/assets/js/datatable/datatables/datatable.custom.js"></script> 
+		<script src="/assets/js/datatable/datatables/datatable.custom.js"></script>
 
 		<script>
 		function onDelete(elm){

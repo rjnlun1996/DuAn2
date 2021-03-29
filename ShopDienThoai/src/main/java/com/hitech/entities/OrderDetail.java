@@ -134,5 +134,9 @@ public class OrderDetail extends BaseEntity implements Serializable {
 	public void setDiscount(Discount discount) {
 		this.discount = discount;
 	}
+	
+	public void calAmount() {
+		this.amount = this.product.getImportPrice() * this.quantity;
+	}
 
 }

@@ -86,6 +86,12 @@ table thead {
 	text-align: center;
 	padding: 12px 12px !important;
 }
+
+.dataTables_wrapper button {
+	border-radius: 60px !important;
+	font-size: 14px !important;
+	padding: 0.375rem 1.75rem !important;
+}
 </style>
 </head>
 <body>
@@ -248,6 +254,7 @@ table thead {
 														<th scope="col">Quantity</th>
 														<th scope="col">Total</th>
 														<th scope="col">Discount</th>
+														<th scope="col">Date</th>
 														<th>
 															<a class="btn btn-pill btn-outline-primary btn-sm ml-5 mb-0" href="<%=URL_ADMIN_ORDER_DETAIL_INSERT%>?orderId=${order.id}">ADD+</a>
 														</th>
@@ -255,14 +262,15 @@ table thead {
 												</thead>
 												<tbody>
 													<c:set var="productTotal" value="0"></c:set>
-													<c:set var="amount" value="0"></c:set>
-													<c:set var="discount" value="0"></c:set>
-													<c:forEach items="${order.orderDetails}" var="orderDetail">
+													<c:set var="amountTotal" value="0"></c:set>
+													<c:set var="discountPrice" value="0"></c:set>
+													<c:forEach items="${orderDetails}" var="orderDetail">
+														<c:set var="amount" value="${orderDetail.product.importPrice * orderDetail.quantity }"></c:set>
 														<tr>
-															<form action="<%=URL_ADMIN_ORDER_DETAIL_UPDATE%>?orderId=${order.id }" method="get">
+															<form action="<%= URL_ADMIN_ORDER_DETAIL_UPDATE%>?orderId=${order.id }" method="POST">
 																<c:set value="${productTotal +  orderDetail.quantity}" var="productTotal"></c:set>
-																<c:set value="${amount +  orderDetail.amount}" var="amount"></c:set>
-																<c:set value="${discount +  orderDetail.product.importPrice * orderDetail.discount.percents / 100 *  orderDetail.quantity}" var="discount"></c:set>
+																<c:set value="${amountTotal +  amount}" var="amountTotal"></c:set>
+																<c:set value="${discountPrice +  orderDetail.product.importPrice * orderDetail.discount.percents / 100 *  orderDetail.quantity}" var="discountPrice"></c:set>
 																<td>${orderDetail.id}</td>
 																<td>
 																	<div class="d-flex">
@@ -281,14 +289,18 @@ table thead {
 																</td>
 																<td>
 																	<span class="badge badge-primary">
-																		<fmt:formatNumber type="number" maxFractionDigits="3" value="${orderDetail.amount}" />
+																		<fmt:formatNumber type="number" maxFractionDigits="3" value="${amount}" />
 																		VNĐ
+																		<%-- <fmt:formatNumber type="number" maxFractionDigits="3" value="${orderDetail.amount}" />
+																		VNĐ --%>
 																	</span>
 																</td>
 																<td>${orderDetail.discount.percents}</td>
+																<td><fmt:formatDate pattern="dd-MM-yyyy" value="${orderDetail.createdAt }" /></td>
 																<td>
-																	<button class="btn btn-pill btn-outline-success btn-sm">Update</button>
-																	<button class="btn btn-pill btn-outline-danger btn-sm delete-item" data-id="${orderDetail.id}">Delete</button>
+																	<input type="hidden" name="productId" value="${orderDetail.product.id }"/>
+																	<button class="btn btn-pill btn-outline-success btn-sm" type="submit">Update</button>
+																	<button class="btn btn-pill btn-outline-danger btn-sm delete-item" type="button" data-id="${orderDetail.id}">Delete</button>
 																</td>
 															</form>
 														</tr>
@@ -336,23 +348,29 @@ table thead {
 											<table class="table table-bordernone">
 												<tbody>
 													<tr>
-														<td class="w-50 text-right"> Number Products Total</td>
+														<td class="w-50 text-right">Number Products Total</td>
 														<td>${productTotal }</td>
 													</tr>
 													<tr>
-														<td class="w-50 text-right"> Price Products Total</td>
-														<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${amount}" />
-																		VNĐ</td>
+														<td class="w-50 text-right">Price Products Total</td>
+														<td>
+															<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.getAmountTotal()}" />
+															VNĐ
+														</td>
 													</tr>
 													<tr>
 														<td class="w-50 text-right">Total Discount</td>
-														<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${discount}" />
-																		VNĐ</td>
+														<td>
+															<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.getDiscountPrice()}" />
+															VNĐ
+														</td>
 													</tr>
 													<tr>
-														<td class="w-50 text-right"> Price Total</td>
-														<td class="text-danger"><fmt:formatNumber type="number" maxFractionDigits="3" value="${amount - discount }" />
-																		VNĐ</td>
+														<td class="w-50 text-right">Price Total</td>
+														<td class="text-danger">
+															<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.getOrderTotal()}" />
+															VNĐ
+														</td>
 													</tr>
 												</tbody>
 											</table>
@@ -383,12 +401,6 @@ table thead {
 	<!-- Sidebar jquery-->
 	<script src="/assets/js/sidebar-menu.js"></script>
 	<script src="/assets/js/config.js"></script>
-
-	<script src="/assets/js/dashboard/default.js"></script>
-	<script src="/assets/js/notify/index.js"></script>
-	<script src="/assets/js/chat-menu.js"></script>
-	<script src="/assets/js/tooltip-init.js"></script>
-	<script src="/assets/js/animation/wow/wow.min.js"></script>
 
 
 	<script src="/assets/js/touchspin/vendors.min.js"></script>
@@ -427,7 +439,7 @@ table thead {
 								}
 						  },
 	 					  error: function(data){
-							  
+	 						 swal("Thông báo!", "Không thể xóa người dùng này!", "danger");
 						  },
 					  });
 				  }

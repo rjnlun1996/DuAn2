@@ -38,7 +38,7 @@ public class IOrderDetailService implements OrderDetailService{
 		if(list.size()>0) {
 			int a = list.get(0).getId();
 			orderDetail.setId(a);
-			orderDetail.setQuantity(orderDetail.getQuantity()+findById(a).getQuantity());
+			orderDetail.setQuantity(orderDetail.getQuantity());
 			return update(orderDetail);
 		}else {
 		orderDetail.setCreatedBy(sessionUtils.getCreatedOrUpdatedBy());
@@ -77,5 +77,11 @@ public class IOrderDetailService implements OrderDetailService{
 		} catch (Exception e) {
 			return false;
 		}
+	}
+
+	@Override
+	public List<OrderDetail> findByOrderIdAndProductId(int orderId, int productId) {
+		// TODO Auto-generated method stub
+		return orderDetailRepository.findByOrderIdAndProductId(orderId, productId);
 	}
 }

@@ -7,15 +7,16 @@ import org.springframework.stereotype.Service;
 
 import com.hitech.entities.Category;
 import com.hitech.entities.Photo;
+import com.hitech.entities.Product;
 import com.hitech.repository.PhotoRepository;
 import com.hitech.services.PhotoService;
 
 @Service
-public class IPhotoService implements PhotoService{
+public class IPhotoService implements PhotoService {
 
 	@Autowired
 	private PhotoRepository photoRepository;
-	
+
 	@Override
 	public List<Photo> findAll() {
 		// TODO Auto-generated method stub
@@ -48,7 +49,6 @@ public class IPhotoService implements PhotoService{
 			return false;
 		}
 	}
-	
 
 	@Override
 	public List<Photo> findAllByEnabledTrueAndProduct(int productId) {
@@ -64,5 +64,5 @@ public class IPhotoService implements PhotoService{
 			return false;
 		}
 
-}
+	}
 }

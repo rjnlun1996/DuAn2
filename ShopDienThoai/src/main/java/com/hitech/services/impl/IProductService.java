@@ -81,4 +81,10 @@ public class IProductService implements ProductService{
 	public List<Product> findAllHaveSamePrice(long price) {
 		return productRepository.findAllHaveSamePrice(price - 1000000, price + 1000000);
 	}
+
+	@Override
+	public List<Product> findSaleProduct() {
+		// TODO Auto-generated method stub
+		return productRepository.findSaleProduct();
+	}
 }
