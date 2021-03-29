@@ -323,7 +323,7 @@ body {
 												</div>
 												<div class="product-card__prices">
 													<span class="product-card__new-price">
-														<fmt:formatNumber type="number" maxFractionDigits="3" value="${prod.importPrice - (prod.importPrice * listDiscount.get(loop.index) / 100)}" />
+														<fmt:formatNumber type="number" maxFractionDigits="3" value="${prod.importPrice - prod.importPrice * listDiscount.get(loop.index) / 100}" />
 														VNĐ
 													</span>
 													<span class="product-card__old-price">
