@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.hitech.constraints.SessionConstraint"%>
 <%@ page import="com.hitech.entities.Account"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%
 Account user = (Account) session.getAttribute(SessionConstraint.USER);
@@ -40,7 +41,7 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 				<svg width="20px" height="20px">
                                           <use xlink:href="images/sprite.svg#cart-20"></use>
                                        </svg>
-				<span class="indicator__value">3</span>
+				<span class="indicator__value" id="cart-number">${cart.productDto.values().size() == 0 ? 0 : cart.productDto.values().size()}</span>
 			</span>
 		</a>
 		<div class="indicator__dropdown">
@@ -48,43 +49,51 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 			<div class="dropcart dropcart--style--dropdown">
 				<div class="dropcart__body">
 					<div class="dropcart__products-list">
-						<div class="dropcart__product">
-							<div class="product-image dropcart__product-image">
-								<a href="product.html" class="product-image__body">
-									<img class="product-image__img" src="images/products/product-1.jpg" alt="">
-								</a>
-							</div>
-							<div class="dropcart__product-info">
-								<div class="dropcart__product-name">
-									<a href="product.html">Electric Planer Brandix KL370090G 300 Watts</a>
+						<c:forEach items="${cart.productDto.values()}" var="prodDTO">
+							<div class="dropcart__product">
+								<div class="product-image dropcart__product-image">
+									<a href="product.html" class="product-image__body">
+										<img class="product-image__img" src="/images/products/${prodDTO.product.category.producer.name.toLowerCase()}/${prodDTO.product.photo}" alt="">
+									</a>
 								</div>
-								<ul class="dropcart__product-options">
+								<div class="dropcart__product-info">
+									<div class="dropcart__product-name">
+										<a href="product.html">${prodDTO.product.name}</a>
+									</div>
+									<!-- <ul class="dropcart__product-options">
 									<li>Color: Yellow</li>
 									<li>Material: Aluminium</li>
-								</ul>
-								<div class="dropcart__product-meta">
-									<span class="dropcart__product-quantity">2</span>
-									×
-									<span class="dropcart__product-price">$699.00</span>
+								</ul> -->
+									<div class="dropcart__product-meta">
+										<span class="dropcart__product-quantity">${prodDTO.quantity}</span>
+										×
+										<span class="dropcart__product-price" style="color:red">
+											<fmt:formatNumber type="number" maxFractionDigits="3" value="${prodDTO.product.importPrice}" />
+											VNĐ
+										</span>
+									</div>
 								</div>
-							</div>
-							<button type="button" class="dropcart__product-remove btn btn-light btn-sm btn-svg-icon">
-								<svg width="10px" height="10px">
+								<button type="button" class="dropcart__product-remove btn btn-light btn-sm btn-svg-icon">
+									<svg width="10px" height="10px">
                                                       <use xlink:href="images/sprite.svg#cross-10"></use>
                                                    </svg>
-							</button>
-						</div>
+								</button>
+							</div>
+						</c:forEach>
 					</div>
 					<div class="dropcart__totals">
 						<table>
 							<tr>
-								<th>Subtotal</th>
-								<td>$5,877.00</td>
+								<th>Tổng Tiền</th>
+								<td style="color: green; font-weight: bold">
+									<fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.getTotal()}" />
+									VNĐ
+								</td>
 							</tr>
 						</table>
 					</div>
 					<div class="dropcart__buttons">
-						<a class="btn btn-secondary" href="cart.html">Xem chi tiết</a>
+						<a class="btn btn-secondary" href="/cart">Xem chi tiết</a>
 						<a class="btn btn-primary" href="checkout.html">Đặt hàng</a>
 					</div>
 				</div>
@@ -156,7 +165,7 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 						<li class="<%=renderSubmenuClass(sb, URL_CHANGE_PASSWORD)%>">
 							<a class="sidebar-header" href="<%=URL_CHANGE_PASSWORD%>">
 								<i class="fas fa-unlock-alt mr-3"></i>
-								<span>  Đổi mật khẩu</span>
+								<span> Đổi mật khẩu</span>
 							</a>
 						</li>
 						<li class="">

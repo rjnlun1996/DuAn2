@@ -333,8 +333,8 @@ body {
 
 												</div>
 												<div class="product-card__buttons">
-													<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-													<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+													<button class="btn btn-primary product-card__addtocart" type="button" style="font-size: 12px" onclick="themVaoGioHang(${prod.id})">Thêm Vào Giỏ Hàng</button>
+													<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 													<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 														<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -516,8 +516,8 @@ body {
 														VNĐ
 													</div>
 													<div class="product-card__buttons">
-														<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-														<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+														<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+														<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 														<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 															<svg width="16px" height="16px">
                                           <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -925,8 +925,8 @@ body {
 											</div>
 											<div class="product-card__prices">$749.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -1067,8 +1067,8 @@ body {
 											</div>
 											<div class="product-card__prices">$1,019.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -1208,8 +1208,8 @@ body {
 											</div>
 											<div class="product-card__prices">$850.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -1353,8 +1353,8 @@ body {
 												<span class="product-card__old-price">$1189.00</span>
 											</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -1494,8 +1494,8 @@ body {
 											</div>
 											<div class="product-card__prices">$1,700.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -1633,8 +1633,8 @@ body {
 											</div>
 											<div class="product-card__prices">$3,199.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -1774,8 +1774,8 @@ body {
 											</div>
 											<div class="product-card__prices">$24.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -1913,8 +1913,8 @@ body {
 											</div>
 											<div class="product-card__prices">$15.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -2054,8 +2054,8 @@ body {
 											</div>
 											<div class="product-card__prices">$19.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -2193,8 +2193,8 @@ body {
 											</div>
 											<div class="product-card__prices">$15.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -2334,8 +2334,8 @@ body {
 											</div>
 											<div class="product-card__prices">$149.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -2473,8 +2473,8 @@ body {
 											</div>
 											<div class="product-card__prices">$666.99</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -2614,8 +2614,8 @@ body {
 											</div>
 											<div class="product-card__prices">$649.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -2753,8 +2753,8 @@ body {
 											</div>
 											<div class="product-card__prices">$1,800.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -2894,8 +2894,8 @@ body {
 											</div>
 											<div class="product-card__prices">$290.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -3033,8 +3033,8 @@ body {
 											</div>
 											<div class="product-card__prices">$1,499.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -3462,8 +3462,8 @@ body {
 											</div>
 											<div class="product-card__prices">$749.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -3604,8 +3604,8 @@ body {
 											</div>
 											<div class="product-card__prices">$1,019.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -3743,8 +3743,8 @@ body {
 											</div>
 											<div class="product-card__prices">$850.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -3896,8 +3896,8 @@ body {
 												<span class="product-card__old-price">$1189.00</span>
 											</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -4035,8 +4035,8 @@ body {
 											</div>
 											<div class="product-card__prices">$1,700.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -4174,8 +4174,8 @@ body {
 											</div>
 											<div class="product-card__prices">$3,199.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -4321,8 +4321,8 @@ body {
 											</div>
 											<div class="product-card__prices">$24.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -4460,8 +4460,8 @@ body {
 											</div>
 											<div class="product-card__prices">$15.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -4599,8 +4599,8 @@ body {
 											</div>
 											<div class="product-card__prices">$19.00</div>
 											<div class="product-card__buttons">
-												<button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
-												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+												<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 												<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 													<svg width="16px" height="16px">
                                              <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -5182,6 +5182,7 @@ body {
 	<script src="js/main.js"></script>
 	<script src="js/header.js"></script>
 	<script src="vendor/svg4everybody/svg4everybody.min.js"></script>
+	<script src="js/cart.js"></script>
 	<script>
 		svg4everybody();
 	</script>

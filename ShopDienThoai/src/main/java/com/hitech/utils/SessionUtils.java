@@ -3,18 +3,18 @@ package com.hitech.utils;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import com.hitech.entities.Account;
+import com.hitech.cart.Cart;
 import com.hitech.constraints.SessionConstraint;
+import com.hitech.entities.Account;
 
 @Component
 public class SessionUtils {
-	
+
 	@Autowired
 	private HttpSession session;
-	
+
 	/**
 	 * Check the customer login. True if user logan and had non-admin role
 	 */
@@ -22,7 +22,7 @@ public class SessionUtils {
 		Account a = getUser();
 		return a != null && a.getLevel() == 2;
 	}
-	
+
 	/**
 	 * Check the admin login. True if user logan and had admin role
 	 */
@@ -30,7 +30,7 @@ public class SessionUtils {
 		Account a = getUser();
 		return a != null && a.getLevel() == 0;
 	}
-	
+
 	/**
 	 * Check the admin login. True if user logan and had admin role
 	 */
@@ -38,7 +38,7 @@ public class SessionUtils {
 		Account a = getUser();
 		return a != null && a.getLevel() != 2;
 	}
-	
+
 	/**
 	 * Check the Employ login. True if user logan and had admin role
 	 */
@@ -46,49 +46,59 @@ public class SessionUtils {
 		Account a = getUser();
 		return a != null && a.getLevel() == 1;
 	}
-	
+
 	/**
 	 * Get the information current user from HttpSession
+	 * 
 	 * @return The account
 	 */
 	public Account getUser() {
 		Object o = session.getAttribute(SessionConstraint.USER);
-		if(o != null) {
+		if (o != null) {
 			return (Account) o;
 		}
-		return null;		
+		return null;
 	}
-	
+
 	/**
 	 * Set the information current user to HttpSession
 	 */
 	public void setUser(Account acc) {
 		session.setAttribute(SessionConstraint.USER, acc);
 	}
-	
+
 	/**
 	 * Destroy all data from HttpSession
 	 */
 	public void destroyAll() {
 		session.invalidate();
 	}
-	
+
 	/**
 	 * Get the username created the resource.
+	 * 
 	 * @return The username
 	 */
 	public String getCreatedOrUpdatedBy() {
 		Account created = getUser();
 		return created != null ? created.getUsername() : null;
 	}
-	
+
 	public String getRoleName() {
-		if(getUser().getLevel() == 0) {
+		if (getUser().getLevel() == 0) {
 			return "ADMINISTRATOR";
 		}
-		if(getUser().getLevel() == 1) {
+		if (getUser().getLevel() == 1) {
 			return "MANAGER";
 		}
 		return "CUSTOMER";
+	}
+
+	public Cart getCart() {
+		return (Cart) session.getAttribute(SessionConstraint.CART);
+	}
+
+	public void setCart(Cart cart) {
+		session.setAttribute(SessionConstraint.CART, cart);
 	}
 }

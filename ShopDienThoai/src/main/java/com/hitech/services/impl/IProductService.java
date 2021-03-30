@@ -27,8 +27,7 @@ public class IProductService implements ProductService{
 
 	@Override
 	public Product findById(Integer id) {
-		// TODO Auto-generated method stub
-		return productRepository.getOne(id);
+		return productRepository.findById(id).orElse(null);
 	}
 	@Override
 	public Product save(Product product) {
