@@ -7,6 +7,7 @@ public class CViewConstraint {
 	public static final String VIEW_HOME = "client/index";
 	
 	public static final String URL_LOGIN = "/login";
+	public static final String URL_LOGIN_CHECK = "/check-login";
 	public static final String VIEW_LOGIN = "client/login";
 	
 	public static final String URL_LOGIN_NAV = "/login_nav";
@@ -35,6 +36,7 @@ public class CViewConstraint {
 	
 	public static final String URL_CART = "/cart";
 	public static final String VIEW_CART = "client/cart";
+	public static final String VIEW_CART_RENDER = "client/render-cart";
 	
 	public static final String URL_CHECK_OUT = "/check_out";
 	public static final String VIEW_CHECK_OUT = "client/check_out";

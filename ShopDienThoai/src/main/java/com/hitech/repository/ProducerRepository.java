@@ -10,6 +10,6 @@ import com.hitech.entities.Producer;
 @Repository
 public interface ProducerRepository extends JpaRepository<Producer, String>{
 	
-	List<Producer> findByEnabledTrue();
+	List<Producer> findByEnabledTrueOrderByCreatedAtAsc();
 
 }

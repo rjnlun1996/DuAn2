@@ -41,14 +41,22 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 				<svg width="20px" height="20px">
                                           <use xlink:href="images/sprite.svg#cart-20"></use>
                                        </svg>
-				<span class="indicator__value" id="cart-number">${cart.productDto.values().size() == 0 ? 0 : cart.productDto.values().size()}</span>
+				<c:if test="${cart != null }">
+					<span class="indicator__value" id="cart-number">${cart.productDto.values().size()}</span>
+				</c:if>
+				<c:if test="${cart == null }">
+					<span class="indicator__value" id="cart-number">0</span>
+				</c:if>
 			</span>
 		</a>
 		<div class="indicator__dropdown">
 			<!-- .dropcart -->
 			<div class="dropcart dropcart--style--dropdown">
-				<div class="dropcart__body">
+				<div class="dropcart__body" id="render-cart">
 					<div class="dropcart__products-list">
+						<c:if test="${cart == null }">
+							<h4 style="color:red; text-align: center">Bạn chưa có sản phẩm</h4>
+						</c:if>
 						<c:forEach items="${cart.productDto.values()}" var="prodDTO">
 							<div class="dropcart__product">
 								<div class="product-image dropcart__product-image">
@@ -86,7 +94,10 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 							<tr>
 								<th>Tổng Tiền</th>
 								<td style="color: green; font-weight: bold">
-									<fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.getTotal()}" />
+									<c:if test="${cart == null }">0</c:if>
+									<c:if test="${cart != null }">
+									 <fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.getTotal()}" />
+									</c:if>
 									VNĐ
 								</td>
 							</tr>

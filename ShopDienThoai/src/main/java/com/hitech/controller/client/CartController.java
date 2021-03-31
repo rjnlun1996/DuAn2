@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hitech.cart.Cart;
 import com.hitech.cart.ProductDTO;
 import com.hitech.constraints.CViewConstraint;
+import com.hitech.constraints.ViewConstraint;
 import com.hitech.entities.Discount;
 import com.hitech.entities.Product;
 import com.hitech.services.ProductService;
@@ -42,7 +43,6 @@ public class CartController extends BaseController {
 
 	@SuppressWarnings("unlikely-arg-type")
 	@PostMapping(CViewConstraint.URL_CART)
-	@ResponseBody
 	public Object addToCart(Model model, @RequestParam int productId, @RequestParam(defaultValue = "1") int quantity) {
 		
 		Product product = productService.findById(productId);
@@ -97,9 +97,9 @@ public class CartController extends BaseController {
 		cart.calculate();
 		
 		// Cập nhật cart trong session
-		sessionUtils.setCart(cart);		
+		sessionUtils.setCart(cart);	
 
-		return cart;
+		return CViewConstraint.VIEW_CART_RENDER;
 	}
 
 }

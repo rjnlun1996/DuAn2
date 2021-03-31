@@ -26,6 +26,9 @@
 <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
 <!-- font - stroyka -->
 <link rel="stylesheet" href="fonts/stroyka/stroyka.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+
 <style type="text/css">
 body {
 	font-family: 'Source Serif Pro', serif;
@@ -516,7 +519,7 @@ body {
 														VNĐ
 													</div>
 													<div class="product-card__buttons">
-														<button class="btn btn-primary product-card__addtocart" type="button">Thêm Vào Giỏ Hàng</button>
+														<button class="btn btn-primary product-card__addtocart" type="button" onclick="themVaoGioHang(${prod.id})">Thêm Vào Giỏ Hàng</button>
 														<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 														<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 															<svg width="16px" height="16px">
@@ -4639,7 +4642,6 @@ body {
 		</div>
 	</div>
 	<!-- quickview-modal / end -->
-	<<<<<<< HEAD
 	<!-- mobilemenu -->
 
 	<div class="mobilemenu">
@@ -5133,7 +5135,6 @@ body {
 		</div>
 	</div>
 	<!-- mobilemenu / end -->
-	======= >>>>>>> branch 'master' of https://github.com/rjnlun1996/DuAn2.git
 	<!-- photoswipe -->
 	<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="pswp__bg"></div>
@@ -5182,6 +5183,7 @@ body {
 	<script src="js/main.js"></script>
 	<script src="js/header.js"></script>
 	<script src="vendor/svg4everybody/svg4everybody.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 	<script src="js/cart.js"></script>
 	<script>
 		svg4everybody();

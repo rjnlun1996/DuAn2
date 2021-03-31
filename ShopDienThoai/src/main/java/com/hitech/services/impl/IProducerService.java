@@ -23,7 +23,7 @@ public class IProducerService implements ProducerService {
 
 	@Override
 	public List<Producer> findAll() {
-		return producerRepository.findByEnabledTrue();
+		return producerRepository.findByEnabledTrueOrderByCreatedAtAsc();
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class IProducerService implements ProducerService {
 	@Override
 	public List<Producer> findAllByEnabledTrue() {
 		// TODO Auto-generated method stub
-		return producerRepository.findByEnabledTrue();
+		return producerRepository.findByEnabledTrueOrderByCreatedAtAsc();
 	}
 
 	@Override

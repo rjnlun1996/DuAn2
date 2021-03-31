@@ -15,6 +15,10 @@ public class BaseController {
 	
 	@ModelAttribute(name = "producers")
 	public List<Producer> categories(){
+		List<Producer> producers = producerService.findAllByEnabledTrue();
+		for(Producer pro: producers) {
+			
+		}
 		return producerService.findAllByEnabledTrue();
 	}
 }

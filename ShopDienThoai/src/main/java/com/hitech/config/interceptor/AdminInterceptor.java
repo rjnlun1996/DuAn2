@@ -35,7 +35,7 @@ public class AdminInterceptor implements HandlerInterceptor {
 		
 		// Cho phép truy cập và phân quyền cho Client
 		List<String> allowAnyClientsAccess = Arrays
-				.asList(new String[] {"/", CViewConstraint.URL_LOGIN, CViewConstraint.URL_FORGET_PASSWORD,
+				.asList(new String[] {"/", CViewConstraint.URL_LOGIN, CViewConstraint.URL_FORGET_PASSWORD, CViewConstraint.URL_LOGIN_CHECK,
 						CViewConstraint.URL_DETAIL_PRODUCT, CViewConstraint.URL_REGISTER, CViewConstraint.URL_LOGIN_NAV});
 		boolean isAllowAnyClientsAccess = false;
 		for(String a : allowAnyClientsAccess) {

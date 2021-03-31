@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hitech.constraints.CViewConstraint;
 import com.hitech.services.AccountService;
@@ -25,6 +26,15 @@ public class LoginController {
 	@GetMapping(CViewConstraint.URL_LOGIN)
 	public String table(Model model) {
 		return CViewConstraint.VIEW_LOGIN;
+	}
+	
+	@PostMapping(CViewConstraint.URL_LOGIN_CHECK)
+	@ResponseBody
+	public Integer checkLogin(Model model) {
+		if(sessionUtils.isCustomerLogin()) {
+			return 1;
+		}
+		return 0;
 	}
 
 	@PostMapping(CViewConstraint.URL_LOGIN)
