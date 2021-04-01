@@ -283,7 +283,7 @@ table thead {
 																<td class="bootstrap-touchspin" style="max-width: 150px">
 																	<fieldset>
 																		<div class="input-group text-center">
-																			<input name="quantity" class="touchspin" type="text" value="${orderDetail.quantity}" min="1" max="99" />
+																			<input name="quantity" class="touchspin" type="text" value="${orderDetail.quantity}" min="1" max="99" readonly="readonly" />
 																		</div>
 																	</fieldset>
 																</td>
@@ -451,26 +451,3 @@ table thead {
 	 </script>
 </body>
 </html>
-<!-- <div class="welcome-popup modal fade" id="loadModal" tabindex="-1"
-	role="dialog" aria-labelledby="exampleModalCenterTitle"
-	aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<button class="close" type="button" data-dismiss="modal"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			<div class="modal-body">
-				<div class="modal-header"></div>
-				<div class="contain p-50">
-					<div class="text-center">
-						<h3>Welcome to creative admin</h3>
-						<p>start your project with developer friendly admin</p>
-						<button class="btn btn-primary btn-lg txt-white" type="button"
-							data-dismiss="modal" aria-label="Close">Get Started</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div> -->

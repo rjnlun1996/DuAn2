@@ -26,7 +26,7 @@
       return;
     }
     var defaults = {
-      min: 0,
+      min: 1,
       max: 100,
       initval: '',
       replacementval: '',
