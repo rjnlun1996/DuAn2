@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="static com.hitech.utils.ViewUtils.*"%>
+<%@ page import="static com.hitech.constraints.CViewConstraint.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -14,6 +18,7 @@
 <!-- fonts -->
 <link rel="stylesheet" href="css.css?family=Roboto:400,400i,500,500i,700,700i">
 <!-- css -->
+<link rel="stylesheet" type="text/css" href="/assets/css/fontawesome.css">
 <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="vendor/owl-carousel/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="vendor/photoswipe/photoswipe.css">
@@ -24,6 +29,8 @@
 <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
 <!-- font - stroyka -->
 <link rel="stylesheet" href="fonts/stroyka/stroyka.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/sweetalert2.css">
 <style type="text/css">
 body {
 	font-family: 'Source Serif Pro', serif;
@@ -59,7 +66,7 @@ body {
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item">
-									<a href="index.html">Home</a>
+									<a href="/">Trang Chủ</a>
 									<svg class="breadcrumb-arrow" width="6px" height="9px">
                                  <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
                               </svg>
@@ -93,86 +100,97 @@ body {
 							</tr>
 						</thead>
 						<tbody class="cart-table__body">
-							<tr class="cart-table__row">
-								<td class="cart-table__column cart-table__column--image">
-									<div class="product-image">
-										<a href="" class="product-image__body">
-											<img class="product-image__img" src="images/products/product-1.jpg" alt="">
-										</a>
-									</div>
-								</td>
-								<td class="cart-table__column cart-table__column--product">
-									<a href="" class="cart-table__product-name">Electric Planer Brandix KL370090G 300 Watts</a>
-									<ul class="cart-table__options">
-										<li>Color: Yellow</li>
-										<li>Material: Aluminium</li>
-									</ul>
-								</td>
-								<td class="cart-table__column cart-table__column--price" data-title="Price">$699.00</td>
-								<td class="cart-table__column cart-table__column--quantity" data-title="Quantity">
-									<div class="input-number">
-										<input class="form-control input-number__input" type="number" min="1" value="2">
-										<div class="input-number__add"></div>
-										<div class="input-number__sub"></div>
-									</div>
-								</td>
-								<td class="cart-table__column cart-table__column--total" data-title="Total">$1,398.00</td>
-								<td class="cart-table__column cart-table__column--remove">
-									<button type="button" class="btn btn-light btn-sm btn-svg-icon">
-										<svg width="12px" height="12px">
-                                    <use xlink:href="images/sprite.svg#cross-12"></use>
-                                 </svg>
-									</button>
-								</td>
-							</tr>
+							<c:if test="${cart == null ||  cart.productDto.values().size() == 0}">
+								<tr>
+									<td style="color: red; text-align: center; font-weight: bold; padding: 10px" colspan="6">Bạn chưa có sản phẩm</td>
+								</tr>
+							</c:if>
+							<c:forEach items="${cart.productDto.values()}" var="prodDTO">
+								<tr class="cart-table__row">
+									<td class="cart-table__column cart-table__column--image">
+										<div class="product-image">
+											<a href="" class="product-image__body">
+												<img class="product-image__img" src="/images/products/${prodDTO.product.category.producer.name.toLowerCase()}/${prodDTO.product.photo}" alt="">
+											</a>
+										</div>
+									</td>
+									<td class="cart-table__column cart-table__column--product">
+										<a href="" class="cart-table__product-name">${prodDTO.product.name}</a>
+									</td>
+									<td class="cart-table__column cart-table__column--price" data-title="Price">
+										<fmt:formatNumber type="number" maxFractionDigits="3" value="${prodDTO.product.importPrice}" />
+										VNĐ
+									</td>
+									<td class="cart-table__column cart-table__column--quantity" data-title="Quantity">
+										<div class="input-number">
+											<input class="form-control input-number__input" id="number-${prodDTO.product.id }" type="number" min="1" value="${prodDTO.quantity }">
+											<div class="input-number__add"></div>
+											<div class="input-number__sub"></div>
+										</div>
+									</td>
+									<td class="cart-table__column cart-table__column--total" data-title="Total">
+										<fmt:formatNumber type="number" maxFractionDigits="3" value="${prodDTO.product.importPrice * prodDTO.quantity}" />
+										VNĐ
+									</td>
+									<td class="cart-table__column cart-table__column--remove">
+										<button type="button" class="btn btn-light btn-sm btn-svg-icon text-success" data-toggle="tooltip" data-placement="top" title="Cập nhật" onclick="themVaoGioHang(updateCart(${prodDTO.product.id }))">
+											<i class="fa fa-check"></i>
+										</button>
+
+										<button type="button" class="btn btn-light btn-sm btn-svg-icon text-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa" onclick="deleteProductCart(${prodDTO.product.id })">
+											<i class="fa fa-times"></i>
+										</button>
+									</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
-					<div class="cart__actions">
-						<form class="cart__coupon-form">
-							<label for="input-coupon-code" class="sr-only">Password</label>
-							<input type="text" class="form-control" id="input-coupon-code" placeholder="Coupon Code">
-							<button type="submit" class="btn btn-primary">Apply Coupon</button>
-						</form>
+					<div class="cart__actions d-flex justify-content-end">
+						
 						<div class="cart__buttons">
-							<a href="index.html" class="btn btn-light">Continue Shopping</a>
-							<a href="" class="btn btn-primary cart__update-button">Update Cart</a>
+							<a href="/" class="btn btn-primary">Tiếp tục mua sắm</a>
+							<!-- <a href="" class="btn btn-primary cart__update-button">Update Cart</a> -->
 						</div>
 					</div>
 					<div class="row justify-content-end pt-5">
-						<div class="col-12 col-md-7 col-lg-6 col-xl-5">
+						<div class="col-12 col-md-7 col-lg-6 col-xl-6">
 							<div class="card">
 								<div class="card-body">
-									<h3 class="card-title">Cart Totals</h3>
+									<h3 class="card-title">Thông tin thanh toán</h3>
 									<table class="cart__totals">
 										<thead class="cart__totals-header">
 											<tr>
-												<th>Subtotal</th>
-												<td>$5,877.00</td>
+												<th>Số lượng sản phẩm</th>
+												<td>${cart.number}</td>
 											</tr>
 										</thead>
 										<tbody class="cart__totals-body">
 											<tr>
-												<th>Shipping</th>
+												<th>Tổng giá sản phẩm</th>
 												<td>
-													$25.00
-													<div class="cart__calc-shipping">
-														<a href="#">Calculate Shipping</a>
-													</div>
+													<fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.amountTotal}" />
+													VNĐ
 												</td>
 											</tr>
 											<tr>
-												<th>Tax</th>
-												<td>$0.00</td>
+												<th>Tổng giá khuyến mãi</th>
+												<td>
+													<fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.discountPrice}" />
+													VNĐ
+												</td>
 											</tr>
 										</tbody>
 										<tfoot class="cart__totals-footer">
 											<tr>
-												<th>Total</th>
-												<td>$5,902.00</td>
+												<th>Tổng tiền cần thanh toán</th>
+												<td class="text-danger">
+													<fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.total}" />
+													VNĐ
+												</td>
 											</tr>
 										</tfoot>
 									</table>
-									<a class="btn btn-primary btn-xl btn-block cart__checkout-button" href="checkout.html">Proceed to checkout</a>
+									<a class="btn btn-primary btn-xl btn-block cart__checkout-button" href="/check_out">Thanh toán</a>
 								</div>
 							</div>
 						</div>
@@ -244,7 +262,13 @@ body {
 	<script src="js/main.js"></script>
 	<script src="js/header.js"></script>
 	<script src="vendor/svg4everybody/svg4everybody.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
+	<script src="js/cart.js"></script>
 	<script>
+		$(function () {
+		  $('[data-toggle="tooltip"]').tooltip()
+		})
 		svg4everybody();
 	</script>
 </body>

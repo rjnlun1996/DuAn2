@@ -35,6 +35,7 @@ public class CViewConstraint {
 	
 	
 	public static final String URL_CART = "/cart";
+	public static final String URL_CART_DELETE = "/cart/delete";
 	public static final String VIEW_CART = "client/cart";
 	public static final String VIEW_CART_RENDER = "client/render-cart";
 	

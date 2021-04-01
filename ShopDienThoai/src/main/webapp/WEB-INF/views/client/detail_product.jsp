@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
 <!-- font - stroyka -->
 <link rel="stylesheet" href="fonts/stroyka/stroyka.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <style type="text/css">
 body {
 	font-family: 'Source Serif Pro', serif;
@@ -258,7 +259,6 @@ body {
 									VNĐ
 								</div>
 								<!-- .product__options -->
-								<form class="product__options">
 									<div class="form-group product__option">
 										<label class="product__option-label">Màu sắc</label>
 										<div class="input-radio-color">
@@ -294,7 +294,7 @@ body {
 												</div>
 											</div>
 											<div class="product__actions-item product__actions-item--addtocart">
-												<button class="btn btn-primary btn-lg">Thêm Vào Giỏ Hàng</button>
+												<button class="btn btn-primary btn-lg" onclick="themVaoGioHang(addCartDetail(${product.id}))">Thêm Vào Giỏ Hàng</button>
 											</div>
 											<div class="product__actions-item product__actions-item--wishlist">
 												<button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="Wishlist">
@@ -305,7 +305,6 @@ body {
 											</div>
 										</div>
 									</div>
-								</form>
 								<!-- .product__options / end -->
 							</div>
 							<!-- .product__end -->
@@ -352,7 +351,7 @@ body {
 												<span class="fake-svg-icon"></span>
 											</button>
 											<div class="product-card__image product-image">
-												<a href="product.html" class="product-image__body">
+												<a href="/detail_product?productId=${prod.id}" class="product-image__body">
 													<img class="product-image__img" src="/images/products/${prod.category.producer.name.toLowerCase()}/${prod.photo}" alt="">
 												</a>
 											</div>
@@ -465,7 +464,7 @@ body {
 												<div class="product-card__prices"><fmt:formatNumber type="number" maxFractionDigits="3" value="${prod.importPrice}" />
 									VNĐ</div>
 												<div class="product-card__buttons">
-													<button class="btn btn-primary product-card__addtocart" type="button">Thêm vào giỏ hàng</button>
+													<button class="btn btn-primary product-card__addtocart" type="button" onclick="themVaoGioHang(addCartIndex(${prod.id}))">Thêm vào giỏ hàng</button>
 													<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
 													<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 														<svg width="16px" height="16px">
@@ -552,6 +551,8 @@ body {
 	<script src="js/main.js"></script>
 	<script src="js/header.js"></script>
 	<script src="vendor/svg4everybody/svg4everybody.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script src="js/cart.js"></script>
 	<script>
 		svg4everybody();
 	</script>

@@ -54,19 +54,19 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 			<div class="dropcart dropcart--style--dropdown">
 				<div class="dropcart__body" id="render-cart">
 					<div class="dropcart__products-list">
-						<c:if test="${cart == null }">
+						<c:if test="${cart == null ||  cart.productDto.values().size() == 0}">
 							<h4 style="color:red; text-align: center">Bạn chưa có sản phẩm</h4>
 						</c:if>
 						<c:forEach items="${cart.productDto.values()}" var="prodDTO">
 							<div class="dropcart__product">
 								<div class="product-image dropcart__product-image">
-									<a href="product.html" class="product-image__body">
+									<a href="/detail_product?productId=${prodDTO.product.id}" class="product-image__body">
 										<img class="product-image__img" src="/images/products/${prodDTO.product.category.producer.name.toLowerCase()}/${prodDTO.product.photo}" alt="">
 									</a>
 								</div>
 								<div class="dropcart__product-info">
 									<div class="dropcart__product-name">
-										<a href="product.html">${prodDTO.product.name}</a>
+										<a href="/detail_product?productId=${prodDTO.product.id}">${prodDTO.product.name}</a>
 									</div>
 									<!-- <ul class="dropcart__product-options">
 									<li>Color: Yellow</li>
@@ -81,7 +81,7 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 										</span>
 									</div>
 								</div>
-								<button type="button" class="dropcart__product-remove btn btn-light btn-sm btn-svg-icon">
+								<button type="button" class="dropcart__product-remove btn btn-light btn-sm btn-svg-icon" onclick="deleteProduct(${prodDTO.product.id})">
 									<svg width="10px" height="10px">
                                                       <use xlink:href="images/sprite.svg#cross-10"></use>
                                                    </svg>

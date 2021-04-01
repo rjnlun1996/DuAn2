@@ -200,7 +200,6 @@ table thead {
 	<script src="/assets/js/chat-menu.js"></script>
 	<script src="/assets/js/tooltip-init.js"></script>
 	<script src="/assets/js/animation/wow/wow.min.js"></script>
-	<script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
 	<!-- Plugins JS Ends-->
 	<script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
 	<!-- Theme js-->

@@ -41,63 +41,84 @@ public class CartController extends BaseController {
 		return CViewConstraint.VIEW_ORDER_SUCCESS;
 	}
 
+	@PostMapping(CViewConstraint.URL_CART_DELETE)
+	public String deleteProduct(Model model, @RequestParam int productId) {
+		Cart cart = sessionUtils.getCart();
+		cart.removeProduct(productId);
+		// Cập nhật cart trong session
+		sessionUtils.setCart(cart);
+
+		return CViewConstraint.VIEW_CART_RENDER;
+	}
+
 	@SuppressWarnings("unlikely-arg-type")
 	@PostMapping(CViewConstraint.URL_CART)
-	public Object addToCart(Model model, @RequestParam int productId, @RequestParam(defaultValue = "1") int quantity) {
-		
+	public Object addToCart(Model model, @RequestParam int productId, @RequestParam(defaultValue = "1") int quantity,
+			@RequestParam(defaultValue = "false") boolean isDetail,
+			@RequestParam(defaultValue = "false") boolean isUpdate) {
 		Product product = productService.findById(productId);
-		
+
 		if (product == null) {
 			return null;
 		}
-		
+
 		Cart cart = sessionUtils.getCart();
-		
+
 		// Kiểm tra nếu chưa tạo cart
-		if(cart == null) cart = new Cart();
+		if (cart == null)
+			cart = new Cart();
 
 		Map<Integer, ProductDTO> dtos = cart.getProductDto();
-		if(dtos == null) {
+		if (dtos == null) {
 			dtos = new HashMap<Integer, ProductDTO>();
 		}
-		
+
 		ProductDTO proDTO = dtos.get(productId);
-		
+
 		// Kiểm tra nếu sản phẩm chưa được thêm lần nào
-		if (proDTO == null) proDTO = new ProductDTO();
-		
+		if (proDTO == null)
+			proDTO = new ProductDTO();
+
 		proDTO.setProduct(product);
-		
-		// Nếu bấm Add to card thì mặc định quantity=1 cho nên (==>) quantity = quantity + 1
-		// Nếu bấm Cập nhật trong Giỏ hàng thì giá trị quantity sẽ chính là số lượng hiện tại trong giỏ hàng
-		int quan = quantity == 1 ? (proDTO.getQuantity() + 1) : quantity;
-		
+
+		// Nếu bấm Add to card thì mặc định quantity=1 cho nên (==>) quantity = quantity
+		// + 1
+		// Nếu bấm Cập nhật trong Giỏ hàng thì giá trị quantity sẽ chính là số lượng
+		// hiện tại trong giỏ hàng
+		int quan = proDTO.getQuantity() + 1;
+
+		if (isDetail)
+			quan = quantity + proDTO.getQuantity();
+		if (isUpdate)
+			quan = quantity;
+
 		proDTO.setQuantity(quan);
-		
-		//Discount dis = product.getDiscounts().stream().filter(e -> e.isCurrent() && e.isEnabled()).findFirst().orElse(null);
-		
+
+		// Discount dis = product.getDiscounts().stream().filter(e -> e.isCurrent() &&
+		// e.isEnabled()).findFirst().orElse(null);
+
 		int discount = 0;
-		for(Discount dis: product.getDiscounts()) {
-			if(dis.isCurrent() &&  dis.isEnabled()) {
+		for (Discount dis : product.getDiscounts()) {
+			if (dis.isCurrent() && dis.isEnabled()) {
 				discount = dis.getPercents();
 				break;
 			}
 		}
-		
+
 		proDTO.setDiscount(discount);
-		
+
 		// Tính amount của sản phẩm (price * quantity)
 		proDTO.calAmount();
-		
+
 		// Cập nhật or tạo sản phẩm
 		dtos.put(productId, proDTO);
 		cart.setProductDto(dtos);
-		
+
 		// Tính discountPrice, amountTotal, total
 		cart.calculate();
-		
+
 		// Cập nhật cart trong session
-		sessionUtils.setCart(cart);	
+		sessionUtils.setCart(cart);
 
 		return CViewConstraint.VIEW_CART_RENDER;
 	}

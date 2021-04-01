@@ -14,8 +14,8 @@ public class Cart {
 	private Map<Integer, ProductDTO> productDto;
 	private long amountTotal;
 	private long discountPrice;
-	private long total;	
-	
+	private long total;
+	private long number;
 
 	public Map<Integer, ProductDTO> getProductDto() {
 		return productDto;
@@ -53,8 +53,16 @@ public class Cart {
 		this.total = total;
 	}
 
+	public long getNumber() {
+		return number;
+	}
+
+	public void setNumber(long number) {
+		this.number = number;
+	}
+
 	@SuppressWarnings("unlikely-arg-type")
-	public void addProduct(Product product, int quantity, int discount) {		
+	public void addProduct(Product product, int quantity, int discount) {
 		ProductDTO proDTO = this.productDto.get(product.getId());
 		if (proDTO == null) {
 			proDTO = new ProductDTO();
@@ -67,16 +75,16 @@ public class Cart {
 
 		proDTO.setQuantity(quantity);
 		proDTO.calAmount();
-		
+
 		this.productDto.put(product.getId(), proDTO);
 
 		// cart
 		this.calculate();
 	}
-	
+
 	@SuppressWarnings("unlikely-arg-type")
-	public void removeProduct(Product product) {
-		this.productDto.remove(product.getId());
+	public void removeProduct(int productId) {
+		this.productDto.remove(productId);
 
 		// cart
 		this.calculate();
@@ -84,16 +92,25 @@ public class Cart {
 
 	public void calculate() {
 		this.calAmountTotal();
-		this.calDiscountPrice();		
+		this.calDiscountPrice();
+		this.calNumber();
 
 		this.calTotal();
+	}
+
+	public void calNumber() {
+		long number = 0;
+		for (ProductDTO prod : this.productDto.values()) {
+			number += prod.getQuantity();
+		}
+		this.number = number;
 	}
 
 	public void calDiscountPrice() {
 		long discountPrice = 0;
 		for (ProductDTO prod : this.productDto.values()) {
-			if(prod.getDiscount() != 0) {
-				discountPrice +=  prod.getAmount() * prod.getDiscount() / 100;
+			if (prod.getDiscount() != 0) {
+				discountPrice += prod.getAmount() * prod.getDiscount() / 100;
 			}
 		}
 		this.discountPrice = discountPrice;
@@ -106,11 +123,10 @@ public class Cart {
 		}
 		this.amountTotal = amountTotal;
 	}
-	
-	public long calTotal() {		
+
+	public long calTotal() {
 		this.total = this.amountTotal - this.discountPrice;
 		return this.total;
 	}
-	
 
 }

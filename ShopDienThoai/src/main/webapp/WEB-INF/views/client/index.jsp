@@ -221,7 +221,7 @@ body {
 												<div class="product-card__badge product-card__badge--sale">Sale</div>
 											</div>
 											<div class="product-card__image product-image">
-												<a href="product.html" class="product-image__body">
+												<a href="/detail_product?productId=${prod.id}" class="product-image__body">
 													<img class="product-image__img" src="/images/products/${prod.category.producer.name.toLowerCase()}/${prod.photo}" alt="">
 												</a>
 											</div>
@@ -336,7 +336,7 @@ body {
 
 												</div>
 												<div class="product-card__buttons">
-													<button class="btn btn-primary product-card__addtocart" type="button" style="font-size: 12px" onclick="themVaoGioHang(${prod.id})">Thêm Vào Giỏ Hàng</button>
+													<button class="btn btn-primary product-card__addtocart" type="button" style="font-size: 12px" onclick="themVaoGioHang(addCartIndex(${prod.id}))">Thêm Vào Giỏ Hàng</button>
 													<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 													<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 														<svg width="16px" height="16px">
@@ -410,7 +410,7 @@ body {
 												</div>
 												<div class="product-card__info">
 													<div class="product-card__name">
-														<a href="product.html">${prod.name }</a>
+														<a href="/detail_product?productId=${prod.id}">${prod.name }</a>
 													</div>
 													<div class="product-card__rating">
 														<div class="product-card__rating-stars">
@@ -519,7 +519,7 @@ body {
 														VNĐ
 													</div>
 													<div class="product-card__buttons">
-														<button class="btn btn-primary product-card__addtocart" type="button" onclick="themVaoGioHang(${prod.id})">Thêm Vào Giỏ Hàng</button>
+														<button class="btn btn-primary product-card__addtocart" type="button" onclick="themVaoGioHang(addCartIndex(${prod.id}))">Thêm Vào Giỏ Hàng</button>
 														<button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Thêm Vào Giỏ Hàng</button>
 														<button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
 															<svg width="16px" height="16px">
