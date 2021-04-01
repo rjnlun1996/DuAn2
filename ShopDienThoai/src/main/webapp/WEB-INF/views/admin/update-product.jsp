@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="static com.hitech.utils.ViewUtils.*"%>
@@ -9,28 +8,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description"
-	content="Creative admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-<meta name="keywords"
-	content="admin template, Creative admin template, dashboard template, flat admin template, responsive admin template, web app">
+<meta name="description" content="Creative admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+<meta name="keywords" content="admin template, Creative admin template, dashboard template, flat admin template, responsive admin template, web app">
 <meta name="author" content="pixelstrap">
 <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
-<link rel="shortcut icon" href="/assets/images/favicon.png"
-	type="image/x-icon">
+<link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
 <title>HOPE - UPDATE PRODUCT</title>
 <!-- Google font-->
-<link
-	href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 <!-- Font Awesome-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/fontawesome.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/fontawesome.css">
 <!-- ico-font-->
 <link rel="stylesheet" type="text/css" href="/assets/css/icofont.css">
 <!-- Themify icon-->
@@ -38,20 +27,37 @@
 <!-- Flag icon-->
 <link rel="stylesheet" type="text/css" href="/assets/css/flag-icon.css">
 <!-- Feather icon-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/feather-icon.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/feather-icon.css">
+
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <!-- Bootstrap css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
 <!-- App css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-<link id="color" rel="stylesheet" href="/assets/css/light-1.css"
-	media="screen">
+<link id="color" rel="stylesheet" href="/assets/css/light-1.css" media="screen">
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+
 <style>
 .invalid-feedback {
 	display: block
 }
+.panel-heading>.note-btn-group{
+	border: 1px solid
+}
+.note-dropdown-menu{
+	padding: 10px 20px !important;
+	min-width: 200px !important;
+}
+button>span.note-icon-caret{
+	display: none !important;
+}
+
+button>i{
+	margin-right: 10px !important;
+}
+
+
 </style>
 </head>
 <body>
@@ -85,8 +91,7 @@
 							<div class="col-lg-6">
 								<h3>FORM UPDATE PRODUCT</h3>
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="<%=URL_ADMIN_HOME%>">Home</a>
-									</li>
+									<li class="breadcrumb-item"><a href="<%=URL_ADMIN_HOME%>">Home</a></li>
 
 								</ol>
 							</div>
@@ -94,25 +99,15 @@
 								<!-- Bookmark Start-->
 								<div class="bookmark pull-right">
 									<ul>
-										<li><a href="#" data-container="body"
-											data-toggle="popover" data-placement="top" title=""
-											data-original-title="Tables"> <i data-feather="inbox"></i>
+										<li><a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Tables"> <i data-feather="inbox"></i>
 										</a></li>
-										<li><a href="#" data-container="body"
-											data-toggle="popover" data-placement="top" title=""
-											data-original-title="Chat"> <i
-												data-feather="message-square"></i>
+										<li><a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Chat"> <i data-feather="message-square"></i>
 										</a></li>
-										<li><a href="#" data-container="body"
-											data-toggle="popover" data-placement="top" title=""
-											data-original-title="Icons"> <i data-feather="command"></i>
+										<li><a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Icons"> <i data-feather="command"></i>
 										</a></li>
-										<li><a href="#" data-container="body"
-											data-toggle="popover" data-placement="top" title=""
-											data-original-title="Learning"> <i data-feather="layers"></i>
+										<li><a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Learning"> <i data-feather="layers"></i>
 										</a></li>
-										<li><a href="#"> <i class="bookmark-search"
-												data-feather="star"></i>
+										<li><a href="#"> <i class="bookmark-search" data-feather="star"></i>
 										</a>
 											<form class="form-inline search-form">
 												<div class="form-group form-control-search">
@@ -136,9 +131,7 @@
 										<div class="card-header">
 											<h5>UPDATE PRODUCT</h5>
 										</div>
-										<form:form
-											class="theme-form ${error == true ? 'was-validated' : '' }"
-											modelAttribute="product" novalidate="novalidate" method="post" enctype="multipart/form-data">
+										<form:form class="theme-form ${error == true ? 'was-validated' : '' }" modelAttribute="product" novalidate="novalidate" method="post" enctype="multipart/form-data">
 											<div class="card-body">
 
 												<c:if test="${message != null}">
@@ -154,8 +147,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="name">Name</label>
 													<div class="col-sm-9">
-														<form:input path="name" class="form-control"
-															required="required" minlength="2" maxlength="50" />
+														<form:input path="name" class="form-control" required="required" minlength="2" maxlength="50" />
 														<form:errors path="name" />
 													</div>
 												</div>
@@ -165,7 +157,7 @@
 														<form:select path="category" class="form-control">
 															<form:options items="${listCategory}" itemLabel="name"></form:options>
 														</form:select>
-														<form:errors path="category"  />
+														<form:errors path="category" />
 													</div>
 												</div>
 												<div class="form-group row">
@@ -187,49 +179,46 @@
 													</div>
 												</div> --%>
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="importPrice">Import
-														Price</label>
+													<label class="col-sm-3 col-form-label" for="importPrice">Import Price</label>
 													<div class="col-sm-9">
-														<form:input path="importPrice" class="form-control"
-															required="required" min="1000" max="999999999" />
-														<form:errors path="importPrice"  />
+														<form:input path="importPrice" class="form-control" required="required" min="1000" max="999999999" />
+														<form:errors path="importPrice" />
 													</div>
 												</div>
-											
-												
+
+
 												<fieldset class="form-group row">
 													<label class="col-form-label col-sm-3">Is Available</label>
 													<div class="col-sm-9">
-														<form:checkbox path="available"/>  
+														<form:checkbox path="available" />
 														<form:errors path="available" />
 													</div>
 												</fieldset>
 												<fieldset class="form-group row">
 													<label class="col-form-label col-sm-3">Is Special</label>
 													<div class="col-sm-9">
-														<form:checkbox path="special"/>  
+														<form:checkbox path="special" />
 														<form:errors path="special" />
 													</div>
 												</fieldset>
 												<fieldset class="form-group row">
 													<label class="col-form-label col-sm-3">Is Latest</label>
 													<div class="col-sm-9">
-														<form:checkbox path="latest"/>  
+														<form:checkbox path="latest" />
 														<form:errors path="latest" />
 													</div>
 												</fieldset>
-												
+
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="description">Description</label>
 													<div class="col-sm-9">
-														<form:input path="description" class="form-control"
-															required="required" minlength="0" maxlength="99999" />
+														<form:textarea path="description" class="form-control" required="required"/>
 														<form:errors path="description" />
 													</div>
 												</div>
 											</div>
 											<div class="card-footer">
-												<a href="<%=URL_ADMIN_DISCOUNT_INSERT%>?productId=<%= request.getParameter("id") %>" class="btn btn-primary">Update Discount</a>
+												<a href="<%=URL_ADMIN_DISCOUNT_INSERT%>?productId=<%=request.getParameter("id")%>" class="btn btn-primary">Update Discount</a>
 												<button class="btn btn-primary" type="submit">Update</button>
 												<button class="btn btn-secondary" type="reset">Cancel</button>
 											</div>
@@ -273,13 +262,11 @@
 	<script src="/assets/js/custom-card/custom-card.js"></script>
 	<script src="/assets/js/notify/bootstrap-notify.min.js"></script>
 	<script src="/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
 	<script src="/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
 	<script src="/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
 	<script src="/assets/js/vector-map/map/jquery-jvectormap-au-mill.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
 	<script src="/assets/js/vector-map/map/jquery-jvectormap-in-mill.js"></script>
 	<script src="/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
 	<script src="/assets/js/dashboard/default.js"></script>
@@ -287,6 +274,7 @@
 	<script src="/assets/js/chat-menu.js"></script>
 	<script src="/assets/js/tooltip-init.js"></script>
 	<script src="/assets/js/animation/wow/wow.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 	<!-- Plugins JS Ends-->
 	<!-- Theme js-->
 	<script src="/assets/js/script.js"></script>
@@ -295,7 +283,7 @@
 	<!-- Plugin used-->
 	<script type="text/javascript">
 		function readURL(input) {
-			if (input.files && input.files[0]) {				
+			if (input.files && input.files[0]) {
 				var reader = new FileReader();
 
 				reader.readAsDataURL(input.files[0]);
@@ -306,7 +294,8 @@
 
 			}
 		}
-		$( document ).ready(function() {
+		$(document).ready(function() {
+			$('#description').summernote();
 			readURL(this);
 		});
 		$("#imgInp").change(function() {
@@ -315,26 +304,3 @@
 	</script>
 </body>
 </html>
-<!-- <div class="welcome-popup modal fade" id="loadModal" tabindex="-1"
-	role="dialog" aria-labelledby="exampleModalCenterTitle"
-	aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<button class="close" type="button" data-dismiss="modal"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			<div class="modal-body">
-				<div class="modal-header"></div>
-				<div class="contain p-50">
-					<div class="text-center">
-						<h3>Welcome to creative admin</h3>
-						<p>start your project with developer friendly admin</p>
-						<button class="btn btn-primary btn-lg txt-white" type="button"
-							data-dismiss="modal" aria-label="Close">Get Started</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div> -->
