@@ -1,4 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="static com.hitech.utils.ViewUtils.*"%>
+<%@ page import="static com.hitech.constraints.CViewConstraint.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<jsp:useBean id="now" class="java.util.Date" />
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -24,9 +30,19 @@
 <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
 <!-- font - stroyka -->
 <link rel="stylesheet" href="fonts/stroyka/stroyka.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/sweetalert2.css">
 <style type="text/css">
 body {
 	font-family: 'Source Serif Pro', serif;
+}
+
+.invalid-feedback {
+	display: block;
+}
+
+.was-validated .form-control:valid, .form-control.is-valid {
+	background-image: none !important;
 }
 </style>
 
@@ -59,261 +75,158 @@ body {
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item">
-									<a href="index.html">Home</a>
+									<a href="/">Trang chủ</a>
 									<svg class="breadcrumb-arrow" width="6px" height="9px">
                                  <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
                               </svg>
 								</li>
 								<li class="breadcrumb-item">
-									<a href="">Breadcrumb</a>
+									<a href="">Giỏ Hàng</a>
 									<svg class="breadcrumb-arrow" width="6px" height="9px">
                                  <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
                               </svg>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Checkout</li>
+								<li class="breadcrumb-item active" aria-current="page">Thanh Toán</li>
 							</ol>
 						</nav>
 					</div>
 					<div class="page-header__title">
-						<h1>Checkout</h1>
+						<h1>Thanh Toán</h1>
 					</div>
 				</div>
 			</div>
 			<div class="checkout block">
 				<div class="container">
-					<div class="row">
-						<div class="col-12 col-lg-6 col-xl-7">
-							<div class="card mb-lg-0">
-								<div class="card-body">
-									<h3 class="card-title">Billing details</h3>
-									<div class="form-group">
-										<label for="name"> Họ và Tên </label>
-										<input type="text" class="form-control" id="name" placeholder="Họ và Tên ">
+					<form:form class="theme-form ${error ? 'was-validated' : ''}" modelAttribute="order" method="post">
+						<div class="row">
+							<c:if test="${cart == null ||  cart.productDto.values().size() == 0}">
+								<div class="col-12">
+									<h3 class="text-danger text-center">Giỏ hàng không có gì để thanh toán</h3>
+									<div class="text-center">
+										<a href="/" class="btn btn-primary">Mua sắm</a>
 									</div>
-									<div class="form-group">
-										<label for="checkout-company-name">
-											Company Name
-											<span class="text-muted">(Optional)</span>
-										</label>
-										<input type="text" class="form-control" id="checkout-company-name" placeholder="Company Name">
-									</div>
-									<div class="form-group">
-										<label for="checkout-country">Country</label>
-										<select id="checkout-country" class="form-control form-control-select2">
-											<option>Select a country...</option>
-											<option>United States</option>
-											<option>Russia</option>
-											<option>Italy</option>
-											<option>France</option>
-											<option>Ukraine</option>
-											<option>Germany</option>
-											<option>Australia</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label for="checkout-street-address">Street Address</label>
-										<input type="text" class="form-control" id="checkout-street-address" placeholder="Street Address">
-									</div>
-									<div class="form-group">
-										<label for="checkout-address">
-											Apartment, suite, unit etc.
-											<span class="text-muted">(Optional)</span>
-										</label>
-										<input type="text" class="form-control" id="checkout-address">
-									</div>
-									<div class="form-group">
-										<label for="checkout-city">Town / City</label>
-										<input type="text" class="form-control" id="checkout-city">
-									</div>
-									<div class="form-group">
-										<label for="checkout-state">State / County</label>
-										<input type="text" class="form-control" id="checkout-state">
-									</div>
-									<div class="form-group">
-										<label for="checkout-postcode">Postcode / ZIP</label>
-										<input type="text" class="form-control" id="checkout-postcode">
-									</div>
-									<div class="form-row">
-										<div class="form-group col-md-6">
-											<label for="checkout-email">Email address</label>
-											<input type="email" class="form-control" id="checkout-email" placeholder="Email address">
+								</div>
+							</c:if>
+							<c:if test="${cart != null && cart.productDto.values().size() > 0}">
+								<c:if test="${error != null}">
+									<div class="col-12 alert alert-danger" role="alert">${error}</div>
+								</c:if>
+								<div class="col-12 col-lg-6 col-xl-7">
+									<div class="card mb-lg-0">
+										<div class="card-body">
+											<h3 class="card-title">Chi tiết Giao Hàng</h3>
+											<div class="form-group">
+												<label for="receiver"> Họ và Tên </label>
+												<form:input type="text" class="form-control" path="receiver" placeholder="Họ và Tên " />
+												<form:errors path="receiver" class="invalid-feedback" />
+											</div>
+											<div class="form-group">
+												<label for="address">Địa chỉ người nhận</label>
+												<form:input path="address" class="form-control" id="checkout-street-address" placeholder="Địa chỉ người nhận" />
+												<form:errors path="address" class="invalid-feedback" />
+											</div>
+											<div class="form-row">
+												<div class="form-group col-md-6">
+													<label for="checkout-email">Địa chỉ email</label>
+													<input type="email" class="form-control" id="checkout-email" placeholder="Địa chỉ email" value="${user.email}" readonly="readonly">
+												</div>
+												<div class="form-group col-md-6">
+													<label for="phone">Số điện thoại</label>
+													<form:input path="phone" class="form-control" placeholder="Số điện thoại" />
+													<form:errors path="phone" class="invalid-feedback" />
+												</div>
+											</div>
 										</div>
-										<div class="form-group col-md-6">
-											<label for="checkout-phone">Phone</label>
-											<input type="text" class="form-control" id="checkout-phone" placeholder="Phone">
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="form-check">
-											<span class="form-check-input input-check">
-												<span class="input-check__body">
-													<input class="input-check__input" type="checkbox" id="checkout-create-account">
-													<span class="input-check__box"></span>
-													<svg class="input-check__icon" width="9px" height="7px">
-                                             <use xlink:href="images/sprite.svg#check-9x7"></use>
-                                          </svg>
-												</span>
-											</span>
-											<label class="form-check-label" for="checkout-create-account">Create an account?</label>
+										<div class="card-divider"></div>
+										<div class="card-body">
+											<h3 class="card-title">Khác</h3>
+											<div class="form-group">
+												<label for="checkout-comment">
+													Ghi chú
+													<span class="text-muted">(Tùy chọn)</span>
+												</label>
+												<form:textarea path="description" class="form-control" rows="4" />
+											</div>
 										</div>
 									</div>
 								</div>
-								<div class="card-divider"></div>
-								<div class="card-body">
-									<h3 class="card-title">Shipping Details</h3>
-									<div class="form-group">
-										<div class="form-check">
-											<span class="form-check-input input-check">
-												<span class="input-check__body">
-													<input class="input-check__input" type="checkbox" id="checkout-different-address">
-													<span class="input-check__box"></span>
-													<svg class="input-check__icon" width="9px" height="7px">
-                                             <use xlink:href="images/sprite.svg#check-9x7"></use>
-                                          </svg>
-												</span>
-											</span>
-											<label class="form-check-label" for="checkout-different-address">Ship to a different address?</label>
+								<div class="col-12 col-lg-6 col-xl-5 mt-4 mt-lg-0">
+									<div class="card mb-0">
+										<div class="card-body">
+											<h3 class="card-title">Giỏ hàng của bạn</h3>
+											<table class="checkout__totals">
+												<thead class="checkout__totals-header">
+													<tr>
+														<th>Sản Phẩm</th>
+														<th>Tổng</th>
+													</tr>
+												</thead>
+												<tbody class="checkout__totals-products">
+													<c:forEach items="${cart.productDto.values()}" var="prodDTO">
+														<tr>
+															<td>
+																<span class="text-info">${prodDTO.product.name }</span>
+																x
+																<span class="text-danger f-12">${prodDTO.quantity }</span>
+															</td>
+															<td>
+																<fmt:formatNumber type="number" maxFractionDigits="3" value="${prodDTO.product.importPrice}" />
+																VNĐ
+															</td>
+														</tr>
+													</c:forEach>
+												</tbody>
+												<tbody class="checkout__totals-subtotals">
+													<tr>
+														<th>Số lượng sản phẩm</th>
+														<td>${cart.number}</td>
+													</tr>
+													<tr>
+														<th>Tổng giá sản phẩm</th>
+														<td>
+															<fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.amountTotal}" />
+															VNĐ
+														</td>
+													</tr>
+													<tr>
+														<th>Tổng giá khuyến mãi</th>
+														<td>
+															<fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.discountPrice}" />
+															VNĐ
+														</td>
+													</tr>
+												</tbody>
+												<tfoot class="checkout__totals-footer">
+													<tr>
+														<th>Tổng tiền</th>
+														<td class="text-danger">
+															<fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.total}" />
+															VNĐ
+														</td>
+													</tr>
+												</tfoot>
+											</table>
+											<div class="checkout__agree form-group">
+												<table class="checkout__totals">
+													<tboby class="checkout__totals-subtotals">
+														<tr>
+															<th>Ngày giao hàng dự kiến</th>
+															<td class="text-danger">
+															<jsp:setProperty name="now" property="time" value="${now.getTime() + 3 * 24 * 60 * 60 * 1000}"/>
+															<fmt:formatDate pattern="dd-MM-yyyy" value="${now}" />
+																
+															</td>
+														</tr>
+													</tboby>
+												</table>
+											</div>
+											<button type="submit" class="btn btn-primary btn-xl btn-block">Thanh Toán</button>
 										</div>
 									</div>
-									<div class="form-group">
-										<label for="checkout-comment">
-											Order notes
-											<span class="text-muted">(Optional)</span>
-										</label>
-										<textarea id="checkout-comment" class="form-control" rows="4"></textarea>
-									</div>
 								</div>
-							</div>
+							</c:if>
 						</div>
-						<div class="col-12 col-lg-6 col-xl-5 mt-4 mt-lg-0">
-							<div class="card mb-0">
-								<div class="card-body">
-									<h3 class="card-title">Your Order</h3>
-									<table class="checkout__totals">
-										<thead class="checkout__totals-header">
-											<tr>
-												<th>Product</th>
-												<th>Total</th>
-											</tr>
-										</thead>
-										<tbody class="checkout__totals-products">
-											<tr>
-												<td>Electric Planer Brandix KL370090G 300 Watts × 2</td>
-												<td>$1,398.00</td>
-											</tr>
-											<tr>
-												<td>Undefined Tool IRadix DPS3000SY 2700 watts × 1</td>
-												<td>$849.00</td>
-											</tr>
-											<tr>
-												<td>Brandix Router Power Tool 2017ERXPK × 3</td>
-												<td>$3,630.00</td>
-											</tr>
-										</tbody>
-										<tbody class="checkout__totals-subtotals">
-											<tr>
-												<th>Subtotal</th>
-												<td>$5,877.00</td>
-											</tr>
-											<tr>
-												<th>Store Credit</th>
-												<td>$-20.00</td>
-											</tr>
-											<tr>
-												<th>Shipping</th>
-												<td>$25.00</td>
-											</tr>
-										</tbody>
-										<tfoot class="checkout__totals-footer">
-											<tr>
-												<th>Total</th>
-												<td>$5,882.00</td>
-											</tr>
-										</tfoot>
-									</table>
-									<div class="payment-methods">
-										<ul class="payment-methods__list">
-											<li class="payment-methods__item payment-methods__item--active">
-												<label class="payment-methods__item-header">
-													<span class="payment-methods__item-radio input-radio">
-														<span class="input-radio__body">
-															<input class="input-radio__input" name="checkout_payment_method" type="radio" checked="checked">
-															<span class="input-radio__circle"></span>
-														</span>
-													</span>
-													<span class="payment-methods__item-title">Direct bank transfer</span>
-												</label>
-												<div class="payment-methods__item-container">
-													<div class="payment-methods__item-description text-muted">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.</div>
-												</div>
-											</li>
-											<li class="payment-methods__item">
-												<label class="payment-methods__item-header">
-													<span class="payment-methods__item-radio input-radio">
-														<span class="input-radio__body">
-															<input class="input-radio__input" name="checkout_payment_method" type="radio">
-															<span class="input-radio__circle"></span>
-														</span>
-													</span>
-													<span class="payment-methods__item-title">Check payments</span>
-												</label>
-												<div class="payment-methods__item-container">
-													<div class="payment-methods__item-description text-muted">Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</div>
-												</div>
-											</li>
-											<li class="payment-methods__item">
-												<label class="payment-methods__item-header">
-													<span class="payment-methods__item-radio input-radio">
-														<span class="input-radio__body">
-															<input class="input-radio__input" name="checkout_payment_method" type="radio">
-															<span class="input-radio__circle"></span>
-														</span>
-													</span>
-													<span class="payment-methods__item-title">Cash on delivery</span>
-												</label>
-												<div class="payment-methods__item-container">
-													<div class="payment-methods__item-description text-muted">Pay with cash upon delivery.</div>
-												</div>
-											</li>
-											<li class="payment-methods__item">
-												<label class="payment-methods__item-header">
-													<span class="payment-methods__item-radio input-radio">
-														<span class="input-radio__body">
-															<input class="input-radio__input" name="checkout_payment_method" type="radio">
-															<span class="input-radio__circle"></span>
-														</span>
-													</span>
-													<span class="payment-methods__item-title">PayPal</span>
-												</label>
-												<div class="payment-methods__item-container">
-													<div class="payment-methods__item-description text-muted">Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</div>
-												</div>
-											</li>
-										</ul>
-									</div>
-									<div class="checkout__agree form-group">
-										<div class="form-check">
-											<span class="form-check-input input-check">
-												<span class="input-check__body">
-													<input class="input-check__input" type="checkbox" id="checkout-terms">
-													<span class="input-check__box"></span>
-													<svg class="input-check__icon" width="9px" height="7px">
-                                             <use xlink:href="images/sprite.svg#check-9x7"></use>
-                                          </svg>
-												</span>
-											</span>
-											<label class="form-check-label" for="checkout-terms">
-												I have read and agree to the website
-												<a target="_blank" href="terms-and-conditions.html">terms and conditions</a>
-												*
-											</label>
-										</div>
-									</div>
-									<button type="submit" class="btn btn-primary btn-xl btn-block">Place Order</button>
-								</div>
-							</div>
-						</div>
-					</div>
+					</form:form>
 				</div>
 			</div>
 		</div>
@@ -382,6 +295,9 @@ body {
 	<script src="js/main.js"></script>
 	<script src="js/header.js"></script>
 	<script src="vendor/svg4everybody/svg4everybody.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
+	<script src="js/cart.js"></script>
 	<script>
 		svg4everybody();
 	</script>

@@ -15,12 +15,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.hitech.cart.ProductDTO;
 
 @Entity
 @Table(name = "Orders")
@@ -41,15 +43,19 @@ public class Order extends BaseEntity implements Serializable {
 	private Date requireDate;
 
 	@Column
+	@NotBlank(message = "Vui lòng nhập Tên người nhận !!! ")
+	@Size(min = 2, max = 20, message = "Tên người nhận phải từ {min} đến {max}")
 	private String receiver;
 
 	@Column
+	@NotBlank(message = "Vui lòng nhập Địa chỉ giao hàng !!! ")
 	private String address;
 
 	@Column
 	private String description;
 
 	@Column
+	@Pattern(regexp = "(84|0[3|5|7|8|9])+([0-9]{8})", message = "Vui lòng nhập Số điện thoại đúng định dạng")
 	private String phone;
 
 	@Column
@@ -160,7 +166,7 @@ public class Order extends BaseEntity implements Serializable {
 		this.statusOrders = statusOrders;
 	}
 
-	public long getDiscountPrice() {
+	public long calDiscountPrice() {
 		long discountPrice = 0;
 		for (OrderDetail orderDetail : this.orderDetails) {
 			if (orderDetail.isEnabled()) {
@@ -171,7 +177,7 @@ public class Order extends BaseEntity implements Serializable {
 		return discountPrice;
 	}
 
-	public long getAmountTotal() {
+	public long calAmountTotal() {
 		long amountTotal = 0;
 		for (OrderDetail orderDetail : this.orderDetails) {
 			if (orderDetail.isEnabled()) {
@@ -181,11 +187,11 @@ public class Order extends BaseEntity implements Serializable {
 		return amountTotal;
 	}
 
-	public long getOrderTotal() {
-		return this.getAmountTotal() - this.getDiscountPrice();
+	public long calOrder() {
+		return this.calAmountTotal() - this.calDiscountPrice();
 	}
 
 	public void calOrderTotal() {
-		this.total = this.getOrderTotal();
+		this.total = this.calOrder();
 	}
 }

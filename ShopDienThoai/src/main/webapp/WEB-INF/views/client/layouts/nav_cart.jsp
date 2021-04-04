@@ -25,16 +25,6 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 
 
 <div class="nav-panel__indicators">
-	<div class="indicator">
-		<a href="wishlist.html" class="indicator__button">
-			<span class="indicator__area">
-				<svg width="20px" height="20px">
-                                          <use xlink:href="images/sprite.svg#heart-20"></use>
-                                       </svg>
-				<span class="indicator__value">0</span>
-			</span>
-		</a>
-	</div>
 	<div class="indicator indicator--trigger--click">
 		<a href="cart.html" class="indicator__button">
 			<span class="indicator__area">
@@ -55,7 +45,7 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 				<div class="dropcart__body" id="render-cart">
 					<div class="dropcart__products-list">
 						<c:if test="${cart == null ||  cart.productDto.values().size() == 0}">
-							<h4 style="color:red; text-align: center">Bạn chưa có sản phẩm</h4>
+							<h4 style="color: red; text-align: center">Bạn chưa có sản phẩm</h4>
 						</c:if>
 						<c:forEach items="${cart.productDto.values()}" var="prodDTO">
 							<div class="dropcart__product">
@@ -75,7 +65,7 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 									<div class="dropcart__product-meta">
 										<span class="dropcart__product-quantity">${prodDTO.quantity}</span>
 										×
-										<span class="dropcart__product-price" style="color:red">
+										<span class="dropcart__product-price" style="color: red">
 											<fmt:formatNumber type="number" maxFractionDigits="3" value="${prodDTO.product.importPrice}" />
 											VNĐ
 										</span>
@@ -96,7 +86,7 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 								<td style="color: green; font-weight: bold">
 									<c:if test="${cart == null }">0</c:if>
 									<c:if test="${cart != null }">
-									 <fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.getTotal()}" />
+										<fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.getAmountTotal()}" />
 									</c:if>
 									VNĐ
 								</td>
@@ -105,7 +95,7 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 					</div>
 					<div class="dropcart__buttons">
 						<a class="btn btn-secondary" href="/cart">Xem chi tiết</a>
-						<a class="btn btn-primary" href="checkout.html">Đặt hàng</a>
+						<a class="btn btn-primary" href="/check_out">Đặt hàng</a>
 					</div>
 				</div>
 			</div>

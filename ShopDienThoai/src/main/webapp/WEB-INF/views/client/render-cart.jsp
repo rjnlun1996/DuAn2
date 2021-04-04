@@ -46,7 +46,7 @@
 			<td style="color: green; font-weight: bold">
 				<c:if test="${cart == null }">0</c:if>
 				<c:if test="${cart != null }">
-					<fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.getTotal()}" />
+					<fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.getAmountTotal()}" />
 				</c:if>
 				VNĐ
 			</td>
@@ -55,5 +55,5 @@
 </div>
 <div class="dropcart__buttons">
 	<a class="btn btn-secondary" href="/cart">Xem chi tiết</a>
-	<a class="btn btn-primary" href="/checkout">Đặt hàng</a>
+	<a class="btn btn-primary" href="/check_out">Đặt hàng</a>
 </div>

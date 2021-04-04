@@ -9,4 +9,6 @@ public interface OrderDetailService extends IBaseService<OrderDetail, Integer>{
 	boolean deleteByEnable(Integer id);
 	
 	List<OrderDetail> findByOrderIdAndProductId(int orderId, int productId);
+	
+	Iterable<OrderDetail> saveAll(List<OrderDetail> orderDetails);
 }

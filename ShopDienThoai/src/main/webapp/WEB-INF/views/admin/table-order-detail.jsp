@@ -354,21 +354,21 @@ table thead {
 													<tr>
 														<td class="w-50 text-right">Price Products Total</td>
 														<td>
-															<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.getAmountTotal()}" />
+															<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.calAmountTotal()}" />
 															VNĐ
 														</td>
 													</tr>
 													<tr>
 														<td class="w-50 text-right">Total Discount</td>
 														<td>
-															<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.getDiscountPrice()}" />
+															<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.calDiscountPrice()}" />
 															VNĐ
 														</td>
 													</tr>
 													<tr>
 														<td class="w-50 text-right">Price Total</td>
 														<td class="text-danger">
-															<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.getOrderTotal()}" />
+															<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.calOrderTotal()}" />
 															VNĐ
 														</td>
 													</tr>

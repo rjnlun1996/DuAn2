@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="static com.hitech.utils.ViewUtils.*"%>
+<%@ page import="static com.hitech.constraints.CViewConstraint.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -63,26 +68,33 @@ body {
 							<h1 class="order-success__title">Thank you</h1>
 							<div class="order-success__subtitle">Your order has been received</div>
 							<div class="order-success__actions">
-								<a href="" class="btn btn-xs btn-secondary">Go To Homepage</a>
+								<a href="/" class="btn btn-xs btn-secondary">Go To Homepage</a>
 							</div>
 						</div>
 						<div class="order-success__meta">
 							<ul class="order-success__meta-list">
 								<li class="order-success__meta-item">
-									<span class="order-success__meta-title">Order number:</span>
-									<span class="order-success__meta-value">#3487</span>
+									<span class="order-success__meta-title">Đơn hàng:</span>
+									<span class="order-success__meta-value">#${orderSuccess.id }</span>
 								</li>
 								<li class="order-success__meta-item">
-									<span class="order-success__meta-title">Created at:</span>
-									<span class="order-success__meta-value">October 19, 2020</span>
+									<span class="order-success__meta-title">Ngày Tạo:</span>
+									<span class="order-success__meta-value">
+										<fmt:formatDate pattern="dd-MM-yyyy" value="${orderSuccess.createdAt }" />
+									</span>
 								</li>
 								<li class="order-success__meta-item">
-									<span class="order-success__meta-title">Total:</span>
-									<span class="order-success__meta-value">$5,882.00</span>
+									<span class="order-success__meta-title">Tổng tiền:</span>
+									<span class="order-success__meta-value">
+										<fmt:formatNumber type="number" maxFractionDigits="3" value="${orderSuccess.total}" />
+										VNĐ
+									</span>
 								</li>
 								<li class="order-success__meta-item">
-									<span class="order-success__meta-title">Payment method:</span>
-									<span class="order-success__meta-value">PayPal</span>
+									<span class="order-success__meta-title">Ngày giao hàng:</span>
+									<span class="order-success__meta-value">
+										<fmt:formatDate pattern="dd-MM-yyyy" value="${orderSuccess.requireDate }" />
+									</span>
 								</li>
 							</ul>
 						</div>

@@ -84,4 +84,10 @@ public class IOrderDetailService implements OrderDetailService{
 		// TODO Auto-generated method stub
 		return orderDetailRepository.findByOrderIdAndProductId(orderId, productId);
 	}
+
+	@Override
+	public Iterable<OrderDetail> saveAll(List<OrderDetail> orderDetails) {
+		// TODO Auto-generated method stub
+		return orderDetailRepository.saveAll(orderDetails);
+	}
 }

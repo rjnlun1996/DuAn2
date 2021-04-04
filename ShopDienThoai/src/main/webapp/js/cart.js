@@ -89,7 +89,10 @@ function deleteProduct(productId) {
                         // var cartNumber = Object.keys(data).length;                         
                         $('#render-cart').html(data);
                         $('#cart-number').html($('.dropcart__product').length);
-                        toastr["success"]("Xóa sản phẩm thành công!")
+                        toastr["success"]("Xóa sản phẩm thành công!");
+                        if (location.pathname === '/check_out') setTimeout(() => {
+                            location.reload();
+                        }, 1000);
                     },
                     error: function(err) {
 

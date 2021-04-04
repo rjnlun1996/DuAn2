@@ -17,6 +17,7 @@ import com.hitech.constraints.CViewConstraint;
 import com.hitech.constraints.ViewConstraint;
 import com.hitech.entities.Discount;
 import com.hitech.entities.Product;
+import com.hitech.services.OrderService;
 import com.hitech.services.ProductService;
 import com.hitech.utils.SessionUtils;
 
@@ -28,6 +29,9 @@ public class CartController extends BaseController {
 
 	@Autowired
 	private SessionUtils sessionUtils;
+	
+	@Autowired
+	private OrderService orderSerivce;
 
 	@GetMapping(CViewConstraint.URL_CART)
 	public String cart(Model model) {
@@ -38,6 +42,7 @@ public class CartController extends BaseController {
 	@GetMapping(CViewConstraint.URL_ORDER_SUCCESS)
 	public String orderSuccess(Model model) {
 		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_ORDER_SUCCESS);
+		//model.addAttribute("orderSuccess", orderSerivce.findById(orderId));
 		return CViewConstraint.VIEW_ORDER_SUCCESS;
 	}
 

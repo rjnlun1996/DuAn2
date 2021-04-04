@@ -217,7 +217,6 @@ body {
 											</div>
 										</c:if>
 										<c:if test="${error != null}">
-
 											<div class="alert alert-warning dark" role="alert">
 
 												<p>${error}</p>

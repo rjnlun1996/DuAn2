@@ -7,5 +7,6 @@ import com.hitech.entities.Order;
 public interface OrderService extends IBaseService<Order, Integer>{
 	
 	boolean deleteByEnable(Integer id);
+	
 	List<Order> findByEnabledTrue();
 }
