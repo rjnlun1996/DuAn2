@@ -9,14 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hitech.cart.Cart;
 import com.hitech.cart.ProductDTO;
 import com.hitech.constraints.CViewConstraint;
-import com.hitech.constraints.ViewConstraint;
 import com.hitech.entities.Discount;
 import com.hitech.entities.Product;
+import com.hitech.services.DiscountService;
 import com.hitech.services.OrderService;
 import com.hitech.services.ProductService;
 import com.hitech.utils.SessionUtils;
@@ -32,6 +31,9 @@ public class CartController extends BaseController {
 	
 	@Autowired
 	private OrderService orderSerivce;
+	
+	@Autowired
+	private DiscountService discountService;
 
 	@GetMapping(CViewConstraint.URL_CART)
 	public String cart(Model model) {
@@ -42,7 +44,12 @@ public class CartController extends BaseController {
 	@GetMapping(CViewConstraint.URL_ORDER_SUCCESS)
 	public String orderSuccess(Model model) {
 		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_ORDER_SUCCESS);
-		//model.addAttribute("orderSuccess", orderSerivce.findById(orderId));
+//		Order orderSuccess = orderSerivce.findById(orderId);
+//		orderSuccess.setOrderDetails(orderSuccess.getOrderDetails().stream().map(o -> {
+//			o.setDiscount(discountService.findById(o.getDiscountId()));
+//			return o;
+//		}).distinct().collect(Collectors.toSet()));
+//		model.addAttribute("orderSuccess", orderSuccess);
 		return CViewConstraint.VIEW_ORDER_SUCCESS;
 	}
 

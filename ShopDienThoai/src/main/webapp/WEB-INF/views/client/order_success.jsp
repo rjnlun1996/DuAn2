@@ -65,37 +65,21 @@ body {
 							<svg class="order-success__icon" width="100" height="100">
                            <use xlink:href="images/sprite.svg#check-100"></use>
                         </svg>
-							<h1 class="order-success__title">Thank you</h1>
-							<div class="order-success__subtitle">Your order has been received</div>
+							<h1 class="order-success__title">Chúc Mừng</h1>
+							<div class="order-success__subtitle">Đơn hàng của bạn đã được tiếp nhận</div>
 							<div class="order-success__actions">
-								<a href="/" class="btn btn-xs btn-secondary">Go To Homepage</a>
+								<a href="/" class="btn btn-xs btn-secondary">Tiếp tục mua sắm</a>
 							</div>
 						</div>
 						<div class="order-success__meta">
 							<ul class="order-success__meta-list">
-								<li class="order-success__meta-item">
-									<span class="order-success__meta-title">Đơn hàng:</span>
-									<span class="order-success__meta-value">#${orderSuccess.id }</span>
-								</li>
-								<li class="order-success__meta-item">
-									<span class="order-success__meta-title">Ngày Tạo:</span>
-									<span class="order-success__meta-value">
-										<fmt:formatDate pattern="dd-MM-yyyy" value="${orderSuccess.createdAt }" />
-									</span>
-								</li>
-								<li class="order-success__meta-item">
-									<span class="order-success__meta-title">Tổng tiền:</span>
-									<span class="order-success__meta-value">
-										<fmt:formatNumber type="number" maxFractionDigits="3" value="${orderSuccess.total}" />
-										VNĐ
-									</span>
-								</li>
-								<li class="order-success__meta-item">
-									<span class="order-success__meta-title">Ngày giao hàng:</span>
-									<span class="order-success__meta-value">
-										<fmt:formatDate pattern="dd-MM-yyyy" value="${orderSuccess.requireDate }" />
-									</span>
-								</li>
+								<li class="order-success__meta-item"><span class="order-success__meta-title">Đơn hàng:</span> <span class="order-success__meta-value">#${orderSuccess.id }</span></li>
+								<li class="order-success__meta-item"><span class="order-success__meta-title">Ngày Tạo:</span> <span class="order-success__meta-value"> <fmt:formatDate pattern="dd-MM-yyyy" value="${orderSuccess.createdAt }" />
+								</span></li>
+								<li class="order-success__meta-item"><span class="order-success__meta-title">Tổng tiền:</span> <span class="order-success__meta-value"> <fmt:formatNumber type="number" maxFractionDigits="3" value="${orderSuccess.calOrder()}" /> VNĐ
+								</span></li>
+								<li class="order-success__meta-item"><span class="order-success__meta-title">Ngày giao hàng:</span> <span class="order-success__meta-value"> <fmt:formatDate pattern="dd-MM-yyyy" value="${orderSuccess.requireDate }" />
+								</span></li>
 							</ul>
 						</div>
 						<div class="card">
@@ -103,141 +87,80 @@ body {
 								<table>
 									<thead class="order-list__header">
 										<tr>
-											<th class="order-list__column-label" colspan="2">Product</th>
-											<th class="order-list__column-quantity">Qty</th>
-											<th class="order-list__column-total">Total</th>
+											<th class="order-list__column-label" colspan="2">Sản phẩm</th>
+											<th class="order-list__column-quantity">Số lượng</th>
+											<th class="order-list__column-total">Giá tiền</th>
 										</tr>
 									</thead>
 									<tbody class="order-list__products">
-										<tr>
-											<td class="order-list__column-image">
-												<div class="product-image">
-													<a href="" class="product-image__body">
-														<img class="product-image__img" src="images/products/product-1.jpg" alt="">
-													</a>
-												</div>
-											</td>
-											<td class="order-list__column-product">
-												<a href="">Electric Planer Brandix KL370090G 300 Watts</a>
-												<div class="order-list__options">
-													<ul class="order-list__options-list">
-														<li class="order-list__options-item">
-															<span class="order-list__options-label">Color:</span>
-															<span class="order-list__options-value">Yellow</span>
-														</li>
-														<li class="order-list__options-item">
-															<span class="order-list__options-label">Material:</span>
-															<span class="order-list__options-value">Aluminium</span>
-														</li>
-													</ul>
-												</div>
-											</td>
-											<td class="order-list__column-quantity" data-title="Qty:">2</td>
-											<td class="order-list__column-total">$1,398.00</td>
-										</tr>
-										<tr>
-											<td class="order-list__column-image">
-												<div class="product-image">
-													<a href="" class="product-image__body">
-														<img class="product-image__img" src="images/products/product-2.jpg" alt="">
-													</a>
-												</div>
-											</td>
-											<td class="order-list__column-product">
-												<a href="">Undefined Tool IRadix DPS3000SY 2700 watts</a>
-											</td>
-											<td class="order-list__column-quantity" data-title="Qty:">1</td>
-											<td class="order-list__column-total">$849.00</td>
-										</tr>
-										<tr>
-											<td class="order-list__column-image">
-												<div class="product-image">
-													<a href="" class="product-image__body">
-														<img class="product-image__img" src="images/products/product-5.jpg" alt="">
-													</a>
-												</div>
-											</td>
-											<td class="order-list__column-product">
-												<a href="">Brandix Router Power Tool 2017ERXPK</a>
-												<div class="order-list__options">
-													<ul class="order-list__options-list">
-														<li class="order-list__options-item">
-															<span class="order-list__options-label">Color:</span>
-															<span class="order-list__options-value">True Red</span>
-														</li>
-													</ul>
-												</div>
-											</td>
-											<td class="order-list__column-quantity" data-title="Qty:">3</td>
-											<td class="order-list__column-total">$3,630.00</td>
-										</tr>
+										<c:set var="productTotal" value="0"></c:set>
+										<c:forEach items="${orderSuccess.orderDetails }" var="od">
+											<c:set var="productTotal" value="${productTotal + od.quantity }"></c:set>
+											<tr>
+												<td class="order-list__column-image">
+													<div class="product-image">
+														<a href="" class="product-image__body"> <img class="product-image__img" src="/images/products/${od.product.category.producer.name.toLowerCase()}/${od.product.photo}" alt="">
+														</a>
+													</div>
+												</td>
+												<td class="order-list__column-product"><a href="">${od.product.name }</a></td>
+												<td class="order-list__column-quantity" data-title="Qty:">${od.quantity }</td>
+												<td class="order-list__column-total" style="color: green"><fmt:formatNumber type="number" maxFractionDigits="3" value="${od.product.importPrice}" /> VNĐ</td>
+											</tr>
+										</c:forEach>
 									</tbody>
 									<tbody class="order-list__subtotals">
 										<tr>
-											<th class="order-list__column-label" colspan="3">Subtotal</th>
-											<td class="order-list__column-total">$5,877.00</td>
+											<td class="order-list__column-label" colspan="3">Số lượng sản phẩm</td>
+											<td class="order-list__column-total">${productTotal }</td>
 										</tr>
 										<tr>
-											<th class="order-list__column-label" colspan="3">Shipping</th>
-											<td class="order-list__column-total">$25.00</td>
+											<td class="order-list__column-label" colspan="3">Tổng tiền</td>
+											<td class="order-list__column-total" style="color: blue"><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderSuccess.calAmountTotal()}" /> VNĐ</td>
 										</tr>
 										<tr>
-											<th class="order-list__column-label" colspan="3">Tax</th>
-											<td class="order-list__column-total">$0.00</td>
+											<td class="order-list__column-label" colspan="3">Tổng khuyến mãi</td>
+											<td class="order-list__column-total"><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderSuccess.calDiscountPrice()}" /> VNĐ</td>
 										</tr>
 									</tbody>
 									<tfoot class="order-list__footer">
 										<tr>
-											<th class="order-list__column-label" colspan="3">Total</th>
-											<td class="order-list__column-total">$5,902.00</td>
+											<th class="order-list__column-label" colspan="3">Tổng tiền cần thanh toán</th>
+											<td class="order-list__column-total" style="color: red"><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderSuccess.calOrder()}" /> VNĐ</td>
 										</tr>
 									</tfoot>
 								</table>
 							</div>
 						</div>
 						<div class="row mt-3 no-gutters mx-n2">
-							<div class="col-sm-6 col-12 px-2">
+							<div class="col-sm-6 col-12 px-2 mt-sm-0 mt-3">
 								<div class="card address-card">
 									<div class="address-card__body">
-										<div class="address-card__badge address-card__badge--muted">Shipping Address</div>
-										<div class="address-card__name">Helena Garcia</div>
+										<div class="address-card__badge address-card__badge--muted">Ghi chú</div>
 										<div class="address-card__row">
-											Random Federation
-											<br>
-											115302, Moscow
-											<br>
-											ul. Varshavskaya, 15-2-178
-										</div>
-										<div class="address-card__row">
-											<div class="address-card__row-title">Phone Number</div>
-											<div class="address-card__row-content">38 972 588-42-36</div>
-										</div>
-										<div class="address-card__row">
-											<div class="address-card__row-title">Email Address</div>
-											<div class="address-card__row-content">stroyka@example.com</div>
+											<c:if test="${orderSuccess.description.trim().equals('')}">
+												<p style="color: red">Không có ghi chú</p>
+											</c:if>
+											<c:if test="${!orderSuccess.description.trim().equals('')}">
+												${orderSuccess.description}
+											</c:if>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-6 col-12 px-2 mt-sm-0 mt-3">
+							<div class="col-sm-6 col-12 px-2">
 								<div class="card address-card">
 									<div class="address-card__body">
-										<div class="address-card__badge address-card__badge--muted">Billing Address</div>
-										<div class="address-card__name">Helena Garcia</div>
+										<div class="address-card__badge address-card__badge--muted">Địa chỉ giao hàng</div>
+										<div class="address-card__name" style="text-transform: capitalize;">${orderSuccess.receiver}</div>
+										<div class="address-card__row" style="color: blue">${orderSuccess.address}</div>
 										<div class="address-card__row">
-											Random Federation
-											<br>
-											115302, Moscow
-											<br>
-											ul. Varshavskaya, 15-2-178
+											<div class="address-card__row-title">Số điện thoại</div>
+											<div class="address-card__row-content">${orderSuccess.phone}</div>
 										</div>
 										<div class="address-card__row">
-											<div class="address-card__row-title">Phone Number</div>
-											<div class="address-card__row-content">38 972 588-42-36</div>
-										</div>
-										<div class="address-card__row">
-											<div class="address-card__row-title">Email Address</div>
-											<div class="address-card__row-content">stroyka@example.com</div>
+											<div class="address-card__row-title">Địa chỉ Email</div>
+											<div class="address-card__row-content">${user.email}</div>
 										</div>
 									</div>
 								</div>
