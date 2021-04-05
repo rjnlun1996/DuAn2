@@ -211,7 +211,7 @@ table thead {
 										<p>
 											<b>Ngày nhận hàng</b>
 											:
-											<fmt:formatDate pattern="dd-MM-yyyy" value="${order.createdAt }" />
+											<fmt:formatDate pattern="dd-MM-yyyy" value="${order.requireDate }" />
 										</p>
 									</div>
 								</div>
@@ -295,7 +295,7 @@ table thead {
 																		VNĐ --%>
 																	</span>
 																</td>
-																<td>${orderDetail.discount.percents}</td>
+																<td>${orderDetail.discount != null ? orderDetail.discount.percents : 0} %</td>
 																<td><fmt:formatDate pattern="dd-MM-yyyy" value="${orderDetail.createdAt }" /></td>
 																<td>
 																	<input type="hidden" name="productId" value="${orderDetail.product.id }"/>
@@ -368,7 +368,7 @@ table thead {
 													<tr>
 														<td class="w-50 text-right">Price Total</td>
 														<td class="text-danger">
-															<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.calOrderTotal()}" />
+															<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.calOrder()}" />
 															VNĐ
 														</td>
 													</tr>

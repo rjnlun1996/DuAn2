@@ -81,6 +81,7 @@ public class CheckOutController extends BaseController{
 			List<Discount> discount = discountService.findByProductId(e.getProduct().getId());
 			if(discount != null && discount.size() > 0) {
 				orderDetail.setDiscount(discount.get(0));
+				orderDetail.setDiscountId(discount.get(0).getId());
 			}
 				
 			orderDetail.setAmount(e.getAmount());
@@ -88,6 +89,8 @@ public class CheckOutController extends BaseController{
 			orderDetail.setProductId(e.getProduct().getId());
 			orderDetail.setQuantity(e.getQuantity());
 			orderDetail.setOrder(orderCreated);
+			orderDetail.setCreatedAt(new Date());
+			orderDetail.setCreatedBy(sessionUtils.getCreatedOrUpdatedBy());
 			
 			return orderDetail;
 		}).collect(Collectors.toList());
@@ -104,6 +107,10 @@ public class CheckOutController extends BaseController{
 		// reset card
 		sessionUtils.setCart(null);		
 		
+//		Order orderSuccess = orderSerivce.findById(orderCreated.getId()).stream().map(o -> {
+//				o.setDiscount(discountService.findById(o.getDiscountId()));
+//				return o;
+//			}).distinct().collect(Collectors.toSet());
 		redirectAttr.addFlashAttribute("orderSuccess", orderSerivce.findById(orderCreated.getId()));
 		
 		return ViewUtils.redirectTo(CViewConstraint.URL_ORDER_SUCCESS);

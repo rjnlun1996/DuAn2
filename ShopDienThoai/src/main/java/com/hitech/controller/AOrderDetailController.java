@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -54,7 +54,11 @@ public class AOrderDetailController {
 		Order order = orderService.findById(orderId);
 		model.addAttribute("order", order);
 		List<OrderDetail> orderDetails = order.getOrderDetails().stream().filter(e -> e.isEnabled()).sorted(Comparator.comparing(OrderDetail::getCreatedAt).reversed()).collect(Collectors.toList());
-		model.addAttribute("orderDetails", orderDetails);
+		List<OrderDetail> ods = orderDetails.stream().map(o -> {
+			o.setDiscount(discountService.findById(o.getDiscountId()));
+			return o;
+		}).collect(Collectors.toList());
+		model.addAttribute("orderDetails", ods);
 		List<StatusOrder> status = order.getStatusOrders().stream().sorted(Comparator.comparing(StatusOrder::getCreatedAt)).collect(Collectors.toList());
 		Collections.reverse(status);
 		model.addAttribute("status", status);
@@ -108,12 +112,21 @@ public class AOrderDetailController {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);
 		
 		List<OrderDetail> orderDetails = orderDetailService.findByOrderIdAndProductId(orderId, productId);		
+		Set<OrderDetail> ods = orderDetails.stream().map(o -> {
+			o.setDiscount(discountService.findById(o.getDiscountId()));
+			o.setOrder(o.getOrder());
+			return o;
+		}).distinct().collect(Collectors.toSet());
 		
-		for(OrderDetail orderDetail: orderDetails) {
+		Order order = orderService.findById(orderId);
+		order.setOrderDetails(ods);		
+		
+		for(OrderDetail orderDetail: ods) {
+			orderDetail.setOrder(order);
 			if(orderDetail.getProductId() == productId) {
 				orderDetail.setQuantity(quantity);
 				orderDetail.calAmount();
-				orderDetail.getOrder().calOrderTotal();
+				orderDetail.getOrder().calOrder();
 				
 				orderDetailService.save(orderDetail);
 				break;

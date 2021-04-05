@@ -11,9 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -55,16 +55,20 @@ public class OrderDetail extends BaseEntity implements Serializable {
 //	@JsonManagedReference
 //	private Set<Discount> discounts;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "discountId", nullable = false)
-	@JsonBackReference
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "discountId", nullable = false)
+//	@JsonBackReference
+//	private Discount discount;
+	
+	@Column
+	private int discountId;
+	
+	@Transient
 	private Discount discount;
 
-	public OrderDetail() {
-	}
+	public OrderDetail() {}
 
-	public OrderDetail(int id, int productId, int quantity, long amount, Order order, Product product,
-			Discount discount) {
+	public OrderDetail(int id, int productId, int quantity, long amount, Order order, Product product) {
 		super();
 		this.id = id;
 		this.productId = productId;
@@ -72,7 +76,6 @@ public class OrderDetail extends BaseEntity implements Serializable {
 		this.amount = amount;
 		this.order = order;
 		this.product = product;
-		this.discount = discount;
 	}
 
 	public Product getProduct() {
@@ -126,6 +129,18 @@ public class OrderDetail extends BaseEntity implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	public void calAmount() {
+		this.amount = this.product.getImportPrice() * this.quantity;
+	}
+
+	public int getDiscountId() {
+		return discountId;
+	}
+
+	public void setDiscountId(int discountId) {
+		this.discountId = discountId;
+	}
 
 	public Discount getDiscount() {
 		return discount;
@@ -133,10 +148,6 @@ public class OrderDetail extends BaseEntity implements Serializable {
 
 	public void setDiscount(Discount discount) {
 		this.discount = discount;
-	}
-	
-	public void calAmount() {
-		this.amount = this.product.getImportPrice() * this.quantity;
 	}
 
 }

@@ -1,6 +1,8 @@
 package com.hitech.controller;
 
 import java.io.IOException;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,21 +19,65 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hitech.constraints.ViewConstraint;
 import com.hitech.entities.Order;
+import com.hitech.entities.OrderDetail;
 import com.hitech.services.AccountService;
+import com.hitech.services.DiscountService;
 import com.hitech.services.OrderService;
 import com.hitech.utils.ViewUtils;
 
 @Controller
 public class AOrderController {
+	
 	@Autowired
 	private OrderService orderService;
+	
 	@Autowired
 	private AccountService accountService;
+	
+	@Autowired
+	private DiscountService discountService;
 
 	@GetMapping(ViewConstraint.URL_ADMIN_ORDER)
 	public String table(Model model) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);
-		model.addAttribute("listOrder", orderService.findByEnabledTrue());
+		
+//		// Danh sách order (1 order có nhiều OrderDetail == sản phẩm)
+//		List<Order> listOrder = orderService.findByEnabledTrue();
+//		
+//		List<Order> listOrderUpdated = new ArrayList<Order>();	
+//		
+//		// Lặp qua từng Order
+//		for(Order order: listOrder) {
+//			
+//			// Danh sách OrderDetail sau khi đã cập nhật Discount
+//			Set<OrderDetail> orderDetailUpdated = new HashSet<OrderDetail>();
+//			
+//			// Lặp qua danh sách OrderDetail để lấy discountId và tìm Discount trong db
+//			for(OrderDetail ods: order.getOrderDetails()) {
+//				//ods.getDiscount() == null
+//				Discount discount = discountService.findById(ods.getDiscountId());
+//				
+//				//ods.getDiscount() có giá trị
+//				ods.setDiscount(discount);
+//				
+//				// Lưu vào danh sách OrderDetail sau khi đã cập nhật Discount
+//				orderDetailUpdated.add(ods);
+//			}			
+//			
+//			// Cập nhật lại danh sách OrderDetails đã set giá trị discount cho từng order
+//			order.setOrderDetails(orderDetailUpdated);
+//			listOrderUpdated.add(order);
+//		}
+//		model.addAttribute("listOrder", listOrderUpdated);
+		
+		model.addAttribute("listOrder", orderService.findByEnabledTrue().stream().map(e -> {			
+			Set<OrderDetail> od = e.getOrderDetails().stream().map(o -> {
+				o.setDiscount(discountService.findById(o.getDiscountId()));
+				return o;
+			}).distinct().collect(Collectors.toSet());
+			e.setOrderDetails(od);			
+			return e;
+		}).collect(Collectors.toList()));
 		return ViewConstraint.VIEW_ADMIN_ORDER;
 	}
 
