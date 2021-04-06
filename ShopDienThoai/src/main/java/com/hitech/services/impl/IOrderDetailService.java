@@ -12,14 +12,13 @@ import com.hitech.services.OrderDetailService;
 import com.hitech.utils.SessionUtils;
 
 @Service
-public class IOrderDetailService implements OrderDetailService{
+public class IOrderDetailService implements OrderDetailService {
 
-	
 	@Autowired
 	private OrderDetailRepository orderDetailRepository;
 	@Autowired
 	private SessionUtils sessionUtils;
-	
+
 	@Override
 	public List<OrderDetail> findAll() {
 		// TODO Auto-generated method stub
@@ -34,23 +33,16 @@ public class IOrderDetailService implements OrderDetailService{
 
 	@Override
 	public OrderDetail save(OrderDetail orderDetail) {
-		List<OrderDetail> list = orderDetailRepository.findByOrderIdAndProductId(orderDetail.getOrder().getId(),orderDetail.getProductId());
-		if(list.size()>0) {
-			int a = list.get(0).getId();
-			orderDetail.setId(a);
-			orderDetail.setQuantity(orderDetail.getQuantity());
-			return update(orderDetail);
-		}else {
 		orderDetail.setCreatedBy(sessionUtils.getCreatedOrUpdatedBy());
 		orderDetail.setCreatedAt(new Date());
-		return orderDetailRepository.save(orderDetail);}
+		return orderDetailRepository.save(orderDetail);
 	}
 
 	@Override
 	public OrderDetail update(OrderDetail orderDetail) {
 		orderDetail.setUpdatedBy(sessionUtils.getCreatedOrUpdatedBy());
 		orderDetail.setUpdatedAt(new Date());
-		return orderDetailRepository.save(orderDetail);
+		return orderDetailRepository.saveAndFlush(orderDetail);
 	}
 
 	@Override
@@ -68,7 +60,7 @@ public class IOrderDetailService implements OrderDetailService{
 	public boolean deleteByEnable(Integer id) {
 		try {
 			OrderDetail od = orderDetailRepository.getOne(id);
-			if(od == null) {
+			if (od == null) {
 				return false;
 			}
 			od.setEnabled(false);
@@ -80,7 +72,7 @@ public class IOrderDetailService implements OrderDetailService{
 	}
 
 	@Override
-	public List<OrderDetail> findByOrderIdAndProductId(int orderId, int productId) {
+	public OrderDetail findByOrderIdAndProductId(int orderId, int productId) {
 		// TODO Auto-generated method stub
 		return orderDetailRepository.findByOrderIdAndProductId(orderId, productId);
 	}

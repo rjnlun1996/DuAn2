@@ -1,7 +1,10 @@
 package com.hitech.controller.client;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,11 +17,14 @@ import com.hitech.cart.Cart;
 import com.hitech.cart.ProductDTO;
 import com.hitech.constraints.CViewConstraint;
 import com.hitech.entities.Discount;
+import com.hitech.entities.Order;
+import com.hitech.entities.OrderDetail;
 import com.hitech.entities.Product;
 import com.hitech.services.DiscountService;
 import com.hitech.services.OrderService;
 import com.hitech.services.ProductService;
 import com.hitech.utils.SessionUtils;
+import com.hitech.utils.ViewUtils;
 
 @Controller
 public class CartController extends BaseController {
@@ -28,10 +34,10 @@ public class CartController extends BaseController {
 
 	@Autowired
 	private SessionUtils sessionUtils;
-	
+
 	@Autowired
 	private OrderService orderSerivce;
-	
+
 	@Autowired
 	private DiscountService discountService;
 
@@ -44,13 +50,48 @@ public class CartController extends BaseController {
 	@GetMapping(CViewConstraint.URL_ORDER_SUCCESS)
 	public String orderSuccess(Model model) {
 		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_ORDER_SUCCESS);
-//		Order orderSuccess = orderSerivce.findById(orderId);
-//		orderSuccess.setOrderDetails(orderSuccess.getOrderDetails().stream().map(o -> {
+		return CViewConstraint.VIEW_ORDER_SUCCESS;
+	}
+
+	@GetMapping(CViewConstraint.URL_ORDER_HISTORY)
+	public String orderHistory(Model model) {
+		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_ORDER_HISTORY);
+		List<Order> orders = orderSerivce.findOrderByUsername(sessionUtils.getUser().getUsername());
+		
+		List<Order> ordersUpdated = orders.stream().map(e -> {			
+			Set<OrderDetail> od = e.getOrderDetails().stream().map(o -> {
+				o.setDiscount(discountService.findById(o.getDiscountId()));
+				return o;
+			}).distinct().collect(Collectors.toSet());
+			e.setOrderDetails(od);			
+			return e;
+		}).collect(Collectors.toList());
+		
+//		order.setOrderDetails(order.getOrderDetails().stream().map(o -> {
 //			o.setDiscount(discountService.findById(o.getDiscountId()));
 //			return o;
 //		}).distinct().collect(Collectors.toSet()));
-//		model.addAttribute("orderSuccess", orderSuccess);
-		return CViewConstraint.VIEW_ORDER_SUCCESS;
+		
+		model.addAttribute("orders", ordersUpdated);
+		return CViewConstraint.VIEW_ORDER_HISTORY;
+	}
+
+	@GetMapping(CViewConstraint.URL_ORDER_DETAIL)
+	public String orderDetail(Model model, @RequestParam int id) {
+		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_ORDER_DETAIL);
+		Order order = orderSerivce.findById(id);
+
+		// Kiểm tra nếu order không phải của Account hiện tại
+		if (order == null || !order.getAccount().getUsername().equals(sessionUtils.getUser().getUsername())) {
+			return ViewUtils.redirectTo("/");
+		}
+
+		order.setOrderDetails(order.getOrderDetails().stream().map(o -> {
+			o.setDiscount(discountService.findById(o.getDiscountId()));
+			return o;
+		}).distinct().collect(Collectors.toSet()));
+		model.addAttribute("order", order);
+		return CViewConstraint.VIEW_ORDER_DETAIL;
 	}
 
 	@PostMapping(CViewConstraint.URL_CART_DELETE)
@@ -59,7 +100,6 @@ public class CartController extends BaseController {
 		cart.removeProduct(productId);
 		// Cập nhật cart trong session
 		sessionUtils.setCart(cart);
-
 		return CViewConstraint.VIEW_CART_RENDER;
 	}
 

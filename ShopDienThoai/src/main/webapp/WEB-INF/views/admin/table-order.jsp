@@ -162,7 +162,7 @@ table thead {
 															<td>${order.phone}</td>
 															<td>
 																<span class="badge badge-danger f-12">
-																	<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.calOrderTotal()}" />
+																	<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.calOrder()}" />
 																	VNĐ
 																</span>
 															</td>

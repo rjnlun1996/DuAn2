@@ -110,29 +110,21 @@ public class AOrderDetailController {
 	@PostMapping(ViewConstraint.URL_ADMIN_ORDER_DETAIL_UPDATE)
 	public String updatePost(Model model, @RequestParam int orderId, @RequestParam int productId, @RequestParam int quantity) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);
-		
-		List<OrderDetail> orderDetails = orderDetailService.findByOrderIdAndProductId(orderId, productId);		
-		Set<OrderDetail> ods = orderDetails.stream().map(o -> {
-			o.setDiscount(discountService.findById(o.getDiscountId()));
-			o.setOrder(o.getOrder());
-			return o;
-		}).distinct().collect(Collectors.toSet());
-		
-		Order order = orderService.findById(orderId);
-		order.setOrderDetails(ods);		
-		
-		for(OrderDetail orderDetail: ods) {
-			orderDetail.setOrder(order);
-			if(orderDetail.getProductId() == productId) {
-				orderDetail.setQuantity(quantity);
-				orderDetail.calAmount();
-				orderDetail.getOrder().calOrder();
 				
-				orderDetailService.save(orderDetail);
-				break;
+		Order order = orderService.findById(orderId);
+		order.setOrderDetails(order.getOrderDetails().stream().map(o -> {
+			o.setDiscount(discountService.findById(o.getDiscountId()));
+			if(o.getProductId() == productId) {
+				o.setQuantity(quantity);
+				o.calAmount();
 			}
-		}
-
+			return o;
+		}).distinct().collect(Collectors.toSet()));	
+		
+		order.calOrderTotal();
+		
+		orderService.update(order);
+		
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ORDER_DETAIL_VIEW + "?orderId=" + orderId);
 	}
 //

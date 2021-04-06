@@ -169,7 +169,7 @@ public class Order extends BaseEntity implements Serializable {
 	public long calDiscountPrice() {
 		long discountPrice = 0;
 		for (OrderDetail orderDetail : this.orderDetails) {
-			if (orderDetail.isEnabled() && orderDetail.getDiscountId() != 0) {
+			if (orderDetail.isEnabled() && orderDetail.getDiscountId() != 0 && orderDetail.getDiscount() != null) {
 				discountPrice += orderDetail.getProduct().getImportPrice() * orderDetail.getQuantity()
 						* orderDetail.getDiscount().getPercents() / 100;
 			}

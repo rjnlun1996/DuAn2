@@ -97,7 +97,7 @@ public class AOrderController {
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER_INSERT);
 			return ViewConstraint.VIEW_ADMIN_ORDER_INSERT;
 		}
-		order.setTotal(0);
+		order.setTotal(order.calOrder());
 		ra.addFlashAttribute("message", "Tạo đơn hàng thành công!");
 		orderService.save(order);
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ORDER_INSERT);

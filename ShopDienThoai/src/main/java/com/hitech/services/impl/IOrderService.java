@@ -71,5 +71,10 @@ public class IOrderService implements OrderService{
 		}
 	}
 
+	@Override
+	public List<Order> findOrderByUsername(String username) {
+		return orderRepository.findOrderByUsername(username);
+	}
+
 
 }
