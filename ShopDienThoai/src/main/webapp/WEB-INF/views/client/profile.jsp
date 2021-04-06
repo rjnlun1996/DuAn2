@@ -128,7 +128,7 @@ body {
 										<a href="/change-password">Đổi mật khẩu</a>
 									</li>
 									<li class="account-nav__item">
-										<a href="account-login.html">Đăng xuất</a>
+										<a href="/logout">Đăng xuất</a>
 									</li>
 								</ul>
 							</div>

@@ -107,6 +107,7 @@ public class ACategoryController {
 		}
 		categoryOnDb.setId(category.getId());
 		categoryOnDb.setName(category.getName());
+		categoryOnDb.setProducer(category.getProducer());
 		categoryService.update(categoryOnDb);
 		ra.addFlashAttribute("message", "Cập nhật danh mục " + category.getName() + " thành công!");
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_CATEGORY_UPDATE + "?id=" + category.getId());

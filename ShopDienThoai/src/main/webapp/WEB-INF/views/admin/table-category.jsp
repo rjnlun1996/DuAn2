@@ -127,7 +127,6 @@ table thead {
 														<th scope="col">Id</th>
 														<th scope="col">Name</th>
 														<th scope="col">Producer Name</th>
-														<th scope="col">Producer Logo</th>
 														<th scope="col"></th>
 													</tr>
 												</thead>
@@ -143,13 +142,11 @@ table thead {
 															<td>
 																<span>${cate.producer.name}</span>
 															</td>
-															<td>
-																<img class="img-radius img-80 align-top m-r-15" src="/images/producer/${cate.producer.logo}" alt="loading" style="box-shadow: unset !important">
-															</td>
+															
 															<td>
 
 																<a class="btn btn-pill btn-outline-success btn-sm" href="/ho-admin/categories/update?id=${cate.id}">Edit</a>
-																<button class="btn btn-pill btn-outline-danger btn-sm" onClick="onDelete(this)" data-id="${cate.id}" data-name="${cate.name}">Delete</button>
+																<button class="btn btn-pill btn-outline-danger btn-sm" onClick="onDelete(this)" data-id="${cate.id}" >Delete</button>
 
 															</td>
 														</tr>
@@ -195,7 +192,37 @@ table thead {
 		<script src="/assets/js/datatable/datatables/datatable.custom.js"></script>
 
 		<script>
-		function onDelete(elm){
+		function onDelete(elm){ 
+			swal({
+				  title: "Thông báo!",
+				  text: "Bạn có chắc chắn muốn xóa danh mục này không",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((willDelete) => {
+						if(willDelete == true){
+							$.ajax({
+								url : "<%=URL_ADMIN_CATEGORY_DELETE%>",
+								method : "POST",
+								data : {
+									id : $(elm).data('id')
+								},
+								success : function(data) {
+									if(data == true){
+										swal("Thông báo!", "Bạn đã xóa thành công!", "success").then(() => location.reload());
+									}else{
+										swal("Thông báo!", "Không thể xóa danh mục này!", "danger");
+									}
+								},
+								error : function() {
+
+								}
+							});
+						}
+				});
+		}
+	<%-- 	function onDelete(elm){
 			var id = $(elm).data('id');
 			var name = $(elm).data('name');
 			swal({
@@ -223,7 +250,7 @@ table thead {
 			  }
 			});
 			//promise
-		}		
+		}	 --%>	
 		</script>
 		<!-- login js-->
 		<!-- Plugin used-->
