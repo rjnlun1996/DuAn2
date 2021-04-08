@@ -76,5 +76,11 @@ public class IOrderService implements OrderService{
 		return orderRepository.findOrderByUsername(username);
 	}
 
+	@Override
+	public boolean existsById(int id) {
+		// TODO Auto-generated method stub
+		return orderRepository.existsById(id);
+	}
+
 
 }

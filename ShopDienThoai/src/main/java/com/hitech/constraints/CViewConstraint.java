@@ -48,8 +48,11 @@ public class CViewConstraint {
 	public static final String URL_ORDER_HISTORY = "/order_history";
 	public static final String VIEW_ORDER_HISTORY = "client/order_history";
 	
-	public static final String URL_ORDER_DETAIL = "/order_detail";
-	public static final String VIEW_ORDER_DETAIL = "client/order_detail";
+	public static final String URL_ORDER_PROCESS = "/order_process";
+	public static final String VIEW_ORDER_PROCESS = "client/order_process";
+	
+	public static final String URL_ORDER_HISTORY_DETAIL = "/order_history_detail";
+	public static final String VIEW_ORDER_HISTORY_DETAIL = "client/order_history_detail";
 	
 	public static final String URL_404 = "/404/";
 	public static final String VIEW_404 = "client/404";

@@ -35,6 +35,44 @@
 body {
 	font-family: 'Source Serif Pro', serif;
 }
+
+.status-order {
+	padding: 10px;
+	position: relative;
+	text-transform: capitalize;
+	margin-top: 10px; margin-left : 15px; border-radius : 4px; display :
+	flex;
+	justify-content: space-between;
+	margin-left: 15px;
+	border-radius: 4px;
+	display: flex;
+}
+
+.status-order.current .left, .status-order.current .right {
+	color: green;
+	font-weight: bolder;
+}
+
+.status-order:before {
+	content: "";
+	position: absolute;
+	top: 15px;
+	left: -20px;
+	width: 10px;
+	height: 10px;
+	transition: .25s;
+	border-radius: 50%;
+}
+
+.status-order.current:before {
+	background-color: green;
+	box-shadow: 0 0 10px green;
+}
+
+.status-order.old:before {
+	background-color: #ddd;
+	box-shadow: 0 0 10px #ddd;
+}
 </style>
 
 </head>
@@ -101,7 +139,7 @@ body {
 										<a href="/order_history">Lịch sử đặt hàng</a>
 									</li>
 									<li class="account-nav__item">
-										<a href="/order_process">Đơn hàng đang giao <span style="color:red">(${processing})</span></a>
+										<a href="/order_process">Đơn hàng đang giao</a>
 									</li>
 
 									<li class="account-nav__item">
@@ -115,70 +153,138 @@ body {
 						</div>
 						<div class="col-12 col-lg-9 mt-4 mt-lg-0">
 							<div class="card">
-								<div class="card-header">
-									<h5>Danh sách đơn hàng</h5>
-								</div>
-								<div class="card-divider"></div>
-								<div class="card-table">
-									<div class="table-responsive-sm">
-										<table>
-											<thead>
+								<div class="order-list">
+									<table>
+										<thead class="order-list__header">
+											<tr>
+												<th class="order-list__column-label" colspan="2">Sản phẩm</th>
+												<th class="order-list__column-quantity">Số lượng</th>
+												<th class="order-list__column-quantity">Giảm giá</th>
+												<th class="order-list__column-total">Giá tiền</th>
+											</tr>
+										</thead>
+										<tbody class="order-list__products">
+											<c:set var="productTotal" value="0"></c:set>
+											<c:forEach items="${order.orderDetails }" var="od">
+												<c:set var="productTotal" value="${productTotal + od.quantity }"></c:set>
 												<tr>
-													<th>Mã đơn hàng</th>
-													<th>Ngày đặt hàng</th>
-													<th>Tổng tiền</th>
-													<th>Trạng thái</th>
+													<td class="order-list__column-image">
+														<div class="product-image">
+															<a href="" class="product-image__body">
+																<img class="product-image__img" src="/images/products/${od.product.category.producer.name.toLowerCase()}/${od.product.photo}" alt="">
+															</a>
+														</div>
+													</td>
+													<td class="order-list__column-product">
+														<a style="text-decoration: none; color: blue" href="/detail_product?productId=${od.product.id}">${od.product.name }</a>
+													</td>
+													<td class="order-list__column-quantity" data-title="Qty:">${od.quantity }</td>
+													<td class="order-list__column-quantity" data-title="Qty:">${od.discount == null ? 0 :  od.discount.percents}%</td>
+													<td class="order-list__column-total" style="color: green">
+														<fmt:formatNumber type="number" maxFractionDigits="3" value="${od.product.importPrice}" />
+														VNĐ
+													</td>
 												</tr>
-											</thead>
-											<tbody>
-												<c:forEach items="${orders }" var="order">
-													<c:set var="count" value="0"></c:set>
-													<c:forEach items="${order.orderDetails }" var="od">
-														<c:set var="count" value="${od.quantity + count }"></c:set>
-													</c:forEach>
-													<tr>
-														<td>
-															<a href="/order_history_detail?id=${order.id}">#${order.id}</a>
-														</td>
-														<td>
-															<fmt:formatDate pattern="dd-MM-yyyy" value="${order.requireDate }" />
-														</td>
-														<td>
-															<span style="color: blue">
-																<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.calOrder()}" />
-																VNĐ
-															</span>
-															for
-															<span style="color: blue">${count}</span>
-															item(s)
-														</td>
-														<td>
-															<c:forEach items="${order.statusOrders }" var="so">
-																<c:if test="${so.current}">
-																	<span style="text-transform: capitalize; color: ${so.status.priority == 5 ? 'red' : 'green'}">${so.status.name }</span>
-																</c:if>
-															</c:forEach>
-														</td>
-													</tr>
+											</c:forEach>
+										</tbody>
+										<tbody class="order-list__subtotals">
+											<tr>
+												<td class="order-list__column-label" colspan="4">Số lượng sản phẩm</td>
+												<td class="order-list__column-total">${productTotal }</td>
+											</tr>
+											<tr>
+												<td class="order-list__column-label" colspan="4">Tổng tiền</td>
+												<td class="order-list__column-total" style="color: blue">
+													<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.calAmountTotal()}" />
+													VNĐ
+												</td>
+											</tr>
+											<tr>
+												<td class="order-list__column-label" colspan="4">Tổng khuyến mãi</td>
+												<td class="order-list__column-total">
+													<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.calDiscountPrice()}" />
+													VNĐ
+												</td>
+											</tr>
+										</tbody>
+										<tfoot class="order-list__footer">
+											<tr>
+												<th class="order-list__column-label" colspan="4">Tổng tiền cần thanh toán</th>
+												<td class="order-list__column-total" style="color: red">
+													<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.calOrder()}" />
+													VNĐ
+												</td>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+							</div>
+							<div class="row mt-3 no-gutters mx-n2">
+								<div class="col-sm-6 col-12 px-2 mt-sm-0">
+									<div class="card address-card">
+										<div class="address-card__body">
+											<div class="address-card__badge address-card__badge--muted">Thông tin giao hàng</div>
+											<div class="address-card__row">
+												<div class="address-card__row-title">Tên Khách hàng</div>
+												<div class="address-card__row-content" style="text-transform: capitalize;">${order.receiver}</div>
+											</div>
+											<div class="address-card__row">
+												<div class="address-card__row-title">Địa chỉ giao hàng</div>
+												<div class="address-card__row-content" style="color: blue">${order.address}</div>
+											</div>
+
+											<div class="address-card__row">
+												<div class="address-card__row-title">Số điện thoại</div>
+												<div class="address-card__row-content">${order.phone}</div>
+											</div>
+											<div class="address-card__row">
+												<div class="address-card__row-title">Địa chỉ Email</div>
+												<div class="address-card__row-content">${user.email}</div>
+											</div>
+											<div class="address-card__row">
+												<div class="address-card__row-title">Ghi chú</div>
+												<div class="address-card__row-content">
+													<c:if test="${order.description.trim().equals('')}">
+														<p style="color: red">Không có ghi chú</p>
+													</c:if>
+													<c:if test="${!order.description.trim().equals('')}">
+												${order.description}
+											</c:if>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6 col-12 px-2 mt-sm-0 mt-3">
+									<div class="card address-card">
+										<div class="address-card__body">
+											<div class="address-card__badge address-card__badge--muted">Trạng thái đơn hàng</div>
+											<div class="address-card__row">
+												<c:forEach items="${statusOrders }" var="so">
+													<div class="status-order ${so.current ? 'current' : 'old'}">
+														<div class="left">${so.status.name }</div>
+														<div class="right">
+															<fmt:formatDate pattern="dd-MM-yyyy" value="${so.createdAt }" />
+														</div>
+													</div>
 												</c:forEach>
-											</tbody>
-										</table>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
 			</div>
-
 		</div>
-	</div>
 
-	<!-- site__body / end -->
+		<!-- site__body / end -->
 
-	<!-- site__footer -->
-	<jsp:include page="layouts/footer.jsp"></jsp:include>
-	<!-- site__footer / end -->
+		<!-- site__footer -->
+		<jsp:include page="layouts/footer.jsp"></jsp:include>
+		<!-- site__footer / end -->
 	</div>
 	<!-- site / end -->
 	<!-- quickview-modal -->

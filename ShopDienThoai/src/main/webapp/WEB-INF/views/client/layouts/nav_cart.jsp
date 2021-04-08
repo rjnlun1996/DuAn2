@@ -170,7 +170,7 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 							</a>
 						</li>
 						<li class="">
-							<a class="sidebar-header" href="">
+							<a class="sidebar-header" href="/order_history">
 								<i class="fas fa-history mr-3"></i>
 								<span>Lịch sử đơn hàng</span>
 							</a>

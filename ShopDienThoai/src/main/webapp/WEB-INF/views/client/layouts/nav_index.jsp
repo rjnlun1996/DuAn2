@@ -15,7 +15,7 @@
 				<ul class="nav-links__list">
 
 					<li class="nav-links__item">
-						<a class="nav-links__item-link" href="../../item/stroyka-tools-store-html-template/23326943.html">
+						<a class="nav-links__item-link" href="/">
 							<div class="nav-links__item-body">Trang chủ</div>
 						</a>
 					</li>

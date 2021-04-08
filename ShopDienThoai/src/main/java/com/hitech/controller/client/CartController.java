@@ -1,5 +1,7 @@
 package com.hitech.controller.client;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +22,7 @@ import com.hitech.entities.Discount;
 import com.hitech.entities.Order;
 import com.hitech.entities.OrderDetail;
 import com.hitech.entities.Product;
+import com.hitech.entities.StatusOrder;
 import com.hitech.services.DiscountService;
 import com.hitech.services.OrderService;
 import com.hitech.services.ProductService;
@@ -57,32 +60,61 @@ public class CartController extends BaseController {
 	public String orderHistory(Model model) {
 		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_ORDER_HISTORY);
 		List<Order> orders = orderSerivce.findOrderByUsername(sessionUtils.getUser().getUsername());
-		
-		List<Order> ordersUpdated = orders.stream().map(e -> {			
+
+		List<Order> ordersUpdated = orders.stream().map(e -> {
 			Set<OrderDetail> od = e.getOrderDetails().stream().map(o -> {
 				o.setDiscount(discountService.findById(o.getDiscountId()));
 				return o;
 			}).distinct().collect(Collectors.toSet());
-			e.setOrderDetails(od);			
+			e.setOrderDetails(od);
 			return e;
 		}).collect(Collectors.toList());
 		
-//		order.setOrderDetails(order.getOrderDetails().stream().map(o -> {
-//			o.setDiscount(discountService.findById(o.getDiscountId()));
-//			return o;
-//		}).distinct().collect(Collectors.toSet()));
+		List<Order> ordered = ordersUpdated.stream().filter(o -> !o.getStatusOrders().stream().anyMatch(s -> {
+			return s.isCurrent() && s.isEnabled() && s.getStatus().getPriority() != 4
+					&& s.isCurrent() && s.isEnabled() && s.getStatus().getPriority() != 5;
+		})).collect(Collectors.toList());
 		
-		model.addAttribute("orders", ordersUpdated);
+		model.addAttribute("processing", ordersUpdated.size() - ordered.size());
+		model.addAttribute("orders", ordered);
 		return CViewConstraint.VIEW_ORDER_HISTORY;
 	}
 
-	@GetMapping(CViewConstraint.URL_ORDER_DETAIL)
-	public String orderDetail(Model model, @RequestParam int id) {
-		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_ORDER_DETAIL);
-		Order order = orderSerivce.findById(id);
+	@GetMapping(CViewConstraint.URL_ORDER_PROCESS)
+	public String orderProcess(Model model) {
+		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_ORDER_PROCESS);
+		List<Order> orders = orderSerivce.findOrderByUsername(sessionUtils.getUser().getUsername());
 
+		List<Order> ordersUpdated = orders.stream().map(e -> {
+			Set<OrderDetail> od = e.getOrderDetails().stream().map(o -> {
+				o.setDiscount(discountService.findById(o.getDiscountId()));
+				return o;
+			}).distinct().collect(Collectors.toSet());
+			e.setOrderDetails(od);
+			return e;
+		}).collect(Collectors.toList());
+
+		List<Order> orderProcessing = ordersUpdated.stream().filter(o -> !o.getStatusOrders().stream().anyMatch(s -> {
+			return s.isCurrent() && s.isEnabled() && s.getStatus().getPriority() == 4
+					|| s.isCurrent() && s.isEnabled() && s.getStatus().getPriority() == 5;
+		})).collect(Collectors.toList());
+		
+		model.addAttribute("processing", orderProcessing.size());
+		model.addAttribute("orders", orderProcessing);
+		return CViewConstraint.VIEW_ORDER_PROCESS;
+	}
+
+	@GetMapping(CViewConstraint.URL_ORDER_HISTORY_DETAIL)
+	public String orderDetail(Model model, @RequestParam int id) {
+		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_ORDER_HISTORY_DETAIL);
 		// Kiểm tra nếu order không phải của Account hiện tại
-		if (order == null || !order.getAccount().getUsername().equals(sessionUtils.getUser().getUsername())) {
+
+		if (!orderSerivce.existsById(id)) {
+			return ViewUtils.redirectTo("/");
+		}
+
+		Order order = orderSerivce.findById(id);
+		if (!order.getAccount().getUsername().equals(sessionUtils.getUser().getUsername())) {
 			return ViewUtils.redirectTo("/");
 		}
 
@@ -91,7 +123,11 @@ public class CartController extends BaseController {
 			return o;
 		}).distinct().collect(Collectors.toSet()));
 		model.addAttribute("order", order);
-		return CViewConstraint.VIEW_ORDER_DETAIL;
+		List<StatusOrder> status = order.getStatusOrders().stream()
+				.sorted(Comparator.comparing(StatusOrder::getCreatedAt)).collect(Collectors.toList());
+		Collections.reverse(status);
+		model.addAttribute("statusOrders", status);
+		return CViewConstraint.VIEW_ORDER_HISTORY_DETAIL;
 	}
 
 	@PostMapping(CViewConstraint.URL_CART_DELETE)

@@ -97,11 +97,11 @@ body {
 										<a href="/">Trang chủ</a>
 									</li>
 
-									<li class="account-nav__item account-nav__item--active">
+									<li class="account-nav__item">
 										<a href="/order_history">Lịch sử đặt hàng</a>
 									</li>
-									<li class="account-nav__item">
-										<a href="/order_detail">Đơn hàng đang giao</a>
+									<li class="account-nav__item account-nav__item--active">
+										<a href="/order_process">Đơn hàng đang giao <span style="color:red">(${processing})</span></a>
 									</li>
 
 									<li class="account-nav__item">
@@ -115,118 +115,68 @@ body {
 						</div>
 						<div class="col-12 col-lg-9 mt-4 mt-lg-0">
 							<div class="card">
-								<div class="order-list">
-									<table>
-										<thead class="order-list__header">
-											<tr>
-												<th class="order-list__column-label" colspan="2">Sản phẩm</th>
-												<th class="order-list__column-quantity">Số lượng</th>
-												<th class="order-list__column-quantity">Giảm giá</th>
-												<th class="order-list__column-total">Giá tiền</th>
-											</tr>
-										</thead>
-										<tbody class="order-list__products">
-											<c:set var="productTotal" value="0"></c:set>
-											<c:forEach items="${order.orderDetails }" var="od">
-												<c:set var="productTotal" value="${productTotal + od.quantity }"></c:set>
+								<div class="card-header">
+									<h5>Danh sách đơn hàng</h5>
+								</div>
+								<div class="card-divider"></div>
+								<div class="card-table">
+									<div class="table-responsive-sm">
+										<table>
+											<thead>
 												<tr>
-													<td class="order-list__column-image">
-														<div class="product-image">
-															<a href="" class="product-image__body">
-																<img class="product-image__img" src="/images/products/${od.product.category.producer.name.toLowerCase()}/${od.product.photo}" alt="">
-															</a>
-														</div>
-													</td>
-													<td class="order-list__column-product">
-														<a style="text-decoration: none; color: blue" href="/detail_product?productId=${od.product.id}">${od.product.name }</a>
-													</td>
-													<td class="order-list__column-quantity" data-title="Qty:">${od.quantity }</td>
-													<td class="order-list__column-quantity" data-title="Qty:">${od.discount == null ? 0 :  od.discount.percents} %</td>
-													<td class="order-list__column-total" style="color: green">
-														<fmt:formatNumber type="number" maxFractionDigits="3" value="${od.product.importPrice}" />
-														VNĐ
-													</td>
+													<th>Mã đơn hàng</th>
+													<th>Ngày đặt hàng</th>
+													<th>Tổng tiền</th>
+													<th>Trạng thái</th>
 												</tr>
-											</c:forEach>
-										</tbody>
-										<tbody class="order-list__subtotals">
-											<tr>
-												<td class="order-list__column-label" colspan="3">Số lượng sản phẩm</td>
-												<td class="order-list__column-total">${productTotal }</td>
-											</tr>
-											<tr>
-												<td class="order-list__column-label" colspan="3">Tổng tiền</td>
-												<td class="order-list__column-total" style="color: blue">
-													<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.calAmountTotal()}" />
-													VNĐ
-												</td>
-											</tr>
-											<tr>
-												<td class="order-list__column-label" colspan="3">Tổng khuyến mãi</td>
-												<td class="order-list__column-total">
-													<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.calDiscountPrice()}" />
-													VNĐ
-												</td>
-											</tr>
-										</tbody>
-										<tfoot class="order-list__footer">
-											<tr>
-												<th class="order-list__column-label" colspan="3">Tổng tiền cần thanh toán</th>
-												<td class="order-list__column-total" style="color: red">
-													<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.calOrder()}" />
-													VNĐ
-												</td>
-											</tr>
-										</tfoot>
-									</table>
-								</div>
-							</div>
-							<div class="row mt-3 no-gutters mx-n2">
-								<div class="col-sm-6 col-12 px-2 mt-sm-0 mt-3">
-									<div class="card address-card">
-										<div class="address-card__body">
-											<div class="address-card__badge address-card__badge--muted">Ghi chú</div>
-											<div class="address-card__row">
-												<c:if test="${order.description.trim().equals('')}">
-													<p style="color: red">Không có ghi chú</p>
-												</c:if>
-												<c:if test="${!order.description.trim().equals('')}">
-												${order.description}
-											</c:if>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-6 col-12 px-2">
-									<div class="card address-card">
-										<div class="address-card__body">
-											<div class="address-card__badge address-card__badge--muted">Địa chỉ giao hàng</div>
-											<div class="address-card__name" style="text-transform: capitalize;">${order.receiver}</div>
-											<div class="address-card__row" style="color: blue">${order.address}</div>
-											<div class="address-card__row">
-												<div class="address-card__row-title">Số điện thoại</div>
-												<div class="address-card__row-content">${order.phone}</div>
-											</div>
-											<div class="address-card__row">
-												<div class="address-card__row-title">Địa chỉ Email</div>
-												<div class="address-card__row-content">${user.email}</div>
-											</div>
-										</div>
+											</thead>
+											<tbody>
+												<c:forEach items="${orders }" var="order">
+													<c:set var="count" value="0"></c:set>
+													<c:forEach items="${order.orderDetails }" var="od">
+														<c:set var="count" value="${od.quantity + count }"></c:set>
+													</c:forEach>
+													<tr>
+														<td>
+															<a href="/order_history_detail?id=${order.id}">#${order.id}</a>
+														</td>
+														<td>
+															<fmt:formatDate pattern="dd-MM-yyyy" value="${order.requireDate }" />
+														</td>
+														<td>
+															<span style="color: blue">
+																<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.calOrder()}" />
+																VNĐ
+															</span>
+															for
+															<span style="color: blue">${count}</span>
+															item(s)
+														</td>
+														<td>
+															<c:forEach items="${order.statusOrders }" var="so">
+																<c:if test="${so.current }">${so.status.name }</c:if>
+															</c:forEach>
+														</td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
 			</div>
+
 		</div>
+	</div>
 
-		<!-- site__body / end -->
+	<!-- site__body / end -->
 
-		<!-- site__footer -->
-		<jsp:include page="layouts/footer.jsp"></jsp:include>
-		<!-- site__footer / end -->
+	<!-- site__footer -->
+	<jsp:include page="layouts/footer.jsp"></jsp:include>
+	<!-- site__footer / end -->
 	</div>
 	<!-- site / end -->
 	<!-- quickview-modal -->
@@ -296,5 +246,3 @@ body {
 	</script>
 </body>
 </html>
-
-

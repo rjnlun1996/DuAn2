@@ -11,4 +11,6 @@ public interface OrderService extends IBaseService<Order, Integer>{
 	List<Order> findByEnabledTrue();
 	
 	List<Order> findOrderByUsername(String username);
+	
+	boolean existsById(int id);
 }

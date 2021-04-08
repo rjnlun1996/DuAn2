@@ -33,6 +33,10 @@
 body {
 	font-family: 'Source Serif Pro', serif;
 }
+
+.block-slideshow__slide-image {
+	background-size: contain !important;
+}
 </style>
 
 </head>
@@ -66,61 +70,19 @@ body {
 							<div class="block-slideshow__body">
 								<div class="owl-carousel">
 									<a class="block-slideshow__slide" href="">
-										<div class="block-slideshow__slide-image block-slideshow__slide-image--desktop" style="background-image: url('images/slides/slide-1.jpg')"></div>
-										<div class="block-slideshow__slide-image block-slideshow__slide-image--mobile" style="background-image: url('images/slides/slide-1-mobile.jpg')"></div>
-										<div class="block-slideshow__slide-content">
-											<div class="block-slideshow__slide-title">
-												Big choice of
-												<br>
-												Plumbing products
-											</div>
-											<div class="block-slideshow__slide-text">
-												Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-												<br>
-												Etiam pharetra laoreet dui quis molestie.
-											</div>
-											<div class="block-slideshow__slide-button">
-												<span class="btn btn-primary btn-lg">Shop Now</span>
-											</div>
-										</div>
+										<div class="block-slideshow__slide-image block-slideshow__slide-image--desktop" style="background-image: url('images/logos/banner2.jpg')"></div>
+										<div class="block-slideshow__slide-image block-slideshow__slide-image--mobile" style="background-image: url('images/logos/banner2.jpg')"></div>
 									</a>
+
+
 									<a class="block-slideshow__slide" href="">
-										<div class="block-slideshow__slide-image block-slideshow__slide-image--desktop" style="background-image: url('images/slides/slide-2.jpg')"></div>
-										<div class="block-slideshow__slide-image block-slideshow__slide-image--mobile" style="background-image: url('images/slides/slide-2-mobile.jpg')"></div>
-										<div class="block-slideshow__slide-content">
-											<div class="block-slideshow__slide-title">
-												Screwdrivers
-												<br>
-												Professional Tools
-											</div>
-											<div class="block-slideshow__slide-text">
-												Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-												<br>
-												Etiam pharetra laoreet dui quis molestie.
-											</div>
-											<div class="block-slideshow__slide-button">
-												<span class="btn btn-primary btn-lg">Shop Now</span>
-											</div>
-										</div>
+										<div class="block-slideshow__slide-image block-slideshow__slide-image--desktop" style="background-image: url('images/logos/banner3.jpg')"></div>
+										<div class="block-slideshow__slide-image block-slideshow__slide-image--mobile" style="background-image: url('images/logos/banner3.jpg')"></div>
 									</a>
+
 									<a class="block-slideshow__slide" href="">
-										<div class="block-slideshow__slide-image block-slideshow__slide-image--desktop" style="background-image: url('images/slides/slide-3.jpg')"></div>
-										<div class="block-slideshow__slide-image block-slideshow__slide-image--mobile" style="background-image: url('images/slides/slide-3-mobile.jpg')"></div>
-										<div class="block-slideshow__slide-content">
-											<div class="block-slideshow__slide-title">
-												One more
-												<br>
-												Unique header
-											</div>
-											<div class="block-slideshow__slide-text">
-												Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-												<br>
-												Etiam pharetra laoreet dui quis molestie.
-											</div>
-											<div class="block-slideshow__slide-button">
-												<span class="btn btn-primary btn-lg">Shop Now</span>
-											</div>
-										</div>
+										<div class="block-slideshow__slide-image block-slideshow__slide-image--desktop" style="background-image: url('images/logos/banner1.jpg')"></div>
+										<div class="block-slideshow__slide-image block-slideshow__slide-image--mobile" style="background-image: url('images/logos/banner1.jpg')"></div>
 									</a>
 								</div>
 							</div>
@@ -130,59 +92,7 @@ body {
 			</div>
 			<!-- .block-slideshow / end -->
 			<!-- .block-features -->
-			<div class="block block-features block-features--layout--classic">
-				<div class="container">
-					<div class="block-features__list">
-						<div class="block-features__item">
-							<div class="block-features__icon">
-								<svg width="48px" height="48px">
-                              <use xlink:href="images/sprite.svg#fi-free-delivery-48"></use>
-                           </svg>
-							</div>
-							<div class="block-features__content">
-								<div class="block-features__title">Free Shipping</div>
-								<div class="block-features__subtitle">For orders from $50</div>
-							</div>
-						</div>
-						<div class="block-features__divider"></div>
-						<div class="block-features__item">
-							<div class="block-features__icon">
-								<svg width="48px" height="48px">
-                              <use xlink:href="images/sprite.svg#fi-24-hours-48"></use>
-                           </svg>
-							</div>
-							<div class="block-features__content">
-								<div class="block-features__title">Support 24/7</div>
-								<div class="block-features__subtitle">Call us anytime</div>
-							</div>
-						</div>
-						<div class="block-features__divider"></div>
-						<div class="block-features__item">
-							<div class="block-features__icon">
-								<svg width="48px" height="48px">
-                              <use xlink:href="images/sprite.svg#fi-payment-security-48"></use>
-                           </svg>
-							</div>
-							<div class="block-features__content">
-								<div class="block-features__title">100% Safety</div>
-								<div class="block-features__subtitle">Only secure payments</div>
-							</div>
-						</div>
-						<div class="block-features__divider"></div>
-						<div class="block-features__item">
-							<div class="block-features__icon">
-								<svg width="48px" height="48px">
-                              <use xlink:href="images/sprite.svg#fi-tag-48"></use>
-                           </svg>
-							</div>
-							<div class="block-features__content">
-								<div class="block-features__title">Hot Offers</div>
-								<div class="block-features__subtitle">Discounts up to 90%</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			
 			<!-- .block-features / end -->
 			<!-- .block-products-carousel -->
 			<div class="block block-products-carousel" data-layout="grid-4" data-mobile-grid-columns="2">
