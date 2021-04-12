@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="format-detection" content="telephone=no">
-<title>Shop Dien Thoai</title>
+<title>HopeOnline -- Chi tiết đơn hàng đã đặt</title>
 <link rel="icon" type="image/png" href="images/favicon.png">
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -40,8 +40,10 @@ body {
 	padding: 10px;
 	position: relative;
 	text-transform: capitalize;
-	margin-top: 10px; margin-left : 15px; border-radius : 4px; display :
-	flex;
+	margin-top: 10px;
+	margin-left: 15px;
+	border-radius: 4px;
+	display: flex;
 	justify-content: space-between;
 	margin-left: 15px;
 	border-radius: 4px;
@@ -79,16 +81,16 @@ body {
 <body>
 	<!-- site -->
 	<div class="site">
+		<!-- mobile site__header -->
+		<jsp:include page="layouts/header_mobile.jsp"></jsp:include>
+		<!-- mobile site__header / end -->
+
 		<header class="site__header d-lg-block d-none">
 			<div class="site-header">
 
-				<!-- mobile site__header -->
+				<!-- header -->
 				<jsp:include page="layouts/header.jsp"></jsp:include>
-				<!-- mobile site__header / end -->
-
-				<!-- desktop site__header -->
-				<jsp:include page="layouts/header_mobile.jsp"></jsp:include>
-				<!-- desktop site__header / end -->
+				<!-- header / end -->
 
 				<div class="site-header__nav-panel">
 					<jsp:include page="layouts/nav.jsp"></jsp:include>
@@ -295,6 +297,11 @@ body {
 		</div>
 	</div>
 	<!-- quickview-modal / end -->
+	
+	<!-- mobilemenu -->
+	<jsp:include page="layouts/menu_mobile.jsp"></jsp:include>
+	<!-- mobilemenu / end -->
+	
 	<!-- photoswipe -->
 	<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="pswp__bg"></div>

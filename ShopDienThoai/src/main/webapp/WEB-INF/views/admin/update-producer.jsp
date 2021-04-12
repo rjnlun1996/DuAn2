@@ -17,7 +17,7 @@
 <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
 <link rel="shortcut icon" href="/assets/images/favicon.png"
 	type="image/x-icon">
-<title>HOPE - UPDATE PRODUCER</title>
+<title>HopeOnline -- Update Producer</title>
 <!-- Google font-->
 <link
 	href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900"
