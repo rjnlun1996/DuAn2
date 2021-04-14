@@ -34,7 +34,7 @@
 <style type="text/css">
 body {
 	font-family: 'Source Serif Pro', serif;
-}
+} 
 </style>
 
 </head>

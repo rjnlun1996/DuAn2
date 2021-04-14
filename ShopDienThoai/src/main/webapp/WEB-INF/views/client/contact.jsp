@@ -33,7 +33,9 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/sweetalert2.css">
 <style type="text/css">
 body {
-	font-family: 'Source Serif Pro', serif;
+	/* font-family: 'Source Serif Pro', serif; */
+	font-family:rl_book,tahoma,arial,helvetica,sans-serif;
+	line-height:38px;
 }
 </style>
 
@@ -82,44 +84,55 @@ body {
                      </nav>
                   </div>
                   <div class="page-header__title">
-                     <h1>Contact Us</h1>
-                  </div>
+                     <h1 style="color:#666666">Liên hệ với chúng tôi</h1>
+                  </div><br>
+                  <h2 style="color:#666666">HOPE ONLINE</h2>
                </div>
             </div>
             <div class="block">
                <div class="container">
-                  <div class="card mb-0 contact-us">
-                     <div class="contact-us__map"><iframe src="../../maps/embed.html?q=Holbrook-Palmer%20Park&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
+                <!--   <div class="card mb-0 contact-us"> -->
+                    
                      <div class="card-body">
-                        <div class="contact-us__container">
+                      <!--   <div class="contact-us__container"> -->
                            <div class="row">
                               <div class="col-12 col-lg-6 pb-4 pb-lg-0">
-                                 <h4 class="contact-us__header card-title">Our Address</h4>
+                                 <h4 class="contact-us__header card-title">Địa chỉ</h4>
                                  <div class="contact-us__address">
-                                    <p>715 Fake Ave, Apt. 34, New York, NY 10021 USA<br>Email: stroyka@example.com<br>Phone Number: +1 754 000-00-00</p>
-                                    <p><strong>Opening Hours</strong><br>Monday to Friday: 8am-8pm<br>Saturday: 8am-6pm<br>Sunday: 10am-4pm</p>
-                                    <p><strong>Comment</strong><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit suscipit mi, non tempor nulla finibus eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p>391A Nam Kỳ Khởi Nghĩa, Phường 14, Quận 3, Thành phố Hồ Chí Minh<br><br>Email : Hopeonline321@gmail.com<br><br>Số điện thoại : 0969381853</p>
+                                    <p><strong>Giờ mở cửa : </strong><br> 8:00 AM - 10:00 PM</p>
+                                    
                                  </div>
                               </div>
-                              <div class="col-12 col-lg-6">
-                                 <h4 class="contact-us__header card-title">Leave us a Message</h4>
-                                 <form>
-                                    <div class="form-row">
-                                       <div class="form-group col-md-6"><label for="form-name">Your Name</label> <input type="text" id="form-name" class="form-control" placeholder="Your Name"></div>
-                                       <div class="form-group col-md-6"><label for="form-email">Email</label> <input type="email" id="form-email" class="form-control" placeholder="Email Address"></div>
-                                    </div>
-                                    <div class="form-group"><label for="form-subject">Subject</label> <input type="text" id="form-subject" class="form-control" placeholder="Subject"></div>
-                                    <div class="form-group"><label for="form-message">Message</label> <textarea id="form-message" class="form-control" rows="4"></textarea></div>
-                                    <button type="submit" class="btn btn-primary">Send Message</button>
-                                 </form>
+                              <div class="col-12 col-lg-6 pb-4 pb-lg-0">
+                               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.2669295095066!2d106.68008651474896!3d10.79085629231172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528d4a7c59c09%3A0x8e2f7cbc924be1db!2zMzkxYSBOYW0gS-G7syBLaOG7n2kgTmdoxKlhLCBQaMaw4budbmcgMTQsIFF14bqtbiAzLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1618402861346!5m2!1svi!2s" width="550" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe> 
                               </div>
                            </div>
-                        </div>
+                       <!--  </div> -->
                      </div>
-                  </div>
+                  <!-- </div> -->
+                 <!--  <div class="card-body"> -->
+                 <br>
+                 <br>
+                <div class="col-12 col-lg-12 pb-6 pb-lg-6">
+                                 <h4 class="contact-us__header card-title" style="color:#666666">Để lại lời nhắn với chúng tôi</h4><br>
+                                 <form>
+                                    <div class="form-row">
+                                       <div class="form-group col-md-6"><label for="form-name">Tên của bạn</label> <input style="border: 1px solid #c0a842;" type="text" id="form-name" class="form-control" placeholder="Tên của bạn"></div>
+                                       <div class="form-group col-md-6"><label for="form-email">Email</label> <input  style="border: 1px solid #c0a842;" type="email" id="form-email" class="form-control" placeholder="Địa chỉ Email"></div>
+                                    </div>
+                                    <div class="form-group"><label for="form-subject">Tiêu đề</label> <input  style="border: 1px solid #c0a842;" type="text" id="form-subject" class="form-control" placeholder="Tiêu đề"></div>
+                                    <div class="form-group"><label for="form-message">Nội dung</label> <textarea  style="border: 1px solid #c0a842;"  id="form-message" class="form-control" rows="8"></textarea></div>
+                                    <button type="submit" class="btn btn-primary">Gửi</button>
+                                 </form>
+                              </div>
+       <!--                        
+         </div> -->
+                 
                </div>
+             
             </div>
-         </div>
+              
          <!-- site__body / end -->
 	</div>
 
