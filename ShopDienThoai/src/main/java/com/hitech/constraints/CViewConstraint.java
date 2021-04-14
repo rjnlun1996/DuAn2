@@ -29,6 +29,12 @@ public class CViewConstraint {
 	public static final String URL_PROFILE_UPDATE = URL_PROFILE + "update";
 	public static final String VIEW_PROFILE = "client/profile";
 	public static final String VIEW_PROFILE_UPDATE = "client/profile";
+	
+	public static final String URL_ABOUT = "/about";
+	public static final String VIEW_ABOUT = "client/about";
+	
+	public static final String URL_CONTACT = "/contact";
+	public static final String VIEW_CONTACT = "client/contact";
 
 	public static final String URL_DETAIL_PRODUCT = "/detail_product";
 	public static final String VIEW_DETAIL_PRODUCT = "client/detail_product";
