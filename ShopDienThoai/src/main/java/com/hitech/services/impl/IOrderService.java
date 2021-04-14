@@ -82,5 +82,10 @@ public class IOrderService implements OrderService{
 		return orderRepository.existsById(id);
 	}
 
+	@Override
+	public String calTotalRevenue(String status) {
+		return orderRepository.calTotalRevenue(status);
+	}
+
 
 }

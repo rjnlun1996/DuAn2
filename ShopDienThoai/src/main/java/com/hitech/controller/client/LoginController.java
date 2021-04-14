@@ -45,7 +45,7 @@ public class LoginController {
 			model.addAttribute("message", "Tài khoản hoặc mật khẩu không đúng");
 			return CViewConstraint.VIEW_LOGIN;
 		}
-		return ViewUtils.redirectTo(CViewConstraint.URL_HOME);
+		return ViewUtils.redirectTo("/");
 
 	}
 	
@@ -62,7 +62,7 @@ public class LoginController {
 			model.addAttribute("message", "Tài khoản hoặc mật khẩu không đúng");
 			return CViewConstraint.VIEW_LOGIN_NAV;
 		}
-		return ViewUtils.redirectTo(CViewConstraint.URL_HOME);
+		return ViewUtils.redirectTo("/");
 
 	}
 

@@ -57,7 +57,7 @@
           <div class="col-md-8 offset-md-2">
             <p class="sub-content">The page you are attempting to reach is currently not available. This may be because the page does not exist or has been moved.</p>
           </div>
-          <div><a class="btn btn-danger-gradien btn-lg" href="/ho-manager/">BACK TO HOME PAGE</a></div>
+          <div><a class="btn btn-danger-gradien btn-lg" href="/">BACK TO HOME PAGE</a></div>
         </div>
       </div>
       <!-- error-404 end      -->

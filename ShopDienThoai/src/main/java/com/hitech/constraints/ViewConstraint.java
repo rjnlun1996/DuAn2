@@ -121,7 +121,8 @@ public interface ViewConstraint {
 	public static final String VIEW_ADMIN_FORGET_PASSWORD = "/admin/forget-password";
 	
 	public static final String URL_ADMIN_LOGOUT = "/ho-admin/logout";
-	public static final String URL_ADMIN_404 = "/ho-admin/404/";
-	public static final String VIEW_ADMIN_404 = "admin/404";
+	
+	public static final String URL_ERROR = "/error";
+	public static final String VIEW_ERROR = "admin/404";
 	
 }

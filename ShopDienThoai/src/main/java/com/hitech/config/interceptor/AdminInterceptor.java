@@ -23,10 +23,10 @@ public class AdminInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		String path = request.getRequestURI();
+		String path = request.getRequestURI();		
 		
 		// Cho phép các định dạng file luôn luôn được truy cập
-		List<String> media = Arrays.asList(new String[] {"css", "js", "png", "jpg", "svg", "map", "woff", "tff", "woff2"});
+		List<String> media = Arrays.asList(new String[] {"css", "js", "png", "jpg", "svg", "map", "woff", "tff", "woff2", "ico"});
 		for(String m : media) {
 			if(path.endsWith(m)) {
 				return true;
@@ -36,7 +36,7 @@ public class AdminInterceptor implements HandlerInterceptor {
 		// Cho phép truy cập và phân quyền cho Client
 		List<String> allowAnyClientsAccess = Arrays
 				.asList(new String[] {"/", CViewConstraint.URL_LOGIN, CViewConstraint.URL_FORGET_PASSWORD, CViewConstraint.URL_LOGIN_CHECK,
-						CViewConstraint.URL_DETAIL_PRODUCT, CViewConstraint.URL_REGISTER, CViewConstraint.URL_LOGIN_NAV});
+						CViewConstraint.URL_DETAIL_PRODUCT, CViewConstraint.URL_REGISTER, CViewConstraint.URL_LOGIN_NAV, ViewConstraint.URL_ERROR});
 		boolean isAllowAnyClientsAccess = false;
 		for(String a : allowAnyClientsAccess) {
 			if(path.equals(a)) {
@@ -66,7 +66,7 @@ public class AdminInterceptor implements HandlerInterceptor {
 		}
 
 		if (listOnlyAllowAdminPages.contains(path) && !sessionUtils.isAdminLogin()) {
-			response.sendRedirect(ViewConstraint.URL_ADMIN_404);
+			response.sendRedirect(ViewConstraint.URL_ERROR);
 			return false;
 		}
 

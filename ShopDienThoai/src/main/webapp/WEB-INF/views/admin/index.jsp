@@ -1,29 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="static com.hitech.constraints.ViewConstraint.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description"
-	content="Creative admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-<meta name="keywords"
-	content="admin template, Creative admin template, dashboard template, flat admin template, responsive admin template, web app">
+<meta name="description" content="Creative admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+<meta name="keywords" content="admin template, Creative admin template, dashboard template, flat admin template, responsive admin template, web app">
 <meta name="author" content="pixelstrap">
 <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
-<link rel="shortcut icon" href="/assets/images/favicon.png"
-	type="image/x-icon">
-<title> HOPE ONLINE </title>
+<link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
+<title>HOPE ONLINE</title>
 <!-- Google font-->
-<link
-	href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 <!-- Font Awesome-->
 <link rel="stylesheet" type="text/css" href="/assets/css/fontawesome.css">
 <!-- ico-font-->
@@ -31,28 +28,22 @@
 <!-- Themify icon-->
 <link rel="stylesheet" type="text/css" href="/assets/css/themify.css">
 <!-- Flag icon-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/flag-icon.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/flag-icon.css">
 <!-- Feather icon-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/feather-icon.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/feather-icon.css">
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/chartist.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/vector-map.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/vector-map.css">
 <!-- Plugins css Ends-->
 <!-- Bootstrap css-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
 <!-- App css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-<link id="color" rel="stylesheet" href="/assets/css/light-1.css"
-	media="screen">
+<link id="color" rel="stylesheet" href="/assets/css/light-1.css" media="screen">
 <!-- Responsive css-->
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/responsive.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
 </head>
 <body>
 	<!-- Loader starts-->
@@ -88,28 +79,18 @@
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Home</a></li>
 									<li class="breadcrumb-item">Dashboard</li>
-									<li class="breadcrumb-item active">default</li>
+									<li class="breadcrumb-item active">Overview</li>
 								</ol>
 							</div>
 							<div class="col-lg-6">
 								<!-- Bookmark Start-->
 								<div class="bookmark pull-right">
 									<ul>
-										<li><a href="#" data-container="body"
-											data-toggle="popover" data-placement="top" title=""
-											data-original-title="Tables"><i data-feather="inbox"></i></a></li>
-										<li><a href="#" data-container="body"
-											data-toggle="popover" data-placement="top" title=""
-											data-original-title="Chat"><i
-												data-feather="message-square"></i></a></li>
-										<li><a href="#" data-container="body"
-											data-toggle="popover" data-placement="top" title=""
-											data-original-title="Icons"><i data-feather="command"></i></a></li>
-										<li><a href="#" data-container="body"
-											data-toggle="popover" data-placement="top" title=""
-											data-original-title="Learning"><i data-feather="layers"></i></a></li>
-										<li><a href="#"><i class="bookmark-search"
-												data-feather="star"></i></a>
+										<li><a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
+										<li><a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
+										<li><a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
+										<li><a href="#" data-container="body" data-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
+										<li><a href="#"><i class="bookmark-search" data-feather="star"></i></a>
 											<form class="form-inline search-form">
 												<div class="form-group form-control-search">
 													<input type="text" placeholder="Search..">
@@ -133,24 +114,19 @@
 											<div class="progressbar-widgets">
 												<div class="media media-widgets">
 													<div class="media-body">
-														<p class="mb-0">Total Sale</p>
+														<p class="mb-0">Total Revenue</p>
 														<h3 class="mt-0 mb-0 f-w-600">
-															<i data-feather="dollar-sign"></i><span class="counter">841,162</span>
+															<span class="counter"><%-- <fmt:formatNumber type="currency" value="${total}" /> --%>${total}</span>
 														</h3>
 													</div>
-													<span class="badge flat-badge-secondary">3.56%<i
-														class="fa fa-caret-up"></i></span>
+													<span class="badge flat-badge-secondary">3.56%<i class="fa fa-caret-up"></i></span>
 												</div>
 												<div class="progress sm-progress-bar progress-animate">
-													<div class="progress-gradient-secondary" role="progressbar"
-														style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-														aria-valuemax="100">
-														<span class="font-secondary">75%</span><span
-															class="animate-circle"></span>
+													<div class="progress-gradient-secondary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+														<span class="font-secondary">75%</span><span class="animate-circle"></span>
 													</div>
 												</div>
-												<span class="tag-content-secondary tag-hover-effect"><i
-													data-feather="trending-up"></i></span>
+												<span class="tag-content-secondary tag-hover-effect"><i data-feather="trending-up"></i></span>
 											</div>
 										</div>
 									</div>
@@ -163,23 +139,17 @@
 													<div class="media-body">
 														<p class="mb-0">Total Purchase</p>
 														<h3 class="mt-0 mb-0 f-w-600">
-															<i data-feather="dollar-sign"></i><span class="counter">123,461</span><span><i
-																class="font-success" data-feather="trending-up"></i></span>
+															<i data-feather="dollar-sign"></i><span class="counter">123,461</span><span><i class="font-success" data-feather="trending-up"></i></span>
 														</h3>
 													</div>
-													<span class="badge flat-badge-success">3.56%<i
-														class="fa fa-caret-up"></i></span>
+													<span class="badge flat-badge-success">3.56%<i class="fa fa-caret-up"></i></span>
 												</div>
 												<div class="progress sm-progress-bar progress-animate">
-													<div class="progress-gradient-success" role="progressbar"
-														style="width: 80%" aria-valuenow="80" aria-valuemin="0"
-														aria-valuemax="100">
-														<span class="font-success">80%</span><span
-															class="animate-circle"></span>
+													<div class="progress-gradient-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+														<span class="font-success">80%</span><span class="animate-circle"></span>
 													</div>
 												</div>
-												<span class="tag-content-success tag-hover-effect"><i
-													data-feather="trending-up"> </i></span>
+												<span class="tag-content-success tag-hover-effect"><i data-feather="trending-up"> </i></span>
 											</div>
 										</div>
 									</div>
@@ -192,22 +162,17 @@
 													<div class="media-body">
 														<p class="mb-0 font-light">Active Customers</p>
 														<h3 class="mt-0 mb-0 f-w-600">
-															<span class="counter">10,14,125</span><span><i
-																class="font-light" data-feather="trending-up"></i></span>
+															<span class="counter">10,14,125</span><span><i class="font-light" data-feather="trending-up"></i></span>
 														</h3>
 													</div>
-													<span class="badge flat-badge-light font-primary">01.36<i
-														class="fa fa-caret-up"></i></span>
+													<span class="badge flat-badge-light font-primary">01.36<i class="fa fa-caret-up"></i></span>
 												</div>
 												<div class="progress sm-progress-bar progress-animate">
-													<div class="progress-gradient-light" role="progressbar"
-														style="width: 65%" aria-valuenow="65" aria-valuemin="0"
-														aria-valuemax="100">
+													<div class="progress-gradient-light" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
 														<span class="animate-circle"></span>
 													</div>
 												</div>
-												<span class="tag-content-light tag-light tag-hover-effect"><i
-													data-feather="trending-up"> </i></span>
+												<span class="tag-content-light tag-light tag-hover-effect"><i data-feather="trending-up"> </i></span>
 											</div>
 										</div>
 									</div>
@@ -220,22 +185,17 @@
 													<div class="media-body">
 														<p class="mb-0">New Customers</p>
 														<h3 class="mt-0 mb-0 f-w-600">
-															<span class="counter">9,00,563</span><span><i
-																class="font-primary" data-feather="trending-up"></i></span>
+															<span class="counter">9,00,563</span><span><i class="font-primary" data-feather="trending-up"></i></span>
 														</h3>
 													</div>
-													<span class="badge flat-badge-primary">6.23%<i
-														class="fa fa-caret-up"></i></span>
+													<span class="badge flat-badge-primary">6.23%<i class="fa fa-caret-up"></i></span>
 												</div>
 												<div class="progress sm-progress-bar progress-animate">
-													<div class="progress-gradient-primary" role="progressbar"
-														style="width: 95%" aria-valuenow="95" aria-valuemin="0"
-														aria-valuemax="100">
+													<div class="progress-gradient-primary" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
 														<span class="animate-circle"></span>
 													</div>
 												</div>
-												<span class="tag-content-primary tag-hover-effect"><i
-													data-feather="trending-up"> </i></span>
+												<span class="tag-content-primary tag-hover-effect"><i data-feather="trending-up"> </i></span>
 											</div>
 										</div>
 									</div>
@@ -260,24 +220,18 @@
 								<div class="card-body p-0">
 									<div class="row m-0 dashboard-btn-groups">
 										<div class="col-lg-6">
-											<div class="btn-group" role="group"
-												aria-label="Basic example">
+											<div class="btn-group" role="group" aria-label="Basic example">
 												<button class="btn btn-outline-light btn-js" type="button">Hours</button>
 												<button class="btn btn-outline-light btn-js" type="button">Day</button>
 												<button class="btn btn-outline-light btn-js" type="button">Week</button>
-												<button class="btn btn-outline-light btn-js active"
-													type="button">Month</button>
+												<button class="btn btn-outline-light btn-js active" type="button">Month</button>
 											</div>
 										</div>
 										<div class="col-lg-6">
-											<div class="btn-group pull-right" role="group"
-												aria-label="Basic example">
-												<button class="btn btn-outline-light btn-js1" type="button">From
-													Date</button>
-												<button class="btn btn-outline-light btn-js1" type="button">To
-													Date</button>
-												<button class="btn btn-outline-light btn-js1 active"
-													type="button">
+											<div class="btn-group pull-right" role="group" aria-label="Basic example">
+												<button class="btn btn-outline-light btn-js1" type="button">From Date</button>
+												<button class="btn btn-outline-light btn-js1" type="button">To Date</button>
+												<button class="btn btn-outline-light btn-js1 active" type="button">
 													<i data-feather="calendar"></i>
 												</button>
 											</div>
@@ -291,8 +245,7 @@
 										<div class="dashboard-rounded-chart flot-chart-container"></div>
 									</div>
 									<div class="code-box-copy">
-										<button class="code-box-copy__btn btn-clipboard"
-											data-clipboard-target="#example-head" title="Copy">
+										<button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head" title="Copy">
 											<i class="icofont icofont-copy-alt"></i>
 										</button>
 										<pre>
@@ -341,33 +294,26 @@
 										<table class="table table-bordernone">
 											<tbody>
 												<tr>
-													<td><img class="img-fluid"
-														src="/assets/images/dashboard/sale-product-1.png" alt=""></td>
-													<td><span>Latest </span><span class="d-block">Niky
-															Black shoes</span></td>
-													<td><span
-														class="badge badge-pill pill-badge-secondary">21,562</span></td>
+													<td><img class="img-fluid" src="/assets/images/dashboard/sale-product-1.png" alt=""></td>
+													<td><span>Latest </span><span class="d-block">Niky Black shoes</span></td>
+													<td><span class="badge badge-pill pill-badge-secondary">21,562</span></td>
 													<td><span>28.21%</span></td>
 												</tr>
 												<tr>
-													<td><img class="img-fluid"
-														src="/assets/images/dashboard/sale-product-2.png" alt=""></td>
+													<td><img class="img-fluid" src="/assets/images/dashboard/sale-product-2.png" alt=""></td>
 													<td><span>Latest Men </span><span class="d-block">Shirt</span></td>
 													<td><span>15,102</span></td>
 													<td><span>18.00%</span></td>
 												</tr>
 												<tr>
-													<td><img class="img-fluid"
-														src="/assets/images/dashboard/sale-product-3.png" alt=""></td>
+													<td><img class="img-fluid" src="/assets/images/dashboard/sale-product-3.png" alt=""></td>
 													<td><span>Latest Women </span><span class="d-block">Purse</span></td>
 													<td><span>9562</span></td>
 													<td><span>08.54%</span></td>
 												</tr>
 												<tr>
-													<td><img class="img-fluid"
-														src="/assets/images/dashboard/sale-product-4.png" alt=""></td>
-													<td><span>Latest </span><span class="d-block">Women
-															Sandals</span></td>
+													<td><img class="img-fluid" src="/assets/images/dashboard/sale-product-4.png" alt=""></td>
+													<td><span>Latest </span><span class="d-block">Women Sandals</span></td>
 													<td><span>1002</span></td>
 													<td><span>01.33%</span></td>
 												</tr>
@@ -375,8 +321,7 @@
 										</table>
 									</div>
 									<div class="code-box-copy">
-										<button class="code-box-copy__btn btn-clipboard"
-											data-clipboard-target="#example-head2" title="Copy">
+										<button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head2" title="Copy">
 											<i class="icofont icofont-copy-alt"></i>
 										</button>
 										<pre>
@@ -423,8 +368,7 @@
 								</div>
 								<div class="card-footer sales-product-table-footer">
 									<div class="media">
-										<a class="btn btn-outline-light">Last Week<i
-											class="fa fa-angle-double-right ml-2"></i></a>
+										<a class="btn btn-outline-light">Last Week<i class="fa fa-angle-double-right ml-2"></i></a>
 										<div class="media-body">
 											<a class="pull-right" href="#">View More Reports </a>
 										</div>
@@ -437,10 +381,7 @@
 								<div class="row card-body">
 									<div class="col-md-6">
 										<div class="knob-block text-center">
-											<input class="knob" data-width="230" data-height="230"
-												data-thickness=".060" data-angleoffset="90"
-												data-displayinput="false" data-fgcolor="#fb2e63"
-												data-bgcolor="#f2f4ff" data-linecap="round" value="75">
+											<input class="knob" data-width="230" data-height="230" data-thickness=".060" data-angleoffset="90" data-displayinput="false" data-fgcolor="#fb2e63" data-bgcolor="#f2f4ff" data-linecap="round" value="75">
 											<div class="knob-content-center">
 												<h6 class="f-w-600">March. 2019</h6>
 												<span class="f-w-600">Total Invest</span>
@@ -466,8 +407,7 @@
 											<h5 class="f-w-600">
 												<i data-feather="dollar-sign"></i>785,000
 											</h5>
-											<h6 class="f-w-600 mb-0">Current Balance This Invest
-												Cycle</h6>
+											<h6 class="f-w-600 mb-0">Current Balance This Invest Cycle</h6>
 										</div>
 									</div>
 								</div>
@@ -495,8 +435,7 @@
 										<span>Profit</span>
 									</div>
 									<div class="code-box-copy">
-										<button class="code-box-copy__btn btn-clipboard"
-											data-clipboard-target="#example-head3" title="Copy">
+										<button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head3" title="Copy">
 											<i class="icofont icofont-copy-alt"></i>
 										</button>
 										<pre>
@@ -549,18 +488,10 @@
 															</div>
 														</div>
 													</td>
-													<td>
-														<span>NikyBlack87@gmail.com</span>
-													</td>
-													<td>
-														<span>21,562</span>
-													</td>
-													<td>
-														<span>28.21%</span>
-													</td>
-													<td>
-														<span class="badge badge-pill pill-badge-secondary">Edit</span>
-													</td>
+													<td><span>NikyBlack87@gmail.com</span></td>
+													<td><span>21,562</span></td>
+													<td><span>28.21%</span></td>
+													<td><span class="badge badge-pill pill-badge-secondary">Edit</span></td>
 												</tr>
 												<tr>
 													<td>02</td>
@@ -572,18 +503,10 @@
 															</div>
 														</div>
 													</td>
-													<td>
-														<span>Milanoesco56@gmal.com</span>
-													</td>
-													<td>
-														<span>15,102</span>
-													</td>
-													<td>
-														<span>18.00%</span>
-													</td>
-													<td>
-														<span class="badge badge-pill pill-badge-success">Edit</span>
-													</td>
+													<td><span>Milanoesco56@gmal.com</span></td>
+													<td><span>15,102</span></td>
+													<td><span>18.00%</span></td>
+													<td><span class="badge badge-pill pill-badge-success">Edit</span></td>
 												</tr>
 												<tr>
 													<td>03</td>
@@ -595,18 +518,10 @@
 															</div>
 														</div>
 													</td>
-													<td>
-														<span>Wiltornoice34@gmail.com</span>
-													</td>
-													<td>
-														<span>9562</span>
-													</td>
-													<td>
-														<span>08.54%</span>
-													</td>
-													<td>
-														<span class="badge badge-pill pill-badge-warning">Edit</span>
-													</td>
+													<td><span>Wiltornoice34@gmail.com</span></td>
+													<td><span>9562</span></td>
+													<td><span>08.54%</span></td>
+													<td><span class="badge badge-pill pill-badge-warning">Edit</span></td>
 												</tr>
 												<tr>
 													<td>04</td>
@@ -618,18 +533,10 @@
 															</div>
 														</div>
 													</td>
-													<td>
-														<span>Annastrong67@gmail.com</span>
-													</td>
-													<td>
-														<span>1002</span>
-													</td>
-													<td>
-														<span>01.33%</span>
-													</td>
-													<td>
-														<span class="badge badge-pill pill-badge-primary">Edit</span>
-													</td>
+													<td><span>Annastrong67@gmail.com</span></td>
+													<td><span>1002</span></td>
+													<td><span>01.33%</span></td>
+													<td><span class="badge badge-pill pill-badge-primary">Edit</span></td>
 												</tr>
 											</tbody>
 										</table>
@@ -726,10 +633,7 @@
 											</div>
 										</div>
 										<div class="call-images">
-											<img class="img-fluid"
-												src="/assets/images/dashboard/call-chat-1.png" alt=""><img
-												class="img-fluid"
-												src="/assets/images/dashboard/call-chat-2.png" alt="">
+											<img class="img-fluid" src="/assets/images/dashboard/call-chat-1.png" alt=""><img class="img-fluid" src="/assets/images/dashboard/call-chat-2.png" alt="">
 										</div>
 										<h5 class="f-w-600">11:36</h5>
 										<div class="call-chart-height">
@@ -741,8 +645,7 @@
 													<i data-feather="pause"></i>
 												</div>
 												<div class="d-inline-block">
-													<a class="bg-secondary call-receive"><i
-														data-feather="phone"></i></a>
+													<a class="bg-secondary call-receive"><i data-feather="phone"></i></a>
 												</div>
 												<div class="d-inline-block">
 													<i data-feather="volume-2"></i>
@@ -770,15 +673,13 @@
 								</div>
 								<div class="card-body">
 									<div class="work-plan text-center">
-										<img class="img-fluid"
-											src="/assets/images/dashboard/work-plan.png" alt="">
+										<img class="img-fluid" src="/assets/images/dashboard/work-plan.png" alt="">
 										<h6>10:00 AM</h6>
 										<h5 class="f-w-600">5 Year Celebration</h5>
 										<p>Discussion About our new project and etc....</p>
 									</div>
 									<div class="code-box-copy">
-										<button class="code-box-copy__btn btn-clipboard"
-											data-clipboard-target="#example-head5" title="Copy">
+										<button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head5" title="Copy">
 											<i class="icofont icofont-copy-alt"></i>
 										</button>
 										<pre>
@@ -812,8 +713,7 @@
 											<li class="page-item"><a class="page-link" href="#">21</a></li>
 											<li class="page-item"><a class="page-link" href="#">22</a></li>
 											<li class="page-item"><a class="page-link" href="#">23</a></li>
-											<li class="page-item active"><a class="page-link"
-												href="#">24</a></li>
+											<li class="page-item active"><a class="page-link" href="#">24</a></li>
 											<li class="page-item"><a class="page-link" href="#">25</a></li>
 											<li class="page-item"><a class="page-link" href="#">26</a></li>
 											<li class="page-item"><a class="page-link" href="#">27</a></li>
@@ -884,8 +784,7 @@
 										</div>
 									</div>
 									<div class="code-box-copy">
-										<button class="code-box-copy__btn btn-clipboard"
-											data-clipboard-target="#example-head6" title="Copy">
+										<button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head6" title="Copy">
 											<i class="icofont icofont-copy-alt"></i>
 										</button>
 										<pre>
@@ -933,11 +832,11 @@
 				</div>
 				<!-- Container-fluid Ends-->
 			</div>
-			
+
 			<!-- footer start-->
 			<jsp:include page="layouts/footer.jsp"></jsp:include>
 			<!-- footer end-->
-			
+
 		</div>
 	</div>
 	<!-- latest jquery-->
@@ -965,18 +864,13 @@
 	<script src="/assets/js/custom-card/custom-card.js"></script>
 	<script src="/assets/js/notify/bootstrap-notify.min.js"></script>
 	<script src="/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
 	<script src="/assets/js/vector-map/map/jquery-jvectormap-au-mill.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
 	<script src="/assets/js/vector-map/map/jquery-jvectormap-in-mill.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
+	<script src="/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
 	<script src="/assets/js/dashboard/default.js"></script>
 	<script src="/assets/js/notify/index.js"></script>
 	<script src="/assets/js/chat-menu.js"></script>

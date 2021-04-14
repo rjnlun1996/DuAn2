@@ -13,4 +13,6 @@ public interface OrderService extends IBaseService<Order, Integer>{
 	List<Order> findOrderByUsername(String username);
 	
 	boolean existsById(int id);
+	
+	String calTotalRevenue(String status);
 }
