@@ -11,8 +11,8 @@ String sb = String.valueOf(request.getAttribute(MENU));
 <div class="page-sidebar iconcolor-sidebar">
 	<div class="main-header-left d-none d-lg-block">
 		<div class="logo-wrapper">
-			<a href="index.html">
-				<img src="/assets/images/creative-logo.png" alt="">
+			<a href="/ho-admin/">
+				<img height="64" src="/images/logos/logo22.png" alt="">
 			</a>
 		</div>
 	</div>

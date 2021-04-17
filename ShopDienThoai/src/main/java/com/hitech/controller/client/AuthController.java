@@ -135,5 +135,17 @@ public class AuthController {
 				"Cập nhật tài khoản " + sessionUtils.getUser().getUsername() + " thành công!");
 		return ViewUtils.redirectTo(CViewConstraint.URL_CHANGE_PASSWORD);
 	}
+	
+	@GetMapping(CViewConstraint.URL_ABOUT)
+	public String about(Model model) {
+		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_ABOUT);
+		return CViewConstraint.VIEW_ABOUT;
+	}
+	
+	@GetMapping(CViewConstraint.URL_CONTACT)
+	public String contact(Model model) {
+		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_CONTACT);
+		return CViewConstraint.VIEW_CONTACT;
+	}
 
 }

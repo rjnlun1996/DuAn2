@@ -89,7 +89,7 @@ body {
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item">
-									<a href="index.html">Trang chủ</a>
+									<a href="/">Trang chủ</a>
 									<svg class="breadcrumb-arrow" width="6px" height="9px">
                                  <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
                               </svg>
@@ -119,12 +119,9 @@ body {
 									</li>
 
 									<li class="account-nav__item">
-										<a href="account-orders.html">Lịch sử đặt hàng</a>
+										<a href="/order_process">Lịch sử đặt hàng</a>
 									</li>
-									<li class="account-nav__item">
-										<a href="account-order-details.html">Chi tiết đơn hàng</a>
-									</li>
-
+									
 									<li class="account-nav__item">
 										<a href="/change-password">Đổi mật khẩu</a>
 									</li>

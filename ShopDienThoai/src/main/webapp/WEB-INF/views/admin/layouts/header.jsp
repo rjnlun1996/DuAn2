@@ -22,8 +22,8 @@ li {
 	<div class="main-header-right row">
 		<div class="main-header-left d-lg-none">
 			<div class="logo-wrapper">
-				<a href="index.html">
-					<img src="/assets/images/creative-logo1.png" alt="">
+				<a href="/">
+					<img src="/images/logos/logo2.png" alt="">
 				</a>
 			</div>
 		</div>
