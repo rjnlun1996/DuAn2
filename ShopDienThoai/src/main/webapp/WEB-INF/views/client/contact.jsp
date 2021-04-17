@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="format-detection" content="telephone=no">
-<title>HopeOnline -- Liên hệ</title>
+<title>HopeOnline -- LIÊN HỆ</title>
 <link rel="icon" type="image/png" href="images/favicon.png">
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -118,11 +118,11 @@ body {
                                  <h4 class="contact-us__header card-title" style="color:#666666">Để lại lời nhắn với chúng tôi</h4><br>
                                  <form>
                                     <div class="form-row">
-                                       <div class="form-group col-md-6"><label for="form-name">Tên của bạn</label> <input style="border: 1px solid #c0a842;" type="text" id="form-name" class="form-control" placeholder="Tên của bạn"></div>
-                                       <div class="form-group col-md-6"><label for="form-email">Email</label> <input  style="border: 1px solid #c0a842;" type="email" id="form-email" class="form-control" placeholder="Địa chỉ Email"></div>
+                                       <div class="form-group col-md-6"><label for="form-name">Tên của bạn</label> <input style="border: 1px solid #007bff;" type="text" id="form-name" class="form-control" placeholder="Tên của bạn"></div>
+                                       <div class="form-group col-md-6"><label for="form-email">Email</label> <input  style="border: 1px solid #007bff;" type="email" id="form-email" class="form-control" placeholder="Địa chỉ Email"></div>
                                     </div>
-                                    <div class="form-group"><label for="form-subject">Tiêu đề</label> <input  style="border: 1px solid #c0a842;" type="text" id="form-subject" class="form-control" placeholder="Tiêu đề"></div>
-                                    <div class="form-group"><label for="form-message">Nội dung</label> <textarea  style="border: 1px solid #c0a842;"  id="form-message" class="form-control" rows="8"></textarea></div>
+                                    <div class="form-group"><label for="form-subject">Tiêu đề</label> <input  style="border: 1px solid #007bff;" type="text" id="form-subject" class="form-control" placeholder="Tiêu đề"></div>
+                                    <div class="form-group"><label for="form-message">Nội dung</label> <textarea  style="border: 1px solid #007bff;"  id="form-message" class="form-control" rows="8"></textarea></div>
                                     <button type="submit" class="btn btn-primary">Gửi</button>
                                  </form>
                               </div>

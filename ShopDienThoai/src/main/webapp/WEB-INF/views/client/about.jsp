@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="format-detection" content="telephone=no">
-<title>HopeOnline -- Giới thiệu</title>
+<title>HopeOnline -- GIỚI THIỆU</title>
 <link rel="icon" type="image/png" href="images/favicon.png">
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -33,8 +33,10 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/sweetalert2.css">
 <style type="text/css">
 body {
-	font-family: 'Source Serif Pro', serif;
-} 
+	/* font-family: 'Source Serif Pro', serif; */
+	font-family: rl_book, tahoma, arial, helvetica, sans-serif;
+	line-height: 38px;
+}
 </style>
 
 </head>
@@ -44,7 +46,7 @@ body {
 		<!-- mobile site__header -->
 		<jsp:include page="layouts/header_mobile.jsp"></jsp:include>
 		<!-- mobile site__header / end -->
-		
+
 		<header class="site__header d-lg-block d-none">
 			<div class="site-header">
 
@@ -58,57 +60,181 @@ body {
 			</div>
 		</header>
 
-		<!-- site__body -->
-	         <!-- desktop site__header / end --><!-- site__body -->
+	    <!-- desktop site__header / end --><!-- site__body -->
          <div class="site__body">
-            <div class="block about-us">
-               <div class="about-us__image"></div>
-               <div class="container">
-                  <div class="row justify-content-center">
-                     <div class="col-12 col-xl-10">
-                        <div class="about-us__body">
-                           <h1 class="about-us__title">Về chúng tôi</h1>
-                           <div class="about-us__text typography">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacus metus, convallis ut leo nec, tincidunt eleifend justo. Ut felis orci, hendrerit a pulvinar et, gravida ac lorem. Sed vitae molestie sapien, at sollicitudin tortor.</p>
-                              <p>Duis id volutpat libero, id vestibulum purus.Donec euismod accumsan felis,egestas lobortis velit tempor vitae. Integer eget velit fermentum, dignissim odio non, bibendum velit.</p>
+            <div class="page-header">
+				<div class="page-header__container container">
+					<div class="page-header__breadcrumb">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item">
+									<a href="/">Trang chủ</a>
+									<svg class="breadcrumb-arrow" width="6px" height="9px">
+                                 <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
+                              </svg>
+								</li>
+								<li class="breadcrumb-item">
+									<a href="">Giới thiệu</a>
+									<svg class="breadcrumb-arrow" width="6px" height="9px">
+                                 <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
+                              </svg>
+								</li>
+							</ol>
+						</nav>
+					</div>
+
+				</div>
+			</div>
+            <div class="container">
+               <div class="row">
+                  <div class="col-12 col-lg-4 order-1 order-lg-0">
+                     <div class="block block-sidebar block-sidebar--position--start">
+                    
+                        <div class="block-sidebar__item">
+                           <div class="widget-aboutus widget">
+                              <h4 class="widget__title">GIỚI THIỆU CHUNG</h4>
+                              <div class="widget__title_line" style="border-top:2px solid #f48200;"></div>
+                              <div class="widget-aboutus__text">Website <strong>HOPE ONLINE</strong> ra đời nhằm giúp cho khách hàng có thể dễ dàng đặt mua điện thoại di động qua mạng, bạn không cần phải mất công đi đến các cửa hàng hay siêu thị nữa, bạn chỉ việc ngồi tại nhà lựa chọn kỹ lưỡng và đặt mua qua mạng internet, sản phẩm sẽ được chuyển đến tận nhà cho bạn, sau khi sản phẩm được chuyển đến nơi, khách hàng có thể kiểm tra kỹ lưỡng rồi mới phải thanh toán. </div>
+                         
                            </div>
-                           <div class="about-us__team">
-                              <h2 class="about-us__team-title">Meat Our Team</h2>
-                              <div class="about-us__team-subtitle text-muted">Want to work in our friendly team?<br><a href="contact-us.html">Contact us</a> and we will consider your candidacy.</div>
-                              <div class="about-us__teammates teammates">
-                                 <div class="owl-carousel">
-                                    <div class="teammates__item teammate">
-                                       <div class="teammate__avatar"><img src="" alt=""></div>
-                                       <div class="teammate__name">Michael Russo</div>
-                                       <div class="teammate__position text-muted">Chief Executive Officer</div>
-                                    </div>
-                                    <div class="teammates__item teammate">
-                                       <div class="teammate__avatar"><img src="images/teammates/teammate-2.jpg" alt=""></div>
-                                       <div class="teammate__name">Katherine Miller</div>
-                                       <div class="teammate__position text-muted">Marketing Officer</div>
-                                    </div>
-                                    <div class="teammates__item teammate">
-                                       <div class="teammate__avatar"><img src="images/teammates/teammate-3.jpg" alt=""></div>
-                                       <div class="teammate__name">Anthony Harris</div>
-                                       <div class="teammate__position text-muted">Finance Director</div>
+                        </div>
+                     
+                        <div class="block-sidebar__item">
+                           <div class="widget-posts widget">
+                              <h4 class="widget__title">Chúng tôi cung cấp các dòng sản phẩm của: </h4>
+                               <div class="widget__title_line" style="border-top:2px solid #f48200;"></div>
+                              <div class="widget-posts__list">
+                                 <div class="widget-posts__item">
+                                    <div class="widget-posts__image"><a href=""><img src="images/producer/Samsung.png" alt=""></a></div>
+                                    <div class="widget-posts__info">
+                                       <div class="widget-posts__name"><a href="">Samsung </a></div>
+                 
                                     </div>
                                  </div>
+                              
+                              </div>
+                              
+                               <div class="widget-posts__list">
+                                 <div class="widget-posts__item">
+                                    <div class="widget-posts__image"><a href=""><img src="images/producer/Oppo.jpg" alt=""></a></div>
+                                    <div class="widget-posts__info">
+                                       <div class="widget-posts__name"><a href="">Oppo </a></div>
+                 
+                                    </div>
+                                 </div>
+                              
+                              </div>
+                               <div class="widget-posts__list">
+                                 <div class="widget-posts__item">
+                                    <div class="widget-posts__image"><a href=""><img src="images/producer/Apple.jpg" alt=""></a></div>
+                                    <div class="widget-posts__info">
+                                       <div class="widget-posts__name"><a href="">Apple </a></div>
+                 
+                                    </div>
+                                 </div>
+                              
+                              </div>
+                               <div class="widget-posts__list">
+                                 <div class="widget-posts__item">
+                                    <div class="widget-posts__image"><a href=""><img src="images/producer/Huawei.jpg" alt=""></a></div>
+                                    <div class="widget-posts__info">
+                                       <div class="widget-posts__name"><a href="">Huawei  </a></div>
+                 
+                                    </div>
+                                 </div>
+                              
+                              </div>
+                               <div class="widget-posts__list">
+                                 <div class="widget-posts__item">
+                                    <div class="widget-posts__image"><a href=""><img src="images/producer/vivo2.png" alt=""></a></div>
+                                    <div class="widget-posts__info">
+                                       <div class="widget-posts__name"><a href="">Vivo </a></div>
+                 
+                                    </div>
+                                 </div>
+                              
+                              </div>
+                               <div class="widget-posts__list">
+                                 <div class="widget-posts__item">
+                                    <div class="widget-posts__image"><a href=""><img src="images/producer/Sony.png" alt=""></a></div>
+                                    <div class="widget-posts__info">
+                                       <div class="widget-posts__name"><a href="">Sony </a></div>
+                 
+                                    </div>
+                                 </div>
+                              
+                              </div>
+                               <div class="widget-posts__list">
+                                 <div class="widget-posts__item">
+                                    <div class="widget-posts__image"><a href=""><img src="images/producer/Xiaomi2.jpg" alt=""></a></div>
+                                    <div class="widget-posts__info">
+                                       <div class="widget-posts__name"><a href="">Xiaomi </a></div>
+                 
+                                    </div>
+                                 </div>
+                              
+                              </div>
+                               <div class="widget-posts__list">
+                                 <div class="widget-posts__item">
+                                    <div class="widget-posts__image"><a href=""><img src="images/producer/Vsmart.jpg" alt=""></a></div>
+                                    <div class="widget-posts__info">
+                                       <div class="widget-posts__name"><a href="">Vsmart </a></div>
+                 
+                                    </div>
+                                 </div>
+                              
                               </div>
                            </div>
+                        </div>
+                       <div class="block-sidebar__item">
+                           <div class="widget-aboutus widget">
+                              <h4 class="widget__title"></h4>
+                              <div class="widget__title_line" style="border-top:2px solid #f48200;"></div>
+                              <div class="widget-aboutus__text">Nếu bạn thích và tin yêu sản phẩm này của chúng tôi. Có thể gửi cho bạn bè cùng sử dụng. Chúng tôi vô cùng biết ơn về điều đó !</div>
+                         
+                           </div>
+                        </div>
+                      
+                     </div>
+                  </div>
+                  <div class="col-12 col-lg-8">
+                     <div class="block">
+                        <div class="posts-view">
+                           <div class="posts-view__list posts-list posts-list--layout--classic">
+                              <div class="posts-list__body">
+                                 <div class="posts-list__item">
+                                    <div class="post-card post-card--layout--grid post-card--size--lg">
+                                       <div class="post-card__image"><a href=""><img src="images/banners/ab1.png" alt=""></a></div>
+                                       
+                                    </div>
+                                 </div>
+                                 <div class="posts-list__item">
+                                    <div class="post-card post-card--layout--grid post-card--size--lg">
+                                       <div class="post-card__image"><a href=""><img src="images/banners/ab2.jpg" alt=""></a></div>
+                                   
+                                    </div>
+                                 </div>
+                           <div class="posts-list__item">
+                                    <div class="post-card post-card--layout--grid post-card--size--lg">
+                                       <div class="post-card__image"><a href=""><img src="images/banners/tks.png" alt=""></a></div>
+                                   
+                                    </div>
+                                 </div>
+                         
+                              </div>
+                           </div>
+                 
                         </div>
                      </div>
                   </div>
                </div>
             </div>
          </div>
-         <!-- site__body / end -->
-	</div>
+         <!-- site__body / end --><!-- site__footer -->
 
-	<!-- site__body / end -->
-
-	<!-- site__footer -->
-	<jsp:include page="layouts/footer.jsp"></jsp:include>
-	<!-- site__footer / end -->
+		<!-- site__footer -->
+		<jsp:include page="layouts/footer.jsp"></jsp:include>
+		<!-- site__footer / end -->
 	</div>
 	<!-- site / end -->
 	<!-- quickview-modal -->
@@ -119,11 +245,11 @@ body {
 		</div>
 	</div>
 	<!-- quickview-modal / end -->
-	
+
 	<!-- mobilemenu -->
 	<jsp:include page="layouts/menu_mobile.jsp"></jsp:include>
 	<!-- mobilemenu / end -->
-	
+
 	<!-- photoswipe -->
 	<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="pswp__bg"></div>
