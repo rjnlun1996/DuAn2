@@ -15,7 +15,7 @@
 <meta name="author" content="pixelstrap">
 <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
 <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
-<title>HOPE - TABLE ORDER</title>
+<title>HopeOnline -- ORDER</title>
 <!-- Google font-->
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -103,24 +103,12 @@ table thead {
 										<h5>List Order</h5>
 										<div class="card-header-right">
 											<ul class="list-unstyled card-option">
-												<li>
-													<i class="icofont icofont-double-left"></i>
-												</li>
-												<li>
-													<i class="view-html fa fa-code"></i>
-												</li>
-												<li>
-													<i class="icofont icofont-maximize full-card"></i>
-												</li>
-												<li>
-													<i class="icofont icofont-minus minimize-card"></i>
-												</li>
-												<li>
-													<i class="icofont icofont-refresh reload-card"></i>
-												</li>
-												<li>
-													<i class="icofont icofont-error close-card"></i>
-												</li>
+												<li><i class="icofont icofont-double-left"></i></li>
+												<li><i class="view-html fa fa-code"></i></li>
+												<li><i class="icofont icofont-maximize full-card"></i></li>
+												<li><i class="icofont icofont-minus minimize-card"></i></li>
+												<li><i class="icofont icofont-refresh reload-card"></i></li>
+												<li><i class="icofont icofont-error close-card"></i></li>
 											</ul>
 										</div>
 									</div>
@@ -160,29 +148,19 @@ table thead {
 															<td>${order.id}</td>
 															<td>${order.account.name}__(Username:${order.account.username})</td>
 															<td>${order.phone}</td>
-															<td>
-																<span class="badge badge-danger f-12">
-																	<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.calOrder()}" />
-																	VNĐ
-																</span>
-															</td>
+															<td><span class="badge badge-danger f-12"> <fmt:formatNumber type="number" maxFractionDigits="3" value="${order.calOrder()}" /> VNĐ
+															</span></td>
 
-															<td>
-																<c:forEach items="${order.statusOrders}" var="statusOrder">
+															<td><c:forEach items="${order.statusOrders}" var="statusOrder">
 																	<c:if test="${statusOrder.current}">
-																		<a class="f-14" href="<%= URL_ADMIN_STATUS_ORDER_UPDATE %>?orderId=${order.id}">${statusOrder.status.name }
-																			<span class="fa fa-arrow-right"></span>
+																		<a class="f-14" href="<%= URL_ADMIN_STATUS_ORDER_UPDATE %>?orderId=${order.id}">${statusOrder.status.name } <span class="fa fa-arrow-right"></span>
 																		</a>
 																	</c:if>
-																</c:forEach>
-															</td>
+																</c:forEach></td>
 															<%-- <td>${order.statusOrders.status.statusId}</td> --%>
 
-															<td>
-																<a class="btn btn-pill btn-outline-primary btn-sm" href="<%=URL_ADMIN_ORDER_DETAIL_VIEW%>?orderId=${order.id}">View</a>
-																<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_ORDER_UPDATE%>?orderId=${order.id}">Edit</a>
-																<button class="btn btn-pill btn-outline-danger btn-sm delete-item" onClick="onDelete(this)" data-id="${order.id}">Delete</button>
-															</td>
+															<td><a class="btn btn-pill btn-outline-primary btn-sm" href="<%=URL_ADMIN_ORDER_DETAIL_VIEW%>?orderId=${order.id}">View</a> <a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_ORDER_UPDATE%>?orderId=${order.id}">Edit</a>
+																<button class="btn btn-pill btn-outline-danger btn-sm delete-item" onClick="onDelete(this)" data-id="${order.id}">Delete</button></td>
 
 														</tr>
 													</c:forEach>
@@ -247,8 +225,11 @@ table thead {
 	<script src="/assets/js/sweet-alert/sweetalert.min.js"></script>
 	<!--  Pagination -->
 	<script src="/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
-	<script src="/assets/js/datatable/datatables/datatable.custom.js"></script>
 	<script>
+	
+	$(docment).ready(function(){
+		$('#basic-1').DataTable();
+	})
 	/*  $(document).ready(function(){
 			$('.delete-item').click(function(){ */
 				function onDelete(elm){ 
@@ -283,6 +264,8 @@ table thead {
 				});
 				//promise
 			}
+			
+			
 	
 	 </script>
 

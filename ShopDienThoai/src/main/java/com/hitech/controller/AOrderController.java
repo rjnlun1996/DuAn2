@@ -1,6 +1,8 @@
 package com.hitech.controller;
 
 import java.io.IOException;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -70,14 +72,16 @@ public class AOrderController {
 //		}
 //		model.addAttribute("listOrder", listOrderUpdated);
 		
-		model.addAttribute("listOrder", orderService.findByEnabledTrue().stream().map(e -> {			
+	
+		List<Order> sortOrder =  orderService.findByEnabledTrue().stream().map(e -> {			
 			Set<OrderDetail> od = e.getOrderDetails().stream().map(o -> {
 				o.setDiscount(discountService.findById(o.getDiscountId()));
 				return o;
 			}).distinct().collect(Collectors.toSet());
 			e.setOrderDetails(od);			
 			return e;
-		}).collect(Collectors.toList()));
+		}).sorted(Comparator.comparing(Order::getCreatedAt).reversed()).collect(Collectors.toList());
+		model.addAttribute("listOrder", sortOrder);
 		return ViewConstraint.VIEW_ADMIN_ORDER;
 	}
 

@@ -75,7 +75,6 @@ public class CartController extends BaseController {
 					&& s.isCurrent() && s.isEnabled() && s.getStatus().getPriority() != 5;
 		})).collect(Collectors.toList());
 		
-		model.addAttribute("processing", ordersUpdated.size() - ordered.size());
 		model.addAttribute("orders", ordered);
 		return CViewConstraint.VIEW_ORDER_HISTORY;
 	}
@@ -99,7 +98,6 @@ public class CartController extends BaseController {
 					|| s.isCurrent() && s.isEnabled() && s.getStatus().getPriority() == 5;
 		})).collect(Collectors.toList());
 		
-		model.addAttribute("processing", orderProcessing.size());
 		model.addAttribute("orders", orderProcessing);
 		return CViewConstraint.VIEW_ORDER_PROCESS;
 	}

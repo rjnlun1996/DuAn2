@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="/assetsChangePass/css/style.css">
 
 
-<title>Form Change Password</title>
+<title>HopeOnline -- Change Password</title>
 </head>
 <body class="img js-fullheight" style="background-image: url(/assetsChangePass/images/banner.jpg);">
 	<section class="ftco-section">

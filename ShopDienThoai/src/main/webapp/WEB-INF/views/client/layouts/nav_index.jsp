@@ -136,7 +136,7 @@
 			<!-- .nav-links / end -->
 
 			<!-- navbar của giỏ hàng -- start -->
-			<jsp:include page="./nav_cart.jsp"></jsp:include>
+			<jsp:include page="./nav_right_cart.jsp"></jsp:include>
 			<!-- navbar của giỏ hàng -- end -->
 
 		</div>

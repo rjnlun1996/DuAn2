@@ -22,7 +22,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 <link rel="stylesheet" href="/assetsChangePass/css/style.css">
 
 
-<title>Form Forget Password</title>
+<title>HopeOnline -- Forget Password</title>
 </head>
 <body class="img js-fullheight" style="background-image: url(/assetsChangePass/images/banner1.jpg);">
 	<section class="ftco-section">

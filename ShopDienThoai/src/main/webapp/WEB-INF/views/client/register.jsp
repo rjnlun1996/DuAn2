@@ -41,7 +41,7 @@ body {
 	display: block
 }
 </style>
-<title>HOPE ONLINE</title>
+<title>HOPE ONLINE -- Đăng kí</title>
 </head>
 <body>
 	<section class="ftco-section">

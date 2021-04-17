@@ -101,9 +101,8 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 			</div>
 			<!-- .dropcart / end -->
 		</div>
+
 	</div>
-
-
 	<div class="indicator indicator--trigger--click">
 		<a href="account-login.html" class="indicator__button">
 			<span class="indicator__area">
@@ -172,11 +171,18 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 						<li class="">
 							<a class="sidebar-header" href="/order_history">
 								<i class="fas fa-history mr-3"></i>
-								<span>Lịch sử đơn hàng</span>
+								<span>Lịch sử đăt hàng</span>
 							</a>
 						</li>
-
-
+						<li class="">
+							<a class="sidebar-header" href="/order_process">
+								<i class="fas fa-spinner mr-3"></i>
+								<span>
+									Đơn hàng đang giao
+									<span style="color: red">(${processing})</span>
+								</span>
+							</a>
+						</li>
 					</ul>
 					<div class="account-menu__divider"></div>
 					<ul class="account-menu__links">
