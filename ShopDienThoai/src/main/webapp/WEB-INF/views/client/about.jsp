@@ -60,8 +60,190 @@ body {
 			</div>
 		</header>
 
-	    <!-- desktop site__header / end --><!-- site__body -->
-         <div class="site__body">
+		<!-- desktop site__header / end -->
+		<!-- site__body -->
+		<div class="site__body">
+			<div class="block about-us">
+				<div class="about-us__image"></div>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-12 col-xl-10">
+
+							<div class="about-us__team">
+								<h2 class="about-us__team-title">VỀ CHÚNG TÔI</h2>
+
+								<div class="about-us__team-subtitle text-muted" style="font-size: 20px; line-height: 40px;">
+									Website
+									<a href="/">
+										<strong>HOPE ONLINE</strong>
+									</a>
+									ra đời nhằm giúp cho khách hàng có thể dễ dàng đặt mua điện thoại di động qua mạng, bạn không cần phải mất công đi đến các cửa hàng hay siêu thị nữa, bạn chỉ việc ngồi tại nhà lựa chọn kỹ lưỡng và đặt mua qua mạng internet, sản phẩm sẽ được chuyển đến tận nhà cho bạn, sau khi sản phẩm được chuyển đến nơi, khách hàng có thể kiểm tra kỹ lưỡng rồi mới phải thanh toán.
+								</div>
+							</div>
+
+							<div class="about-us__team">
+								<h2 class="about-us__team-title">CHÚNG TÔI CUNG CẤP CÁC DÒNG SẢN PHẨM CỦA</h2>
+
+								<!-- .block-products / end -->
+								<!-- .block-categories -->
+
+								<div class="container">
+									<div class="block-header"></div>
+									<div class="block-categories__list">
+										<div class="block-categories__item category-card category-card--layout--classic">
+											<div class="category-card__body">
+												<div class="category-card__image">
+													<a href="">
+														<img src="images/producer/Samsung.png" alt="">
+													</a>
+												</div>
+												<div class="category-card__content">
+													<div class="category-card__name">
+														<a href="">Samsung</a>
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<div class="block-categories__item category-card category-card--layout--classic">
+											<div class="category-card__body">
+												<div class="category-card__image">
+													<a href="">
+														<img src="images/producer/Apple.jpg" alt="">
+													</a>
+												</div>
+												<div class="category-card__content">
+													<div class="category-card__name">
+														<a href="">Apple</a>
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<div class="block-categories__item category-card category-card--layout--classic">
+											<div class="category-card__body">
+												<div class="category-card__image">
+													<a href="">
+														<img src="images/producer/Oppo.jpg" alt="">
+													</a>
+												</div>
+												<div class="category-card__content">
+													<div class="category-card__name">
+														<a href="">Oppo</a>
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<div class="block-categories__item category-card category-card--layout--classic">
+											<div class="category-card__body">
+												<div class="category-card__image">
+													<a href="">
+														<img src="images/producer/Huawei.jpg" alt="">
+													</a>
+												</div>
+												<div class="category-card__content">
+													<div class="category-card__name">
+														<a href="">Huawei</a>
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<div class="block-categories__item category-card category-card--layout--classic">
+											<div class="category-card__body">
+												<div class="category-card__image">
+													<a href="">
+														<img src="images/producer/vivo2.png" alt="">
+													</a>
+												</div>
+												<div class="category-card__content">
+													<div class="category-card__name">
+														<a href="">Vivo</a>
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<div class="block-categories__item category-card category-card--layout--classic">
+											<div class="category-card__body">
+												<div class="category-card__image">
+													<a href="">
+														<img src="images/producer/Vsmart.jpg" alt="">
+													</a>
+												</div>
+												<div class="category-card__content">
+													<div class="category-card__name">
+														<a href="">Vsmart</a>
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<div class="block-categories__item category-card category-card--layout--classic">
+											<div class="category-card__body">
+												<div class="category-card__image">
+													<a href="">
+														<img src="images/producer/Xiaomi2.jpg" alt="">
+													</a>
+												</div>
+												<div class="category-card__content">
+													<div class="category-card__name">
+														<a href="">Xiaomi</a>
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<div class="block-categories__item category-card category-card--layout--classic">
+											<div class="category-card__body">
+												<div class="category-card__image">
+													<a href="">
+														<img src="images/producer/Sony.png" alt="">
+													</a>
+												</div>
+												<div class="category-card__content">
+													<div class="category-card__name">
+														<a href="">Sony</a>
+													</div>
+
+												</div>
+											</div>
+										</div>
+
+
+
+									</div>
+								</div>
+
+								<!-- .block-categories / end -->
+								<!-- .block-products-carousel -->
+
+
+							</div>
+							<div class="about-us__team">
+
+
+								<div class="about-us__team-subtitle text-muted" style="font-size: 20px; line-height: 40px;">Nếu bạn thích và tin yêu sản phẩm này của chúng tôi. Có thể gửi cho bạn bè cùng sử dụng. Chúng tôi vô cùng biết ơn về điều đó !</div>
+								<a href="/contact">
+									<button type="button" class="btn btn-outline-dark">LIÊN HỆ VỚI CHÚNG TÔI</button>
+								</a>
+
+							</div>
+						</div>
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- site__body / end -->
+	<!-- site__footer -->
+	<!-- desktop site__header / end -->
+	<!-- site__body -->
+	<!--  <div class="site__body">
             <div class="page-header">
 				<div class="page-header__container container">
 					<div class="page-header__breadcrumb">
@@ -229,12 +411,14 @@ body {
                   </div>
                </div>
             </div>
-         </div>
-         <!-- site__body / end --><!-- site__footer -->
+         </div> -->
 
-		<!-- site__footer -->
-		<jsp:include page="layouts/footer.jsp"></jsp:include>
-		<!-- site__footer / end -->
+	<!-- site__body / end -->
+	<!-- site__footer -->
+
+	<!-- site__footer -->
+	<jsp:include page="layouts/footer.jsp"></jsp:include>
+	<!-- site__footer / end -->
 	</div>
 	<!-- site / end -->
 	<!-- quickview-modal -->
