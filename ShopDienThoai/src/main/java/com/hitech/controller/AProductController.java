@@ -141,4 +141,11 @@ public class AProductController {
 		}
 		return search;
 	}
+	
+	@GetMapping(ViewConstraint.URL_ADMIN_PRODUCT_DETAIL)
+	public String view(Model model, @RequestParam int id) {
+		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_PRODUCT_DETAIL);
+		model.addAttribute("product", productService.findById(id));
+		return ViewConstraint.VIEW_ADMIN_PRODUCT_DETAIL;
+	}
 }

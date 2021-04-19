@@ -170,7 +170,7 @@ table thead {
 															</td>
 															<td>${product.description}</td>
 															<td>
-																<button class="btn btn-pill btn-outline-primary btn-sm" type="button">View</button>
+																<a class="btn btn-pill btn-outline-primary btn-sm" href="<%=URL_ADMIN_PRODUCT_DETAIL%>?id=${product.id}"">View</a>
 																<a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_PRODUCT_UPDATE%>?id=${product.id}"">Edit</a>
 																<button class="btn btn-pill btn-outline-danger btn-sm delete-item" onClick="onDelete(this)" data-id="${product.id}" data-name="${product.name}">Delete</button>
 
