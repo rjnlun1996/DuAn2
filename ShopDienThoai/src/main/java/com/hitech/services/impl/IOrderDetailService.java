@@ -21,13 +21,11 @@ public class IOrderDetailService implements OrderDetailService {
 
 	@Override
 	public List<OrderDetail> findAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public OrderDetail findById(Integer id) {
-		// TODO Auto-generated method stub
 		return orderDetailRepository.getOne(id);
 	}
 
@@ -47,7 +45,6 @@ public class IOrderDetailService implements OrderDetailService {
 
 	@Override
 	public boolean deleteById(Integer id) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -73,13 +70,11 @@ public class IOrderDetailService implements OrderDetailService {
 
 	@Override
 	public OrderDetail findByOrderIdAndProductId(int orderId, int productId) {
-		// TODO Auto-generated method stub
 		return orderDetailRepository.findByOrderIdAndProductId(orderId, productId);
 	}
 
 	@Override
 	public Iterable<OrderDetail> saveAll(List<OrderDetail> orderDetails) {
-		// TODO Auto-generated method stub
 		return orderDetailRepository.saveAll(orderDetails);
 	}
 }

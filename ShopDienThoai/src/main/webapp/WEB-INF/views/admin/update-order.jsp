@@ -152,7 +152,8 @@ String sb = String.valueOf(request.getAttribute(MENU));
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="account">Username</label>
 													<div class="col-sm-9">
-														<input type="text" name="username" value="${order.account.name}(Username:${order.account.username})" class="form-control" readonly="readonly" />
+														<input type="text" value="${order.account.name}(Username:${order.account.username})" class="form-control" readonly="readonly" />
+														<input name=username value="${order.account.username}" type="hidden"/>
 														<%-- <form:select class="form-control js-data-example-ajax" required="required" path="account" value="${order.account.username}">
 															<c:forEach var="user" items="${listUser}">
 																<form:option value="${user.username}" readonly="readonly"> ${user.name } (Username: ${user.username})  </form:option>
@@ -198,7 +199,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="description">Ghi chú</label>
 													<div class="col-sm-9">
-														<textarea class="form-control" name="description" rows="3"></textarea>
+														<form:textarea class="form-control" path="description" rows="3" />
 													</div>
 												</div>
 

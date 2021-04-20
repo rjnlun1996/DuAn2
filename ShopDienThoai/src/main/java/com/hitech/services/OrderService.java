@@ -15,4 +15,8 @@ public interface OrderService extends IBaseService<Order, Integer>{
 	boolean existsById(int id);
 	
 	String calTotalRevenue(String status);
+	
+	String calTotalProductSold(String status);
+	
+	String calTotalOrder(String status);
 }

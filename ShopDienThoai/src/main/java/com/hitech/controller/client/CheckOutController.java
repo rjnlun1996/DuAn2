@@ -67,6 +67,10 @@ public class CheckOutController extends BaseController {
 			return CViewConstraint.VIEW_CHECK_OUT;
 		}
 		Cart cart = sessionUtils.getCart();
+		
+		if(cart == null) {
+			return ViewUtils.redirectTo(CViewConstraint.URL_CHECK_OUT);
+		}
 
 		// Insert Order
 		order.setAccount(sessionUtils.getUser());

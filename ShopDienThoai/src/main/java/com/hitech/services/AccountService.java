@@ -63,5 +63,7 @@ public interface AccountService extends IBaseService<Account, String>{
 	 */
 	boolean loginCustomer(String usernameOrEmail, String password);
 	
+	String calTotalAccount(int level);
+	
 
 }

@@ -106,6 +106,22 @@ public class AOrderController {
 		orderService.save(order);
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ORDER_INSERT);
 	}
+	
+	@PostMapping(ViewConstraint.URL_ADMIN_ORDER_UPDATE)
+	public Object update(Model model, @Validated @ModelAttribute("order") Order order,
+			@RequestParam String username, BindingResult errors,
+			RedirectAttributes ra) throws IOException {
+		if (errors.hasErrors()) {
+			model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
+			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER_INSERT);
+			return ViewConstraint.URL_ADMIN_ORDER_UPDATE;
+		}
+		
+		order.setAccount(accountService.findById(username));
+		ra.addFlashAttribute("message", "Cập nhật dữ liệu thành công!");
+		orderService.save(order);
+		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ORDER_UPDATE + "?orderId=" + order.getId());
+	}
 
 	@GetMapping(ViewConstraint.URL_ADMIN_ORDER_UPDATE)
 	public String updateGet(Model model, @RequestParam int orderId) {

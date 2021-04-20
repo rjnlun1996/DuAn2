@@ -27,7 +27,6 @@ public class IOrderService implements OrderService{
 
 	@Override
 	public Order findById(Integer id) {
-		// TODO Auto-generated method stub
 		return orderRepository.getOne(id);
 	}
 
@@ -47,7 +46,6 @@ public class IOrderService implements OrderService{
 
 	@Override
 	public boolean deleteById(Integer id) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -78,7 +76,6 @@ public class IOrderService implements OrderService{
 
 	@Override
 	public boolean existsById(int id) {
-		// TODO Auto-generated method stub
 		return orderRepository.existsById(id);
 	}
 
@@ -87,5 +84,13 @@ public class IOrderService implements OrderService{
 		return orderRepository.calTotalRevenue(status);
 	}
 
+	@Override
+	public String calTotalProductSold(String status) {
+		return orderRepository.calTotalProductSold(status);
+	}
 
+	@Override
+	public String calTotalOrder(String status) {
+		return orderRepository.calTotalOrder(status);
+	}
 }

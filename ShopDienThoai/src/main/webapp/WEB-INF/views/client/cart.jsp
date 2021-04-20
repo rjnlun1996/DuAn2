@@ -41,11 +41,11 @@ body {
 <body>
 	<!-- site -->
 	<div class="site">
-	
+
 		<!-- mobile site__header -->
 		<jsp:include page="layouts/header_mobile.jsp"></jsp:include>
 		<!-- mobile site__header / end -->
-		
+
 		<header class="site__header d-lg-block d-none">
 			<div class="site-header">
 
@@ -66,18 +66,12 @@ body {
 					<div class="page-header__breadcrumb">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item">
-									<a href="/">Trang Chủ</a>
-									<svg class="breadcrumb-arrow" width="6px" height="9px">
+								<li class="breadcrumb-item"><a href="/">Trang Chủ</a> <svg class="breadcrumb-arrow" width="6px" height="9px">
                                  <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
-                              </svg>
-								</li>
-								<li class="breadcrumb-item">
-									<a href="">Breadcrumb</a>
-									<svg class="breadcrumb-arrow" width="6px" height="9px">
+                              </svg></li>
+								<li class="breadcrumb-item"><a href="">Breadcrumb</a> <svg class="breadcrumb-arrow" width="6px" height="9px">
                                  <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
-                              </svg>
-								</li>
+                              </svg></li>
 								<li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
 							</ol>
 						</nav>
@@ -110,18 +104,12 @@ body {
 								<tr class="cart-table__row">
 									<td class="cart-table__column cart-table__column--image">
 										<div class="product-image">
-											<a href="" class="product-image__body">
-												<img class="product-image__img" src="/images/products/${prodDTO.product.category.producer.name.toLowerCase()}/${prodDTO.product.photo}" alt="">
+											<a href="" class="product-image__body"> <img class="product-image__img" src="/images/products/${prodDTO.product.category.producer.name.toLowerCase()}/${prodDTO.product.photo}" alt="">
 											</a>
 										</div>
 									</td>
-									<td class="cart-table__column cart-table__column--product">
-										<a href="" class="cart-table__product-name">${prodDTO.product.name}</a>
-									</td>
-									<td class="cart-table__column cart-table__column--price" data-title="Price">
-										<fmt:formatNumber type="number" maxFractionDigits="3" value="${prodDTO.product.importPrice}" />
-										VNĐ
-									</td>
+									<td class="cart-table__column cart-table__column--product"><a href="" class="cart-table__product-name">${prodDTO.product.name}</a></td>
+									<td class="cart-table__column cart-table__column--price" data-title="Price"><fmt:formatNumber type="number" maxFractionDigits="3" value="${prodDTO.product.importPrice}" /> VNĐ</td>
 									<td class="cart-table__column cart-table__column--quantity" data-title="Quantity">
 										<div class="input-number">
 											<input class="form-control input-number__input" id="number-${prodDTO.product.id }" type="number" min="1" value="${prodDTO.quantity }">
@@ -129,10 +117,7 @@ body {
 											<div class="input-number__sub"></div>
 										</div>
 									</td>
-									<td class="cart-table__column cart-table__column--total" data-title="Total">
-										<fmt:formatNumber type="number" maxFractionDigits="3" value="${prodDTO.product.importPrice * prodDTO.quantity}" />
-										VNĐ
-									</td>
+									<td class="cart-table__column cart-table__column--total" data-title="Total"><fmt:formatNumber type="number" maxFractionDigits="3" value="${prodDTO.product.importPrice * prodDTO.quantity}" /> VNĐ</td>
 									<td class="cart-table__column cart-table__column--remove">
 										<button type="button" class="btn btn-light btn-sm btn-svg-icon text-success" data-toggle="tooltip" data-placement="top" title="Cập nhật" onclick="themVaoGioHang(updateCart(${prodDTO.product.id }))">
 											<i class="fa fa-check"></i>
@@ -168,26 +153,17 @@ body {
 										<tbody class="cart__totals-body">
 											<tr>
 												<th>Tổng giá sản phẩm</th>
-												<td>
-													<fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.amountTotal}" />
-													VNĐ
-												</td>
+												<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.amountTotal}" /> VNĐ</td>
 											</tr>
 											<tr>
 												<th>Tổng giá khuyến mãi</th>
-												<td>
-													<fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.discountPrice}" />
-													VNĐ
-												</td>
+												<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.discountPrice}" /> VNĐ</td>
 											</tr>
 										</tbody>
 										<tfoot class="cart__totals-footer">
 											<tr>
 												<th>Tổng tiền cần thanh toán</th>
-												<td class="text-danger">
-													<fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.total}" />
-													VNĐ
-												</td>
+												<td class="text-danger"><fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.total}" /> VNĐ</td>
 											</tr>
 										</tfoot>
 									</table>
@@ -215,11 +191,11 @@ body {
 		</div>
 	</div>
 	<!-- quickview-modal / end -->
-	
+
 	<!-- mobilemenu -->
 	<jsp:include page="layouts/menu_mobile.jsp"></jsp:include>
 	<!-- mobilemenu / end -->
-	
+
 	<!-- photoswipe -->
 	<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="pswp__bg"></div>

@@ -125,5 +125,10 @@ public class IAccountService implements AccountService{
 		return false;
 	}
 
+	@Override
+	public String calTotalAccount(int level) {
+		return accountRepository.calTotalAccount(level);
+	}
+
 
 }
