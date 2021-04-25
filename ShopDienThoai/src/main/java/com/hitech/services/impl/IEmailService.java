@@ -32,7 +32,7 @@ public class IEmailService implements EmailService{
 		VelocityContext context = new VelocityContext();
 		context.put("account", accountService.findByEmail(emailTo));
 		StringWriter writer = new StringWriter();
-		velocityEngine.mergeTemplate("email.vm", "UTF-8", context, writer);
+		velocityEngine.mergeTemplate("templates/email.vm", "UTF-8", context, writer);
 		String body = writer.toString();
 		
 		MimeMessage mimeMessage = emailSender.createMimeMessage();

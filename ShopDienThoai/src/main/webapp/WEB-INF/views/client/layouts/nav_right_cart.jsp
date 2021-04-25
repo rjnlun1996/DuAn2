@@ -26,11 +26,11 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 
 <div class="nav-panel__indicators">
 	<div class="indicator indicator--trigger--click">
-		<a href="cart.html" class="indicator__button">
+		<a href="/cart" class="indicator__button">
 			<span class="indicator__area">
 				<svg width="20px" height="20px">
-                                          <use xlink:href="images/sprite.svg#cart-20"></use>
-                                       </svg>
+                    <use xlink:href="images/sprite.svg#cart-20"></use>
+                 </svg>
 				<c:if test="${cart != null }">
 					<span class="indicator__value" id="cart-number">${cart.productDto.values().size()}</span>
 				</c:if>
@@ -104,7 +104,7 @@ String sb = String.valueOf(request.getAttribute(CMENU));
 
 	</div>
 	<div class="indicator indicator--trigger--click">
-		<a href="account-login.html" class="indicator__button">
+		<a href="" class="indicator__button">
 			<span class="indicator__area">
 				<svg width="20px" height="20px">
 					<use xlink:href="images/sprite.svg#person-20"></use></svg>

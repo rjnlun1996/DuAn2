@@ -193,5 +193,16 @@ public class Product extends BaseEntity implements Serializable {
 	public void setDiscounts(Set<Discount> discounts) {
 		this.discounts = discounts;
 	}
+	
+	public int fetchDiscount() {
+		if(this.discounts != null && this.discounts.size() > 0) {
+			for(Discount disc: discounts) {
+				if(disc.isCurrent() && disc.isEnabled()) {
+					return disc.getPercents();
+				}
+			}
+		}
+		return 0;
+	}
 
 }

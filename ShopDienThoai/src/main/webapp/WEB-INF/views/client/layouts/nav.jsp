@@ -97,17 +97,17 @@
 									<li class="menu__item">
 										<!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
 										<div class="menu__item-submenu-offset"></div>
-										<a class="menu__item-link" href="cart.html">Sản phẩm mới nhất</a>
+										<a class="menu__item-link" href="/">Sản phẩm mới nhất</a>
 									</li>
 									<li class="menu__item">
 										<!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
 										<div class="menu__item-submenu-offset"></div>
-										<a class="menu__item-link" href="cart.html">Sản phẩm bán chạy</a>
+										<a class="menu__item-link" href="/">Sản phẩm bán chạy</a>
 									</li>
 									<li class="menu__item">
 										<!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
 										<div class="menu__item-submenu-offset"></div>
-										<a class="menu__item-link" href="cart.html">Sản phẩm khuyễn mãi</a>
+										<a class="menu__item-link" href="/">Sản phẩm khuyễn mãi</a>
 									</li>
 
 
@@ -116,9 +116,6 @@
 							<!-- .menu / end -->
 						</div>
 					</li>
-
-
-
 					<li class="nav-links__item">
 						<a class="nav-links__item-link" href="/about">
 							<div class="nav-links__item-body">Giới thiệu</div>

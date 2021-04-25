@@ -69,10 +69,7 @@ body {
 								<li class="breadcrumb-item"><a href="/">Trang Chủ</a> <svg class="breadcrumb-arrow" width="6px" height="9px">
                                  <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
                               </svg></li>
-								<li class="breadcrumb-item"><a href="">Breadcrumb</a> <svg class="breadcrumb-arrow" width="6px" height="9px">
-                                 <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
-                              </svg></li>
-								<li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+								<li class="breadcrumb-item active"><a href="">Giỏ Hàng</a></li>
 							</ol>
 						</nav>
 					</div>
@@ -81,7 +78,7 @@ body {
 					</div>
 				</div>
 			</div>
-			<div class="cart block">
+			<div class="cart block" id="template-cart">
 				<div class="container">
 					<table class="cart__table cart-table">
 						<thead class="cart-table__head">
@@ -109,19 +106,19 @@ body {
 										</div>
 									</td>
 									<td class="cart-table__column cart-table__column--product"><a href="" class="cart-table__product-name">${prodDTO.product.name}</a></td>
-									<td class="cart-table__column cart-table__column--price" data-title="Price"><fmt:formatNumber type="number" maxFractionDigits="3" value="${prodDTO.product.importPrice}" /> VNĐ</td>
+									<td class="cart-table__column cart-table__column--price" id="number-${prodDTO.product.id }-price" data-title="Price"><fmt:formatNumber type="number" maxFractionDigits="3" value="${prodDTO.product.importPrice}" /> VNĐ</td>
 									<td class="cart-table__column cart-table__column--quantity" data-title="Quantity">
 										<div class="input-number">
 											<input class="form-control input-number__input" id="number-${prodDTO.product.id }" type="number" min="1" value="${prodDTO.quantity }">
-											<div class="input-number__add"></div>
-											<div class="input-number__sub"></div>
+											<div class="input-number__add" onclick="updateCart1(${prodDTO.product.id }, ${prodDTO.product.importPrice}, 1, ${prodDTO.product.fetchDiscount()})"></div>
+											<div class="input-number__sub" onclick="updateCart1(${prodDTO.product.id }, ${prodDTO.product.importPrice}, -1, ${prodDTO.product.fetchDiscount()})"></div>
 										</div>
 									</td>
-									<td class="cart-table__column cart-table__column--total" data-title="Total"><fmt:formatNumber type="number" maxFractionDigits="3" value="${prodDTO.product.importPrice * prodDTO.quantity}" /> VNĐ</td>
+									<td class="cart-table__column cart-table__column--total" id="number-${prodDTO.product.id }-total" data-title="Total"><fmt:formatNumber type="number" maxFractionDigits="3" value="${prodDTO.product.importPrice * prodDTO.quantity}" /> VNĐ</td>
 									<td class="cart-table__column cart-table__column--remove">
-										<button type="button" class="btn btn-light btn-sm btn-svg-icon text-success" data-toggle="tooltip" data-placement="top" title="Cập nhật" onclick="themVaoGioHang(updateCart(${prodDTO.product.id }))">
+										<%-- <button type="button" class="btn btn-light btn-sm btn-svg-icon text-success" data-toggle="tooltip" data-placement="top" title="Cập nhật" onclick="themVaoGioHang(updateCart(${prodDTO.product.id }))">
 											<i class="fa fa-check"></i>
-										</button>
+										</button> --%>
 
 										<button type="button" class="btn btn-light btn-sm btn-svg-icon text-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa" onclick="deleteProductCart(${prodDTO.product.id })">
 											<i class="fa fa-times"></i>
@@ -147,23 +144,23 @@ body {
 										<thead class="cart__totals-header">
 											<tr>
 												<th>Số lượng sản phẩm</th>
-												<td>${cart.number}</td>
+												<td id="c-number">${cart.number}</td>
 											</tr>
 										</thead>
 										<tbody class="cart__totals-body">
 											<tr>
 												<th>Tổng giá sản phẩm</th>
-												<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.amountTotal}" /> VNĐ</td>
+												<td id="total-cart-price"><fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.amountTotal}" /> VNĐ</td>
 											</tr>
 											<tr>
 												<th>Tổng giá khuyến mãi</th>
-												<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.discountPrice}" /> VNĐ</td>
+												<td id="total-cart-discount"><fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.discountPrice}" /> VNĐ</td>
 											</tr>
 										</tbody>
 										<tfoot class="cart__totals-footer">
 											<tr>
 												<th>Tổng tiền cần thanh toán</th>
-												<td class="text-danger"><fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.total}" /> VNĐ</td>
+												<td class="text-danger" id="total-cart-checkout"><fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.total}" /> VNĐ</td>
 											</tr>
 										</tfoot>
 									</table>
@@ -249,6 +246,7 @@ body {
 	<script src="js/cart.js"></script>
 	<script>
 		$(function () {
+			$("#template-cart").load("/cart #template-cart"); 
 		  $('[data-toggle="tooltip"]').tooltip()
 		})
 		svg4everybody();
