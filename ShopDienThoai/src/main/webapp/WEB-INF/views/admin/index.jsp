@@ -117,7 +117,7 @@
 													<div class="media-body">
 														<p class="mb-0">Total Revenue</p>
 														<h3 class="mt-0 mb-0 f-w-600">
-															<span class="counter"><%-- <fmt:formatNumber type="currency" value="${total}" /> --%>${total}</span>
+															<span class="counter"><%-- <fmt:formatNumber type="currency" value="${total}" /> --%>${total}</span>  VNĐ
 														</h3>
 													</div>
 													<span class="badge flat-badge-secondary">3.56%<i class="fa fa-caret-up"></i></span>
@@ -140,7 +140,7 @@
 													<div class="media-body">
 														<p class="mb-0">Total Products Sold</p>
 														<h3 class="mt-0 mb-0 f-w-600">
-															<i data-feather="dollar-sign"></i><span class="counter">${prodSold}</span><span><i class="font-success" data-feather="trending-up"></i></span>
+															<span class="counter">${prodSold}</span> <span><i class="font-success" data-feather="trending-up"></i></span>
 														</h3>
 													</div>
 													<span class="badge flat-badge-success">3.56%<i class="fa fa-caret-up"></i></span>
@@ -268,7 +268,7 @@
 				        bar: {
 				            horizontal: false,
 				            endingShape: 'rounded',
-				            columnWidth: '55%',
+				            columnWidth: '30%',
 				        },
 				    },
 				    dataLabels: {
@@ -288,7 +288,7 @@
 				    },
 				    yaxis: {
 				        title: {
-				            text: '$ (thousands)'
+				            text: 'VNĐ'
 				        }
 				    },
 				    fill: {
@@ -298,7 +298,7 @@
 				    tooltip: {
 				        y: {
 				            formatter: function (val) {
-				                return "$ " + val + " thousands"
+				                return  val + " VNĐ"
 				            }
 				        }
 				    },
@@ -315,26 +315,3 @@
 	</script>
 </body>
 </html>
-<!-- <div class="welcome-popup modal fade" id="loadModal" tabindex="-1"
-	role="dialog" aria-labelledby="exampleModalCenterTitle"
-	aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<button class="close" type="button" data-dismiss="modal"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			<div class="modal-body">
-				<div class="modal-header"></div>
-				<div class="contain p-50">
-					<div class="text-center">
-						<h3>Welcome to creative admin</h3>
-						<p>start your project with developer friendly admin</p>
-						<button class="btn btn-primary btn-lg txt-white" type="button"
-							data-dismiss="modal" aria-label="Close">Get Started</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div> -->

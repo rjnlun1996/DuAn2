@@ -1,4 +1,4 @@
-package com.hitech.entities;
+package com.hitech.entities.helper;
 
 public interface IReport {
 	Integer getYearReport();

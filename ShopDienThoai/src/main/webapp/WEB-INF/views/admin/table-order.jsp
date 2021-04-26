@@ -134,7 +134,7 @@ table thead {
 														<th scope="col">Phone</th>
 														<th scope="col">Price</th>
 														<th scope="col">Status</th>
-
+														<th scope="col">Date Created</th>
 														<th></th>
 													</tr>
 												</thead>
@@ -158,7 +158,7 @@ table thead {
 																	</c:if>
 																</c:forEach></td>
 															<%-- <td>${order.statusOrders.status.statusId}</td> --%>
-
+															<td><span class="badge badge-info f-12"><fmt:formatDate pattern="dd-MM-yyyy" value="${order.createdAt}" /></span></td>															
 															<td><a class="btn btn-pill btn-outline-primary btn-sm" href="<%=URL_ADMIN_ORDER_DETAIL_VIEW%>?orderId=${order.id}">View</a> <a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_ORDER_UPDATE%>?orderId=${order.id}">Edit</a>
 																<button class="btn btn-pill btn-outline-danger btn-sm delete-item" onClick="onDelete(this)" data-id="${order.id}">Delete</button></td>
 

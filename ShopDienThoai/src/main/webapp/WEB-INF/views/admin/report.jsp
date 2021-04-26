@@ -35,6 +35,8 @@
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/chartist.css">
+
+<link rel="stylesheet" type="text/css" href="/assets/css/daterange-picker.css">
 <!-- Plugins css Ends-->
 <!-- Bootstrap css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
@@ -87,7 +89,7 @@
 										</ul>
 									</div>
 								</div>
-								<div class="card-body ">
+								<%-- <div class="card-body ">
 									<div class="sales-product-table table-responsive">
 										<table class="table table-bordernone" id="basic-1">
 											<thead>
@@ -110,11 +112,204 @@
 											</tbody>
 										</table>
 									</div>
+								</div> --%>
+
+								<div class="card-body  date-range-picker">
+									<div class="sales-product-table table-responsive">
+
+										<form action="">
+											<table class="table table-bordernone">
+												<thead>
+													<tr>
+														<th style="text-transform: uppercase;">Danh Mục</th>
+														<th style="display: flex; align-items: center;">Thời Gian:
+															<div class="input-group w-50 m-r-15 m-l-15">
+																<div class="input-group-prepend">
+																	<span class="input-group-text"><i class="icofont icofont-filter"></i></span>
+																</div>
+																<input class="form-control digits" type="text" name="time" id="reportrange" value="${times}">
+															</div>
+															<button class="btn btn-primary" type="submit" data-original-title="" title="">Lọc</button>
+														</th>
+														<th style="text-transform: uppercase;">Số liệu</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>Tổng số <b style="text-transform: capitalize; font-weight: bold; color: blue;">sản phẩm đã bán</b></td>
+														<td><div class="span badge badge-pill pill-badge-info f-12">Từ ${times}</div></td>
+														<td><div class="span badge badge-pill pill-badge-${reports.getTotalQuantity() > 0 ? 'success' : 'warning' } f-12">${reports.getTotalQuantity() > 0 ? reports.getTotalQuantity() : '0'}</div> sản phẩm</td>
+														<%-- <td><span class="badge badge-danger f-13"></span></td>
+														<td><span class="badge badge-primary f-13"><fmt:formatNumber type="number" maxFractionDigits="3" value="${report.getTotalReport()}" /> VNĐ</span></td> --%>
+													</tr>
+													<tr>
+														<td>Tổng số <b style="text-transform: capitalize; font-weight: bold; color: blue;">đơn hàng hoàn thành</b></td>
+														<td><div class="span badge badge-pill pill-badge-info f-12">Từ ${times}</div></td>
+
+														<td><div class="span badge badge-pill pill-badge-${reports.getTotalOrder() > 0 ? 'success' : 'warning' } f-12">${reports.getTotalOrder()}</div> đơn hàng</td>
+														<%-- <td><span class="badge badge-danger f-13"></span></td>
+														<td><span class="badge badge-primary f-13"><fmt:formatNumber type="number" maxFractionDigits="3" value="${report.getTotalReport()}" /> VNĐ</span></td> --%>
+													</tr>
+													<tr>
+														<td>Tổng số <b style="text-transform: capitalize; font-weight: bold; color: red;">đơn hàng chưa hoàn thành</b></td>
+														<td><div class="span badge badge-pill pill-badge-info f-12">Từ ${times}</td>
+
+														<td><div class="span badge badge-pill pill-badge-${reports.getTotalPending() > 0 ? 'success' : 'warning' } f-12">${reports.getTotalPending()}</div> đơn hàng</td>
+														<%-- <td><span class="badge badge-danger f-13"></span></td>
+														<td><span class="badge badge-primary f-13"><fmt:formatNumber type="number" maxFractionDigits="3" value="${report.getTotalReport()}" /> VNĐ</span></td> --%>
+													</tr>
+													<tr>
+														<td>Tổng số <b style="text-transform: capitalize; font-weight: bold; color: blue;">khách hàng mua hàng</b></td>
+														<td><div class="span badge badge-pill pill-badge-info f-12">Từ ${times}</div></td>
+
+														<td><div class="span badge badge-pill pill-badge-${reports.getTotalCustomer() > 0 ? 'success' : 'warning' } f-12">${reports.getTotalCustomer()}</div> khách hàng</td>
+														<%-- <td><span class="badge badge-danger f-13"></span></td>
+														<td><span class="badge badge-primary f-13"><fmt:formatNumber type="number" maxFractionDigits="3" value="${report.getTotalReport()}" /> VNĐ</span></td> --%>
+													</tr>
+													<tr>
+														<td>Tổng doanh thu <b style="text-transform: capitalize; font-weight: bold; color: blue;">hệ thống</b></td>
+														<td><div class="span badge badge-pill pill-badge-info f-12">Từ ${times}</div></td>
+
+														<td><div class="span badge badge-pill pill-badge-danger f-12">
+																<fmt:formatNumber type="number" maxFractionDigits="3" value="${reports.getTotalReport() > 0 ? reports.getTotalReport() : '0' }" />
+																VNĐ
+															</div></td>
+														<%-- <td><span class="badge badge-danger f-13"></span></td>
+														<td><span class="badge badge-primary f-13"><fmt:formatNumber type="number" maxFractionDigits="3" value="${report.getTotalReport()}" /> VNĐ</span></td> --%>
+													</tr>
+												</tbody>
+											</table>
+
+										</form>
+									</div>
 								</div>
 							</div>
 						</div>
+						<div class="col-xl-6 xl-100 box-col-12">
+							<div class="card">
+								<div class="card-header">
+									<h5>TOP SELLING PRODUCT</h5>
+									<div class="card-header-right">
+										<ul class="list-unstyled card-option">
+											<li><i class="icofont icofont-double-left"></i></li>
+											<li><i class="view-html fa fa-code"></i></li>
+											<li><i class="icofont icofont-maximize full-card"></i></li>
+											<li><i class="icofont icofont-minus minimize-card"></i></li>
+											<li><i class="icofont icofont-refresh reload-card"></i></li>
+											<li><i class="icofont icofont-error close-card"></i></li>
+										</ul>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="user-status table-responsive">
+										<table class="table table-bordernone">
+											<thead>
+												<tr>
+													<th scope="col">Product</th>
+													<th scope="col">Quantity</th>
+													<th scope="col">Status</th>
+													<th scope="col">Price</th>
+												</tr>
+											</thead>
+											<tbody>
+												<c:if test="${products.size() != 0 }">
+													<c:forEach var="p" items="${products }">
+														<tr>
+															<td class="bd-t-none u-s-tb"><a target="_blank" href="/ho-admin/product/detail?id=${p.product.id}">
+																	<div class="align-middle image-sm-size">
+																		<img class="img-radius align-top m-r-15" src="/images/products/${p.product.category.producer.name.toLowerCase()}/${p.product.photo}" alt="" />
+																		<div class="d-inline-block">
+																			<h6 class="f-w-600">${p.product.name}</h6>
+																		</div>
+																	</div>
+															</a></td>
+															<td class="digits"><div class="span badge badge-pill pill-badge-success f-12">${p.quantity}</div></td>
+															<td><span class="status-position font-info f-weight"><i class="fa fa-circle font-info m-r-15"> </i>Active</span></td>
+															<td>
+																<div class="span badge badge-pill pill-badge-secondary">
+																	<fmt:formatNumber type="number" maxFractionDigits="3" value="${p.product.importPrice}" />
+																	VNĐ
+																</div>
+															</td>
+														</tr>
+													</c:forEach>
+												</c:if>
+												<c:if test="${products.size() == 0 }">
+													<tr>
+														<td style="color: red; font-weight: bold; text-align: center;" colspan="4">Chưa có sản phẩm nào</td>
+													</tr>
+												</c:if>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-6 xl-100 box-col-12">
+							<div class="card">
+								<div class="card-header">
+									<h5>TOP CUSTOMER TRANSACTIONS</h5>
+									<div class="card-header-right">
+										<ul class="list-unstyled card-option">
+											<li><i class="icofont icofont-double-left"></i></li>
+											<li><i class="view-html fa fa-code"></i></li>
+											<li><i class="icofont icofont-maximize full-card"></i></li>
+											<li><i class="icofont icofont-minus minimize-card"></i></li>
+											<li><i class="icofont icofont-refresh reload-card"></i></li>
+											<li><i class="icofont icofont-error close-card"></i></li>
+										</ul>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="user-status table-responsive">
+										<table class="table table-bordernone">
+											<thead>
+												<tr>
+													<th scope="col">Name</th>
+													<th scope="col">Phone</th>
+													<!-- <th scope="col">Email</th>  -->
+													<th scope="col">Quantity Products</th>
+													<th scope="col">Total Buy</th>
+												</tr>
+											</thead>
+											<tbody>
+												<c:if test="${customers.size() != 0 }">
+													<c:forEach var="cus" items="${customers}">
+														<tr>
+															<td class="bd-t-none u-s-tb"><a target="_blank" href="/ho-admin/customer/detail?id=${cus.account.username}">
+																	<div class="align-middle image-sm-size">
+																		<img class="img-radius align-top m-r-15 rounded-circle" src="/images/avatars/${cus.account.photo}" alt="">
+																		<div class="d-inline-block">
+																			<h6>${cus.account.name}</h6>
+																		</div>
+																	</div>
+															</a></td>
+															<td>${cus.account.phone}</td>
+															<%-- <td>${cus.account.email} </td> --%>
+															<td style="text-align: center">
+																<div class="span badge badge-pill pill-badge-info f-12">${cus.quantity}</div>
+															</td>
+															<td><div class="span badge badge-pill pill-badge-secondary">
+																	<fmt:formatNumber type="number" maxFractionDigits="3" value="${cus.totalBuy}" />
+																	VNĐ
+																</div></td>
+														</tr>
+													</c:forEach>
+												</c:if>
+												<c:if test="${customers.size() == 0 }">
+													<tr>
+														<td style="color: red; font-weight: bold; text-align: center;" colspan="4">Chưa có khách hàng nào</td>
+													</tr>
+												</c:if>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-						<div class="col-sm-12">
+					<!-- <div class="col-sm-12">
 							<div class="card">
 								<div class="card-header">
 									<h5>Revenue Chart</h5>
@@ -123,16 +318,16 @@
 									<div id="column-chart"></div>
 								</div>
 							</div>
-						</div>
-					</div>
+						</div> -->
 				</div>
-				<!-- Container-fluid Ends-->
 			</div>
-			<!-- footer start-->
-			<jsp:include page="layouts/footer.jsp"></jsp:include>
-			<!-- footer end-->
-
+			<!-- Container-fluid Ends-->
 		</div>
+		<!-- footer start-->
+		<jsp:include page="layouts/footer.jsp"></jsp:include>
+		<!-- footer end-->
+
+	</div>
 	</div>
 	<!-- latest jquery-->
 	<script src="/assets/js/jquery-3.2.1.min.js"></script>
@@ -142,21 +337,73 @@
 	<!-- feather icon js-->
 	<script src="/assets/js/icons/feather-icon/feather.min.js"></script>
 	<script src="/assets/js/icons/feather-icon/feather-icon.js"></script>
-	 <!-- feather icon js-->
-    <!-- Sidebar jquery-->
-    <script src="/assets/js/sidebar-menu.js"></script>
-    <script src="/assets/js/config.js"></script>
-    <!-- Plugins JS start-->
-    <script src="/assets/js/chart/apex-chart/apex-chart.js"></script>
-    <script src="/assets/js/chart/apex-chart/stock-prices.js"></script>
-    <script src="/assets/js/chat-menu.js"></script>
-    <script src="/assets/js/tooltip-init.js"></script>
-    <!-- Plugins JS Ends-->
-    <!-- Theme js-->
-    <script src="/assets/js/script.js"></script>
-    <script src="/assets/js/theme-customizer/customizer.js"></script>
+	<!-- feather icon js-->
+	<script src="/assets/js/prism/prism.min.js"></script>
+	<script src="/assets/js/clipboard/clipboard.min.js"></script>
+	<script src="/assets/js/counter/jquery.waypoints.min.js"></script>
+	<script src="/assets/js/counter/jquery.counterup.min.js"></script>
+	<script src="/assets/js/counter/counter-custom.js"></script>
+	<script src="/assets/js/custom-card/custom-card.js"></script>
+	<script src="/assets/js/chat-menu.js"></script>
+	<script src="/assets/js/height-equal.js"></script>
+	<script src="/assets/js/datepicker/daterange-picker/moment.min.js"></script>
+	<script src="/assets/js/datepicker/daterange-picker/daterangepicker.js"></script>
+	<!-- Sidebar jquery-->
+	<script src="/assets/js/sidebar-menu.js"></script>
+	<script src="/assets/js/config.js"></script>
+	<!-- Plugins JS start-->
+	<%--  <script src="/assets/js/chart/apex-chart/apex-chart.js"></script>
+    <script src="/assets/js/chart/apex-chart/stock-prices.js"></script> --%>
+	<script src="/assets/js/chat-menu.js"></script>
+	<script src="/assets/js/tooltip-init.js"></script>
+	<!-- Plugins JS Ends-->
+	<!-- Theme js-->
+	<script src="/assets/js/script.js"></script>
+	<script src="/assets/js/theme-customizer/customizer.js"></script>
 	<!-- login js-->
 	<script>
+		$(document).ready(function() {
+			$('input[name="daterange"]').daterangepicker();
+		})
+
+		$(function() {
+
+			var start = moment().subtract(29, 'Ngày');
+			var end = moment();
+
+			function cb(start, end) {
+				$('#reportrange span').html(
+						start.format('D MMM, YYYY') + ' - '
+								+ end.format('D MMM, YYYY'));
+			}
+
+			$('#reportrange').daterangepicker(
+					{
+						startDate : start,
+						endDate : end,
+						ranges : {
+							'Hôm Nay' : [ moment(), moment() ],
+							'1 Ngày Trước' : [ moment().subtract(1, 'days'),
+									moment().subtract(1, 'days') ],
+							'7 Ngày Trước' : [ moment().subtract(6, 'days'),
+									moment() ],
+							'30 Ngày Trước' : [ moment().subtract(29, 'days'),
+									moment() ],
+							'Tháng Này' : [ moment().startOf('month'),
+									moment().endOf('month') ],
+							'Tháng Trước' : [
+									moment().subtract(1, 'month').startOf(
+											'month'),
+									moment().subtract(1, 'month')
+											.endOf('month') ]
+						}
+					}, cb);
+
+			cb(start, end);
+
+		});
+	</script>
+	<%-- <script>
 		$(document).ready(function(){
 			var options3 = {
 				    chart: {
@@ -167,7 +414,7 @@
 				        bar: {
 				            horizontal: false,
 				            endingShape: 'rounded',
-				            columnWidth: '55%',
+				            columnWidth: '30%',
 				        },
 				    },
 				    dataLabels: {
@@ -187,7 +434,7 @@
 				    },
 				    yaxis: {
 				        title: {
-				            text: '$ (thousands)'
+				            text: 'VNĐ'
 				        }
 				    },
 				    fill: {
@@ -197,7 +444,7 @@
 				    tooltip: {
 				        y: {
 				            formatter: function (val) {
-				                return "$ " + val + " thousands"
+				                return val + " VNĐ"
 				            }
 				        }
 				    },
@@ -211,7 +458,7 @@
 			
 			chart3.render();
 		})
-	</script>
+	</script> --%>
 	<!-- Plugin used-->
 </body>
 </html>

@@ -53,13 +53,13 @@ public class AOrderDetailController {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);
 		Order order = orderService.findById(orderId);
 		model.addAttribute("order", order);
-		List<OrderDetail> orderDetails = order.getOrderDetails().stream().filter(e -> e.isEnabled()).sorted(Comparator.comparing(OrderDetail::getCreatedAt).reversed()).collect(Collectors.toList());
+		List<OrderDetail> orderDetails = order.getOrderDetails().stream().filter(e -> e.isEnabled()).sorted(Comparator.comparing(OrderDetail::getId).reversed()).collect(Collectors.toList());
 		List<OrderDetail> ods = orderDetails.stream().map(o -> {
 			o.setDiscount(discountService.findById(o.getDiscountId()));
 			return o;
 		}).collect(Collectors.toList());
 		model.addAttribute("orderDetails", ods);
-		List<StatusOrder> status = order.getStatusOrders().stream().sorted(Comparator.comparing(StatusOrder::getCreatedAt)).collect(Collectors.toList());
+		List<StatusOrder> status = order.getStatusOrders().stream().sorted(Comparator.comparing(StatusOrder::getId)).collect(Collectors.toList());
 		Collections.reverse(status);
 		model.addAttribute("status", status);
 		return ViewConstraint.VIEW_ADMIN_ORDER_DETAIL_VIEW;

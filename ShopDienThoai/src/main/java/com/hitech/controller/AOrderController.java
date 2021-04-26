@@ -80,7 +80,7 @@ public class AOrderController {
 			}).distinct().collect(Collectors.toSet());
 			e.setOrderDetails(od);			
 			return e;
-		}).sorted(Comparator.comparing(Order::getCreatedAt).reversed()).collect(Collectors.toList());
+		}).sorted(Comparator.comparing(Order::getId).reversed()).collect(Collectors.toList());
 		model.addAttribute("listOrder", sortOrder);
 		return ViewConstraint.VIEW_ADMIN_ORDER;
 	}
