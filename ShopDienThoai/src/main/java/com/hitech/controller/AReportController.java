@@ -26,8 +26,8 @@ import com.hitech.entities.helper.ITopCustomerBuy;
 import com.hitech.entities.helper.ITopSellProduct;
 import com.hitech.entities.helper.TopCustomerBuy;
 import com.hitech.entities.helper.TopSellProduct;
-import com.hitech.repository.OrderRepository;
 import com.hitech.services.AccountService;
+import com.hitech.services.OrderService;
 import com.hitech.services.ProductService;
 
 @Controller
@@ -36,7 +36,7 @@ public class AReportController {
 	private SimpleDateFormat f = new SimpleDateFormat("MM/dd/yyyy");
 	
 	@Autowired
-	private OrderRepository orderRepository;
+	private OrderService orderService;
 	
 	@Autowired
 	private ProductService productService;
@@ -69,10 +69,10 @@ public class AReportController {
 		Map<String, Date> date = spliceTime(time);
 		
 		// REPORT TOTAL BY DATERANGe
-		IReportTotal reports = orderRepository.report(date.get("first"), date.get("last"));			
+		IReportTotal reports = orderService.report(date.get("first"), date.get("last"));			
 		
 		// TOP PRODUCT
-		List<ITopSellProduct> topProducts = orderRepository.reportTopSellProduct(date.get("first"), date.get("last"));
+		List<ITopSellProduct> topProducts = orderService.reportTopSellProduct(date.get("first"), date.get("last"));
 		if(topProducts.size() >= 5) {
 			topProducts = topProducts.subList(0, 5);
 		}
@@ -83,7 +83,7 @@ public class AReportController {
 		}
 		
 		// TOP CUSTOMER
-		List<ITopCustomerBuy> topCustomers = orderRepository.reportTopSellCustomer(date.get("first"), date.get("last"));
+		List<ITopCustomerBuy> topCustomers = orderService.reportTopSellCustomer(date.get("first"), date.get("last"));
 		if(topCustomers.size() >= 5) {
 			topCustomers = topCustomers.subList(0, 5);
 		}

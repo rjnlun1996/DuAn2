@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hitech.entities.Order;
+import com.hitech.entities.helper.IReport;
+import com.hitech.entities.helper.IReportTotal;
+import com.hitech.entities.helper.ITopCustomerBuy;
+import com.hitech.entities.helper.ITopSellProduct;
 import com.hitech.repository.OrderRepository;
 import com.hitech.services.OrderService;
 import com.hitech.utils.SessionUtils;
@@ -92,5 +96,40 @@ public class IOrderService implements OrderService{
 	@Override
 	public String calTotalOrder(String status) {
 		return orderRepository.calTotalOrder(status);
+	}
+
+	@Override
+	public IReportTotal report(Date first, Date last) {
+		return orderRepository.report(first, last);
+	}
+
+	@Override
+	public IReportTotal reportAll() {
+		return orderRepository.reportAll();
+	}
+
+	@Override
+	public List<ITopSellProduct> reportTopSellProduct(Date first, Date last) {
+		return orderRepository.reportTopSellProduct(first, last);
+	}
+
+	@Override
+	public List<ITopSellProduct> reportTopSellProductAll() {
+		return orderRepository.reportTopSellProductAll();
+	}
+
+	@Override
+	public List<ITopCustomerBuy> reportTopSellCustomerAll() {
+		return orderRepository.reportTopSellCustomerAll();
+	}
+
+	@Override
+	public List<ITopCustomerBuy> reportTopSellCustomer(Date first, Date last) {
+		return orderRepository.reportTopSellCustomer(first, last);
+	}
+
+	@Override
+	public List<IReport> report() {
+		return orderRepository.report();
 	}
 }

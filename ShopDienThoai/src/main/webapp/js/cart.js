@@ -230,7 +230,6 @@ function updateCart1(productId, price, add, discount) {
 }
 
 function cutPrice(elm){
-    console.log(elm.innerHTML)
     return parseFloat(elm.innerHTML.replace('VNĐ','').trim().replaceAll('.',''));
 }
 
