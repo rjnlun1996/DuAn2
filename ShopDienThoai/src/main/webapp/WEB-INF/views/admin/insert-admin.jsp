@@ -260,7 +260,11 @@ String sb = String.valueOf(request.getAttribute(MENU));
 															</span>
 														</div>
 														<form:input path="phone" class="form-control" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required="required" />
+<<<<<<< HEAD
 														<form:errors path="phone" class="invalid-feedback" />
+=======
+														<form:errors path="phone" class="invalid-feedback" /> 
+>>>>>>> branch 'cart' of https://github.com/rjnlun1996/DuAn2.git
 													</div>
 												</div>
 											</div>

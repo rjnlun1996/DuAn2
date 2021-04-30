@@ -113,14 +113,14 @@ function updateCart(productId, add) {
     $.ajax({
         url: 'cart',
         type: 'POST',
-        data: { productId: productId, isUpdate: true, quantity: quantity},
+        data: { productId: productId, isUpdate: true, quantity: quantity },
         success: function(data) {
             // var cartNumber = Object.keys(data).length;  
-            $("#template-cart").load("/cart #template-cart");         
+            $("#template-cart").load("/cart #template-cart");
             toastr["success"]("Cập nhật giỏ hàng thành công 123!")
-            // setTimeout(function() {
-            //     location.reload();
-            // }, 1000)
+                // setTimeout(function() {
+                //     location.reload();
+                // }, 1000)
         },
         error: function(err) {
 
@@ -166,7 +166,7 @@ function getCartDropdown() {
     $.ajax({
         url: 'cart_dropdown',
         type: 'GET',
-        success: function(data) {                       
+        success: function(data) {
             $('#render-cart').html(data);
             $('#cart-number').html($('.dropcart__product').length);
         },
@@ -184,25 +184,24 @@ function updateCart1(productId, price, add, discount) {
     const totalcartDiscount = document.getElementById('total-cart-discount');
     const totalCartCheckout = document.getElementById('total-cart-checkout');
 
-    
+
     let fCartNumber = cutPrice(cartNumber);
     let fTotalCartPrice = cutPrice(totalcartPrice);
     let fTotalCartDiscount = cutPrice(totalcartDiscount);
-    
+
     const q = document.getElementById(`number-${productId}`)
     const priceTotal = document.getElementById(`number-${productId}-total`);
     const quantity = parseInt(q.value) + parseInt(add);
-    
 
-    if((add == -1 && quantity >= 1) || add == 1){      
-        
-        
+    if ((add == -1 && quantity >= 1) || add == 1) {
+
+
         const priceTotalProduct = price * quantity;
         const lTotalCartPrice = fTotalCartPrice + price * parseInt(add);
-        if(discount){
-            fTotalCartDiscount = cutPrice(totalcartDiscount) +  price * parseInt(add) * discount / 100;            
+        if (discount) {
+            fTotalCartDiscount = cutPrice(totalcartDiscount) + price * parseInt(add) * discount / 100;
             totalcartDiscount.innerHTML = renderPrice(fTotalCartDiscount);
-        }        
+        }
         let lTotalCartCheckout = lTotalCartPrice - fTotalCartDiscount;
 
         q.value = quantity;
@@ -214,10 +213,10 @@ function updateCart1(productId, price, add, discount) {
         $.ajax({
             url: 'cart',
             type: 'POST',
-            data: { productId: productId, isUpdate: true, quantity: quantity},
-            success: function(data) {    
-                getCartDropdown();  
-                toastr["success"]("Cập nhật giỏ hàng thành công!");                
+            data: { productId: productId, isUpdate: true, quantity: quantity },
+            success: function(data) {
+                getCartDropdown();
+                toastr["success"]("Cập nhật giỏ hàng thành công!");
             },
             error: function(err) {
 
@@ -226,21 +225,21 @@ function updateCart1(productId, price, add, discount) {
     }
 
 
-    
+
 }
 
-function cutPrice(elm){
-    return parseFloat(elm.innerHTML.replace('VNĐ','').trim().replaceAll('.',''));
+function cutPrice(elm) {
+    return parseFloat(elm.innerHTML.replace('VNĐ', '').trim().replaceAll('.', '').replaceAll(',', ''));
 }
 
-function renderPrice(price){
+function renderPrice(price) {
     let p = price.toString();
     let result = '';
 
     let count = 0;
-    for(let i = p.length; i >= 0; i--) {
-        result = p.charAt(i) + result;        
-        if(count == 3 && i != 0){
+    for (let i = p.length; i >= 0; i--) {
+        result = p.charAt(i) + result;
+        if (count == 3 && i != 0) {
             result = '.' + result;
             count = 0;
         }

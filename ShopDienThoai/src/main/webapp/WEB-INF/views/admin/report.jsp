@@ -77,7 +77,7 @@
 						<div class="col-xl-12">
 							<div class="card">
 								<div class="card-header">
-									<h5>Report</h5>
+									<h5>BÁO CÁO - THỐNG KÊ</h5>
 									<div class="card-header-right">
 										<ul class="list-unstyled card-option">
 											<li><i class="icofont icofont-double-left"></i></li>
@@ -188,7 +188,7 @@
 						<div class="col-xl-6 xl-100 box-col-12">
 							<div class="card">
 								<div class="card-header">
-									<h5>TOP SELLING PRODUCT</h5>
+									<h5>Sản Phẩm Bán Nhiều Nhất</h5>
 									<div class="card-header-right">
 										<ul class="list-unstyled card-option">
 											<li><i class="icofont icofont-double-left"></i></li>
@@ -205,10 +205,10 @@
 										<table class="table table-bordernone">
 											<thead>
 												<tr>
-													<th scope="col">Product</th>
-													<th scope="col">Quantity</th>
-													<th scope="col">Status</th>
-													<th scope="col">Price</th>
+													<th scope="col">Sản Phẩm</th>
+													<th scope="col">Số Lượng</th>
+													<th scope="col">Trạng Thái</th>
+													<th scope="col">Giá</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -248,7 +248,7 @@
 						<div class="col-xl-6 xl-100 box-col-12">
 							<div class="card">
 								<div class="card-header">
-									<h5>TOP CUSTOMER TRANSACTIONS</h5>
+									<h5>Khách Hàng Thân Thiết</h5>
 									<div class="card-header-right">
 										<ul class="list-unstyled card-option">
 											<li><i class="icofont icofont-double-left"></i></li>
@@ -265,11 +265,11 @@
 										<table class="table table-bordernone">
 											<thead>
 												<tr>
-													<th scope="col">Name</th>
-													<th scope="col">Phone</th>
+													<th scope="col">Họ Và Tên</th>
+													<th scope="col">Điện Thoại</th>
 													<!-- <th scope="col">Email</th>  -->
-													<th scope="col">Quantity Products</th>
-													<th scope="col">Total Buy</th>
+													<th scope="col">Số Lượng</th>
+													<th scope="col">Tổng Tiền</th>
 												</tr>
 											</thead>
 											<tbody>

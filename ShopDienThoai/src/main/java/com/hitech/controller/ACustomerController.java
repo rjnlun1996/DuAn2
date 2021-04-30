@@ -91,7 +91,6 @@ public class ACustomerController {
 			RedirectAttributes reAttributes, Model model, @RequestParam("image") MultipartFile file)
 			throws IOException {
 		boolean isErrors = errors.hasErrors();
-		System.err.println(errors.getFieldError());
 		Account accountOnDb = accountService.findById(account.getUsername());
 		Account accountWithEmail = accountService.findByEmail(account.getEmail());
 		String dbEmail = accountOnDb.getEmail();
