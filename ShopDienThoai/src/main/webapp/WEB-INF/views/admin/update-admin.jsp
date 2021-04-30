@@ -268,7 +268,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 														<%-- <form:errors path="phone" class="invalid-feedback" /> --%>
 													</div>
 												</div>
-											</div>s
+											</div>
 											<div class="card-footer">
 												<button class="btn btn-primary" type="submit">Update</button>
 												<button class="btn btn-secondary" type="reset">Cancel</button>
