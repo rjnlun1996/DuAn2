@@ -65,5 +65,7 @@ public interface AccountService extends IBaseService<Account, String>{
 	
 	String calTotalAccount(int level);
 	
+	boolean checkExistedForeign(String id);
+	
 
 }

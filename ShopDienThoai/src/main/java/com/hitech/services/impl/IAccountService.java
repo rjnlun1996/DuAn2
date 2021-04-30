@@ -130,5 +130,11 @@ public class IAccountService implements AccountService{
 		return accountRepository.calTotalAccount(level);
 	}
 
+	@Override
+	public boolean checkExistedForeign(String id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 }

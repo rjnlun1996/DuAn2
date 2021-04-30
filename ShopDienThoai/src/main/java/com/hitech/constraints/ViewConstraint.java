@@ -29,6 +29,7 @@ public interface ViewConstraint {
 	public static final String URL_ADMIN_CUSTOMER_DELETE = URL_ADMIN_CUSTOMER + "delete";
 	public static final String URL_ADMIN_CUSTOMER_UPDATE = URL_ADMIN_CUSTOMER + "update";
 	public static final String URL_ADMIN_CUSTOMER_DETAIL = URL_ADMIN_CUSTOMER + "detail";
+	public static final String URL_ADMIN_CUSTOMER_EXIST = URL_ADMIN_CUSTOMER + "exist";
 	public static final String VIEW_ADMIN_CUSTOMER = "admin/table-customer";
 	public static final String VIEW_ADMIN_CUSTOMER_INSERT = "admin/insert-customer";	
 	public static final String VIEW_ADMIN_CUSTOMER_UPDATE = "admin/update-customer";	

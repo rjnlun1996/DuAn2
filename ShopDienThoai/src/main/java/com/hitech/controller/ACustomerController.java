@@ -150,5 +150,12 @@ public class ACustomerController {
 		model.addAttribute("customer", accountService.findById(id));
 		return ViewConstraint.VIEW_ADMIN_CUSTOMER_DETAIL;
 	}
+	
+	@GetMapping(ViewConstraint.URL_ADMIN_CUSTOMER_EXIST)
+	@ResponseBody
+	public boolean checkExistedForeign() {
+			
+		return false;
+	}
 
 }
