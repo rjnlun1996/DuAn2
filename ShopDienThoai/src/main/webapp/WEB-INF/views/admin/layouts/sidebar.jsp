@@ -270,20 +270,6 @@ String sb = String.valueOf(request.getAttribute(MENU));
 					</a>
 				</li>
 			</c:if>
-
-			<li>
-				<a class="sidebar-header" href="/ho-admin/report">
-					<i data-feather="mail"></i>
-					<span>Email</span>
-				</a>
-			</li>
-
-			<li>
-				<a class="sidebar-header" href="/ho-admin/report">
-					<i data-feather="message-square"></i>
-					<span>Chat</span>
-				</a>
-			</li>
 		</ul>
 	</div>
 </div>

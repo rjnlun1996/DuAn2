@@ -115,7 +115,7 @@ table thead {
 
 									<div class="card-body">
 										<div class="sales-product-table table-responsive ">
-											<table class="table table-bordernone" id="basic-1">
+											<table class="table table-bordernone" id="basic-100">
 
 												<c:if test="${message != null}">
 													<div class="alert alert-success dark" role="alert">
@@ -227,8 +227,10 @@ table thead {
 	<script src="/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
 	<script>
 	
-	$(docment).ready(function(){
-		$('#basic-1').DataTable();
+	$(document).ready(function(){
+		$('#basic-100').DataTable({
+			"order": [[ 6, "desc" ]]
+		});
 	})
 	/*  $(document).ready(function(){
 			$('.delete-item').click(function(){ */
