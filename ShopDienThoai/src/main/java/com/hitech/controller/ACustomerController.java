@@ -132,6 +132,12 @@ public class ACustomerController {
 	@PostMapping(ViewConstraint.URL_ADMIN_CUSTOMER_DELETE)
 	@ResponseBody
 	public boolean delete1(Model model, @RequestParam String username) {
+		boolean isExistedForeign = accountService.checkExistedForeign(username);
+		
+		// Nếu tồn tại khóa ngoại thì không cho phép xóa
+		if(isExistedForeign) {
+			return false;
+		}
 		return accountService.deleteByEnabled(username);
 	}
 

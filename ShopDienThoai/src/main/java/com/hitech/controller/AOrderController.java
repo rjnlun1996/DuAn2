@@ -146,6 +146,12 @@ public class AOrderController {
 	@PostMapping(ViewConstraint.URL_ADMIN_ORDER_DELETE)
 	@ResponseBody
 	public boolean delete1(Model model, @RequestParam int id) {
+		boolean isExistedForeign = orderService.checkExistedForeign(id);
+
+		// Nếu tồn tại khóa ngoại thì không cho phép xóa
+		if (isExistedForeign) {
+			return false;
+		}
 		return orderService.deleteByEnable(id);
 	}
 

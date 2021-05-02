@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hitech.entities.Order;
 import com.hitech.entities.OrderDetail;
+import com.hitech.entities.Product;
 import com.hitech.repository.OrderDetailRepository;
 import com.hitech.services.OrderDetailService;
 import com.hitech.utils.SessionUtils;
@@ -16,6 +18,7 @@ public class IOrderDetailService implements OrderDetailService {
 
 	@Autowired
 	private OrderDetailRepository orderDetailRepository;
+
 	@Autowired
 	private SessionUtils sessionUtils;
 
@@ -76,5 +79,22 @@ public class IOrderDetailService implements OrderDetailService {
 	@Override
 	public Iterable<OrderDetail> saveAll(List<OrderDetail> orderDetails) {
 		return orderDetailRepository.saveAll(orderDetails);
+	}
+
+	@Override
+	public boolean checkExistedForeign(Integer id) {
+		OrderDetail orderDetail = orderDetailRepository.findById(id).orElse(null);
+		
+		// Get khoa ngoai (Order)
+		Order order = orderDetail.getOrder();
+		
+		// Get Khoa ngoai (product)
+		Product product = orderDetail.getProduct();
+
+		// Kiểm tra nếu khóa ngoại đang liên kết dự liệu
+		if (product != null || order != null) {
+			return true;
+		}
+		return false;
 	}
 }

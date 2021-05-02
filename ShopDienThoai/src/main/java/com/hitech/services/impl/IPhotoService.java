@@ -65,4 +65,10 @@ public class IPhotoService implements PhotoService {
 		}
 
 	}
+
+	@Override
+	public boolean checkExistedForeign(Integer id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

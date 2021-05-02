@@ -2,14 +2,13 @@ package com.hitech.services.impl;
 
 import java.util.Date;
 import java.util.List;
-
-
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.hitech.entities.Category;
+import com.hitech.entities.Product;
 import com.hitech.repository.CategoryRepository;
 import com.hitech.services.CategoryService;
 import com.hitech.utils.SessionUtils;
@@ -107,6 +106,20 @@ public class ICategoryService implements CategoryService {
 	public Category findByNameAndEnabledTrue(String name) {
 		
 		return categoryRepository.findByNameAndEnabledTrue(name);
+	}
+
+	@Override
+	public boolean checkExistedForeign(Integer id) {
+		Category category = categoryRepository.findById(id).orElse(null);
+		
+		// Get danh sách khóa ngoại (Products)
+		Set<Product> products = category.getProducts();
+		
+		// Kiểm tra nếu khóa ngoại đang liên kết dự liệu
+		if(products != null && !products.isEmpty() && products.size() > 0) {
+			return true;
+		}
+		return false;
 	}
 
 	

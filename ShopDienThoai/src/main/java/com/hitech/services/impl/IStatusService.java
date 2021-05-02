@@ -2,13 +2,13 @@ package com.hitech.services.impl;
 
 import java.util.Date;
 import java.util.List;
-
-
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hitech.entities.Status;
+import com.hitech.entities.StatusOrder;
 import com.hitech.repository.StatusRepository;
 import com.hitech.services.StatusService;
 import com.hitech.utils.SessionUtils;
@@ -86,6 +86,21 @@ public class IStatusService implements StatusService {
 	@Override
 	public Status findByNameAndEnabledTrue(String name) {
 		return statusRepository.findByNameAndEnabledTrue(name);
+	}
+
+	@Override
+	public boolean checkExistedForeign(String id) {
+		Status status = statusRepository.findById(id).orElse(null);
+
+		// Get khoa ngoai (StatusOrder)
+		Set<StatusOrder> statusOrders = status.getStatusOrders();
+
+		// Kiểm tra nếu khóa ngoại đang liên kết dự liệu
+		if (statusOrders != null && !statusOrders.isEmpty() && statusOrders.size() > 0) {
+			return true;
+		}
+		
+		return false;
 	}
    
 

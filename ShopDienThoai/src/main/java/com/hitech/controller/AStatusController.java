@@ -67,6 +67,12 @@ public class AStatusController {
 	@PostMapping(ViewConstraint.URL_ADMIN_STATUS_DELETE)
 	@ResponseBody
 	public boolean delete(Model model, @RequestParam String id) {
+		boolean isExistedForeign = statusService.checkExistedForeign(id);
+
+		// Nếu tồn tại khóa ngoại thì không cho phép xóa
+		if (isExistedForeign) {
+			return false;
+		}
 		return statusService.deleteByEnabled(id);
 	}
 	

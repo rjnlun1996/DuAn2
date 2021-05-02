@@ -2,11 +2,14 @@ package com.hitech.services.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hitech.entities.Category;
 import com.hitech.entities.Producer;
+import com.hitech.entities.StatusOrder;
 import com.hitech.repository.ProducerRepository;
 import com.hitech.services.ProducerService;
 import com.hitech.utils.SessionUtils;
@@ -70,6 +73,20 @@ public class IProducerService implements ProducerService {
 		} catch (Exception e) {
 			return false;
 		}
+	}
+
+	@Override
+	public boolean checkExistedForeign(String id) {
+		Producer producer = producerRepository.findById(id).orElse(null);
+
+		// Get khoa ngoai (Account)
+		Set<Category> categories = producer.getCategories();
+
+		// Kiểm tra nếu khóa ngoại đang liên kết dự liệu
+		if (categories != null && !categories.isEmpty() && categories.size() > 0) {
+			return true;
+		}
+		return false;
 	}
 	
 }
