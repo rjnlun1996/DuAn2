@@ -53,6 +53,7 @@ public class ACustomerController {
 		boolean isExistedUsername = accountService.findById(account.getUsername()) != null;
 		boolean isExistedEmail = accountService.findByEmail(account.getEmail()) != null;
 		boolean isErrors = errors.hasErrors();
+		System.err.println(account.getPhoto());
 		if (isErrors || isExistedUsername || isExistedEmail) {
 			model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
 			if (isExistedUsername) {

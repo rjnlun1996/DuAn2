@@ -159,6 +159,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 															</span>
 														</div>
 														<input type="text" name="username" value="${account.username }" class="form-control" readonly="readonly" />
+														<input type="hidden" name="photo" value="${account.photo }" class="form-control"  />
 													</div>
 												</div>
 												<div class="form-group row">
