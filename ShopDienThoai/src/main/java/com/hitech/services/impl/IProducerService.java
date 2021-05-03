@@ -31,7 +31,7 @@ public class IProducerService implements ProducerService {
 
 	@Override
 	public Producer findById(String id) {
-		return producerRepository.getOne(id);
+		return producerRepository.findById(id).orElse(null);
 	}
 
 	@Override
@@ -87,6 +87,18 @@ public class IProducerService implements ProducerService {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public Producer findByName(String name) {
+		// TODO Auto-generated method stub
+		return producerRepository.findByNameIgnoreCase(name);
+	}
+
+	@Override
+	public Producer findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return producerRepository.findByEmail(email);
 	}
 	
 }

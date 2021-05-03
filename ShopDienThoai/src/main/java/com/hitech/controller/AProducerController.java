@@ -75,11 +75,33 @@ public class AProducerController {
 	@PostMapping(ViewConstraint.URL_ADMIN_PRODUCER_INSERT)
 	public Object insert(Model model, @Validated @ModelAttribute("producer") Producer producer, BindingResult errors,
 			RedirectAttributes ra, @RequestParam("image") MultipartFile file) throws IOException {
-		if (errors.hasErrors()) {
+		// Check id
+		Producer prodId = producerService.findById(producer.getId());
+		
+		// Name
+		Producer prodName = producerService.findByName(producer.getName());
+		
+		// Email
+		Producer prodEmail =producerService.findByEmail(producer.getEmail());
+		System.err.println((prodId) + "" + (prodName != null) + "" + (prodEmail != null));
+		
+		if (errors.hasErrors() || prodId != null || prodName != null || prodEmail != null) {
+			
+			if(prodId != null) {
+				model.addAttribute("existedId", "Id đã tồn tại!");
+			}
+			
+			if(prodName != null) {
+				model.addAttribute("existedName", "Name đã tồn tại!");
+			}
+			if(prodEmail != null) {
+				model.addAttribute("existedEmail", "Email đã tồn tại!");
+			}
 			model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_PRODUCER_INSERT);
 			return ViewConstraint.VIEW_ADMIN_PRODUCER_INSERT;
 		}
+	
 		String image = fileStorageService.saveProducerImage(file);
 		if (image != null) {
 			producer.setLogo(image);

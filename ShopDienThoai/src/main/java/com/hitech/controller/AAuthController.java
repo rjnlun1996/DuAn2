@@ -1,4 +1,4 @@
-package com.hitech.controller;
+ package com.hitech.controller;
 
 import java.io.IOException;
 
@@ -80,13 +80,14 @@ public class AAuthController {
 		
 		Account account = accountService.findByEmail(email);
 		if(account == null) {
-			model.addAttribute("error", "Email không tồn tại!");
+			model.addAttribute("error", "Email không tồn tại !");
 			return ViewConstraint.VIEW_ADMIN_FORGET_PASSWORD;
 		}
 		
 		String newPassword = StringUtils.generatorPassword();
 		account.setPassword(newPassword);
 		accountService.update(account);
+		model.addAttribute("message", "Mật khẩu mới đã được gửi tới email của bạn !");
 		emailService.sendNotifyForgotPassword(account.getEmail());
 		return ViewConstraint.VIEW_ADMIN_FORGET_PASSWORD;
 	}

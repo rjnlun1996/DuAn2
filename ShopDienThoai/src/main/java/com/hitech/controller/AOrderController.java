@@ -22,9 +22,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.hitech.constraints.ViewConstraint;
 import com.hitech.entities.Order;
 import com.hitech.entities.OrderDetail;
+import com.hitech.entities.StatusOrder;
 import com.hitech.services.AccountService;
 import com.hitech.services.DiscountService;
 import com.hitech.services.OrderService;
+import com.hitech.services.StatusOrderService;
 import com.hitech.utils.ViewUtils;
 
 @Controller
@@ -32,6 +34,10 @@ public class AOrderController {
 	
 	@Autowired
 	private OrderService orderService;
+	
+
+	@Autowired
+	private StatusOrderService statusOrderService;
 	
 	@Autowired
 	private AccountService accountService;
@@ -109,15 +115,16 @@ public class AOrderController {
 	
 	@PostMapping(ViewConstraint.URL_ADMIN_ORDER_UPDATE)
 	public Object update(Model model, @Validated @ModelAttribute("order") Order order,
-			@RequestParam String username, BindingResult errors,
+			@RequestParam String username, @RequestParam int orderId, BindingResult errors,
 			RedirectAttributes ra) throws IOException {
 		if (errors.hasErrors()) {
 			model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
-			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER_INSERT);
+			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER_UPDATE);
 			return ViewConstraint.URL_ADMIN_ORDER_UPDATE;
 		}
 		
 		order.setAccount(accountService.findById(username));
+		order.setId(orderService.findById(orderId).getId());
 		ra.addFlashAttribute("message", "Cập nhật dữ liệu thành công!");
 		orderService.save(order);
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ORDER_UPDATE + "?orderId=" + order.getId());
@@ -125,8 +132,8 @@ public class AOrderController {
 
 	@GetMapping(ViewConstraint.URL_ADMIN_ORDER_UPDATE)
 	public String updateGet(Model model, @RequestParam int orderId) {
-
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER_UPDATE);
+		
 		Order od = orderService.findById(orderId);
 		model.addAttribute("order", od);
 		model.addAttribute("listUser", accountService.findAllCustomerByEnabledTrue());
@@ -138,7 +145,8 @@ public class AOrderController {
 	@GetMapping(ViewConstraint.URL_ADMIN_ORDER_DELETE + "{id}")
 	public String delete(Model model, @PathVariable("id") int id) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);
-		orderService.deleteByEnable(id);
+		orderService.cancel(id);
+		
 		model.addAttribute("listOrder", orderService.findByEnabledTrue());
 		return ViewConstraint.VIEW_ADMIN_ORDER;
 	}
@@ -146,13 +154,18 @@ public class AOrderController {
 	@PostMapping(ViewConstraint.URL_ADMIN_ORDER_DELETE)
 	@ResponseBody
 	public boolean delete1(Model model, @RequestParam int id) {
-		boolean isExistedForeign = orderService.checkExistedForeign(id);
 
-		// Nếu tồn tại khóa ngoại thì không cho phép xóa
-		if (isExistedForeign) {
-			return false;
+		List<StatusOrder> stos = statusOrderService.findByOrderIdAndCurrentTrue(id);
+		
+		if(stos.size()>0) {
+			StatusOrder so = stos.get(0);
+			if(so.getStatus().getId().equals("DH")) {
+				return false;
+			}
 		}
-		return orderService.deleteByEnable(id);
+		
+		orderService.cancel(id);
+		return true;
 	}
 
 }

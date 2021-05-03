@@ -34,10 +34,10 @@
 						<h3 class="mb-4 text-center"></h3>
 						<form class="signin-form" method="POST">
 							<c:if test="${message != null }">
-								<p style="color: green; font-weight: bold; text-align: center;">${message}</p>
+								<p style="color: #228b22; font-weight: bold; text-align: center;">${message}</p>
 							</c:if>
 							<c:if test="${error != null }">
-								<p style="color: red; font-weight: bold; text-align: center;">${error}</p>
+								<p style="color: #dc143c; font-weight: bold; text-align: center;">${error}</p>
 							</c:if>
 							<div class="form-group">
 								<input type="email" name="email" class="form-control" placeholder="Enter Your Email" required>
@@ -66,7 +66,7 @@
 								<input class="form-control" type="password">
 							</div> -->
 							<div class="form-group">
-								<button type="submit" class="form-control btn btn-primary submit px-3">Save Change</button>
+								<button type="submit" class="form-control btn btn-primary submit px-3">RESET PASSWORD</button>
 							</div>
 							<div class="form-group d-md-flex">
 								<div class="w-50"></div>

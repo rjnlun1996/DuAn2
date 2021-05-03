@@ -108,6 +108,7 @@ public class IStatusOrderService implements StatusOrderService {
 
 		}
 	}
+	
 
 	@Override
 	public boolean checkExistedForeign(Integer id) {
@@ -122,5 +123,10 @@ public class IStatusOrderService implements StatusOrderService {
 		}
 		
 		return false;
+	}
+
+	@Override
+	public List<StatusOrder> findByOrderIdAndCurrentTrue(Integer orderId) {
+		return statusOrderRepository.getStatusOrderByCurrentTrueAndOrderId(orderId);
 	}
 }

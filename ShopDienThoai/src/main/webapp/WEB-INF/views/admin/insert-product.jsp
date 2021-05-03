@@ -42,6 +42,8 @@
 	href="/assets/css/feather-icon.css">
 <!-- Bootstrap css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
+
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <!-- App css-->
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 <link id="color" rel="stylesheet" href="/assets/css/light-1.css"
@@ -52,6 +54,22 @@
 .invalid-feedback {
 	display: block
 }
+.panel-heading>.note-btn-group{
+	border: 1px solid
+}
+.note-dropdown-menu{
+	padding: 10px 20px !important;
+	min-width: 200px !important;
+}
+button>span.note-icon-caret{
+	display: none !important;
+}
+
+button>i{
+	margin-right: 10px !important;
+}
+
+
 </style>
 </head>
 <body>
@@ -213,10 +231,8 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="description">Description</label>
 													<div class="col-sm-9">
-													<textarea class="form-control" name="description" rows="3"></textarea>
-														<%-- <form:input path="description" class="form-control"
-															required="required" minlength="0" maxlength="99999" /> --%>
-														<form:errors path="description" class="invalid-feedback" />
+														<form:textarea path="description" class="form-control" required="required" rows="10" />
+														<form:errors path="description" />
 													</div>
 												</div>
 											</div>
@@ -251,33 +267,13 @@
 	<script src="/assets/js/sidebar-menu.js"></script>
 	<script src="/assets/js/config.js"></script>
 	<!-- Plugins JS start-->
-	<script src="/assets/js/chart/chartjs/chart.min.js"></script>
-	<script src="/assets/js/chart/chartist/chartist.js"></script>
-	<script src="/assets/js/chart/chartist/chartist-plugin-tooltip.js"></script>
-	<script src="/assets/js/chart/knob/knob.min.js"></script>
-	<script src="/assets/js/chart/knob/knob-chart.js"></script>
-	<script src="/assets/js/prism/prism.min.js"></script>
-	<script src="/assets/js/clipboard/clipboard.min.js"></script>
-	<script src="/assets/js/counter/jquery.waypoints.min.js"></script>
-	<script src="/assets/js/counter/jquery.counterup.min.js"></script>
-	<script src="/assets/js/counter/counter-custom.js"></script>
-	<script src="/assets/js/custom-card/custom-card.js"></script>
-	<script src="/assets/js/notify/bootstrap-notify.min.js"></script>
-	<script src="/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-au-mill.js"></script>
-	<script
-		src="/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-in-mill.js"></script>
-	<script src="/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
 	<script src="/assets/js/dashboard/default.js"></script>
 	<script src="/assets/js/notify/index.js"></script>
 	<script src="/assets/js/chat-menu.js"></script>
 	<script src="/assets/js/tooltip-init.js"></script>
 	<script src="/assets/js/animation/wow/wow.min.js"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 	<!-- Plugins JS Ends-->
 	<!-- Theme js-->
 	<script src="/assets/js/script.js"></script>
@@ -299,6 +295,11 @@
 		}
 
 		$("#imgInp").change(function() {
+			readURL(this);
+		});
+
+		$(document).ready(function() {
+			$('#description').summernote();
 			readURL(this);
 		});
 	</script>

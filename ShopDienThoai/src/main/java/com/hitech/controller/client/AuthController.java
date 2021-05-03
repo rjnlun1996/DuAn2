@@ -63,7 +63,7 @@ public class AuthController {
 				model.addAttribute("isExistUsername", true);
 			}
 			if (isExistedEmail) {
-				model.addAttribute("errorEmail", "Email này đã tồn tại");
+				model.addAttribute("errorEmail", "Email này đã tồn tại !");
 				model.addAttribute("isExistEmail", true);
 			}
 			model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_REGISTER);
@@ -87,13 +87,14 @@ public class AuthController {
 
 		Account account = accountService.findByEmail(email);
 		if (account == null) {
-			model.addAttribute("error", "Email không tồn tại!");
+			model.addAttribute("error", "Email không tồn tại !");
 			return CViewConstraint.VIEW_FORGET_PASSWORD;
 		}
 
 		String newPassword = StringUtils.generatorPassword();
 		account.setPassword(newPassword);
 		accountService.update(account);
+		model.addAttribute("message", "Mật khẩu mới đã được gửi tới email của bạn !");
 		emailService.sendNotifyForgotPassword(account.getEmail());
 		return CViewConstraint.VIEW_FORGET_PASSWORD;
 	}

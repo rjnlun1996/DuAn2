@@ -14,15 +14,22 @@ import com.hitech.services.FileStorageService;
 @Service
 public class IFileStorageService implements FileStorageService {
 	
-	public static final String AVATAR = "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\ROOT\\images\\avatars\\";
-	public static final String PRODUCT = "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\ROOT\\images\\products\\";
-	public static final String PRODUCER = "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\ROOT\\images\\producer\\";
-	public static final String PHOTO = "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\ROOT\\images\\photos\\";
+	/*
+	 * public static final String AVATAR =
+	 * "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\ROOT\\images\\avatars\\"
+	 * ; public static final String PRODUCT =
+	 * "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\ROOT\\images\\products\\"
+	 * ; public static final String PRODUCER =
+	 * "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\ROOT\\images\\producer\\"
+	 * ; public static final String PHOTO =
+	 * "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\ROOT\\images\\photos\\"
+	 * ;
+	 */
 	
-//	public static final String AVATAR = "src\\main\\webapp\\images\\avatars\\";
-//	public static final String PRODUCT = "src\\main\\webapp\\images\\products\\";
-//	public static final String PRODUCER = "src\\main\\webapp\\images\\producer\\";
-//	public static final String PHOTO = "src\\main\\webapp\\images\\photos\\";
+	public static final String AVATAR = "src\\main\\webapp\\images\\avatars\\";
+	public static final String PRODUCT = "src\\main\\webapp\\images\\products\\";
+	public static final String PRODUCER = "src\\main\\webapp\\images\\producer\\";
+	public static final String PHOTO = "src\\main\\webapp\\images\\photos\\";
 	
 	@Override
 	public String saveImage(MultipartFile file) throws IOException {

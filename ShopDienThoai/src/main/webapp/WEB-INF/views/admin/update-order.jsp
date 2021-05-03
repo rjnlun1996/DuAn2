@@ -78,7 +78,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 					<div class="page-header">
 						<div class="row">
 							<div class="col-lg-6">
-								<h3>FORM INSERT ORDER</h3>
+								<h3>FORM UPDATE ORDER</h3>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item">
 										<a href="<%=URL_ADMIN_HOME%>">Home</a>

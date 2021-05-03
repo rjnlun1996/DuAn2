@@ -3,9 +3,8 @@ package com.hitech.services;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.data.jpa.repository.Query;
-
 import com.hitech.entities.Order;
+import com.hitech.entities.StatusOrder;
 import com.hitech.entities.helper.IReport;
 import com.hitech.entities.helper.IReportTotal;
 import com.hitech.entities.helper.ITopCustomerBuy;
@@ -13,7 +12,7 @@ import com.hitech.entities.helper.ITopSellProduct;
 
 public interface OrderService extends IBaseService<Order, Integer>{
 	
-	boolean deleteByEnable(Integer id);
+	StatusOrder cancel(Integer id);
 	
 	List<Order> findByEnabledTrue();
 	
