@@ -60,7 +60,7 @@ public class ACategoryController {
 				model.addAttribute("error", "Danh mục này đã tồn tại!");
 				model.addAttribute("isExistName", true);
 			}
-
+			model.addAttribute("listProducer", producerService.findAllByEnabledTrue());
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CATEGORY_INSERT);
 			return ViewConstraint.VIEW_ADMIN_CATEGORY_INSERT;
 		}
@@ -108,6 +108,7 @@ public class ACategoryController {
 			if (isErrors) {
 				model.addAttribute("error", "Vui lòng kiểm tra thông tin nhập sai!");
 			}
+			model.addAttribute("listProducer", producerService.findAllByEnabledTrue());
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CATEGORY_UPDATE);
 			return ViewConstraint.VIEW_ADMIN_CATEGORY_UPDATE;
 		}
