@@ -157,7 +157,6 @@
 														<%-- <form:input path="id" class="form-control"
 															required="required" minlength="2" maxlength="5" readonly="readonly" /> --%>
 														<input value="${producer.id}" class="form-control" readonly="readonly"/>
-														<form:errors path="id" class="invalid-feedback" />
 													</div>
 												</div>
 												<div class="form-group row">
@@ -166,6 +165,9 @@
 														<form:input path="name" class="form-control"
 															required="required" minlength="2" maxlength="50" />
 														<form:errors path="name" class="invalid-feedback" />
+														<c:if test="${not empty existedName}">
+															<span class="invalid-feedback">${existedName }</span>
+														</c:if>
 													</div>
 												</div>
 												
@@ -193,6 +195,9 @@
 														<form:input path="email" class="form-control" type="email"
 															required="required" minlength="5" maxlength="99" />
 														<form:errors path="email" class="invalid-feedback" />
+														<c:if test="${not empty existedEmail}">
+															<span class="invalid-feedback">${existedEmail }</span>
+														</c:if>
 													</div>
 												</div>
 												<div class="form-group row">

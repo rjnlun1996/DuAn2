@@ -29,21 +29,21 @@ public class AProducerController {
 	private FileStorageService fileStorageService;
 	@Autowired
 	private ProducerService producerService;
-	
+
 	@GetMapping(ViewConstraint.URL_ADMIN_PRODUCER)
 	public String table(Model model) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_PRODUCER);
-		model.addAttribute("listProducer",producerService.findAllByEnabledTrue());
+		model.addAttribute("listProducer", producerService.findAllByEnabledTrue());
 		return ViewConstraint.VIEW_ADMIN_PRODUCER;
 	}
-	
+
 	@GetMapping(ViewConstraint.URL_ADMIN_PRODUCER_INSERT)
-	public String insert(Model model) {	
+	public String insert(Model model) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_PRODUCER_INSERT);
 		model.addAttribute("producer", new Producer());
 		return ViewConstraint.VIEW_ADMIN_PRODUCER_INSERT;
 	}
-	
+
 	@GetMapping(ViewConstraint.URL_ADMIN_PRODUCER_UPDATE)
 	public String updateGet(Model model, @RequestParam String id) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_PRODUCER_UPDATE);
@@ -51,7 +51,7 @@ public class AProducerController {
 		model.addAttribute("producer", pd);
 		return ViewConstraint.VIEW_ADMIN_PRODUCER_UPDATE;
 	}
-	
+
 	@GetMapping(ViewConstraint.URL_ADMIN_PRODUCER_DELETE + "{id}")
 	public String delete(Model model, @PathVariable("id") String id) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_PRODUCT);
@@ -59,7 +59,7 @@ public class AProducerController {
 		model.addAttribute("listProducer", producerService.findAllByEnabledTrue());
 		return ViewConstraint.VIEW_ADMIN_PRODUCER;
 	}
-	
+
 	@PostMapping(ViewConstraint.URL_ADMIN_PRODUCER_DELETE)
 	@ResponseBody
 	public boolean delete1(Model model, @RequestParam String id) {
@@ -71,37 +71,36 @@ public class AProducerController {
 		}
 		return producerService.deleteByEnable(id);
 	}
-	
+
 	@PostMapping(ViewConstraint.URL_ADMIN_PRODUCER_INSERT)
 	public Object insert(Model model, @Validated @ModelAttribute("producer") Producer producer, BindingResult errors,
 			RedirectAttributes ra, @RequestParam("image") MultipartFile file) throws IOException {
 		// Check id
 		Producer prodId = producerService.findById(producer.getId());
-		
+
 		// Name
 		Producer prodName = producerService.findByName(producer.getName());
-		
+
 		// Email
-		Producer prodEmail =producerService.findByEmail(producer.getEmail());
-		System.err.println((prodId) + "" + (prodName != null) + "" + (prodEmail != null));
-		
+		Producer prodEmail = producerService.findByEmail(producer.getEmail());
+
 		if (errors.hasErrors() || prodId != null || prodName != null || prodEmail != null) {
-			
-			if(prodId != null) {
+
+			if (prodId != null) {
 				model.addAttribute("existedId", "Id đã tồn tại!");
 			}
-			
-			if(prodName != null) {
+
+			if (prodName != null) {
 				model.addAttribute("existedName", "Name đã tồn tại!");
 			}
-			if(prodEmail != null) {
+			if (prodEmail != null) {
 				model.addAttribute("existedEmail", "Email đã tồn tại!");
 			}
 			model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_PRODUCER_INSERT);
 			return ViewConstraint.VIEW_ADMIN_PRODUCER_INSERT;
 		}
-	
+
 		String image = fileStorageService.saveProducerImage(file);
 		if (image != null) {
 			producer.setLogo(image);
@@ -110,15 +109,32 @@ public class AProducerController {
 		ra.addFlashAttribute("message", "Tạo nhà sản xuất " + producer.getName() + " thành công!");
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_PRODUCER_INSERT);
 	}
-	
+
 	@PostMapping(ViewConstraint.URL_ADMIN_PRODUCER_UPDATE)
-	public String updatePost(@Validated @ModelAttribute("producer") Producer producer, BindingResult errors, Model model,
-			RedirectAttributes ra, @RequestParam("image") MultipartFile file) throws IOException {
+	public String updatePost(@Validated @ModelAttribute("producer") Producer producer, BindingResult errors,
+			Model model, RedirectAttributes ra, @RequestParam("image") MultipartFile file) throws IOException {
 		String image = fileStorageService.saveProducerImage(file);
-		System.err.println(producer.getId());
 		Producer pdOnDb = producerService.findById(producer.getId());
+
+		// Name
+		Producer prodName = producerService.findByName(producer.getName());
+		
+		boolean isExistedName = prodName != null && !prodName.getName().equalsIgnoreCase(pdOnDb.getName());
+
+		// Email
+		Producer prodEmail = producerService.findByEmail(producer.getEmail());
+		
+		boolean isExistedEmail = prodEmail != null && !prodEmail.getEmail().equalsIgnoreCase(pdOnDb.getEmail());
+		
 		boolean isErrors = errors.hasErrors();
-		if (isErrors) {
+		if (isErrors || isExistedName || isExistedEmail) {
+
+			if (isExistedName) {
+				model.addAttribute("existedName", "Name đã tồn tại!");
+			}
+			if (isExistedEmail) {
+				model.addAttribute("existedEmail", "Email đã tồn tại!");
+			}
 			model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_PRODUCER_UPDATE);
 			return ViewConstraint.VIEW_ADMIN_PRODUCER_UPDATE;
