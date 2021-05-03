@@ -50,9 +50,7 @@ public class ADiscountController {
 			RedirectAttributes reAttributes, Model model, @RequestParam int productId) throws IOException {
 		boolean isErrors = errors.hasErrors();
 		if (isErrors) {
-			if (isErrors) {
-				model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
-			}
+			model.addAttribute("error", "Vui lòng kiểm tra lại thông tin nhập sai!");
 			model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_DISCOUNT_INSERT);
 			return ViewConstraint.VIEW_ADMIN_DISCOUNT_INSERT;
 		}

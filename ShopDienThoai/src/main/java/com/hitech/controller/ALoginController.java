@@ -35,8 +35,12 @@ public class ALoginController {
 			model.addAttribute("message", "Tài khoản hoặc mật khẩu không đúng");
 			return ViewConstraint.VIEW_ADMIN_LOGIN;
 		}		
-		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_HOME);
 		
+		if(sessionUtils.getUser().getLevel() == 1) {
+			return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_CUSTOMER);	
+		}
+		
+		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_HOME);		
 	}
 	
 	@GetMapping(ViewConstraint.URL_ADMIN_LOGOUT)

@@ -25,7 +25,8 @@ public class IAccountService implements AccountService{
 	@Override
 	public boolean loginAdmin(String usernameOrEmail, String password) {
 		Account account = accountRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail);
-		if (account != null && account.isEnabled() && account.getPassword().equals(password)) {
+		if (account != null && account.isEnabled() && account.getPassword().equals(password) 
+				&& (account.getLevel() == 0 || account.getLevel() == 1)) {
 			sessionUtils.setUser(account);
 			return true;
 		}
@@ -35,6 +36,11 @@ public class IAccountService implements AccountService{
 	@Override
 	public List<Account> findAllAdminByEnabledTrue() {
 		return accountRepository.findByLevelAndEnabledTrue(0);
+	}
+	
+	@Override
+	public List<Account> findAllManagerByEnabledTrue() {
+		return accountRepository.findByLevelAndEnabledTrue(1);
 	}
 	
 	@Override
@@ -112,11 +118,7 @@ public class IAccountService implements AccountService{
 		
 	}
 
-	@Override
-	public List<Account> findAllManagerByEnabledTrue() {
-		return accountRepository.findByLevelAndEnabledTrue(1);
-	}
-
+	
 	@Override
 	public boolean loginCustomer(String usernameOrEmail, String password) {
 		Account account = accountRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail);

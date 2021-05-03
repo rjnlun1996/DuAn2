@@ -205,10 +205,13 @@ table thead {
 	<script src="/assets/js/theme-customizer/customizer.js"></script>
 	<!--  Pagination -->
 	<script src="/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
-	<script src="/assets/js/datatable/datatables/datatable.custom.js"></script>
 	<script>
-		/* $(document).ready(function() {
-			$('.delete-item').click(function() { */
+		 $(document).ready(function() {
+			 $('#basic-1').DataTable({
+					"order": [[ 0, "desc" ]]
+				});
+		 })
+			/*$('.delete-item').click(function() { */
 				function onDelete(elm){ 
 				swal({
 					  title: "Thông báo!",

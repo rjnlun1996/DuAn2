@@ -48,6 +48,7 @@ public class Account extends BaseEntity implements Serializable {
 
 	@Column
 	@NotBlank(message = "Vui lòng nhập Họ và Tên !!! ")
+	@Size(min = 5, max = 100, message = "Name phải từ {min} đến {max}")	
 	private String name;
 
 	@Column

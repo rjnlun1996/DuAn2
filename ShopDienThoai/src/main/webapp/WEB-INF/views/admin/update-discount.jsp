@@ -168,20 +168,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 														</label>
 													</div>
 												</div>
-											<%-- 	<fieldset class="form-group row">
-													<label class="col-form-label col-sm-3">Current</label>
-													<div class="col-sm-9">
-														<div class="radio radio-primary ml-2">
-															<form:radiobutton path="current" value="0" class="form-check-input" />
-															<label for="current1">No</label>
-														</div>
-														<div class="radio radio-primary ml-2">
-															<form:radiobutton path="current" value="1" class="form-check-input" />
-															<label for="current2">Yes</label>
-														</div>
-														<form:errors path="current" />
-													</div>
-												</fieldset> --%>
+										
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="Product">Product</label>
 													<div class="col-sm-9 input-group">
