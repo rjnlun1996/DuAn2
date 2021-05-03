@@ -34,10 +34,10 @@
 						<h3 class="mb-4 text-center"></h3>
 						<form class="signin-form" method="POST">
 							<c:if test="${message != null }">
-								<p style="color: green; font-weight: bold; text-align: center;">${message}</p>
+								<p style="color: white; font-weight: bold; text-align: center;">${message}</p>
 							</c:if>
 							<c:if test="${error != null }">
-								<p style="color: red; font-weight: bold; text-align: center;">${error}</p>
+								<p style="color: white ; font-weight: bold; text-align: center;">${error}</p>
 							</c:if>
 							<div class="form-group">
 								<input type="password" minlength="5" name="oldPassword" class="form-control" placeholder="Mật khẩu cũ" required>
