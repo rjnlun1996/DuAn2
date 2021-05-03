@@ -20,7 +20,7 @@
 
 <title>HopeOnline -- Change Password</title>
 </head>
-<body class="img js-fullheight" style="background-image: url(/assetsChangePass/images/banner0.jpg);">
+<body class="img js-fullheight" style="background-image: url(/assetsChangePass/images/banner1.jpg);">
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -34,10 +34,10 @@
 						<h3 class="mb-4 text-center"></h3>
 						<form class="signin-form" method="POST">
 							<c:if test="${message != null }">
-								<p style="color: white; font-weight: bold; text-align: center;">${message}</p>
+								<p style="color: #228b22; font-weight: bold;text-align: center;">${message}</p>
 							</c:if>
 							<c:if test="${error != null }">
-								<p style="color: white ; font-weight: bold; text-align: center;">${error}</p>
+								<p style="color:  #dc143c  ; font-weight: bold; font-size:20px;text-align: center;">${error}</p>
 							</c:if>
 							<div class="form-group">
 								<input type="password" minlength="5" name="oldPassword" class="form-control" placeholder="Mật khẩu cũ" required>
