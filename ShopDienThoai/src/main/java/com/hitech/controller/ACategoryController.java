@@ -72,6 +72,12 @@ public class ACategoryController {
 	@PostMapping(ViewConstraint.URL_ADMIN_CATEGORY_DELETE)
 	@ResponseBody
 	public boolean delete(Model model, @RequestParam Integer id) {
+		boolean isExistedForeign = categoryService.checkExistedForeign(id);
+		
+		// Nếu tồn tại khóa ngoại thì không cho phép xóa
+		if(isExistedForeign) {
+			return false;
+		}
 		return categoryService.deleteByEnabled(id);
 	}
 

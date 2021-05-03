@@ -2,10 +2,12 @@ package com.hitech.services.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hitech.entities.OrderDetail;
 import com.hitech.entities.Product;
 import com.hitech.repository.ProductRepository;
 import com.hitech.services.ProductService;
@@ -85,5 +87,19 @@ public class IProductService implements ProductService{
 	public List<Product> findSaleProduct() {
 		// TODO Auto-generated method stub
 		return productRepository.findSaleProduct();
+	}
+
+	@Override
+	public boolean checkExistedForeign(Integer id) {
+		Product product = productRepository.findById(id).orElse(null);
+
+		// Get khoa ngoai (Account)
+		Set<OrderDetail> orderDetail = product.getOrderDetails();
+
+		// Kiểm tra nếu khóa ngoại đang liên kết dự liệu
+		if (orderDetail != null && !orderDetail.isEmpty() && orderDetail.size() > 0) {
+			return true;
+		}
+		return false;
 	}
 }

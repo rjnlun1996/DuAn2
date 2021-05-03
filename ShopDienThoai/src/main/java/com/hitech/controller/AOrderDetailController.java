@@ -53,13 +53,15 @@ public class AOrderDetailController {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);
 		Order order = orderService.findById(orderId);
 		model.addAttribute("order", order);
-		List<OrderDetail> orderDetails = order.getOrderDetails().stream().filter(e -> e.isEnabled()).sorted(Comparator.comparing(OrderDetail::getCreatedAt).reversed()).collect(Collectors.toList());
+		List<OrderDetail> orderDetails = order.getOrderDetails().stream().filter(e -> e.isEnabled())
+				.sorted(Comparator.comparing(OrderDetail::getId).reversed()).collect(Collectors.toList());
 		List<OrderDetail> ods = orderDetails.stream().map(o -> {
 			o.setDiscount(discountService.findById(o.getDiscountId()));
 			return o;
 		}).collect(Collectors.toList());
 		model.addAttribute("orderDetails", ods);
-		List<StatusOrder> status = order.getStatusOrders().stream().sorted(Comparator.comparing(StatusOrder::getCreatedAt)).collect(Collectors.toList());
+		List<StatusOrder> status = order.getStatusOrders().stream().sorted(Comparator.comparing(StatusOrder::getId))
+				.collect(Collectors.toList());
 		Collections.reverse(status);
 		model.addAttribute("status", status);
 		return ViewConstraint.VIEW_ADMIN_ORDER_DETAIL_VIEW;
@@ -106,25 +108,26 @@ public class AOrderDetailController {
 		model.addAttribute("listProduct", productService.findAllByEnabledTrue());
 		return ViewConstraint.VIEW_ADMIN_ORDER_DETAIL_VIEW;
 	}
-	
+
 	@PostMapping(ViewConstraint.URL_ADMIN_ORDER_DETAIL_UPDATE)
-	public String updatePost(Model model, @RequestParam int orderId, @RequestParam int productId, @RequestParam int quantity) {
+	public String updatePost(Model model, @RequestParam int orderId, @RequestParam int productId,
+			@RequestParam int quantity) {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_ORDER);
-				
+
 		Order order = orderService.findById(orderId);
 		order.setOrderDetails(order.getOrderDetails().stream().map(o -> {
 			o.setDiscount(discountService.findById(o.getDiscountId()));
-			if(o.getProductId() == productId) {
+			if (o.getProductId() == productId) {
 				o.setQuantity(quantity);
 				o.calAmount();
 			}
 			return o;
-		}).distinct().collect(Collectors.toSet()));	
-		
+		}).distinct().collect(Collectors.toSet()));
+
 		order.calOrderTotal();
-		
+
 		orderService.update(order);
-		
+
 		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ORDER_DETAIL_VIEW + "?orderId=" + orderId);
 	}
 //
@@ -139,6 +142,12 @@ public class AOrderDetailController {
 	@PostMapping(ViewConstraint.URL_ADMIN_ORDER_DETAIL_DELETE)
 	@ResponseBody
 	public boolean delete1(Model model, @RequestParam int orderDetailId) {
+		boolean isExistedForeign = orderDetailService.checkExistedForeign(orderDetailId);
+
+		// Nếu tồn tại khóa ngoại thì không cho phép xóa
+		if (isExistedForeign) {
+			return false;
+		}
 		return orderDetailService.deleteByEnable(orderDetailId);
 	}
 

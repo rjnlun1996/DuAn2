@@ -14,8 +14,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hitech.constraints.CViewConstraint;
 import com.hitech.constraints.ViewConstraint;
 import com.hitech.entities.Discount;
-import com.hitech.entities.IReport;
 import com.hitech.entities.Product;
+import com.hitech.entities.helper.IReport;
 import com.hitech.repository.OrderRepository;
 import com.hitech.services.ProductService;
 

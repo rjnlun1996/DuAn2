@@ -2,11 +2,13 @@ package com.hitech.services.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hitech.entities.Account;
+import com.hitech.entities.Order;
 import com.hitech.repository.AccountRepository;
 import com.hitech.services.AccountService;
 import com.hitech.utils.SessionUtils;
@@ -23,7 +25,7 @@ public class IAccountService implements AccountService{
 	@Override
 	public boolean loginAdmin(String usernameOrEmail, String password) {
 		Account account = accountRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail);
-		if (account != null && account.getPassword().equals(password)) {
+		if (account != null && account.isEnabled() && account.getPassword().equals(password)) {
 			sessionUtils.setUser(account);
 			return true;
 		}
@@ -118,7 +120,7 @@ public class IAccountService implements AccountService{
 	@Override
 	public boolean loginCustomer(String usernameOrEmail, String password) {
 		Account account = accountRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail);
-		if (account != null && account.getPassword().equals(password) && account.getLevel() == 2) {
+		if (account != null && account.isEnabled() && account.getPassword().equals(password) && account.getLevel() == 2) {
 			sessionUtils.setUser(account);
 			return true;
 		}
@@ -128,6 +130,20 @@ public class IAccountService implements AccountService{
 	@Override
 	public String calTotalAccount(int level) {
 		return accountRepository.calTotalAccount(level);
+	}
+
+	@Override
+	public boolean checkExistedForeign(String id) {
+		Account acc = accountRepository.findById(id).orElse(null);
+		
+		// Get danh sách khóa ngoại (Order)
+		Set<Order> orders = acc.getOrders();
+		
+		// Kiểm tra nếu khóa ngoại đang liên kết dự liệu
+		if(orders != null && !orders.isEmpty() && orders.size() > 0) {
+			return true;
+		}
+		return false;
 	}
 
 

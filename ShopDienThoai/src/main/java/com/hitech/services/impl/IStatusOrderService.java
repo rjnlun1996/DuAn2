@@ -2,12 +2,15 @@ package com.hitech.services.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hitech.entities.Discount;
 import com.hitech.entities.Order;
+import com.hitech.entities.OrderDetail;
+import com.hitech.entities.Product;
 import com.hitech.entities.Status;
 import com.hitech.entities.StatusOrder;
 import com.hitech.repository.StatusOrderRepository;
@@ -104,5 +107,20 @@ public class IStatusOrderService implements StatusOrderService {
 			}
 
 		}
+	}
+
+	@Override
+	public boolean checkExistedForeign(Integer id) {
+		StatusOrder statusOrder = statusOrderRepository.findById(id).orElse(null);
+
+		// Get khoa ngoai (Order)
+		Order order = statusOrder.getOrder();
+
+		// Kiểm tra nếu khóa ngoại đang liên kết dự liệu
+		if (order != null) {
+			return true;
+		}
+		
+		return false;
 	}
 }

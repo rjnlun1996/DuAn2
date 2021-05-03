@@ -99,9 +99,15 @@ public class ADiscountController {
 	@PostMapping(ViewConstraint.URL_ADMIN_DISCOUNT_DELETE)
 	@ResponseBody
 	public boolean delete1(Model model, @RequestParam int id) {
+		boolean isExistedForeign = discountService.checkExistedForeign(id);
+
+		// Nếu tồn tại khóa ngoại thì không cho phép xóa
+		if (isExistedForeign) {
+			return false;
+		}
 		return discountService.deleteByEnabled(id);
 	}
-	
+
 	@GetMapping(ViewConstraint.URL_ADMIN_DISCOUNT_SEARCH)
 	@ResponseBody
 	public Object table(Model model, @RequestParam int productId) {

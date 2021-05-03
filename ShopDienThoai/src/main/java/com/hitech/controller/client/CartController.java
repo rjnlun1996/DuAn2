@@ -139,7 +139,8 @@ public class CartController extends BaseController {
 
 	@SuppressWarnings("unlikely-arg-type")
 	@PostMapping(CViewConstraint.URL_CART)
-	public Object addToCart(Model model, @RequestParam int productId, @RequestParam(defaultValue = "1") int quantity,
+	public Object addToCart(Model model, @RequestParam int productId, 
+			@RequestParam(defaultValue = "1") int quantity,
 			@RequestParam(defaultValue = "false") boolean isDetail,
 			@RequestParam(defaultValue = "false") boolean isUpdate) {
 		Product product = productService.findById(productId);
@@ -206,6 +207,11 @@ public class CartController extends BaseController {
 		// Cập nhật cart trong session
 		sessionUtils.setCart(cart);
 
+		return CViewConstraint.VIEW_CART_RENDER;
+	}
+	
+	@GetMapping(CViewConstraint.URL_CART_DROPDOWN)
+	public String getCartDetail(Model model) {
 		return CViewConstraint.VIEW_CART_RENDER;
 	}
 

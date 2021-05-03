@@ -117,7 +117,7 @@
 													<div class="media-body">
 														<p class="mb-0">Total Revenue</p>
 														<h3 class="mt-0 mb-0 f-w-600">
-															<span class="counter"><%-- <fmt:formatNumber type="currency" value="${total}" /> --%>${total}</span>
+															<span class="counter"><%-- <fmt:formatNumber type="currency" value="${total}" /> --%>${total}</span>  VNĐ
 														</h3>
 													</div>
 													<span class="badge flat-badge-secondary">3.56%<i class="fa fa-caret-up"></i></span>
@@ -140,7 +140,7 @@
 													<div class="media-body">
 														<p class="mb-0">Total Products Sold</p>
 														<h3 class="mt-0 mb-0 f-w-600">
-															<i data-feather="dollar-sign"></i><span class="counter">${prodSold}</span><span><i class="font-success" data-feather="trending-up"></i></span>
+															<span class="counter">${prodSold}</span> <span><i class="font-success" data-feather="trending-up"></i></span>
 														</h3>
 													</div>
 													<span class="badge flat-badge-success">3.56%<i class="fa fa-caret-up"></i></span>
@@ -206,13 +206,137 @@
 						<div class="col-sm-12 box-col-12">
 							<div class="card">
 								<div class="card-header">
-									<h5>Revenue Chart</h5>
+									<h5>Revenue Chart for 6 most recent months</h5>
 								</div>
 								<div class="card-body">
 									<div id="column-chart"></div>
 								</div>
 							</div>
 						</div>
+						
+						<div class="col-xl-6 xl-100 box-col-12">
+							<div class="card">
+								<div class="card-header">
+									<h5>TOP SELLING PRODUCT</h5>
+									<div class="card-header-right">
+										<ul class="list-unstyled card-option">
+											<li><i class="icofont icofont-double-left"></i></li>
+											<li><i class="view-html fa fa-code"></i></li>
+											<li><i class="icofont icofont-maximize full-card"></i></li>
+											<li><i class="icofont icofont-minus minimize-card"></i></li>
+											<li><i class="icofont icofont-refresh reload-card"></i></li>
+											<li><i class="icofont icofont-error close-card"></i></li>
+										</ul>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="user-status table-responsive">
+										<table class="table table-bordernone">
+											<thead>
+												<tr>
+													<th scope="col">Product</th>
+													<th scope="col">Quantity</th>
+													<th scope="col">Status</th>
+													<th scope="col">Price</th>
+												</tr>
+											</thead>
+											<tbody>
+												<c:if test="${products.size() != 0 }">
+													<c:forEach var="p" items="${products }">
+														<tr>
+															<td class="bd-t-none u-s-tb"><a target="_blank" href="/ho-admin/product/detail?id=${p.product.id}">
+																	<div class="align-middle image-sm-size">
+																		<img class="img-radius align-top m-r-15" src="/images/products/${p.product.category.producer.name.toLowerCase()}/${p.product.photo}" alt="" />
+																		<div class="d-inline-block">
+																			<h6 class="f-w-600">${p.product.name}</h6>
+																		</div>
+																	</div>
+															</a></td>
+															<td class="digits"><div class="span badge badge-pill pill-badge-success f-12">${p.quantity}</div></td>
+															<td><span class="status-position font-info f-weight"><i class="fa fa-circle font-info m-r-15"> </i>Active</span></td>
+															<td>
+																<div class="span badge badge-pill pill-badge-secondary">
+																	<fmt:formatNumber type="number" maxFractionDigits="3" value="${p.product.importPrice}" />
+																	VNĐ
+																</div>
+															</td>
+														</tr>
+													</c:forEach>
+												</c:if>
+												<c:if test="${products.size() == 0 }">
+													<tr>
+														<td style="color: red; font-weight: bold; text-align: center;" colspan="4">Chưa có sản phẩm nào</td>
+													</tr>
+												</c:if>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-6 xl-100 box-col-12">
+							<div class="card">
+								<div class="card-header">
+									<h5>TOP CUSTOMER TRANSACTIONS</h5>
+									<div class="card-header-right">
+										<ul class="list-unstyled card-option">
+											<li><i class="icofont icofont-double-left"></i></li>
+											<li><i class="view-html fa fa-code"></i></li>
+											<li><i class="icofont icofont-maximize full-card"></i></li>
+											<li><i class="icofont icofont-minus minimize-card"></i></li>
+											<li><i class="icofont icofont-refresh reload-card"></i></li>
+											<li><i class="icofont icofont-error close-card"></i></li>
+										</ul>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="user-status table-responsive">
+										<table class="table table-bordernone">
+											<thead>
+												<tr>
+													<th scope="col">Name</th>
+													<th scope="col">Phone</th>
+													<!-- <th scope="col">Email</th>  -->
+													<th scope="col">Quantity Products</th>
+													<th scope="col">Total Buy</th>
+												</tr>
+											</thead>
+											<tbody>
+												<c:if test="${customers.size() != 0 }">
+													<c:forEach var="cus" items="${customers}">
+														<tr>
+															<td class="bd-t-none u-s-tb"><a target="_blank" href="/ho-admin/customer/detail?id=${cus.account.username}">
+																	<div class="align-middle image-sm-size">
+																		<img class="img-radius align-top m-r-15 rounded-circle" src="/images/avatars/${cus.account.photo}" alt="">
+																		<div class="d-inline-block">
+																			<h6>${cus.account.name}</h6>
+																		</div>
+																	</div>
+															</a></td>
+															<td>${cus.account.phone}</td>
+															<%-- <td>${cus.account.email} </td> --%>
+															<td style="text-align: center">
+																<div class="span badge badge-pill pill-badge-info f-12">${cus.quantity}</div>
+															</td>
+															<td><div class="span badge badge-pill pill-badge-secondary">
+																	<fmt:formatNumber type="number" maxFractionDigits="3" value="${cus.totalBuy}" />
+																	VNĐ
+																</div></td>
+														</tr>
+													</c:forEach>
+												</c:if>
+												<c:if test="${customers.size() == 0 }">
+													<tr>
+														<td style="color: red; font-weight: bold; text-align: center;" colspan="4">Chưa có khách hàng nào</td>
+													</tr>
+												</c:if>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 					</div>
 				</div>
 				<!-- Container-fluid Ends-->
@@ -268,7 +392,7 @@
 				        bar: {
 				            horizontal: false,
 				            endingShape: 'rounded',
-				            columnWidth: '55%',
+				            columnWidth: '30%',
 				        },
 				    },
 				    dataLabels: {
@@ -288,7 +412,7 @@
 				    },
 				    yaxis: {
 				        title: {
-				            text: '$ (thousands)'
+				            text: 'VNĐ'
 				        }
 				    },
 				    fill: {
@@ -298,7 +422,7 @@
 				    tooltip: {
 				        y: {
 				            formatter: function (val) {
-				                return "$ " + val + " thousands"
+				                return  renderPrice(val)
 				            }
 				        }
 				    },
@@ -311,30 +435,24 @@
 				);
 			
 			chart3.render();
+			
+			function renderPrice(price){
+			    let p = price.toString();
+			    let result = '';
+
+			    let count = 0;
+			    for(let i = p.length; i >= 0; i--) {
+			        result = p.charAt(i) + result;        
+			        if(count == 3 && i != 0){
+			            result = '.' + result;
+			            count = 0;
+			        }
+			        count++;
+			    }
+
+			    return result + ' VNĐ';
+			}
 		})
 	</script>
 </body>
 </html>
-<!-- <div class="welcome-popup modal fade" id="loadModal" tabindex="-1"
-	role="dialog" aria-labelledby="exampleModalCenterTitle"
-	aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<button class="close" type="button" data-dismiss="modal"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			<div class="modal-body">
-				<div class="modal-header"></div>
-				<div class="contain p-50">
-					<div class="text-center">
-						<h3>Welcome to creative admin</h3>
-						<p>start your project with developer friendly admin</p>
-						<button class="btn btn-primary btn-lg txt-white" type="button"
-							data-dismiss="modal" aria-label="Close">Get Started</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div> -->

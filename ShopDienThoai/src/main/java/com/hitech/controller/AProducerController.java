@@ -63,6 +63,12 @@ public class AProducerController {
 	@PostMapping(ViewConstraint.URL_ADMIN_PRODUCER_DELETE)
 	@ResponseBody
 	public boolean delete1(Model model, @RequestParam String id) {
+		boolean isExistedForeign = producerService.checkExistedForeign(id);
+
+		// Nếu tồn tại khóa ngoại thì không cho phép xóa
+		if (isExistedForeign) {
+			return false;
+		}
 		return producerService.deleteByEnable(id);
 	}
 	

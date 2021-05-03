@@ -210,7 +210,7 @@ table thead {
 										if(data == true){
 											swal("Thông báo!", "Bạn đã xóa thành công!", "success").then(() => location.reload());
 										}else{
-											swal("Thông báo!", "Không thể xóa trạng thái đơn hàng này!", "danger");
+											swal("Thông báo!", "Không thể xóa vì dữ liệu đang tồn tại liên kết!", "error");
 										}
 									},
 									error : function() {

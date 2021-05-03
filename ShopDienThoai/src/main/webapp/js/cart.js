@@ -107,17 +107,20 @@ function deleteProduct(productId) {
 
 }
 
-function updateCart(productId) {
+function updateCart(productId, add) {
+    var quantity = parseInt($(`#number-${productId}`).val()) + parseInt(add);
+    $(`#number-${productId}`).val(quantity);
     $.ajax({
         url: 'cart',
         type: 'POST',
-        data: { productId: productId, isUpdate: true, quantity: $(`#number-${productId}`).val() },
+        data: { productId: productId, isUpdate: true, quantity: quantity },
         success: function(data) {
-            // var cartNumber = Object.keys(data).length;           
-            toastr["success"]("Cập nhật giỏ hàng thành công!")
-            setTimeout(function() {
-                location.reload();
-            }, 1000)
+            // var cartNumber = Object.keys(data).length;  
+            $("#template-cart").load("/cart #template-cart");
+            toastr["success"]("Cập nhật giỏ hàng thành công 123!")
+                // setTimeout(function() {
+                //     location.reload();
+                // }, 1000)
         },
         error: function(err) {
 
@@ -157,4 +160,91 @@ function addCartIndex(productId) {
 
         }
     });
+}
+
+function getCartDropdown() {
+    $.ajax({
+        url: 'cart_dropdown',
+        type: 'GET',
+        success: function(data) {
+            $('#render-cart').html(data);
+            $('#cart-number').html($('.dropcart__product').length);
+        },
+        error: function(err) {
+
+        }
+    });
+}
+
+
+
+function updateCart1(productId, price, add, discount) {
+    const cartNumber = document.getElementById('c-number');
+    const totalcartPrice = document.getElementById('total-cart-price');
+    const totalcartDiscount = document.getElementById('total-cart-discount');
+    const totalCartCheckout = document.getElementById('total-cart-checkout');
+
+
+    let fCartNumber = cutPrice(cartNumber);
+    let fTotalCartPrice = cutPrice(totalcartPrice);
+    let fTotalCartDiscount = cutPrice(totalcartDiscount);
+
+    const q = document.getElementById(`number-${productId}`)
+    const priceTotal = document.getElementById(`number-${productId}-total`);
+    const quantity = parseInt(q.value) + parseInt(add);
+
+    if ((add == -1 && quantity >= 1) || add == 1) {
+
+
+        const priceTotalProduct = price * quantity;
+        const lTotalCartPrice = fTotalCartPrice + price * parseInt(add);
+        if (discount) {
+            fTotalCartDiscount = cutPrice(totalcartDiscount) + price * parseInt(add) * discount / 100;
+            totalcartDiscount.innerHTML = renderPrice(fTotalCartDiscount);
+        }
+        let lTotalCartCheckout = lTotalCartPrice - fTotalCartDiscount;
+
+        q.value = quantity;
+        priceTotal.innerHTML = renderPrice(priceTotalProduct);
+        cartNumber.innerHTML = (parseInt(add) + fCartNumber).toString();
+        totalcartPrice.innerHTML = renderPrice(lTotalCartPrice);
+        totalCartCheckout.innerHTML = renderPrice(lTotalCartCheckout);
+
+        $.ajax({
+            url: 'cart',
+            type: 'POST',
+            data: { productId: productId, isUpdate: true, quantity: quantity },
+            success: function(data) {
+                getCartDropdown();
+                toastr["success"]("Cập nhật giỏ hàng thành công!");
+            },
+            error: function(err) {
+
+            }
+        });
+    }
+
+
+
+}
+
+function cutPrice(elm) {
+    return parseFloat(elm.innerHTML.replace('VNĐ', '').trim().replaceAll('.', '').replaceAll(',', ''));
+}
+
+function renderPrice(price) {
+    let p = price.toString();
+    let result = '';
+
+    let count = 0;
+    for (let i = p.length; i >= 0; i--) {
+        result = p.charAt(i) + result;
+        if (count == 3 && i != 0) {
+            result = '.' + result;
+            count = 0;
+        }
+        count++;
+    }
+
+    return result + ' VNĐ';
 }

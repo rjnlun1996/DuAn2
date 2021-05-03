@@ -211,7 +211,11 @@ table thead {
 							  id: id
 						  },
 						  success: function(data){
-							 if(data == true) location.reload();
+							  if(data == true){
+									swal("Thông báo!", "Bạn đã xóa thành công!", "success").then(() => location.reload());
+								}else{
+									swal("Thông báo!", "Không thể xóa vì dữ liệu đang tồn tại liên kết!", "error");
+								}
 						  },
 	 					  error: function(data){
 							  

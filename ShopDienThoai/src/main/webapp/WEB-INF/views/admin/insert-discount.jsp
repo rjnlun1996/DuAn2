@@ -251,24 +251,8 @@ String sb = String.valueOf(request.getAttribute(MENU));
 	<!-- Plugin used-->
 	<script type="text/javascript">
 		$(document).ready(function() {
-			var data = [ {
-				id : 0,
-				text : 'enhancement'
-			}, {
-				id : 1,
-				text : 'bug'
-			}, {
-				id : 2,
-				text : 'duplicate'
-			}, {
-				id : 3,
-				text : 'invalid'
-			}, {
-				id : 4,
-				text : 'wontfix'
-			} ];
 			$.ajax({
-				url : 'http://localhost:8080/ho-admin/product/search?id=123',
+				url : '/ho-admin/product/search?id=123',
 				success : function(data) {
 					$('.js-data-example-ajax').select2({
 						data : data

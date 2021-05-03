@@ -80,7 +80,7 @@ public class AOrderController {
 			}).distinct().collect(Collectors.toSet());
 			e.setOrderDetails(od);			
 			return e;
-		}).sorted(Comparator.comparing(Order::getCreatedAt).reversed()).collect(Collectors.toList());
+		}).sorted(Comparator.comparing(Order::getId).reversed()).collect(Collectors.toList());
 		model.addAttribute("listOrder", sortOrder);
 		return ViewConstraint.VIEW_ADMIN_ORDER;
 	}
@@ -146,6 +146,12 @@ public class AOrderController {
 	@PostMapping(ViewConstraint.URL_ADMIN_ORDER_DELETE)
 	@ResponseBody
 	public boolean delete1(Model model, @RequestParam int id) {
+		boolean isExistedForeign = orderService.checkExistedForeign(id);
+
+		// Nếu tồn tại khóa ngoại thì không cho phép xóa
+		if (isExistedForeign) {
+			return false;
+		}
 		return orderService.deleteByEnable(id);
 	}
 

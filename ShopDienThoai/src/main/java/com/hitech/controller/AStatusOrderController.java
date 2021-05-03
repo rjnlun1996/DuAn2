@@ -77,7 +77,7 @@ public class AStatusOrderController {
 		so.setOrder(orderService.findById(orderId));
 		statusOrderService.save(so);
 		reAttributes.addFlashAttribute("message", "Cập nhật trạng thái đơn hàng thành công!");
-		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_STATUS_ORDER);
+		return ViewUtils.redirectTo(ViewConstraint.URL_ADMIN_ORDER);
 	}
 	
 	@PostMapping(ViewConstraint.URL_ADMIN_STATUS_ORDER_DELETE)

@@ -91,7 +91,6 @@ public class ACustomerController {
 			RedirectAttributes reAttributes, Model model, @RequestParam("image") MultipartFile file)
 			throws IOException {
 		boolean isErrors = errors.hasErrors();
-		System.err.println(errors.getFieldError());
 		Account accountOnDb = accountService.findById(account.getUsername());
 		Account accountWithEmail = accountService.findByEmail(account.getEmail());
 		String dbEmail = accountOnDb.getEmail();
@@ -133,6 +132,12 @@ public class ACustomerController {
 	@PostMapping(ViewConstraint.URL_ADMIN_CUSTOMER_DELETE)
 	@ResponseBody
 	public boolean delete1(Model model, @RequestParam String username) {
+		boolean isExistedForeign = accountService.checkExistedForeign(username);
+		
+		// Nếu tồn tại khóa ngoại thì không cho phép xóa
+		if(isExistedForeign) {
+			return false;
+		}
 		return accountService.deleteByEnabled(username);
 	}
 
@@ -150,6 +155,13 @@ public class ACustomerController {
 		model.addAttribute(ViewConstraint.MENU, ViewConstraint.URL_ADMIN_CUSTOMER_DETAIL);
 		model.addAttribute("customer", accountService.findById(id));
 		return ViewConstraint.VIEW_ADMIN_CUSTOMER_DETAIL;
+	}
+	
+	@GetMapping(ViewConstraint.URL_ADMIN_CUSTOMER_EXIST)
+	@ResponseBody
+	public boolean checkExistedForeign() {
+			
+		return false;
 	}
 
 }

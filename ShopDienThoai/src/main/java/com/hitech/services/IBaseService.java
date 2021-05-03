@@ -13,5 +13,7 @@ public interface IBaseService<T, ID> {
 	T update(T entity);
 	
 	boolean deleteById(ID id);
+	
+	boolean checkExistedForeign(ID id);
 
 }

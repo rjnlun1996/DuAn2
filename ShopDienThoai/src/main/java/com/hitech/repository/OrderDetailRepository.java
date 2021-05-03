@@ -16,4 +16,6 @@ public interface OrderDetailRepository extends JpaRepository<OrderDetail, Intege
 	@Query("SELECT od FROM OrderDetail od WHERE od.order.id = ?1 AND od.product.id = ?2")
 	OrderDetail findByOrderIdAndProductId(int orderId, int productId);
 	
+	List<OrderDetail> findByDiscountIdAndEnabledTrue(int discountId);
+	
 }
