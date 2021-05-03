@@ -156,7 +156,7 @@
 													<div class="col-sm-9">
 														<%-- <form:input path="id" class="form-control"
 															required="required" minlength="2" maxlength="5" readonly="readonly" /> --%>
-														<input name="id" value="${producer.id}" class="form-control" readonly="readonly"/>
+														<input value="${producer.id}" class="form-control" readonly="readonly"/>
 														<form:errors path="id" class="invalid-feedback" />
 													</div>
 												</div>

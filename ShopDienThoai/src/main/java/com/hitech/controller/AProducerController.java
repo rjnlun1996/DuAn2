@@ -115,6 +115,7 @@ public class AProducerController {
 	public String updatePost(@Validated @ModelAttribute("producer") Producer producer, BindingResult errors, Model model,
 			RedirectAttributes ra, @RequestParam("image") MultipartFile file) throws IOException {
 		String image = fileStorageService.saveProducerImage(file);
+		System.err.println(producer.getId());
 		Producer pdOnDb = producerService.findById(producer.getId());
 		boolean isErrors = errors.hasErrors();
 		if (isErrors) {
