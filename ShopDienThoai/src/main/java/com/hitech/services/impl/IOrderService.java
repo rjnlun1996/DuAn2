@@ -16,6 +16,8 @@ import com.hitech.entities.helper.ITopCustomerBuy;
 import com.hitech.entities.helper.ITopSellProduct;
 import com.hitech.repository.OrderRepository;
 import com.hitech.services.OrderService;
+import com.hitech.services.StatusOrderService;
+import com.hitech.services.StatusService;
 import com.hitech.utils.SessionUtils;
 
 @Service
@@ -27,6 +29,17 @@ public class IOrderService implements OrderService {
 	@Autowired
 	private OrderRepository orderRepository;
 
+
+	@Autowired
+	private OrderService orderService;
+	
+
+	@Autowired
+	private StatusService statusService;
+
+	@Autowired
+	private StatusOrderService statusOrderService;
+	
 	@Autowired
 	public List<Order> findAll() {
 		return orderRepository.findAll();
@@ -62,18 +75,14 @@ public class IOrderService implements OrderService {
 	}
 
 	@Override
-	public boolean deleteByEnable(Integer id) {
-		try {
-			Order od = orderRepository.getOne(id);
-			if (od == null) {
-				return false;
-			}
-			od.setEnabled(false);
-			orderRepository.saveAndFlush(od);
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+	public StatusOrder cancel(Integer id) {
+		StatusOrder so = new StatusOrder();
+		Order od = orderService.findById(id);
+		so.setOrder(od);
+		so.setDescription("Hủy bởi nhân viên");
+		so.setStatus(statusService.findById("DH"));
+		return statusOrderService.save(so);
+		
 	}
 
 	@Override
@@ -156,4 +165,5 @@ public class IOrderService implements OrderService {
 		}
 		return false;
 	}
+
 }

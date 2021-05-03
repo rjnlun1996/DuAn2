@@ -160,7 +160,7 @@ table thead {
 															<%-- <td>${order.statusOrders.status.statusId}</td> --%>
 															<td><span class="badge badge-info f-12"><fmt:formatDate pattern="dd-MM-yyyy" value="${order.createdAt}" /></span></td>															
 															<td><a class="btn btn-pill btn-outline-primary btn-sm" href="<%=URL_ADMIN_ORDER_DETAIL_VIEW%>?orderId=${order.id}">View</a> <a class="btn btn-pill btn-outline-success btn-sm" href="<%=URL_ADMIN_ORDER_UPDATE%>?orderId=${order.id}">Edit</a>
-																<button class="btn btn-pill btn-outline-danger btn-sm delete-item" onClick="onDelete(this)" data-id="${order.id}">Delete</button></td>
+																<button class="btn btn-pill btn-outline-danger btn-sm delete-item" onClick="onDelete(this)" data-id="${order.id}">Cancel</button></td>
 
 														</tr>
 													</c:forEach>
@@ -255,7 +255,7 @@ table thead {
 							  if(data == true){
 									swal("Thông báo!", "Bạn đã xóa thành công!", "success").then(() => location.reload());
 								}else{
-									swal("Thông báo!", "Không thể xóa vì dữ liệu đang tồn tại liên kết!", "error");
+									swal("Thông báo!", "Đơn hàng này đã bị hủy trước đó rồi", "error");
 								}
 						  },
 	 					  error: function(data){
