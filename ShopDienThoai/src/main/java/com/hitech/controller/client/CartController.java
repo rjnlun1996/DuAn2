@@ -143,8 +143,11 @@ public class CartController extends BaseController {
 			@RequestParam(defaultValue = "1") int quantity,
 			@RequestParam(defaultValue = "false") boolean isDetail,
 			@RequestParam(defaultValue = "false") boolean isUpdate) {
+		
+		// Kiem tra san pham co trong db hay khong?
 		Product product = productService.findById(productId);
-
+		
+		// Neu khong co thi khong lam gi.
 		if (product == null) {
 			return null;
 		}
@@ -154,12 +157,16 @@ public class CartController extends BaseController {
 		// Kiểm tra nếu chưa tạo cart
 		if (cart == null)
 			cart = new Cart();
-
+		
+		// Lay danh sach san pham trong cart
 		Map<Integer, ProductDTO> dtos = cart.getProductDto();
+		
+		// neu chua ton tai bat ki san pham nao thi tao 1 danh sach
 		if (dtos == null) {
 			dtos = new HashMap<Integer, ProductDTO>();
 		}
 
+		// Tim san pham trong danh sach san pham cua cart
 		ProductDTO proDTO = dtos.get(productId);
 
 		// Kiểm tra nếu sản phẩm chưa được thêm lần nào
@@ -173,9 +180,12 @@ public class CartController extends BaseController {
 		// Nếu bấm Cập nhật trong Giỏ hàng thì giá trị quantity sẽ chính là số lượng
 		// hiện tại trong giỏ hàng
 		int quan = proDTO.getQuantity() + 1;
-
+		
+		// isDetail - nhan nut them tai trang detail cua san pham
 		if (isDetail)
 			quan = quantity + proDTO.getQuantity();
+		
+		// isUpdate - nhan nut them tai trang Chi tiet cua gio hang
 		if (isUpdate)
 			quan = quantity;
 
@@ -184,6 +194,7 @@ public class CartController extends BaseController {
 		// Discount dis = product.getDiscounts().stream().filter(e -> e.isCurrent() &&
 		// e.isEnabled()).findFirst().orElse(null);
 
+		// Them discount neu co
 		int discount = 0;
 		for (Discount dis : product.getDiscounts()) {
 			if (dis.isCurrent() && dis.isEnabled()) {

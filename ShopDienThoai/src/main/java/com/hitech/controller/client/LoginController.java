@@ -60,7 +60,7 @@ public class LoginController {
 		if (!isValidLogin) {
 			model.addAttribute("isValidLogin", isValidLogin);
 			model.addAttribute("message", "Tài khoản hoặc mật khẩu không đúng");
-			return CViewConstraint.VIEW_LOGIN_NAV;
+			return ViewUtils.redirectTo(CViewConstraint.URL_LOGIN);
 		}
 		return ViewUtils.redirectTo("/");
 

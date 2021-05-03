@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -27,6 +28,7 @@ public class Discount extends BaseEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@Min(value = 1, message = "Giảm giá phải lớn hơn hoặc bằng 1%")
 	@Column
 	private int percents;
 

@@ -18,13 +18,14 @@ String sb = String.valueOf(request.getAttribute(MENU));
 	</div>
 	<div class="sidebar custom-scrollbar">
 		<ul class="sidebar-menu">
-
+			<c:if test="${user.level == 0}">
 			<li class="<%=renderSubmenuClass(sb, URL_ADMIN_HOME)%>">
 				<a class="sidebar-header" href="<%=URL_ADMIN_HOME%>">
 					<i data-feather="home"></i>
 					<span>Dashboard</span>
 				</a>
-			</li>
+			</li>			
+			</c:if>
 			<c:if test="${user.level == 0}">
 				<li class="<%=renderMenuClass(sb, URL_ADMIN_ADMIN)%>">
 					<a class="sidebar-header" href="#">
@@ -42,7 +43,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 						<li class="<%=renderSubmenuClass(sb, URL_ADMIN_ADMIN_INSERT)%>">
 							<a href="<%=URL_ADMIN_ADMIN_INSERT%>">
 								<i class="fa fa-circle"></i>
-								Insert Admin
+								Insert Manager
 							</a>
 						</li>
 					</ul>
