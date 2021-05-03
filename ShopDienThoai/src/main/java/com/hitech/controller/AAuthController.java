@@ -87,6 +87,7 @@ public class AAuthController {
 		String newPassword = StringUtils.generatorPassword();
 		account.setPassword(newPassword);
 		accountService.update(account);
+		model.addAttribute("message", "Mật khẩu mới đã được gửi tới email của bạn!");
 		emailService.sendNotifyForgotPassword(account.getEmail());
 		return ViewConstraint.VIEW_ADMIN_FORGET_PASSWORD;
 	}
