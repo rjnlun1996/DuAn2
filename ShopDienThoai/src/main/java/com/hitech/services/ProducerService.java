@@ -10,5 +10,9 @@ public interface ProducerService extends IBaseService<Producer, String>{
 	
 	Producer findById(String id);
 	
+	Producer findByName(String name);
+	
+	Producer findByEmail(String email);
+	
 	boolean deleteByEnable(String id);
 }

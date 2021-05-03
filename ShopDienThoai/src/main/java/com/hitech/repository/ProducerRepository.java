@@ -11,5 +11,11 @@ import com.hitech.entities.Producer;
 public interface ProducerRepository extends JpaRepository<Producer, String>{
 	
 	List<Producer> findByEnabledTrueOrderByCreatedAtAsc();
+	
+	Producer findByIdIgnoreCase(String id);
+	
+	Producer findByNameIgnoreCase(String name);
+	
+	Producer findByEmail(String email);
 
 }
