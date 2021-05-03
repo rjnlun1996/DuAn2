@@ -59,8 +59,11 @@ public class CartController extends BaseController {
 	@GetMapping(CViewConstraint.URL_ORDER_HISTORY)
 	public String orderHistory(Model model) {
 		model.addAttribute(CViewConstraint.CMENU, CViewConstraint.URL_ORDER_HISTORY);
+		
+		// Lấy danh sách Orders của user bằng username
 		List<Order> orders = orderSerivce.findOrderByUsername(sessionUtils.getUser().getUsername());
-
+		
+		// Biến
 		List<Order> ordersUpdated = orders.stream().map(e -> {
 			Set<OrderDetail> od = e.getOrderDetails().stream().map(o -> {
 				o.setDiscount(discountService.findById(o.getDiscountId()));
@@ -70,9 +73,10 @@ public class CartController extends BaseController {
 			return e;
 		}).collect(Collectors.toList());
 		
+		// Lọc danh sách Order loại bỏ các order có statusOrder hiện tại bằng 4 và 5
 		List<Order> ordered = ordersUpdated.stream().filter(o -> !o.getStatusOrders().stream().anyMatch(s -> {
-			return s.isCurrent() && s.isEnabled() && s.getStatus().getPriority() != 4
-					&& s.isCurrent() && s.isEnabled() && s.getStatus().getPriority() != 5;
+			return s.isCurrent() && s.isEnabled() && s.getStatus().getPriority() != 4  // đã hoàn thành
+					&& s.isCurrent() && s.isEnabled() && s.getStatus().getPriority() != 5;  // đã hủy
 		})).collect(Collectors.toList());
 		
 		model.addAttribute("orders", ordered);
@@ -93,9 +97,10 @@ public class CartController extends BaseController {
 			return e;
 		}).collect(Collectors.toList());
 
+		// Lọc danh sách Order loại bỏ các order có statusOrder hiện tại khác 4 và 5
 		List<Order> orderProcessing = ordersUpdated.stream().filter(o -> !o.getStatusOrders().stream().anyMatch(s -> {
-			return s.isCurrent() && s.isEnabled() && s.getStatus().getPriority() == 4
-					|| s.isCurrent() && s.isEnabled() && s.getStatus().getPriority() == 5;
+			return s.isCurrent() && s.isEnabled() && s.getStatus().getPriority() == 4 // đã hoàn thành
+					|| s.isCurrent() && s.isEnabled() && s.getStatus().getPriority() == 5; // đã hủy
 		})).collect(Collectors.toList());
 		
 		model.addAttribute("orders", orderProcessing);
@@ -160,12 +165,16 @@ public class CartController extends BaseController {
 		
 		// Lay danh sach san pham trong cart
 		Map<Integer, ProductDTO> dtos = cart.getProductDto();
-		
+				
 		// neu chua ton tai bat ki san pham nao thi tao 1 danh sach
 		if (dtos == null) {
 			dtos = new HashMap<Integer, ProductDTO>();
 		}
 
+
+		// ip12: 1
+		// + ip13: 2
+		
 		// Tim san pham trong danh sach san pham cua cart
 		ProductDTO proDTO = dtos.get(productId);
 
@@ -183,7 +192,7 @@ public class CartController extends BaseController {
 		
 		// isDetail - nhan nut them tai trang detail cua san pham
 		if (isDetail)
-			quan = quantity + proDTO.getQuantity();
+			quan = proDTO.getQuantity() +  quantity;
 		
 		// isUpdate - nhan nut them tai trang Chi tiet cua gio hang
 		if (isUpdate)
@@ -210,6 +219,7 @@ public class CartController extends BaseController {
 
 		// Cập nhật or tạo sản phẩm
 		dtos.put(productId, proDTO);
+		
 		cart.setProductDto(dtos);
 
 		// Tính discountPrice, amountTotal, total

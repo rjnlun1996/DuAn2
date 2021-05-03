@@ -136,6 +136,27 @@ String sb = String.valueOf(request.getAttribute(MENU));
 					</li>
 				</ul>
 			</li> --%>
+			<li class="<%=renderMenuClass(sb, URL_ADMIN_PRODUCER)%>">
+				<a class="sidebar-header" href="#">
+					<i data-feather="align-justify"></i>
+					<span>Producers</span>
+					<i class="fa fa-angle-right pull-right"></i>
+				</a>
+				<ul class="sidebar-submenu">
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_PRODUCER)%>">
+						<a href="<%=URL_ADMIN_PRODUCER%>">
+							<i class="fa fa-circle"></i>
+							Views Producers
+						</a>
+					</li>
+					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_PRODUCER_INSERT)%>">
+						<a href="<%=URL_ADMIN_PRODUCER_INSERT%>">
+							<i class="fa fa-circle"></i>
+							Insert Producers
+						</a>
+					</li>
+				</ul>
+			</li>
 
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_CATEGORY)%>">
 				<a class="sidebar-header" href="#">
@@ -159,27 +180,7 @@ String sb = String.valueOf(request.getAttribute(MENU));
 				</ul>
 			</li>
 
-			<li class="<%=renderMenuClass(sb, URL_ADMIN_PRODUCER)%>">
-				<a class="sidebar-header" href="#">
-					<i data-feather="align-justify"></i>
-					<span>Producers</span>
-					<i class="fa fa-angle-right pull-right"></i>
-				</a>
-				<ul class="sidebar-submenu">
-					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_PRODUCER)%>">
-						<a href="<%=URL_ADMIN_PRODUCER%>">
-							<i class="fa fa-circle"></i>
-							Views Producers
-						</a>
-					</li>
-					<li class="<%=renderSubmenuClass(sb, URL_ADMIN_PRODUCER_INSERT)%>">
-						<a href="<%=URL_ADMIN_PRODUCER_INSERT%>">
-							<i class="fa fa-circle"></i>
-							Insert Producers
-						</a>
-					</li>
-				</ul>
-			</li>
+			
 
 			<li class="<%=renderMenuClass(sb, URL_ADMIN_PRODUCT)%>">
 				<a class="sidebar-header" href="#">
