@@ -153,7 +153,7 @@ table thead {
 
 															<td><c:forEach items="${order.statusOrders}" var="statusOrder">
 																	<c:if test="${statusOrder.current}">
-																		<a class="f-14" href="<%= URL_ADMIN_STATUS_ORDER_UPDATE %>?orderId=${order.id}">${statusOrder.status.name } <span class="fa fa-arrow-right"></span>
+																		<a class="f-14" style="${statusOrder.status.id.equals('DH')?'color:red':''}" href="<%= URL_ADMIN_STATUS_ORDER_UPDATE %>?orderId=${order.id}">${statusOrder.status.name } <span class="fa fa-arrow-right"></span>
 																		</a>
 																	</c:if>
 																</c:forEach></td>
