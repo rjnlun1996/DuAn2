@@ -66,7 +66,7 @@
 								<input class="form-control" type="password">
 							</div> -->
 							<div class="form-group">
-								<button type="submit" class="form-control btn btn-primary submit px-3">Save Change</button>
+								<button type="submit" class="form-control btn btn-primary submit px-3">RESET PASSWORD</button>
 							</div>
 							<div class="form-group d-md-flex">
 								<div class="w-50"></div>
