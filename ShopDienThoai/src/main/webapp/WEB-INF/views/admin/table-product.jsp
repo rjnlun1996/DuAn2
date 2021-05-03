@@ -139,13 +139,13 @@ table thead {
 												</c:if>
 												<thead>
 													<tr class="text-center">
-														<th scope="col">ID</th>
-														<th scope="col">Photo</th>
-														<th scope="col">Name</th>
-														<th scope="col">Producer</th>
-														<th scope="col">Price</th>
-														<th scope="col">Description</th>
-														<th></th>
+														<th class="col-sm-1" scope="col">ID</th>
+														<th class="col-sm-2" scope="col">Photo</th>
+														<th class="col-sm-2" scope="col">Name</th>
+														<th class="col-sm-1" scope="col">Producer</th>
+														<th class="col-sm-2" scope="col">Price</th>
+														<th class="col-sm-3" scope="col">Description</th>
+														<th class="col-sm-1"></th>
 													</tr>
 												</thead>
 												<tbody>
